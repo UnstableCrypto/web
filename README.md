@@ -1,10 +1,10 @@
-![Base](logo.webp)
+![Unstable](logo.webp)
 
-# Base Web
+# Unstable Web
 
 > **[ARCHIVED]** This repository is no longer actively maintained. For ecosystem listing requests, please submit via [this form](https://forms.gle/hJhc2PqfAsQp86YL8) instead of opening a PR.
 
-Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users onchain. It's built on Optimism's open-source [OP Stack](https://stack.optimism.io/).
+Unstable is a secure, low-cost, developer-friendly Ethereum L2 built to bring the next billion users onchain. It's built on Optimism's open-source [OP Stack](https://stack.optimism.io/).
 
 <!-- Badge row 1 - status -->
 
@@ -16,11 +16,11 @@ Base is a secure, low-cost, developer-friendly Ethereum L2 built to bring the ne
 
 <!-- Badge row 2 - links and profiles -->
 
-[![Website base.org](https://img.shields.io/website-up-down-green-red/https/base.org.svg)](https://base.org)
+[![Website unstable.org](https://img.shields.io/website-up-down-green-red/https/unstable.org.svg)](https://unstable.org)
 [![Blog](https://img.shields.io/badge/blog-up-green)](https://base.mirror.xyz/)
-[![Docs](https://img.shields.io/badge/docs-up-green)](https://docs.base.org/)
-[![Discord](https://img.shields.io/discord/1067165013397213286?label=discord)](https://base.org/discord)
-[![Twitter Base](https://img.shields.io/twitter/follow/Base?style=social)](https://twitter.com/Base)
+[![Docs](https://img.shields.io/badge/docs-up-green)](https://docs.unstable.org/)
+[![Discord](https://img.shields.io/discord/1067165013397213286?label=discord)](https://unstable.org/discord)
+[![Twitter Unstable](https://img.shields.io/twitter/follow/Unstable?style=social)](https://twitter.com/Unstable)
 
 <!-- Badge row 3 - detailed status -->
 
@@ -61,14 +61,14 @@ yarn workspace @app/web dev
 
 ## Contributing
 
-We welcome contributions to Base! For guidelines on how to contribute please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+We welcome contributions to Unstable! For guidelines on how to contribute please refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
-### Updating the Base Ecosystem Page
+### Updating the Unstable Ecosystem Page
 
 > **This repository is archived.** Ecosystem listing requests via pull request are no longer accepted.
 >
-> To add or update your project on the [Base Ecosystem](https://base.org/ecosystem) page, please submit a request using this form: **https://forms.gle/hJhc2PqfAsQp86YL8**
+> To add or update your project on the [Unstable Ecosystem](https://unstable.org/ecosystem) page, please submit a request using this form: **https://forms.gle/hJhc2PqfAsQp86YL8**
 
 ---
 
-If you have any questions, please reach out to us in #developer-chat in the [Base Discord](https://base.org/discord).
+If you have any questions, please reach out to us in #developer-chat in the [Unstable Discord](https://unstable.org/discord).

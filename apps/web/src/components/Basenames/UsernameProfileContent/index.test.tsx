@@ -17,26 +17,26 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 }));
 
 // Mock the child components
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionHeatmap', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionHeatmap', () => {
   return function MockUsernameProfileSectionHeatmap() {
     return <div data-testid="section-heatmap">Heatmap Section</div>;
   };
 });
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileCasts', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileCasts', () => {
   return function MockUsernameProfileCasts() {
     return <div data-testid="profile-casts">Profile Casts</div>;
   };
 });
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionBadges', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionBadges', () => {
   return function MockUsernameProfileSectionBadges() {
     return <div data-testid="section-badges">Badges Section</div>;
   };
 });
 
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext',
+  'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/BadgeContext',
   () => {
     return function MockBadgeContextProvider({ children }: { children: React.ReactNode }) {
       return <div data-testid="badge-context-provider">{children}</div>;
@@ -44,7 +44,7 @@ jest.mock(
   },
 );
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionExplore', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionExplore', () => {
   return function MockUsernameProfileSectionExplore() {
     return <div data-testid="section-explore">Explore Section</div>;
   };

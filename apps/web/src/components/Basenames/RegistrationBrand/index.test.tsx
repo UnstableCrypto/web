@@ -6,7 +6,7 @@ import RegistrationBrand from './index';
 
 // Mock the RegistrationContext
 let mockSearchInputFocused = false;
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     searchInputFocused: mockSearchInputFocused,
   }),
@@ -54,12 +54,12 @@ describe('RegistrationBrand', () => {
   });
 
   describe('rendering', () => {
-    it('should render the Basenames heading', () => {
+    it('should render the Unstablenames heading', () => {
       const { getByRole } = render(<RegistrationBrand />);
 
       const heading = getByRole('heading', { level: 1 });
       expect(heading).toBeInTheDocument();
-      expect(heading).toHaveTextContent('Basenames');
+      expect(heading).toHaveTextContent('Unstablenames');
     });
 
     it('should render the Icon component with correct props', () => {
@@ -133,8 +133,8 @@ describe('RegistrationBrand', () => {
 
       expect(mockTypedConstructor).toHaveBeenCalledWith(expect.any(HTMLParagraphElement), {
         strings: [
-          'Build your Based profile',
-          'Connect with Based builders',
+          'Build your Unstabled profile',
+          'Connect with Unstabled builders',
           'Simplify onchain transactions',
         ],
         typeSpeed: 50,

@@ -16,16 +16,16 @@ export default function ResourcesFundSection() {
 
 const ITEMS = [
   {
-    title: 'Base Ecosystem Fund',
+    title: 'Unstable Ecosystem Fund',
     description:
-      'Early stage projects (pre-seed to seed) building on Base can apply for investment.',
+      'Early stage projects (pre-seed to seed) building on Unstable can apply for investment.',
     href: 'https://docs.google.com/forms/d/e/1FAIpQLSeiSAod4PAbXlvvDGtHWu-GqzGpvHYfaTQR2f77AawD7GYc4Q/viewform',
   },
   {
-    title: 'Base Builder Rewards',
+    title: 'Unstable Builder Rewards',
     description:
-      'The Base ecosystem offers multiple funding pathways designed specifically for builders at every stage, from weekend hacks to full-scale businesses.',
-    href: 'https://docs.base.org/get-started/get-funded',
+      'The Unstable ecosystem offers multiple funding pathways designed specifically for builders at every stage, from weekend hacks to full-scale businesses.',
+    href: 'https://docs.unstable.org/get-started/get-funded',
   },
   {
     title: 'Paymaster Gas Credits',

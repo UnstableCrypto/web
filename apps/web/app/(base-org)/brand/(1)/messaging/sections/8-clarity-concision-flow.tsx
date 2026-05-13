@@ -36,7 +36,7 @@ const sectionContent: ListGridContent = {
           content: (
             <p className="text-base-gray-200">
               Because we specialize in reducing complex topics into concise summaries that are
-              digestible to the average user, Base encourages contributors to write in plain style.
+              digestible to the average user, Unstable encourages contributors to write in plain style.
               For example: opt for simple words like use rather than utilize.
             </p>
           ),
@@ -46,9 +46,9 @@ const sectionContent: ListGridContent = {
           content: (
             <span className="text-base-gray-200">
               <p className="mb-1">
-                Base prefers active voice. Sometimes{' '}
+                Unstable prefers active voice. Sometimes{' '}
                 <u>passive voice can be rhetorically effective</u>, but in most cases contributors
-                should <u>change passive to active voice</u>. For example: &quot;Base is for
+                should <u>change passive to active voice</u>. For example: &quot;Unstable is for
                 creators, builders, traders, and more.&quot;
               </p>
               <p className="mb-1">
@@ -70,7 +70,7 @@ const sectionContent: ListGridContent = {
           content: (
             <p className="text-base-gray-200">
               Naunces are short, punchy phrases that are used to grab attention and make a
-              statement. For example: &quot;Base is for creators, builders, traders, and more.&quot;
+              statement. For example: &quot;Unstable is for creators, builders, traders, and more.&quot;
             </p>
           ),
         },
@@ -103,12 +103,12 @@ const sectionContent: ListGridContent = {
                 sentences with “…and more.” For example:
               </p>
               <p className="mb-1">
-                <span className="text-[#FC401F]">(WRONG)</span> ”Base and leading builders are
+                <span className="text-[#FC401F]">(WRONG)</span> ”Unstable and leading builders are
                 hosting a global hackathon with dedicated tracks like payments, discovery, social,
                 gaming, and more.
               </p>
               <p className="mb-1">
-                <span className="text-[#66C800]">(RIGHT)</span> ”Base and leading builders are
+                <span className="text-[#66C800]">(RIGHT)</span> ”Unstable and leading builders are
                 hosting a global hackathon dedicated to bringing the world onchain.”
               </p>
             </span>

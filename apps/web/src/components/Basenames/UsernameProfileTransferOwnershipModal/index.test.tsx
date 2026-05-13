@@ -6,8 +6,8 @@ import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteCo
 
 // Mock the usernames module to avoid is-ipfs dependency issue
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getTokenIdFromBasename: jest.fn(),
-  formatBaseEthDomain: jest.fn(),
+  getTokenIdFromUnstablename: jest.fn(),
+  formatUnstableEthDomain: jest.fn(),
   normalizeEnsDomainName: jest.fn((name: string) => name),
   REGISTER_CONTRACT_ABI: [],
   REGISTER_CONTRACT_ADDRESSES: {},
@@ -21,11 +21,11 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useBasenameChain hook
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain hook
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: 8453, name: 'Base' },
+    basenameChain: { id: 8453, name: 'Unstable' },
   }),
 }));
 
@@ -40,7 +40,7 @@ jest.mock('wagmi', () => ({
 // Mock UsernameProfileContext
 const mockProfileRefetch = jest.fn().mockResolvedValue(undefined);
 const mockSetShowProfileSettings = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileRefetch: mockProfileRefetch,
     setShowProfileSettings: mockSetShowProfileSettings,
@@ -70,7 +70,7 @@ let mockContextValues = {
 };
 
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context',
+  'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context',
   () => ({
     __esModule: true,
     OwnershipSteps: {
@@ -156,10 +156,10 @@ jest.mock('apps/web/src/components/SearchAddressInput', () => ({
   default: MockSearchAddressInput,
 }));
 
-// Mock BasenameIdentity
-jest.mock('apps/web/src/components/BasenameIdentity', () => ({
+// Mock UnstablenameIdentity
+jest.mock('apps/web/src/components/UnstablenameIdentity', () => ({
   __esModule: true,
-  default: function MockBasenameIdentity({ username }: { username: string }) {
+  default: function MockUnstablenameIdentity({ username }: { username: string }) {
     return <div data-testid="basename-identity">{username}</div>;
   },
 }));
@@ -181,7 +181,7 @@ jest.mock('apps/web/src/components/Icon/Icon', () => ({
 
 // Mock OwnershipTransactionState
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState',
+  'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState',
   () => ({
     OwnershipTransactionState: function MockOwnershipTransactionState({
       ownershipSetting,
@@ -205,7 +205,7 @@ jest.mock('apps/web/src/components/TransactionLink', () => ({
   }) {
     return (
       <a data-testid="transaction-link" href={`https://basescan.org/tx/${transactionHash}`}>
-        View on BaseScan (Chain: {chainId})
+        View on UnstableScan (Chain: {chainId})
       </a>
     );
   },
@@ -326,7 +326,7 @@ describe('UsernameProfileTransferOwnershipModal', () => {
         {
           id: 'setAddr',
           name: 'Address record',
-          description: 'Your Basename will resolve to this address.',
+          description: 'Your Unstablename will resolve to this address.',
           status: WriteTransactionWithReceiptStatus.Idle,
           contractFunction: jest.fn(),
         },
@@ -352,7 +352,7 @@ describe('UsernameProfileTransferOwnershipModal', () => {
       expect(screen.getByTestId('modal-back')).toBeInTheDocument();
     });
 
-    it('should display BasenameIdentity with profile username', () => {
+    it('should display UnstablenameIdentity with profile username', () => {
       render(<UsernameProfileTransferOwnershipModal {...defaultProps} />);
 
       expect(screen.getByTestId('basename-identity')).toBeInTheDocument();
@@ -384,7 +384,7 @@ describe('UsernameProfileTransferOwnershipModal', () => {
       render(<UsernameProfileTransferOwnershipModal {...defaultProps} />);
 
       expect(screen.getByText('Address record')).toBeInTheDocument();
-      expect(screen.getByText('Your Basename will resolve to this address.')).toBeInTheDocument();
+      expect(screen.getByText('Your Unstablename will resolve to this address.')).toBeInTheDocument();
       expect(screen.getByText('Profile editing')).toBeInTheDocument();
       expect(screen.getByText('Transfer editing rights to this address.')).toBeInTheDocument();
     });
@@ -442,7 +442,7 @@ describe('UsernameProfileTransferOwnershipModal', () => {
         {
           id: 'setAddr',
           name: 'Address record',
-          description: 'Your Basename will resolve to this address.',
+          description: 'Your Unstablename will resolve to this address.',
           status: WriteTransactionWithReceiptStatus.Idle,
           contractFunction: jest.fn(),
         },

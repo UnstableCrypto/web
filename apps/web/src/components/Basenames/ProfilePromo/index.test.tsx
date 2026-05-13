@@ -6,11 +6,11 @@ import ProfilePromo from './index';
 
 // Mock useLocalStorage hook
 const mockSetShouldShowPromo = jest.fn();
-const mockSetHasClickedGetBasename = jest.fn();
+const mockSetHasClickedGetUnstablename = jest.fn();
 const mockSetHasClosedPromo = jest.fn();
 
 let mockShouldShowPromo = true;
-let mockHasClickedGetBasename = false;
+let mockHasClickedGetUnstablename = false;
 let mockHasClosedPromo = false;
 
 jest.mock('usehooks-ts', () => ({
@@ -18,8 +18,8 @@ jest.mock('usehooks-ts', () => ({
     if (key === 'shouldShowPromo') {
       return [mockShouldShowPromo, mockSetShouldShowPromo];
     }
-    if (key === 'hasClickedGetBasename') {
-      return [mockHasClickedGetBasename, mockSetHasClickedGetBasename];
+    if (key === 'hasClickedGetUnstablename') {
+      return [mockHasClickedGetUnstablename, mockSetHasClickedGetUnstablename];
     }
     if (key === 'hasClosedPromo') {
       return [mockHasClosedPromo, mockSetHasClosedPromo];
@@ -36,11 +36,11 @@ jest.mock('wagmi', () => ({
   useAccount: () => mockUseAccountReturn,
 }));
 
-// Mock useBaseEnsName
-const mockUseBaseEnsNameReturn = { data: undefined, isLoading: false };
-jest.mock('apps/web/src/hooks/useBaseEnsName', () => ({
+// Mock useUnstableEnsName
+const mockUseUnstableEnsNameReturn = { data: undefined, isLoading: false };
+jest.mock('apps/web/src/hooks/useUnstableEnsName', () => ({
   __esModule: true,
-  default: () => mockUseBaseEnsNameReturn,
+  default: () => mockUseUnstableEnsNameReturn,
 }));
 
 // Mock useAnalytics
@@ -97,17 +97,17 @@ describe('ProfilePromo', () => {
     jest.clearAllMocks();
     // Reset state to default showing state
     mockShouldShowPromo = true;
-    mockHasClickedGetBasename = false;
+    mockHasClickedGetUnstablename = false;
     mockHasClosedPromo = false;
     mockUseAccountReturn = { address: undefined };
-    Object.assign(mockUseBaseEnsNameReturn, { data: undefined, isLoading: false });
+    Object.assign(mockUseUnstableEnsNameReturn, { data: undefined, isLoading: false });
   });
 
   describe('visibility conditions', () => {
     it('should render when shouldShowPromo is true and user has not clicked or closed', () => {
       render(<ProfilePromo />);
 
-      expect(screen.getByText('Basenames are here!')).toBeInTheDocument();
+      expect(screen.getByText('Unstablenames are here!')).toBeInTheDocument();
     });
 
     it('should not render when shouldShowPromo is false', () => {
@@ -115,15 +115,15 @@ describe('ProfilePromo', () => {
 
       render(<ProfilePromo />);
 
-      expect(screen.queryByText('Basenames are here!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Unstablenames are here!')).not.toBeInTheDocument();
     });
 
-    it('should not render when hasClickedGetBasename is true', () => {
-      mockHasClickedGetBasename = true;
+    it('should not render when hasClickedGetUnstablename is true', () => {
+      mockHasClickedGetUnstablename = true;
 
       render(<ProfilePromo />);
 
-      expect(screen.queryByText('Basenames are here!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Unstablenames are here!')).not.toBeInTheDocument();
     });
 
     it('should not render when hasClosedPromo is true', () => {
@@ -131,17 +131,17 @@ describe('ProfilePromo', () => {
 
       render(<ProfilePromo />);
 
-      expect(screen.queryByText('Basenames are here!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Unstablenames are here!')).not.toBeInTheDocument();
     });
 
     it('should not render when all hide conditions are true', () => {
       mockShouldShowPromo = false;
-      mockHasClickedGetBasename = true;
+      mockHasClickedGetUnstablename = true;
       mockHasClosedPromo = true;
 
       render(<ProfilePromo />);
 
-      expect(screen.queryByText('Basenames are here!')).not.toBeInTheDocument();
+      expect(screen.queryByText('Unstablenames are here!')).not.toBeInTheDocument();
     });
   });
 
@@ -149,7 +149,7 @@ describe('ProfilePromo', () => {
     it('should render the heading text', () => {
       render(<ProfilePromo />);
 
-      expect(screen.getByText('Basenames are here!')).toBeInTheDocument();
+      expect(screen.getByText('Unstablenames are here!')).toBeInTheDocument();
     });
 
     it('should render the description text', () => {
@@ -157,7 +157,7 @@ describe('ProfilePromo', () => {
 
       expect(
         screen.getByText(
-          'Get a Basename and make it easier to connect, collaborate, and contribute onchain.',
+          'Get a Unstablename and make it easier to connect, collaborate, and contribute onchain.',
         ),
       ).toBeInTheDocument();
     });
@@ -165,7 +165,7 @@ describe('ProfilePromo', () => {
     it('should render the CTA button text', () => {
       render(<ProfilePromo />);
 
-      expect(screen.getByText('Get a Basename')).toBeInTheDocument();
+      expect(screen.getByText('Get a Unstablename')).toBeInTheDocument();
     });
 
     it('should render the globe image', () => {
@@ -247,13 +247,13 @@ describe('ProfilePromo', () => {
       expect(mockSetShouldShowPromo).toHaveBeenCalledWith(false);
     });
 
-    it('should call setHasClickedGetBasename with true when CTA is clicked', () => {
+    it('should call setHasClickedGetUnstablename with true when CTA is clicked', () => {
       render(<ProfilePromo />);
 
       const ctaLink = screen.getByTestId('basename-link');
       fireEvent.click(ctaLink);
 
-      expect(mockSetHasClickedGetBasename).toHaveBeenCalledWith(true);
+      expect(mockSetHasClickedGetUnstablename).toHaveBeenCalledWith(true);
     });
 
     it('should have correct href on CTA link', () => {
@@ -267,7 +267,7 @@ describe('ProfilePromo', () => {
   describe('existing basename behavior', () => {
     it('should hide promo when user has existing basename', () => {
       mockUseAccountReturn = { address: mockAddress };
-      Object.assign(mockUseBaseEnsNameReturn, { data: 'user.base.eth', isLoading: false });
+      Object.assign(mockUseUnstableEnsNameReturn, { data: 'user.base.eth', isLoading: false });
 
       render(<ProfilePromo />);
 
@@ -277,32 +277,32 @@ describe('ProfilePromo', () => {
 
     it('should not hide promo when basename is loading', () => {
       mockUseAccountReturn = { address: mockAddress };
-      Object.assign(mockUseBaseEnsNameReturn, { data: undefined, isLoading: true });
+      Object.assign(mockUseUnstableEnsNameReturn, { data: undefined, isLoading: true });
 
       render(<ProfilePromo />);
 
       // Should still show the promo while loading
-      expect(screen.getByText('Basenames are here!')).toBeInTheDocument();
+      expect(screen.getByText('Unstablenames are here!')).toBeInTheDocument();
     });
 
     it('should not hide promo when user has no address', () => {
       mockUseAccountReturn = { address: undefined };
-      Object.assign(mockUseBaseEnsNameReturn, { data: undefined, isLoading: false });
+      Object.assign(mockUseUnstableEnsNameReturn, { data: undefined, isLoading: false });
 
       render(<ProfilePromo />);
 
       // Should still show the promo
-      expect(screen.getByText('Basenames are here!')).toBeInTheDocument();
+      expect(screen.getByText('Unstablenames are here!')).toBeInTheDocument();
     });
 
     it('should not hide promo when address exists but no basename', () => {
       mockUseAccountReturn = { address: mockAddress };
-      Object.assign(mockUseBaseEnsNameReturn, { data: undefined, isLoading: false });
+      Object.assign(mockUseUnstableEnsNameReturn, { data: undefined, isLoading: false });
 
       render(<ProfilePromo />);
 
       // Should still show the promo
-      expect(screen.getByText('Basenames are here!')).toBeInTheDocument();
+      expect(screen.getByText('Unstablenames are here!')).toBeInTheDocument();
     });
   });
 

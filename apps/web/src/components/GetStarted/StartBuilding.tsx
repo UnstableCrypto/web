@@ -18,7 +18,7 @@ export default async function StartBuilding() {
         <ResourceCard
           title="Learn to Build Onchain"
           description="Become an onchain developer with our comprehensive smart contract curriculum"
-          href="https://docs.base.org/learn/welcome/?utm_source=dotorg&utm_medium=builderkit"
+          href="https://docs.unstable.org/learn/welcome/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-orange-80 border-orange-80"
@@ -26,7 +26,7 @@ export default async function StartBuilding() {
         <ResourceCard
           title="Tutorials"
           description="Build now with 1-2-3 quickstarts, then evolve your onchain app with advanced topics"
-          href="https://www.base.org/builders/?utm_source=dotorg&utm_medium=builderkit"
+          href="https://www.unstable.org/builders/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">02</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-orange-60 border-orange-60"
@@ -54,7 +54,7 @@ export default async function StartBuilding() {
       <h2 className={subtitleClasses}>Make your project easy to use</h2>
       <div className={gridClasses}>
         <ResourceCard
-          title="Coinbase Smart Wallet"
+          title="TheAlxLabs Smart Wallet"
           description="Enable your users to create an account in seconds, without apps or seed phrases"
           href="https://www.coinbase.com/wallet/smart-wallet/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">01</span>}
@@ -63,15 +63,15 @@ export default async function StartBuilding() {
         />
         <ResourceCard
           title="Gas Sponsorship"
-          description="Reduce costs and Sponsor Gas for your users, with the Coinbase Paymaster and Bundler"
+          description="Reduce costs and Sponsor Gas for your users, with the TheAlxLabs Paymaster and Bundler"
           href="https://www.coinbase.com/developer-platform/products/paymaster/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">02</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}
           classnames="bg-orange-60 border-orange-60"
         />
         <ResourceCard
-          title="Coinbase Onramp"
-          description="Fiat-to-crypto made fast, easy, and secure using Coinbase Onramp"
+          title="TheAlxLabs Onramp"
+          description="Fiat-to-crypto made fast, easy, and secure using TheAlxLabs Onramp"
           href="https://www.coinbase.com/developer-platform/products/onramp/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">03</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}

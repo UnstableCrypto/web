@@ -24,7 +24,7 @@ jest.mock('apps/web/contexts/Errors', () => ({
 
 // Mock RegistrationContext
 const mockRedirectToProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   registrationTransitionDuration: 'duration-700',
   useRegistration: () => ({
     redirectToProfile: mockRedirectToProfile,
@@ -32,7 +32,7 @@ jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
   }),
 }));
 
-// Mock useWriteBaseEnsTextRecords
+// Mock useWriteUnstableEnsTextRecords
 const mockUpdateTextRecords = jest.fn();
 const mockWriteTextRecords = jest.fn();
 let mockWriteTextRecordsIsPending = false;
@@ -48,7 +48,7 @@ const mockUpdatedTextRecords: Record<string, string> = {
   [UsernameTextRecordKeys.Url3]: '',
 };
 
-jest.mock('apps/web/src/hooks/useWriteBaseEnsTextRecords', () => ({
+jest.mock('apps/web/src/hooks/useWriteUnstableEnsTextRecords', () => ({
   __esModule: true,
   default: ({ onSuccess }: { onSuccess?: () => void }) => ({
     updateTextRecords: mockUpdateTextRecords,
@@ -66,7 +66,7 @@ jest.mock('apps/web/src/hooks/useWriteBaseEnsTextRecords', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/UsernameDescriptionField', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameDescriptionField', () => {
   return function MockUsernameDescriptionField({
     labelChildren,
     onChange,
@@ -90,7 +90,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameDescriptionField', () => {
   };
 });
 
-jest.mock('apps/web/src/components/Basenames/UsernameKeywordsField', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameKeywordsField', () => {
   return function MockUsernameKeywordsField({
     labelChildren,
     onChange,
@@ -114,7 +114,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameKeywordsField', () => {
   };
 });
 
-jest.mock('apps/web/src/components/Basenames/UsernameTextRecordInlineField', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameTextRecordInlineField', () => {
   return function MockUsernameTextRecordInlineField({
     textRecordKey,
     onChange,

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import BasenameLayout, { metadata } from './layout';
+import UnstablenameLayout, { metadata } from './layout';
 
 // Mock the providers and components
 jest.mock('apps/web/app/CryptoProviders', () => ({
@@ -23,27 +23,27 @@ jest.mock('apps/web/src/components/Layout/UsernameNav', () => ({
   default: () => <nav data-testid="username-nav">Username Nav</nav>,
 }));
 
-describe('BasenameLayout', () => {
+describe('UnstablenameLayout', () => {
   describe('metadata', () => {
-    it('should have correct metadataBase', () => {
-      expect(metadata.metadataBase).toEqual(new URL('https://base.org'));
+    it('should have correct metadataUnstable', () => {
+      expect(metadata.metadataUnstable).toEqual(new URL('https://unstable.org'));
     });
 
     it('should have correct title', () => {
-      expect(metadata.title).toBe('Basenames');
+      expect(metadata.title).toBe('Unstablenames');
     });
 
     it('should have correct description', () => {
-      expect(metadata.description).toContain('Basenames are a core onchain building block');
-      expect(metadata.description).toContain('ENS infrastructure deployed on Base');
+      expect(metadata.description).toContain('Unstablenames are a core onchain building block');
+      expect(metadata.description).toContain('ENS infrastructure deployed on Unstable');
     });
 
     it('should have correct openGraph configuration', () => {
       expect(metadata.openGraph).toEqual({
         type: 'website',
-        title: 'Basenames',
+        title: 'Unstablenames',
         url: '/',
-        images: ['https://base.org/images/base-open-graph.png'],
+        images: ['https://unstable.org/images/base-open-graph.png'],
       });
     });
 
@@ -55,9 +55,9 @@ describe('BasenameLayout', () => {
     });
   });
 
-  describe('BasenameLayout component', () => {
+  describe('UnstablenameLayout component', () => {
     it('should render children within the layout', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div data-testid="test-child">Test Child Content</div>,
       });
 
@@ -68,7 +68,7 @@ describe('BasenameLayout', () => {
     });
 
     it('should wrap children with ErrorsProvider with basenames context', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div>Child</div>,
       });
 
@@ -80,7 +80,7 @@ describe('BasenameLayout', () => {
     });
 
     it('should wrap children with CryptoProviders', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div>Child</div>,
       });
 
@@ -90,7 +90,7 @@ describe('BasenameLayout', () => {
     });
 
     it('should render UsernameNav', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div>Child</div>,
       });
 
@@ -100,7 +100,7 @@ describe('BasenameLayout', () => {
     });
 
     it('should nest providers in correct order (ErrorsProvider > CryptoProviders)', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div data-testid="child">Child</div>,
       });
 
@@ -114,7 +114,7 @@ describe('BasenameLayout', () => {
     });
 
     it('should render layout with proper structure containing nav and children', async () => {
-      const layout = await BasenameLayout({
+      const layout = await UnstablenameLayout({
         children: <div data-testid="page-content">Page Content</div>,
       });
 

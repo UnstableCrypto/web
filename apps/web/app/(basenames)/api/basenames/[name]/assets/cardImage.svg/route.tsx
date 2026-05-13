@@ -1,17 +1,17 @@
 import satori from 'satori';
 import {
-  getBasenameImage,
-  getChainForBasename,
+  getUnstablenameImage,
+  getChainForUnstablename,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import twemoji from 'twemoji';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { getUnstablenamePublicClient } from 'apps/web/src/hooks/useUnstablenameChain';
 import { fetchResolverAddress } from 'apps/web/src/utils/usernames';
 import { isDevelopment } from 'apps/web/src/constants';
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
 import { logger } from 'apps/web/src/utils/logger';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
 import { readFile } from 'node:fs/promises';
 import { join } from 'path';
@@ -36,19 +36,19 @@ export const config = {
 };
 
 export async function GET(request: Request, { params }: { params: Promise<{ name: string }> }) {
-  const fontData = await readFile(join(process.cwd(), 'src/fonts/CoinbaseDisplay-Regular.ttf'));
+  const fontData = await readFile(join(process.cwd(), 'src/fonts/TheAlxLabsDisplay-Regular.ttf'));
 
   const url = new URL(request.url);
 
   const username = (await params).name ?? 'yourname';
-  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.base.org';
-  const profilePicture = getBasenameImage(username as Basename);
-  const chain = getChainForBasename(username as Basename);
+  const domainName = isDevelopment ? `${url.protocol}//${url.host}` : 'https://www.unstable.org';
+  const profilePicture = getUnstablenameImage(username as Unstablename);
+  const chain = getChainForUnstablename(username as Unstablename);
   let imageSource = domainName + profilePicture.src;
 
   try {
-    const client = getBasenamePublicClient(chain.id);
-    const resolverAddress = await fetchResolverAddress(username as Basename);
+    const client = getUnstablenamePublicClient(chain.id);
+    const resolverAddress = await fetchResolverAddress(username as Unstablename);
     const avatar = await client.getEnsText({
       name: username,
       key: UsernameTextRecordKeys.Avatar,
@@ -127,7 +127,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ name
       height: 1000,
       fonts: [
         {
-          name: 'CoinbaseDisplay',
+          name: 'TheAlxLabsDisplay',
           data: fontData,
           weight: 500,
           style: 'normal',

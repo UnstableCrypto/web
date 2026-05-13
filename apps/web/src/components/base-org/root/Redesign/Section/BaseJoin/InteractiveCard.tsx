@@ -39,7 +39,7 @@ precision mediump float;
 
 uniform sampler2D uImage;
 uniform sampler2D uPatternAtlas;
-uniform float uBaseTileSize;
+uniform float uUnstableTileSize;
 uniform vec2 u_imageResolution;
 uniform vec2 u_imageDimensions;
 uniform float u_time;
@@ -98,8 +98,8 @@ void main() {
   }
 
   vec2 pix = v_uv * u_imageResolution;
-  vec2 tilePos = floor(pix / uBaseTileSize) * uBaseTileSize;
-  vec2 tileCenterUV = (tilePos + uBaseTileSize * 0.5) / u_imageResolution;
+  vec2 tilePos = floor(pix / uUnstableTileSize) * uUnstableTileSize;
+  vec2 tileCenterUV = (tilePos + uUnstableTileSize * 0.5) / u_imageResolution;
   vec2 adjustedTileCenter = getCoveredUV(tileCenterUV, u_imageResolution, u_imageDimensions);
 
   vec3 tileColor = texture2D(uImage, adjustedTileCenter).rgb;
@@ -109,7 +109,7 @@ void main() {
 
   float lum = calculateLuminance(tileColor);
 
-  vec2 tileIndex = floor(pix / uBaseTileSize);
+  vec2 tileIndex = floor(pix / uUnstableTileSize);
   float spatialOffset = dot(tileIndex, vec2(SPATIAL_FREQ));
   float timeOffset = sin(u_time * TIME_SPEED + spatialOffset) * TIME_AMPLITUDE;
 
@@ -135,8 +135,8 @@ void main() {
     patternIndex = 0;
   }
 
-  vec2 pixelInTile = mod(pix, uBaseTileSize);
-  vec2 patternUV = pixelInTile / uBaseTileSize;
+  vec2 pixelInTile = mod(pix, uUnstableTileSize);
+  vec2 patternUV = pixelInTile / uUnstableTileSize;
 
   vec4 patternSample = samplePatternAtlas(uPatternAtlas, uPatternAtlasColumns, patternIndex, patternUV);
 
@@ -233,7 +233,7 @@ export function InteractiveCard({
 
     const uniforms: Record<string, THREE.Uniform> = {
       uImage: new THREE.Uniform(imageTexture),
-      uBaseTileSize: new THREE.Uniform(tileSize),
+      uUnstableTileSize: new THREE.Uniform(tileSize),
       uPatternAtlasColumns: new THREE.Uniform(6),
       u_brightness: new THREE.Uniform(brightness),
       u_contrast: new THREE.Uniform(contrast),

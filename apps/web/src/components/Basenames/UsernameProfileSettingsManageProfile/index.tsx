@@ -2,22 +2,22 @@
 import classNames from 'classnames';
 import { useCallback } from 'react';
 import { useErrors } from 'apps/web/contexts/Errors';
-import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
-import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import UsernameTextRecordInlineField from 'apps/web/src/components/Basenames/UsernameTextRecordInlineField';
+import UsernameDescriptionField from 'apps/web/src/components/Unstablenames/UsernameDescriptionField';
+import UsernameKeywordsField from 'apps/web/src/components/Unstablenames/UsernameKeywordsField';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import UsernameTextRecordInlineField from 'apps/web/src/components/Unstablenames/UsernameTextRecordInlineField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
+import useWriteUnstableEnsTextRecords from 'apps/web/src/hooks/useWriteUnstableEnsTextRecords';
 import {
   textRecordsSocialFieldsEnabled,
   USERNAMES_PINNED_CASTS_ENABLED,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
-import UsernameCastsField from 'apps/web/src/components/Basenames/UsernameCastsField';
-import UsernameLocationField from 'apps/web/src/components/Basenames/UsernameLocationField';
+import UsernameCastsField from 'apps/web/src/components/Unstablenames/UsernameCastsField';
+import UsernameLocationField from 'apps/web/src/components/Unstablenames/UsernameLocationField';
 
 const settingTabClass = classNames(
   'flex flex-col justify-between gap-8 text-gray/60 md:items-center p-4 md:p-8',
@@ -41,7 +41,7 @@ export default function UsernameProfileSettingsManageProfile() {
     writeTextRecordsIsPending,
     writeTextRecordsError,
     hasChanged,
-  } = useWriteBaseEnsTextRecords({
+  } = useWriteUnstableEnsTextRecords({
     username: profileUsername,
     onSuccess: closeSettings,
   });

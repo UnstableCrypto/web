@@ -2,7 +2,7 @@ import { useErrors } from 'apps/web/contexts/Errors';
 import {
   OwnershipSettings,
   useProfileTransferOwnership,
-} from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';

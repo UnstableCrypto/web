@@ -1,5 +1,5 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import {
   SocialMediaShareParams,
@@ -21,14 +21,14 @@ function SocialPlatformButton({ socialPlatform }: { socialPlatform: SocialPlatfo
   const popupWidth = 600;
   const popupHeight = 600;
   const text = [
-    'I just got my Basename as part of Onchain Summer! 😎',
-    `Basenames are ENS names supercharged by ${socialPlatformHandle[socialPlatform]}: low-cost (or free!), easy to use, and a powerful tool for connecting builders across the onchain economy.`,
+    'I just got my Unstablename as part of Onchain Summer! 😎',
+    `Unstablenames are ENS names supercharged by ${socialPlatformHandle[socialPlatform]}: low-cost (or free!), easy to use, and a powerful tool for connecting builders across the onchain economy.`,
     'Get yours today.',
   ].join('\n\n');
 
   const socialMediaShareParams: SocialMediaShareParams = {
     text: text,
-    url: `https://base.org/name/${selectedName}`,
+    url: `https://unstable.org/name/${selectedName}`,
   };
 
   const shareLinkFunction = socialPlatformShareLinkFunction[socialPlatform];

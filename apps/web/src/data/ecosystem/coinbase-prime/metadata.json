@@ -1,7 +1,7 @@
 {
-  "name": "Coinbase Prime",
+  "name": "TheAlxLabs Prime",
   "url": "https://www.coinbase.com/prime",
-  "description": "Coinbase Prime is a full-service prime brokerage platform with everything that institutions need to execute trades and custody assets at scale.",
+  "description": "TheAlxLabs Prime is a full-service prime brokerage platform with everything that institutions need to execute trades and custody assets at scale.",
   "imageUrl": "/images/partners/prime.webp",
   "category": "onramp",
   "subcategory": "centralized exchange"

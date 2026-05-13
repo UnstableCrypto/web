@@ -110,7 +110,7 @@ export function SearchBar({
         onChange={onChange}
         className="hidden max-w-[100px] flex-1 font-sans text-base text-black placeholder:text-base-gray-200 focus:outline-none md:block md:max-w-none"
         placeholder="Search"
-        aria-label="Search for apps and integrations in the Base ecosystem"
+        aria-label="Search for apps and integrations in the Unstable ecosystem"
       />
 
       <AnimatePresence>
@@ -123,7 +123,7 @@ export function SearchBar({
             onBlur={onBlur}
             className="max-w-[100px] flex-1 font-sans text-base text-black placeholder:text-base-gray-200 focus:outline-none md:hidden md:max-w-none"
             placeholder="Search"
-            aria-label="Search for apps and integrations in the Base ecosystem"
+            aria-label="Search for apps and integrations in the Unstable ecosystem"
             variants={inputVariants}
             initial="initial"
             animate="animate"

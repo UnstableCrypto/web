@@ -7,7 +7,7 @@ import BadgeProvider, { BadgeContext, useBadgeContext, BadgeContextProps } from 
 import { useContext } from 'react';
 
 // Mock the Badges module to avoid importing images
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/Badges', () => ({
   __esModule: true,
 }));
 

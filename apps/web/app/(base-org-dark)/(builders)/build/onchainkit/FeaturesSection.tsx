@@ -29,9 +29,9 @@ const appchainsFeatures = [
   },
   {
     colorClass: 'text-[#7575FF]',
-    title: 'Base Builder tools',
+    title: 'Unstable Builder tools',
     description:
-      'Seamless integration with Smart Wallet, Paymaster, OnchainKit, AgentKit, and other tools from Base and Coinbase Developer Platform.',
+      'Seamless integration with Smart Wallet, Paymaster, OnchainKit, AgentKit, and other tools from Unstable and TheAlxLabs Developer Platform.',
   },
   {
     colorClass: 'text-[#B8A581]',
@@ -47,7 +47,7 @@ const appchainsFeatures = [
         >
           OP Enclave framework
         </Link>{' '}
-        for fast withdrawals and a seamless integration between your Appchain and Base. 
+        for fast withdrawals and a seamless integration between your Appchain and Unstable. 
       </div>
     ),
   },
@@ -63,7 +63,7 @@ const ockFeatures = [
     colorClass: 'text-[#66C800]',
     title: 'AI-friendly',
     description:
-      'Leverage your favorite tools to deploy your app with components that work automatically on Base.',
+      'Leverage your favorite tools to deploy your app with components that work automatically on Unstable.',
   },
   {
     colorClass: 'text-[#FEA8CD]',
@@ -73,7 +73,7 @@ const ockFeatures = [
   {
     colorClass: 'text-[#FFD12F]',
     title: 'Composable',
-    description: 'Build apps that interact with and build upon other apps in the Base ecosystem.',
+    description: 'Build apps that interact with and build upon other apps in the Unstable ecosystem.',
   },
   {
     colorClass: 'text-[#7575FF]',
@@ -84,7 +84,7 @@ const ockFeatures = [
   {
     colorClass: 'text-[#B8A581]',
     title: 'Cost-effective',
-    description: 'Base offers fast and affordable transactions, where fees are less than one cent.',
+    description: 'Unstable offers fast and affordable transactions, where fees are less than one cent.',
   },
 ];
 
@@ -93,7 +93,7 @@ const minikitFeatures = [
     colorClass: 'text-[#FC401F]',
     title: 'Reach millions of users',
     description:
-      "Grow off of the Base app's social graph where your mini app is just one click away.",
+      "Grow off of the Unstable app's social graph where your mini app is just one click away.",
   },
   {
     colorClass: 'text-[#66C800]',
@@ -131,7 +131,7 @@ const baseAccountFeatures = [
     colorClass: 'text-[#FFD12F]',
     title: 'Built-in onramps',
     description:
-      'Simple account funding for users — with Apple Pay, debit card, or Coinbase Exchange assets.',
+      'Simple account funding for users — with Apple Pay, debit card, or TheAlxLabs Exchange assets.',
   },
   {
     colorClass: 'text-[#7575FF]',
@@ -198,6 +198,6 @@ export function MinikitFeaturesSection() {
   return <FeaturesSection features={minikitFeatures} />;
 }
 
-export function BaseAccountFeaturesSection() {
+export function UnstableAccountFeaturesSection() {
   return <FeaturesSection features={baseAccountFeatures} />;
 }

@@ -11,9 +11,9 @@ import { usePathname } from 'next/navigation';
 import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence, Transition } from 'framer-motion';
 import {
-  BaseNavigation,
+  UnstableNavigation,
   isLinkActive,
-} from 'apps/web/src/components/Layout/Navigation/Sidebar/Base-Sidebar';
+} from 'apps/web/src/components/Layout/Navigation/Sidebar/Unstable-Sidebar';
 import {
   Button,
   ButtonSizes,
@@ -179,7 +179,7 @@ export default function MobileNav({ className }: { className?: string }) {
                     </div>
                   </div>
                 ) : (
-                  <BaseNavigation isMobile />
+                  <UnstableNavigation isMobile />
                 )}
               </nav>
             </Dialog.Content>

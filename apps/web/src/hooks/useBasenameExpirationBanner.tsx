@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { Banner } from 'apps/web/src/components/Banner';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import { GRACE_PERIOD_DURATION_MS } from 'apps/web/src/utils/usernames';
 
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -43,7 +43,7 @@ function getBanner(msUntilExpiration: number): BannerConfig {
   if (msUntilExpiration > 0) {
     const daysUntilExpiration = Math.ceil(msUntilExpiration / MILLISECONDS_PER_DAY);
     return {
-      message: `This Basename expires in ${daysUntilExpiration} days. Extend your registration so you can own it for longer.`,
+      message: `This Unstablename expires in ${daysUntilExpiration} days. Extend your registration so you can own it for longer.`,
       bgColor: 'bg-yellow-20',
       textColor: 'text-black',
     };
@@ -55,7 +55,7 @@ function getBanner(msUntilExpiration: number): BannerConfig {
   const renewalDeadline = formatRenewalDate(gracePeriodRemaining);
 
   return {
-    message: `This Basename expired ${daysExpiredAgo} days ago. Renew by ${renewalDeadline} to maintain ownership.`,
+    message: `This Unstablename expired ${daysExpiredAgo} days ago. Renew by ${renewalDeadline} to maintain ownership.`,
     bgColor: 'bg-red-10',
     textColor: 'text-red-80',
   };
@@ -65,7 +65,7 @@ function getBanner(msUntilExpiration: number): BannerConfig {
  * Returns a banner component if the basename is in the expiration window or grace period.
  * Must be used inside UsernameProfileProvider.
  */
-export function useBasenameExpirationBanner() {
+export function useUnstablenameExpirationBanner() {
   const { currentWalletIsProfileEditor, msUntilExpiration, profileUsername } = useUsernameProfile();
 
   const expirationBannerConfig = useMemo((): BannerConfig => {

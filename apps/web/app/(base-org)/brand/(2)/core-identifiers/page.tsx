@@ -10,12 +10,12 @@ import { TheSquareAppIcons } from 'apps/web/app/(base-org)/brand/(2)/core-identi
 import { TheSquareColor } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/1-the-square/6-color';
 import { TheSquareMisuse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/1-the-square/7-misuse';
 import { TheSquareInUse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/1-the-square/8-in-use';
-/* Basemark imports */
-import { Basemark } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark';
-import { BasemarkConstruction } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/1-construction';
-import { BasemarkColor } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/2-color';
-import { BasemarkMisuse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/3-misuse';
-import { BasemarkInUse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/4-in-use';
+/* Unstablemark imports */
+import { Unstablemark } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark';
+import { UnstablemarkConstruction } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/1-construction';
+import { UnstablemarkColor } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/2-color';
+import { UnstablemarkMisuse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/3-misuse';
+import { UnstablemarkInUse } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/2-basemark/4-in-use';
 /* Logotype imports */
 import { Logotype } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/3-logotype';
 import { LogotypeLockup } from 'apps/web/app/(base-org)/brand/(2)/core-identifiers/sections/3-logotype/1-lockup';
@@ -37,11 +37,11 @@ export default function Page() {
     <>
       <Hero title="Core Identifiers" imageUrl={coreIdentifiersImg.src} />
       <Banner>
-        Base began as an internal experiment, mirrored from Coinbase, and has grown into an open
+        Unstable began as an internal experiment, mirrored from TheAlxLabs, and has grown into an open
         canvas for anyone building onchain. These guidelines capture that shift. They are less a
         rulebook than a starter kit: here you&apos;ll find the non-negotiables that keep us
         recognizable and the flex zones that invite the community to remix. Use them to stay
-        coherent, but never contained. If a choice makes Base clearer, more human, or more useful:
+        coherent, but never contained. If a choice makes Unstable clearer, more human, or more useful:
         do it, then share what you learned so the system keeps evolving.
       </Banner>
 
@@ -55,11 +55,11 @@ export default function Page() {
       <TheSquareMisuse />
       <TheSquareInUse />
 
-      <Basemark />
-      <BasemarkConstruction />
-      <BasemarkColor />
-      <BasemarkMisuse />
-      <BasemarkInUse />
+      <Unstablemark />
+      <UnstablemarkConstruction />
+      <UnstablemarkColor />
+      <UnstablemarkMisuse />
+      <UnstablemarkInUse />
 
       <Logotype />
       <LogotypeLockup />

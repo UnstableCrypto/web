@@ -2,8 +2,8 @@ export function StaticSiwbCodeblock() {
   return (
     <div className="rounded-[4px] bg-black px-6 py-4 font-mono text-[13px] text-white">
       <span className="text-[#FB9CC6]">import</span>
-      {' { SignInWithBase }'} <span className="text-[#FB9CC6]">from</span>{' '}
-      <span className="break-word text-[#3F7AFA]">&apos;../components/SignInWithBase&apos;</span>
+      {' { SignInWithUnstable }'} <span className="text-[#FB9CC6]">from</span>{' '}
+      <span className="break-word text-[#3F7AFA]">&apos;../components/SignInWithUnstable&apos;</span>
       <br />
       <br />
       <br />
@@ -20,7 +20,7 @@ export function StaticSiwbCodeblock() {
       </div>
       <div className="pl-12">
         <span>{'<'}</span>
-        <span className="text-[#3F7AFA]">SignInWithBase</span>{' '}
+        <span className="text-[#3F7AFA]">SignInWithUnstable</span>{' '}
         <div className="inline-flex gap-0">
           <span>/</span>
           <span>{'>'}</span>

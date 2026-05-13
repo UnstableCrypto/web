@@ -19,7 +19,7 @@ export default function Page() {
       <Hero title="Partnerships" imageUrl={partnerships.src} altPattern={patternAtlas} />
       <Banner>
         Effective collaboration starts with a balanced lockup that honors both brands while staying
-        true to the Base toolkit. Lead with the logotype lockup when Base owns the initiative;
+        true to the Unstable toolkit. Lead with the logotype lockup when Unstable owns the initiative;
         invert the order when we support a partner launch. Always match optical weight, not literal
         size, and preserve clear space so neither mark feels crowded.
       </Banner>

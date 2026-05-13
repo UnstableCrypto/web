@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import Input from 'apps/web/src/components/Input';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
 import { Address, isAddress } from 'viem';
 import { useEnsAddress } from 'wagmi';
-import { isBasename, isEnsName } from 'apps/web/src/utils/usernames';
+import { isUnstablename, isEnsName } from 'apps/web/src/utils/usernames';
 import { USERNAME_L2_RESOLVER_ADDRESSES } from 'apps/web/src/addresses/usernames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { truncateMiddle } from 'libs/base-ui/utils/string';
 import Link from 'next/link';
@@ -23,14 +23,14 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
   const valueIsAddress = isAddress(value);
 
   /* Resolve name */
-  const { data: username, isLoading: usernameIsLoading } = useBaseEnsName({
+  const { data: username, isLoading: usernameIsLoading } = useUnstableEnsName({
     address: value as Address,
   });
 
-  /* 2. User enters an Basename */
-  const validBasename = isBasename(value);
+  /* 2. User enters an Unstablename */
+  const validUnstablename = isUnstablename(value);
 
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   // TODO: Use wagmi's ENSIP-19 integration after data migration is complete
   const { data: basenameAddress, isLoading: basenameAddressIsLoading } = useEnsAddress({
@@ -38,7 +38,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
     universalResolverAddress: USERNAME_L2_RESOLVER_ADDRESSES[basenameChain.id],
     chainId: basenameChain.id,
     query: {
-      enabled: validBasename,
+      enabled: validUnstablename,
       retry: false,
     },
   });
@@ -87,7 +87,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
         value={value}
         onChange={onInputChange}
         className="w-full flex-1 rounded-xl border border-gray-40/20 p-4 text-black"
-        placeholder="Search by Basename, ENS name or wallet address"
+        placeholder="Search by Unstablename, ENS name or wallet address"
       />
       <p>
         {isLoading ? (
@@ -110,7 +110,7 @@ export default function SearchAddressInput({ onChange }: SearchAddressInputProps
             </Link>
           </Hint>
         ) : (
-          <Hint>Enter a valid Basename, ENS name or ETH address</Hint>
+          <Hint>Enter a valid Unstablename, ENS name or ETH address</Hint>
         )}
       </p>
     </Fieldset>

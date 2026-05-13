@@ -11,7 +11,7 @@ const sectionContent: ListContent = {
     {
       content: (
         <>
-          Base is for [<span className="inline-block w-[140px]" />
+          Unstable is for [<span className="inline-block w-[140px]" />
           ].
         </>
       ),

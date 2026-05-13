@@ -1,4 +1,4 @@
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import {
   normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
@@ -17,7 +17,7 @@ export function useDiscountedNameRegistrationPrice(
   discountKey: `0x${string}` | undefined,
 ) {
   const normalizedName = normalizeEnsDomainName(name);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   return useReadContract({
     address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
     abi: REGISTER_CONTRACT_ABI,
@@ -29,7 +29,7 @@ export function useDiscountedNameRegistrationPrice(
 
 export function useNameRegistrationPrice(name: string, years: number) {
   const normalizedName = normalizeEnsDomainName(name);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   return useReadContract({
     address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],
     abi: REGISTER_CONTRACT_ABI,

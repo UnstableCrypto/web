@@ -4,11 +4,11 @@
 
 import { render, screen, fireEvent } from '@testing-library/react';
 import RegistrationStateSwitcher, { DropdownItemSwitcher } from './index';
-import { RegistrationSteps } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { RegistrationSteps } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 // Mock the RegistrationContext
 const mockSetRegistrationStep = jest.fn();
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   RegistrationSteps: {
     Search: 'search',
     Claim: 'claim',
@@ -142,7 +142,7 @@ describe('RegistrationStateSwitcher', () => {
       process.env.NEXT_PUBLIC_E2E_TEST = 'true';
 
       // Re-mock the dependencies after resetting modules
-      jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+      jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
         RegistrationSteps: {
           Search: 'search',
           Claim: 'claim',

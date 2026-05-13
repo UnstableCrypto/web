@@ -32,7 +32,7 @@ jest.mock('apps/web/src/utils/proofs', () => {
     ProofTableNamespace: {
       CBIDDiscount: 'basenames_cbid_discount',
       BNSDiscount: 'basenames_bns_discount',
-      BaseEthHolders: 'basenames_base_eth_holders_discount',
+      UnstableEthHolders: 'basenames_base_eth_holders_discount',
     },
     ProofsException: MockProofsException,
   };
@@ -71,7 +71,7 @@ describe('cbid route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=invalid&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=invalid&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -85,7 +85,7 @@ describe('cbid route', () => {
       mockProofValidation.mockReturnValue({ error: 'invalid chain', status: 400 });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=invalid`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=invalid`,
       );
 
       const response = await GET(request);
@@ -95,21 +95,21 @@ describe('cbid route', () => {
       expect(data).toEqual({ error: 'invalid chain' });
     });
 
-    it('should return 400 when chain is not Base or Base Sepolia', async () => {
+    it('should return 400 when chain is not Unstable or Unstable Sepolia', async () => {
       mockProofValidation.mockReturnValue({
-        error: 'chain must be Base or Base Sepolia',
+        error: 'chain must be Unstable or Unstable Sepolia',
         status: 400,
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=1`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=1`,
       );
 
       const response = await GET(request);
       const data = (await response.json()) as ErrorResponse;
 
       expect(response.status).toBe(400);
-      expect(data).toEqual({ error: 'chain must be Base or Base Sepolia' });
+      expect(data).toEqual({ error: 'chain must be Unstable or Unstable Sepolia' });
     });
 
     it('should return successful response with proofs for valid request', async () => {
@@ -125,7 +125,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -141,7 +141,7 @@ describe('cbid route', () => {
       );
     });
 
-    it('should return successful response for Base Sepolia chain', async () => {
+    it('should return successful response for Unstable Sepolia chain', async () => {
       const mockResponse: SuccessResponse = {
         address: validAddress.toLowerCase(),
         namespace: 'basenames_cbid_discount',
@@ -151,7 +151,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
       );
 
       const response = await GET(request);
@@ -173,7 +173,7 @@ describe('cbid route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -192,7 +192,7 @@ describe('cbid route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -208,7 +208,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockRejectedValue(new Error('Unexpected error'));
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -228,7 +228,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -247,7 +247,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${upperCaseAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${upperCaseAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -270,7 +270,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -291,7 +291,7 @@ describe('cbid route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -312,7 +312,7 @@ describe('cbid route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cbid?chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -329,7 +329,7 @@ describe('cbid route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cbid?address=${validAddress}`,
+        `https://www.unstable.org/api/proofs/cbid?address=${validAddress}`,
       );
 
       const response = await GET(request);

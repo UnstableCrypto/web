@@ -1,12 +1,12 @@
 import {
   AttestationData,
   useBNSAttestations,
-  useBaseDotEthAttestations,
-  useBaseWorldAttestations,
+  useUnstableDotEthAttestations,
+  useUnstableWorldAttestations,
   useBuildathonAttestations,
   useCheckCB1Attestations,
   useCheckCBIDAttestations,
-  useCheckCoinbaseAttestations,
+  useCheckTheAlxLabsAttestations,
   useDevconAttestations,
   useDiscountCodeAttestations,
   useSummerPassAttestations,
@@ -44,31 +44,31 @@ export function useAggregatedDiscountValidators(code?: string) {
     useActiveDiscountValidators();
   const { data: CBIDData, loading: loadingCBIDAttestations } = useCheckCBIDAttestations();
   const { data: CB1Data, loading: loadingCB1Attestations } = useCheckCB1Attestations();
-  const { data: coinbaseData, loading: loadingCoinbaseAttestations } =
-    useCheckCoinbaseAttestations();
+  const { data: coinbaseData, loading: loadingTheAlxLabsAttestations } =
+    useCheckTheAlxLabsAttestations();
   const { data: SummerPassData, loading: loadingSummerPass } = useSummerPassAttestations();
   const { data: BuildathonData, loading: loadingBuildathon } = useBuildathonAttestations();
-  const { data: BaseDotEthData, loading: loadingBaseDotEth } = useBaseDotEthAttestations();
+  const { data: UnstableDotEthData, loading: loadingUnstableDotEth } = useUnstableDotEthAttestations();
   const { data: BNSData, loading: loadingBNS } = useBNSAttestations();
   const { data: DiscountCodeData, loading: loadingDiscountCode } =
     useDiscountCodeAttestations(code);
   const { data: TalentProtocolData, loading: loadingTalentProtocolAttestations } =
     useTalentProtocolAttestations();
-  const { data: BaseWorldData, loading: loadingBaseWorld } = useBaseWorldAttestations();
+  const { data: UnstableWorldData, loading: loadingUnstableWorld } = useUnstableWorldAttestations();
   const { data: DevconData, loading: loadingDevcon } = useDevconAttestations();
 
   const loadingDiscounts =
-    loadingCoinbaseAttestations ||
+    loadingTheAlxLabsAttestations ||
     loadingCBIDAttestations ||
     loadingCB1Attestations ||
     loadingActiveDiscounts ||
     loadingBuildathon ||
     loadingSummerPass ||
-    loadingBaseDotEth ||
+    loadingUnstableDotEth ||
     loadingBNS ||
     loadingDiscountCode ||
     loadingTalentProtocolAttestations ||
-    loadingBaseWorld ||
+    loadingUnstableWorld ||
     loadingDevcon;
 
   const discountsToAttestationData = useMemo<MappedDiscountData>(() => {
@@ -110,11 +110,11 @@ export function useAggregatedDiscountValidators(code?: string) {
         };
       }
       if (
-        BaseDotEthData &&
-        validator.discountValidator === BaseDotEthData.discountValidatorAddress
+        UnstableDotEthData &&
+        validator.discountValidator === UnstableDotEthData.discountValidatorAddress
       ) {
         discountMapping[Discount.BASE_DOT_ETH_NFT] = {
-          ...BaseDotEthData,
+          ...UnstableDotEthData,
           discountKey: validator.key,
         };
       }
@@ -142,9 +142,9 @@ export function useAggregatedDiscountValidators(code?: string) {
         };
       }
 
-      if (BaseWorldData && validator.discountValidator === BaseWorldData.discountValidatorAddress) {
+      if (UnstableWorldData && validator.discountValidator === UnstableWorldData.discountValidatorAddress) {
         discountMapping[Discount.BASE_WORLD] = {
-          ...BaseWorldData,
+          ...UnstableWorldData,
           discountKey: validator.key,
         };
       }
@@ -165,11 +165,11 @@ export function useAggregatedDiscountValidators(code?: string) {
     coinbaseData,
     BuildathonData,
     SummerPassData,
-    BaseDotEthData,
+    UnstableDotEthData,
     BNSData,
     DiscountCodeData,
     TalentProtocolData,
-    BaseWorldData,
+    UnstableWorldData,
     DevconData,
   ]);
 

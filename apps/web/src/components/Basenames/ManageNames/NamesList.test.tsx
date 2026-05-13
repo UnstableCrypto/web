@@ -26,7 +26,7 @@ let mockHasNext = false;
 let mockTotalCount = 0;
 let mockCurrentPageNumber = 1;
 
-jest.mock('apps/web/src/components/Basenames/ManageNames/hooks', () => ({
+jest.mock('apps/web/src/components/Unstablenames/ManageNames/hooks', () => ({
   useNameList: () => ({
     namesData: mockNamesData,
     isLoading: mockIsLoading,
@@ -133,10 +133,10 @@ describe('NamesList', () => {
       expect(screen.getByTestId('analytics-provider')).toBeInTheDocument();
     });
 
-    it('should render the "My Basenames" heading', () => {
+    it('should render the "My Unstablenames" heading', () => {
       render(<NamesList />);
 
-      expect(screen.getByRole('heading', { name: 'My Basenames' })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: 'My Unstablenames' })).toBeInTheDocument();
     });
 
     it('should render a link to register new names with plus icon', () => {
@@ -188,15 +188,15 @@ describe('NamesList', () => {
       expect(screen.getByText('No names found.')).toBeInTheDocument();
     });
 
-    it('should display link to get a Basename in empty state', () => {
+    it('should display link to get a Unstablename in empty state', () => {
       mockNamesData = { data: [] };
 
       render(<NamesList />);
 
-      expect(screen.getByText('Get a Basename!')).toBeInTheDocument();
+      expect(screen.getByText('Get a Unstablename!')).toBeInTheDocument();
       const links = screen.getAllByTestId('mock-link');
-      const getBasenameLink = links.find((link) => link.textContent === 'Get a Basename!');
-      expect(getBasenameLink).toHaveAttribute('href', '/names/');
+      const getUnstablenameLink = links.find((link) => link.textContent === 'Get a Unstablename!');
+      expect(getUnstablenameLink).toHaveAttribute('href', '/names/');
     });
   });
 

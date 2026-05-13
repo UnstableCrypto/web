@@ -3,7 +3,7 @@
  */
 import { render, screen, fireEvent } from '@testing-library/react';
 import UsernameProfileSettingsMenu from './index';
-import { SettingsTabs } from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
+import { SettingsTabs } from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsContext';
 
 // Mock state values
 let mockCurrentSettingsTab = SettingsTabs.ManageProfile;
@@ -14,7 +14,7 @@ let mockSettingsTabsEnabled: SettingsTabs[] = [SettingsTabs.ManageProfile, Setti
 let mockAllSettingsTabs: SettingsTabs[] = [SettingsTabs.ManageProfile, SettingsTabs.Ownership];
 
 // Mock the UsernameProfileSettingsContext
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsContext', () => ({
   __esModule: true,
   SettingsTabs: {
     ManageProfile: 'manage-profile',

@@ -13,10 +13,10 @@ import ockHero from './ock-hero.avif';
 const demoComponents = ['Wallet', 'Buy', 'Fund', 'Earn', 'Transact'];
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | OnchainKit`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | OnchainKit`,
   openGraph: {
-    title: `Base | OnchainKit`,
+    title: `Unstable | OnchainKit`,
     url: `/build/onchainkit`,
     images: [onchainkitCover.src],
   },

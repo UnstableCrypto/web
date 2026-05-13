@@ -1,7 +1,7 @@
 'use client';
 
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import RegistrationProvider from 'apps/web/src/components/Basenames/RegistrationContext';
+import RegistrationProvider from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 const usernameRegistrationAnalyticContext = 'username_registration';
 

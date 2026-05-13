@@ -35,7 +35,7 @@ describe('discountCode consume route', () => {
   describe('POST', () => {
     it('should return 405 when method is not POST', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         { method: 'GET' }
       );
 
@@ -48,7 +48,7 @@ describe('discountCode consume route', () => {
 
     it('should return 500 when code is missing from request body', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({}),
@@ -65,7 +65,7 @@ describe('discountCode consume route', () => {
 
     it('should return 500 when code is null', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: null }),
@@ -82,7 +82,7 @@ describe('discountCode consume route', () => {
 
     it('should return 500 when code is not a string', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: 12345 }),
@@ -99,7 +99,7 @@ describe('discountCode consume route', () => {
 
     it('should return 500 when code is an empty string', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: '' }),
@@ -118,7 +118,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockResolvedValue(undefined);
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: validCode }),
@@ -139,7 +139,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockResolvedValue(undefined);
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: testCode }),
@@ -157,7 +157,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockRejectedValue(new Error('Database error'));
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: validCode }),
@@ -181,7 +181,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockRejectedValue(testError);
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: validCode }),
@@ -199,7 +199,7 @@ describe('discountCode consume route', () => {
 
     it('should return 500 when JSON parsing fails', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: 'invalid json',
@@ -219,7 +219,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockResolvedValue(undefined);
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: specialCode }),
@@ -240,7 +240,7 @@ describe('discountCode consume route', () => {
       mockIncrementDiscountCodeUsage.mockResolvedValue(undefined);
 
       const request = new NextRequest(
-        'https://www.base.org/api/proofs/discountCode/consume',
+        'https://www.unstable.org/api/proofs/discountCode/consume',
         {
           method: 'POST',
           body: JSON.stringify({ code: lowercaseCode }),

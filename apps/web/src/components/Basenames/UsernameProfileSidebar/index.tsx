@@ -1,20 +1,20 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
+import { UsernamePill } from 'apps/web/src/components/Unstablenames/UsernamePill';
 import { UsernamePillVariants } from '../UsernamePill/types';
-import UsernameProfileCard from 'apps/web/src/components/Basenames/UsernameProfileCard';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import UsernameProfileKeywords from 'apps/web/src/components/Basenames/UsernameProfileKeywords';
+import UsernameProfileCard from 'apps/web/src/components/Unstablenames/UsernameProfileCard';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import UsernameProfileKeywords from 'apps/web/src/components/Unstablenames/UsernameProfileKeywords';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useReadUnstableEnsTextRecords from 'apps/web/src/hooks/useReadUnstableEnsTextRecords';
 import {
-  buildBasenameReclaimContract,
-  isBasenameRenewalsKilled,
+  buildUnstablenameReclaimContract,
+  isUnstablenameRenewalsKilled,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount } from 'wagmi';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import useWriteContractWithReceipt, {
   WriteTransactionWithReceiptStatus,
 } from 'apps/web/src/hooks/useWriteContractWithReceipt';
@@ -33,7 +33,7 @@ export default function UsernameProfileSidebar() {
   } = useUsernameProfile();
 
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain(profileUsername);
+  const { basenameChain } = useUnstablenameChain(profileUsername);
   const { logError } = useErrors();
   const { logEventWithContext } = useAnalytics();
   const router = useRouter();
@@ -56,14 +56,14 @@ export default function UsernameProfileSidebar() {
     router.push(`/name/${profileUsername}/renew`);
   }, [logEventWithContext, profileUsername, router]);
 
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
+  const { existingTextRecords } = useReadUnstableEnsTextRecords({
     username: profileUsername,
   });
 
   const reclaimContract = useMemo(() => {
     if (!currentWalletNeedsToReclaimProfile) return;
     if (!address) return;
-    return buildBasenameReclaimContract(profileUsername, address);
+    return buildUnstablenameReclaimContract(profileUsername, address);
   }, [address, profileUsername, currentWalletNeedsToReclaimProfile]);
 
   const {
@@ -107,7 +107,7 @@ export default function UsernameProfileSidebar() {
           <Button variant={ButtonVariants.Gray} rounded fullWidth onClick={toggleSettings}>
             {showProfileSettings ? 'Back to Profile' : 'Manage Profile'}
           </Button>
-          {!isBasenameRenewalsKilled && (
+          {!isUnstablenameRenewalsKilled && (
             <Button
               variant={ButtonVariants.Gray}
               rounded

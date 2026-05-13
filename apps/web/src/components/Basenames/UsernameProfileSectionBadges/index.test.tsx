@@ -10,13 +10,13 @@ import { render, screen } from '@testing-library/react';
 
 // Mock the UsernameProfileContext
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
 // Mock the Badges components
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges',
+  'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/Badges',
   () => ({
     Badge: function MockBadge({
       badge,
@@ -41,21 +41,21 @@ jest.mock(
 );
 
 // Mock UsernameProfileSectionTitle
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionTitle', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionTitle', () => {
   return function MockUsernameProfileSectionTitle({ title }: { title: string }) {
     return <div data-testid={`section-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</div>;
   };
 });
 
 // Mock the hooks
-const mockUseCoinbaseVerification = jest.fn();
-jest.mock('./hooks/useCoinbaseVerifications', () => ({
-  useCoinbaseVerification: () => mockUseCoinbaseVerification(),
+const mockUseTheAlxLabsVerification = jest.fn();
+jest.mock('./hooks/useTheAlxLabsVerifications', () => ({
+  useTheAlxLabsVerification: () => mockUseTheAlxLabsVerification(),
 }));
 
-const mockUseBaseGuild = jest.fn();
-jest.mock('./hooks/useBaseGuild', () => ({
-  useBaseGuild: () => mockUseBaseGuild(),
+const mockUseUnstableGuild = jest.fn();
+jest.mock('./hooks/useUnstableGuild', () => ({
+  useUnstableGuild: () => mockUseUnstableGuild(),
 }));
 
 const mockUseTalentProtocol = jest.fn();
@@ -69,12 +69,12 @@ jest.mock('./hooks/useBuildathon', () => ({
   default: () => mockUseBuildathonParticipant(),
 }));
 
-const mockUseBaseGrant = jest.fn();
+const mockUseUnstableGrant = jest.fn();
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileSectionBadges/hooks/useBaseGrant',
+  'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/hooks/useUnstableGrant',
   () => ({
     __esModule: true,
-    default: () => mockUseBaseGrant(),
+    default: () => mockUseUnstableGrant(),
   }),
 );
 
@@ -92,7 +92,7 @@ describe('UsernameProfileSectionBadges', () => {
       currentWalletIsProfileEditor: false,
     });
 
-    mockUseCoinbaseVerification.mockReturnValue({
+    mockUseTheAlxLabsVerification.mockReturnValue({
       badges: {
         VERIFIED_IDENTITY: false,
         VERIFIED_COUNTRY: false,
@@ -101,7 +101,7 @@ describe('UsernameProfileSectionBadges', () => {
       empty: true,
     });
 
-    mockUseBaseGuild.mockReturnValue({
+    mockUseUnstableGuild.mockReturnValue({
       badges: {
         BASE_BUILDER: false,
         BUILDATHON_PARTICIPANT: false,
@@ -115,7 +115,7 @@ describe('UsernameProfileSectionBadges', () => {
 
     mockUseTalentProtocol.mockReturnValue(undefined);
     mockUseBuildathonParticipant.mockReturnValue({ isParticipant: false, isWinner: false });
-    mockUseBaseGrant.mockReturnValue(false);
+    mockUseUnstableGrant.mockReturnValue(false);
   });
 
   describe('basic rendering', () => {
@@ -133,7 +133,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: false,
           VERIFIED_COUNTRY: false,
@@ -153,7 +153,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: true,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: false,
           VERIFIED_COUNTRY: false,
@@ -173,7 +173,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: true,
           VERIFIED_COUNTRY: false,
@@ -194,7 +194,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: true,
           VERIFIED_COUNTRY: true,
@@ -216,7 +216,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: true,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: false,
           VERIFIED_COUNTRY: false,
@@ -240,7 +240,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -265,7 +265,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: true,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -290,7 +290,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: true,
           BUILDATHON_PARTICIPANT: false,
@@ -314,7 +314,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -340,7 +340,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -366,7 +366,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -392,7 +392,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: false,
           BUILDATHON_PARTICIPANT: false,
@@ -405,7 +405,7 @@ describe('UsernameProfileSectionBadges', () => {
       });
 
       mockUseTalentProtocol.mockReturnValue(50);
-      mockUseBaseGrant.mockReturnValue(true);
+      mockUseUnstableGrant.mockReturnValue(true);
 
       render(<UsernameProfileSectionBadges />);
 
@@ -420,7 +420,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: true,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: true,
           VERIFIED_COUNTRY: false,
@@ -440,7 +440,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: true,
           VERIFIED_COUNTRY: false,
@@ -460,7 +460,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: true,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: true,
           BUILDATHON_PARTICIPANT: false,
@@ -474,7 +474,7 @@ describe('UsernameProfileSectionBadges', () => {
 
       mockUseTalentProtocol.mockReturnValue(85);
       mockUseBuildathonParticipant.mockReturnValue({ isParticipant: true, isWinner: false });
-      mockUseBaseGrant.mockReturnValue(false);
+      mockUseUnstableGrant.mockReturnValue(false);
 
       render(<UsernameProfileSectionBadges />);
 
@@ -494,7 +494,7 @@ describe('UsernameProfileSectionBadges', () => {
         currentWalletIsProfileEditor: false,
       });
 
-      mockUseCoinbaseVerification.mockReturnValue({
+      mockUseTheAlxLabsVerification.mockReturnValue({
         badges: {
           VERIFIED_IDENTITY: true,
           VERIFIED_COUNTRY: false,
@@ -503,7 +503,7 @@ describe('UsernameProfileSectionBadges', () => {
         empty: false,
       });
 
-      mockUseBaseGuild.mockReturnValue({
+      mockUseUnstableGuild.mockReturnValue({
         badges: {
           BASE_BUILDER: true,
           BUILDATHON_PARTICIPANT: false,

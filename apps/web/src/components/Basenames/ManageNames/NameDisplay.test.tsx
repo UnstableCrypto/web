@@ -19,7 +19,7 @@ const mockRemoveNameFromUI = jest.fn();
 const mockSetPrimaryUsername = jest.fn().mockResolvedValue(undefined);
 let mockIsPending = false;
 
-jest.mock('apps/web/src/components/Basenames/ManageNames/hooks', () => ({
+jest.mock('apps/web/src/components/Unstablenames/ManageNames/hooks', () => ({
   useRemoveNameFromUI: () => ({
     removeNameFromUI: mockRemoveNameFromUI,
   }),
@@ -37,9 +37,9 @@ jest.mock('apps/web/contexts/Analytics', () => ({
   }),
 }));
 
-// Mock isBasenameRenewalsKilled - defaults to false for routing tests
+// Mock isUnstablenameRenewalsKilled - defaults to false for routing tests
 jest.mock('apps/web/src/utils/usernames', () => ({
-  get isBasenameRenewalsKilled() {
+  get isUnstablenameRenewalsKilled() {
     return false;
   },
 }));
@@ -68,9 +68,9 @@ jest.mock('apps/web/src/components/Icon/Icon', () => ({
   },
 }));
 
-// Mock BasenameAvatar component
-jest.mock('apps/web/src/components/Basenames/BasenameAvatar', () => {
-  return function MockBasenameAvatar({ basename }: { basename: string }) {
+// Mock UnstablenameAvatar component
+jest.mock('apps/web/src/components/Unstablenames/UnstablenameAvatar', () => {
+  return function MockUnstablenameAvatar({ basename }: { basename: string }) {
     return <div data-testid="basename-avatar" data-basename={basename} />;
   };
 });
@@ -115,7 +115,7 @@ jest.mock('apps/web/src/components/DropdownItem', () => {
 });
 
 // Mock UsernameProfileProvider
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => {
   return function MockUsernameProfileProvider({ children }: { children: React.ReactNode }) {
     return <div data-testid="username-profile-provider">{children}</div>;
   };
@@ -123,7 +123,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => {
 
 // Mock ProfileTransferOwnershipProvider
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context',
+  'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context',
   () => {
     return function MockProfileTransferOwnershipProvider({
       children,
@@ -136,7 +136,7 @@ jest.mock(
 );
 
 // Mock UsernameProfileTransferOwnershipModal
-jest.mock('apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal', () => {
   return function MockUsernameProfileTransferOwnershipModal({
     isOpen,
     onClose,
@@ -160,7 +160,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameProfileTransferOwnershipMod
 });
 
 // Mock UsernameProfileRenewalModal
-jest.mock('apps/web/src/components/Basenames/UsernameProfileRenewalModal', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileRenewalModal', () => {
   return function MockUsernameProfileRenewalModal({
     name,
     isOpen,
@@ -223,7 +223,7 @@ describe('NameDisplay', () => {
       expect(screen.getByText('Expires in 1 year')).toBeInTheDocument();
     });
 
-    it('should render BasenameAvatar with correct basename', () => {
+    it('should render UnstablenameAvatar with correct basename', () => {
       render(<NameDisplay {...defaultProps} />);
 
       const avatar = screen.getByTestId('basename-avatar');
@@ -423,7 +423,7 @@ describe('NameDisplay', () => {
       const mockRefetchNames = jest.fn();
       render(<NameDisplay {...defaultProps} refetchNames={mockRefetchNames} />);
 
-      // The renewal modal appears when isBasenameRenewalsKilled is true
+      // The renewal modal appears when isUnstablenameRenewalsKilled is true
       // and extend registration is clicked. Since we mock it as false,
       // the modal won't open, but we can verify the refetchNames is passed correctly
       expect(screen.queryByTestId('renewal-modal')).not.toBeInTheDocument();

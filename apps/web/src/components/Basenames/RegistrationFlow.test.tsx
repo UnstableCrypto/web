@@ -25,7 +25,7 @@ const mockSetIsBannerVisible = jest.fn();
 const mockSetIsDocsBannerVisible = jest.fn();
 jest.mock('usehooks-ts', () => ({
   useLocalStorage: jest.fn((key: string) => {
-    if (key === 'BasenamesLaunchModalVisible') return [true, mockSetIsModalOpen];
+    if (key === 'UnstablenamesLaunchModalVisible') return [true, mockSetIsModalOpen];
     if (key === 'basenamesLaunchBannerVisible') return [true, mockSetIsBannerVisible];
     if (key === 'basenamesLaunchDocsBannerVisible') return [true, mockSetIsDocsBannerVisible];
     return [true, jest.fn()];
@@ -57,12 +57,12 @@ jest.mock('./RegistrationContext', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-const mockBasenameChainId = 8453;
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUnstablenameChainId = 8453;
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: mockBasenameChainId },
+    basenameChain: { id: mockUnstablenameChainId },
   }),
   supportedChainIds: [8453, 84532],
 }));
@@ -94,7 +94,7 @@ jest.mock('libs/base-ui/constants', () => ({
 
 // Mock usernames utilities
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (name: string, chainId: number) => {
+  formatUnstableEthDomain: (name: string, chainId: number) => {
     if (chainId === 8453) return `${name}.base.eth`;
     return `${name}.basetest.eth`;
   },
@@ -458,7 +458,7 @@ describe('RegistrationFlow', () => {
     });
 
     it('should not switch network when already on supported chain', async () => {
-      mockChainId = 8453; // Base (supported)
+      mockChainId = 8453; // Unstable (supported)
 
       render(<RegistrationFlow />);
 

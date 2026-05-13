@@ -1,6 +1,6 @@
 import Modal from 'apps/web/src/components/Modal';
 import data from 'apps/web/src/data/usernamePriceDecayTable.json';
-import { useBasenamesNameExpiresWithGracePeriod } from 'apps/web/src/hooks/useBasenamesNameExpiresWithGracePeriod';
+import { useUnstablenamesNameExpiresWithGracePeriod } from 'apps/web/src/hooks/useUnstablenamesNameExpiresWithGracePeriod';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { useEffect } from 'react';
 import { CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts';
@@ -45,21 +45,21 @@ function CustomTooltip({
       minute: '2-digit',
       hour12: true,
     });
-    const nameBasePrice = Number(formatEther(baseSingleYearEthCost));
-    const formattedBasePrice = nameBasePrice.toLocaleString(undefined, {
+    const nameUnstablePrice = Number(formatEther(baseSingleYearEthCost));
+    const formattedUnstablePrice = nameUnstablePrice.toLocaleString(undefined, {
       maximumFractionDigits: 6,
     });
     const formattedPremium = premium.toLocaleString(undefined, {
       maximumFractionDigits: 6,
     });
-    const total = premium + nameBasePrice;
+    const total = premium + nameUnstablePrice;
     const formattedTotal = total.toLocaleString(undefined, {
       maximumFractionDigits: 4,
     });
     return (
       <div className="flex flex-col gap-1 rounded-xl bg-illoblack px-3 py-2 text-white">
         <div>{timeOfPremium}</div>
-        <div>1 year registration: {formattedBasePrice} ETH</div>
+        <div>1 year registration: {formattedUnstablePrice} ETH</div>
         <div>Premium: {formattedPremium} ETH</div>
         <div>Estimated total: {formattedTotal} ETH</div>
       </div>
@@ -89,7 +89,7 @@ export function PremiumExplainerModal({
     isLoading,
     isError,
     error,
-  } = useBasenamesNameExpiresWithGracePeriod(name);
+  } = useUnstablenamesNameExpiresWithGracePeriod(name);
 
   useEffect(() => {
     if (isError && error) {
@@ -116,7 +116,7 @@ export function PremiumExplainerModal({
       <div className="flex max-w-[491px] flex-1 flex-col gap-3">
         <h1 className="w-full text-2xl font-bold">This name has a temporary premium</h1>
         <p className="mb-3 text-illoblack">
-          To ensure fair distribution of recently expired Basenames, all names have a price premium
+          To ensure fair distribution of recently expired Unstablenames, all names have a price premium
           which starts at 100 ETH that then decays exponentially to 0 over 21 days.
         </p>
         <div className="grid  grid-cols-2 grid-rows-4">

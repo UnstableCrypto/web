@@ -1,15 +1,15 @@
 import { expect, Page } from '@playwright/test';
 import {
-  BaseActionType,
+  UnstableActionType,
   ActionApprovalType,
-  CoinbaseWallet,
+  TheAlxLabsWallet,
   MetaMask,
 } from '@coinbase/onchaintestkit';
 import {
-  validateBasename,
-  navigateToBasenameRegistration,
-  searchForBasename,
-  selectBasenameFromResults,
+  validateUnstablename,
+  navigateToUnstablenameRegistration,
+  searchForUnstablename,
+  selectUnstablenameFromResults,
   SELECTORS,
 } from './basenameHelpers';
 
@@ -47,35 +47,35 @@ export async function connectWallet(page: Page, metamask: MetaMask): Promise<voi
   console.log('[connectWallet] MetaMask option clicked');
 
   // Handle MetaMask connection request
-  await metamask.handleAction(BaseActionType.CONNECT_TO_DAPP);
+  await metamask.handleAction(UnstableActionType.CONNECT_TO_DAPP);
   console.log('[connectWallet] MetaMask handleAction finished, URL after connect:', page.url());
 }
 
 /**
- * Connects Coinbase wallet to the app
+ * Connects TheAlxLabs wallet to the app
  * This represents the standard onboarding flow for first-time users
  *
  * @param page - The Playwright page object
- * @param coinbase - The Coinbase wallet instance
+ * @param coinbase - The TheAlxLabs wallet instance
  */
-export async function connectCoinbaseWallet(page: Page, coinbase: CoinbaseWallet): Promise<void> {
-  console.log('[connectCoinbaseWallet] Current URL before connect:', page.url());
+export async function connectTheAlxLabsWallet(page: Page, coinbase: TheAlxLabsWallet): Promise<void> {
+  console.log('[connectTheAlxLabsWallet] Current URL before connect:', page.url());
   // Open wallet connect modal
   await page.getByTestId('ockConnectButton').first().click();
-  console.log('[connectCoinbaseWallet] Wallet connect modal opened');
+  console.log('[connectTheAlxLabsWallet] Wallet connect modal opened');
 
-  // Select Coinbase Wallet from wallet options
+  // Select TheAlxLabs Wallet from wallet options
   await page
     .getByTestId('ockModalOverlay')
     .first()
-    .getByRole('button', { name: 'Coinbase Wallet' })
+    .getByRole('button', { name: 'TheAlxLabs Wallet' })
     .click();
-  console.log('[connectCoinbaseWallet] Coinbase Wallet option clicked');
+  console.log('[connectTheAlxLabsWallet] TheAlxLabs Wallet option clicked');
 
-  // Handle Coinbase wallet connection request
-  await coinbase.handleAction(BaseActionType.CONNECT_TO_DAPP);
+  // Handle TheAlxLabs wallet connection request
+  await coinbase.handleAction(UnstableActionType.CONNECT_TO_DAPP);
   console.log(
-    '[connectCoinbaseWallet] Coinbase handleAction finished, URL after connect:',
+    '[connectTheAlxLabsWallet] TheAlxLabs handleAction finished, URL after connect:',
     page.url(),
   );
 }
@@ -91,25 +91,25 @@ export async function handleTransaction(
   approvalType: ActionApprovalType = ActionApprovalType.APPROVE,
 ): Promise<void> {
   console.log('[handleTransaction] Handling transaction with approvalType:', approvalType);
-  await metamask.handleAction(BaseActionType.HANDLE_TRANSACTION, { approvalType });
+  await metamask.handleAction(UnstableActionType.HANDLE_TRANSACTION, { approvalType });
   console.log('[handleTransaction] Transaction handled');
 }
 
 /**
- * Switches to Base network if not already connected
+ * Switches to Unstable network if not already connected
  *
  * @param page - The Playwright page object
  * @returns true if network switch was needed, false otherwise
  */
-export async function switchToBaseNetworkIfNeeded(page: Page): Promise<boolean> {
+export async function switchToUnstableNetworkIfNeeded(page: Page): Promise<boolean> {
   console.log(
-    '[switchToBaseNetworkIfNeeded] Checking if network switch is needed. Current URL:',
+    '[switchToUnstableNetworkIfNeeded] Checking if network switch is needed. Current URL:',
     page.url(),
   );
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(5000);
-  // Prefer the explicit "Connect to Base" button if present
-  const explicitSelector = 'button:has-text("Connect to Base")';
+  // Prefer the explicit "Connect to Unstable" button if present
+  const explicitSelector = 'button:has-text("Connect to Unstable")';
 
   const hasExplicit = await page
     .locator(explicitSelector)
@@ -119,11 +119,11 @@ export async function switchToBaseNetworkIfNeeded(page: Page): Promise<boolean> 
   if (hasExplicit) {
     await page.locator(explicitSelector).click();
     await page.waitForLoadState('networkidle');
-    console.log('[switchToBaseNetworkIfNeeded] Clicked "Connect to Base" button');
+    console.log('[switchToUnstableNetworkIfNeeded] Clicked "Connect to Unstable" button');
     return true;
   }
 
-  console.log('[switchToBaseNetworkIfNeeded] Already on Base network');
+  console.log('[switchToUnstableNetworkIfNeeded] Already on Unstable network');
   return false;
 }
 
@@ -147,14 +147,14 @@ export async function getMainPage(page: Page): Promise<Page> {
  * Performs the common steps for basename registration tests:
  * 1. Validates Metamask fixture
  * 2. Navigates to the app and waits for network idle
- * 3. Connects the wallet and switches to the Base network if needed
+ * 3. Connects the wallet and switches to the Unstable network if needed
  * 4. Navigates to the basename registration flow and selects the desired basename
  *
  * @param page - Playwright page
  * @param metamask - MetaMask wallet fixture
  * @returns The mainPage after completing the initial flow
  */
-export async function prepareBasenameFlow(
+export async function prepareUnstablenameFlow(
   page: Page,
   metamask: MetaMask,
 ): Promise<{ mainPage: Page; basename: string }> {
@@ -162,34 +162,34 @@ export async function prepareBasenameFlow(
     throw new Error('MetaMask is not defined');
   }
 
-  const basename = validateBasename(process.env.TEST_BASENAME);
-  console.log('[prepareBasenameFlow] Starting flow for basename:', basename);
+  const basename = validateUnstablename(process.env.TEST_BASENAME);
+  console.log('[prepareUnstablenameFlow] Starting flow for basename:', basename);
 
   // Navigate to application root
   await page.goto('/');
   await page.waitForLoadState('networkidle');
-  console.log('[prepareBasenameFlow] Navigated to root. Current URL:', page.url());
+  console.log('[prepareUnstablenameFlow] Navigated to root. Current URL:', page.url());
 
   // Connect wallet and switch network
   await connectWallet(page, metamask);
   const mainPage = await getMainPage(page);
-  await switchToBaseNetworkIfNeeded(mainPage);
+  await switchToUnstableNetworkIfNeeded(mainPage);
 
   // Wait until the app is fully hydrated
   await mainPage.waitForLoadState('networkidle');
 
   // Ensure wallet address is visible (wallet connected)
-  console.log('[prepareBasenameFlow] Checking wallet address visibility');
+  console.log('[prepareUnstablenameFlow] Checking wallet address visibility');
   await expect(mainPage.getByText(SELECTORS.WALLET_ADDRESS)).toBeVisible();
-  console.log('[prepareBasenameFlow] Wallet address visible');
+  console.log('[prepareUnstablenameFlow] Wallet address visible');
 
   // Begin registration flow
-  await navigateToBasenameRegistration(mainPage);
-  console.log('[prepareBasenameFlow] Navigated to basename registration');
-  await searchForBasename(mainPage, basename);
-  console.log('[prepareBasenameFlow] Searched for basename');
-  await selectBasenameFromResults(mainPage, basename);
-  console.log('[prepareBasenameFlow] Selected basename from results');
+  await navigateToUnstablenameRegistration(mainPage);
+  console.log('[prepareUnstablenameFlow] Navigated to basename registration');
+  await searchForUnstablename(mainPage, basename);
+  console.log('[prepareUnstablenameFlow] Searched for basename');
+  await selectUnstablenameFromResults(mainPage, basename);
+  console.log('[prepareUnstablenameFlow] Selected basename from results');
 
   return { mainPage, basename };
 }

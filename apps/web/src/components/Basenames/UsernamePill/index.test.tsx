@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react';
-import { type Basename } from '@coinbase/onchainkit/identity';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
 import { UsernamePill } from './index';
 import { UsernamePillVariants } from './types';
 
-// Mock BasenameAvatar component
-jest.mock('apps/web/src/components/Basenames/BasenameAvatar', () => ({
+// Mock UnstablenameAvatar component
+jest.mock('apps/web/src/components/Unstablenames/UnstablenameAvatar', () => ({
   __esModule: true,
   default: ({
     basename,
@@ -74,7 +74,7 @@ jest.mock('apps/web/src/components/Icon/Icon', () => ({
 }));
 
 describe('UsernamePill', () => {
-  const mockUsername = 'testuser.base.eth' as Basename;
+  const mockUsername = 'testuser.base.eth' as Unstablename;
   const mockAddress = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
 
   describe('rendering with Inline variant', () => {
@@ -89,7 +89,7 @@ describe('UsernamePill', () => {
       expect(screen.getByText(mockUsername)).toBeInTheDocument();
     });
 
-    it('should render BasenameAvatar with correct props', () => {
+    it('should render UnstablenameAvatar with correct props', () => {
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
@@ -241,7 +241,7 @@ describe('UsernamePill', () => {
 
   describe('username length styling', () => {
     it('should apply largest font size for short usernames (<=15 chars)', () => {
-      const shortUsername = 'short.base.eth' as Basename;
+      const shortUsername = 'short.base.eth' as Unstablename;
       const { container } = render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
@@ -254,7 +254,7 @@ describe('UsernamePill', () => {
     });
 
     it('should apply medium font size for medium usernames (16-20 chars)', () => {
-      const mediumUsername = 'mediumusername.base.eth' as Basename; // 23 chars
+      const mediumUsername = 'mediumusername.base.eth' as Unstablename; // 23 chars
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
@@ -267,7 +267,7 @@ describe('UsernamePill', () => {
     });
 
     it('should apply smaller font size for long usernames (21-25 chars)', () => {
-      const longUsername = 'longerusernametest.base.eth' as Basename; // 27 chars
+      const longUsername = 'longerusernametest.base.eth' as Unstablename; // 27 chars
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
@@ -280,7 +280,7 @@ describe('UsernamePill', () => {
     });
 
     it('should apply smallest font size for very long usernames (>25 chars)', () => {
-      const veryLongUsername = 'verylongusernamefortesting.base.eth' as Basename;
+      const veryLongUsername = 'verylongusernamefortesting.base.eth' as Unstablename;
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
@@ -293,7 +293,7 @@ describe('UsernamePill', () => {
     });
 
     it('should not apply dynamic font sizing for Card variant', () => {
-      const shortUsername = 'short.base.eth' as Basename;
+      const shortUsername = 'short.base.eth' as Unstablename;
       render(
         <UsernamePill
           variant={UsernamePillVariants.Card}
@@ -373,33 +373,33 @@ describe('UsernamePill', () => {
 
   describe('different basename formats', () => {
     it('should handle mainnet basenames (.base.eth)', () => {
-      const mainnetBasename = 'mainnetuser.base.eth' as Basename;
+      const mainnetUnstablename = 'mainnetuser.base.eth' as Unstablename;
 
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
-          username={mainnetBasename}
+          username={mainnetUnstablename}
         />
       );
 
-      expect(screen.getByText(mainnetBasename)).toBeInTheDocument();
+      expect(screen.getByText(mainnetUnstablename)).toBeInTheDocument();
       const avatar = screen.getByTestId('basename-avatar');
-      expect(avatar).toHaveAttribute('data-basename', mainnetBasename);
+      expect(avatar).toHaveAttribute('data-basename', mainnetUnstablename);
     });
 
     it('should handle testnet basenames (.basetest.eth)', () => {
-      const testnetBasename = 'testnetuser.basetest.eth' as Basename;
+      const testnetUnstablename = 'testnetuser.basetest.eth' as Unstablename;
 
       render(
         <UsernamePill
           variant={UsernamePillVariants.Inline}
-          username={testnetBasename}
+          username={testnetUnstablename}
         />
       );
 
-      expect(screen.getByText(testnetBasename)).toBeInTheDocument();
+      expect(screen.getByText(testnetUnstablename)).toBeInTheDocument();
       const avatar = screen.getByTestId('basename-avatar');
-      expect(avatar).toHaveAttribute('data-basename', testnetBasename);
+      expect(avatar).toHaveAttribute('data-basename', testnetUnstablename);
     });
   });
 

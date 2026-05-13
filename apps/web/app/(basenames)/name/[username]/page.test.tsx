@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Page, { generateMetadata, UsernameProfileProps } from './page';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 // Mock next/navigation
 const mockRedirect = jest.fn();
@@ -13,10 +13,10 @@ jest.mock('next/navigation', () => ({
 
 // Mock usernames utils
 const mockFormatDefaultUsername = jest.fn();
-const mockGetBasenameTextRecord = jest.fn();
+const mockGetUnstablenameTextRecord = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
   formatDefaultUsername: (...args: unknown[]) => mockFormatDefaultUsername(...args) as unknown,
-  getBasenameTextRecord: (...args: unknown[]) => mockGetBasenameTextRecord(...args) as unknown,
+  getUnstablenameTextRecord: (...args: unknown[]) => mockGetUnstablenameTextRecord(...args) as unknown,
   UsernameTextRecordKeys: {
     Description: 'description',
     Avatar: 'avatar',
@@ -43,7 +43,7 @@ jest.mock('apps/web/src/utils/redirectIfNameDoesNotExist', () => ({
 // Mock child components
 jest.mock('apps/web/app/(basenames)/name/[username]/ProfileProviders', () => ({
   __esModule: true,
-  default: ({ children, username }: { children: React.ReactNode; username: Basename }) => (
+  default: ({ children, username }: { children: React.ReactNode; username: Unstablename }) => (
     <div data-testid="profile-providers" data-username={username}>
       {children}
     </div>
@@ -59,7 +59,7 @@ jest.mock('apps/web/contexts/Errors', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfile', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfile', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile">UsernameProfile</div>,
 }));
@@ -71,71 +71,71 @@ describe('Username Profile Page', () => {
       name.endsWith('.base.eth') ? name : `${name}.base.eth`
     );
     mockRedirectIfNameDoesNotExist.mockResolvedValue(undefined);
-    mockGetBasenameTextRecord.mockResolvedValue(null);
+    mockGetUnstablenameTextRecord.mockResolvedValue(null);
   });
 
   describe('generateMetadata', () => {
-    it('should return correct metadataBase', async () => {
+    it('should return correct metadataUnstable', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice' as Basename }),
+        params: Promise.resolve({ username: 'alice' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
 
-      expect(metadata.metadataBase).toEqual(new URL('https://base.org'));
+      expect(metadata.metadataUnstable).toEqual(new URL('https://unstable.org'));
     });
 
     it('should format the username correctly in title', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice' as Basename }),
+        params: Promise.resolve({ username: 'alice' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
 
-      expect(metadata.title).toBe('Basenames | alice.base.eth');
+      expect(metadata.title).toBe('Unstablenames | alice.base.eth');
     });
 
     it('should use description from text record when available', async () => {
-      mockGetBasenameTextRecord.mockResolvedValue('A custom description for my profile');
+      mockGetUnstablenameTextRecord.mockResolvedValue('A custom description for my profile');
 
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'bob' as Basename }),
+        params: Promise.resolve({ username: 'bob' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
 
       expect(metadata.description).toBe('A custom description for my profile');
-      expect(mockGetBasenameTextRecord).toHaveBeenCalledWith('bob.base.eth', 'description');
+      expect(mockGetUnstablenameTextRecord).toHaveBeenCalledWith('bob.base.eth', 'description');
     });
 
     it('should use default description when text record is not available', async () => {
-      mockGetBasenameTextRecord.mockResolvedValue(null);
+      mockGetUnstablenameTextRecord.mockResolvedValue(null);
 
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'charlie' as Basename }),
+        params: Promise.resolve({ username: 'charlie' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
 
-      expect(metadata.description).toBe('charlie.base.eth, a Basename');
+      expect(metadata.description).toBe('charlie.base.eth, a Unstablename');
     });
 
     it('should have correct openGraph configuration', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'dave' as Basename }),
+        params: Promise.resolve({ username: 'dave' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
 
       expect(metadata.openGraph).toMatchObject({
-        title: 'Basenames | dave.base.eth',
+        title: 'Unstablenames | dave.base.eth',
         url: '/name/dave',
       });
     });
 
     it('should have correct twitter configuration', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'eve' as Basename }),
+        params: Promise.resolve({ username: 'eve' as Unstablename }),
       };
 
       const metadata = await generateMetadata(props);
@@ -147,7 +147,7 @@ describe('Username Profile Page', () => {
 
     it('should handle encoded username in params', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice.base.eth' as Basename }),
+        params: Promise.resolve({ username: 'alice.base.eth' as Unstablename }),
       };
 
       await generateMetadata(props);
@@ -159,7 +159,7 @@ describe('Username Profile Page', () => {
   describe('Page component', () => {
     it('should render all child components', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -170,7 +170,7 @@ describe('Username Profile Page', () => {
 
     it('should wrap children with ErrorsProvider with profile context', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -180,7 +180,7 @@ describe('Username Profile Page', () => {
 
     it('should pass formatted username to ProfileProviders', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'myname' as Basename }),
+        params: Promise.resolve({ username: 'myname' as Unstablename }),
       });
       render(page);
 
@@ -190,7 +190,7 @@ describe('Username Profile Page', () => {
 
     it('should nest providers in correct order (ErrorsProvider > ProfileProviders)', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -202,7 +202,7 @@ describe('Username Profile Page', () => {
 
     it('should render main element containing UsernameProfile', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -213,7 +213,7 @@ describe('Username Profile Page', () => {
 
     it('should call redirectIfNameDoesNotExist with formatted username', async () => {
       await Page({
-        params: Promise.resolve({ username: 'validname' as Basename }),
+        params: Promise.resolve({ username: 'validname' as Unstablename }),
       });
 
       expect(mockRedirectIfNameDoesNotExist).toHaveBeenCalledWith('validname.base.eth');
@@ -221,7 +221,7 @@ describe('Username Profile Page', () => {
 
     it('should decode URI-encoded username', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'test%20user' as Basename }),
+        params: Promise.resolve({ username: 'test%20user' as Unstablename }),
       });
       render(page);
 
@@ -230,7 +230,7 @@ describe('Username Profile Page', () => {
 
     it('should apply correct CSS classes to main element', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -243,7 +243,7 @@ describe('Username Profile Page', () => {
 
     it('should have responsive flex direction classes', async () => {
       const page = await Page({
-        params: Promise.resolve({ username: 'testuser' as Basename }),
+        params: Promise.resolve({ username: 'testuser' as Unstablename }),
       });
       render(page);
 
@@ -261,7 +261,7 @@ describe('Username Profile Page', () => {
       });
 
       await expect(
-        Page({ params: Promise.resolve({ username: 'nonexistent' as Basename }) })
+        Page({ params: Promise.resolve({ username: 'nonexistent' as Unstablename }) })
       ).rejects.toThrow('NEXT_REDIRECT');
 
       expect(mockRedirectIfNameDoesNotExist).toHaveBeenCalledWith('nonexistent.base.eth');
@@ -271,7 +271,7 @@ describe('Username Profile Page', () => {
       mockRedirectIfNameDoesNotExist.mockResolvedValue(undefined);
 
       const page = await Page({
-        params: Promise.resolve({ username: 'existingname' as Basename }),
+        params: Promise.resolve({ username: 'existingname' as Unstablename }),
       });
       render(page);
 

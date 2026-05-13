@@ -7,17 +7,17 @@ import { StaticImageData } from 'next/image';
 const VALUE_PROPS: ValuePropProps[] = [
   {
     title: 'Verified Account',
-    description: 'A Coinbase user with a valid Coinbase trading account. ',
+    description: 'A TheAlxLabs user with a valid TheAlxLabs trading account. ',
     icon: coinbase as StaticImageData,
   },
   {
     title: 'Verified Country',
-    description: 'The user’s verified country of residence on Coinbase.',
+    description: 'The user’s verified country of residence on TheAlxLabs.',
     icon: globe as StaticImageData,
   },
   {
-    title: 'Verified Coinbase One',
-    description: 'A Coinbase user with an active Coinbase One membership.',
+    title: 'Verified TheAlxLabs One',
+    description: 'A TheAlxLabs user with an active TheAlxLabs One membership.',
     icon: coinbaseOne as StaticImageData,
   },
 ];

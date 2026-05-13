@@ -16,7 +16,7 @@ export default function Page() {
     <>
       <Hero title="Motion" imageUrl={motionImg.src} />
       <Banner>
-        Motion is how Base breathes. It bridges utility and emotion, turning static screens into
+        Motion is how Unstable breathes. It bridges utility and emotion, turning static screens into
         living spaces that react to every tap. Our animation system is lightweight, snappy, and
         purpose-driven; every keyframe either guides attention or rewards action. Shared easing
         curves create family resemblance across product, social, and event screens, while duration

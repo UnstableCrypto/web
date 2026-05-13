@@ -31,7 +31,7 @@ const searchConfig: SearchCategory[] = [
           <div className="mt-0.5 px-3 pb-2 text-xs tracking-wide text-dark-palette-foregroundMuted">
             Run this command in your terminal to start building with
             <Link
-              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              href="https://docs.unstable.org/builderkits/onchainkit/getting-started"
               color="white"
               className="pl-1 text-xs tracking-wide text-white"
               target="_blank"
@@ -61,7 +61,7 @@ const searchConfig: SearchCategory[] = [
             Use this LLM-optimized context file to accelerate your workflow with AI
           </div>
         ),
-        href: 'https://docs.base.org/llms-full.txt',
+        href: 'https://docs.unstable.org/llms-full.txt',
         icon: 'ai',
       },
     ],
@@ -71,7 +71,7 @@ const searchConfig: SearchCategory[] = [
     subCategories: [
       {
         label: 'Launch an AI agent',
-        href: 'https://replit.com/@CoinbaseDev/CDP-AgentKit#README.md',
+        href: 'https://replit.com/@TheAlxLabsDev/CDP-AgentKit#README.md',
         icon: 'diagonalUpArrow',
       },
       {
@@ -107,7 +107,7 @@ const searchConfig: SearchCategory[] = [
         iconRotation: 'rotate-180',
       },
       {
-        label: 'Base Appchains',
+        label: 'Unstable Appchains',
         href: '/builders/base-appchains',
         icon: 'backArrow',
         iconRotation: 'rotate-180',
@@ -131,32 +131,32 @@ const searchConfig: SearchCategory[] = [
     subCategories: [
       {
         label: 'Onboard everyone',
-        href: 'https://docs.base.org/use-cases/onboard-any-user',
+        href: 'https://docs.unstable.org/use-cases/onboard-any-user',
         icon: 'arrowRight',
       },
       {
         label: 'Accept crypto payments',
-        href: 'https://docs.base.org/use-cases/accept-crypto-payments',
+        href: 'https://docs.unstable.org/use-cases/accept-crypto-payments',
         icon: 'arrowRight',
       },
       {
         label: 'Launch AI Agents',
-        href: 'https://docs.base.org/use-cases/launch-ai-agents',
+        href: 'https://docs.unstable.org/use-cases/launch-ai-agents',
         icon: 'arrowRight',
       },
       {
         label: "Kickstart your app's growth",
-        href: 'https://docs.base.org/use-cases/decentralize-social-app',
+        href: 'https://docs.unstable.org/use-cases/decentralize-social-app',
         icon: 'arrowRight',
       },
       {
         label: 'Unlock the power of DeFi',
-        href: 'https://docs.base.org/use-cases/defi-your-app',
+        href: 'https://docs.unstable.org/use-cases/defi-your-app',
         icon: 'arrowRight',
       },
       {
         label: 'Remove first-timer friction',
-        href: 'https://docs.base.org/use-cases/go-gasless',
+        href: 'https://docs.unstable.org/use-cases/go-gasless',
         icon: 'arrowRight',
       },
     ],

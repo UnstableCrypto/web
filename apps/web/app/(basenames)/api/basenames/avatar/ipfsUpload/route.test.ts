@@ -101,9 +101,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -117,7 +117,7 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData
           // No referer
         );
@@ -133,7 +133,7 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
           'https://evil.com/'
         );
@@ -149,9 +149,9 @@ describe('ipfsUpload route', () => {
         const formData = new FormData();
         // No file appended
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -165,9 +165,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'document.pdf', 'application/pdf');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -184,9 +184,9 @@ describe('ipfsUpload route', () => {
         const largeFile = new File([blob], 'avatar.png', { type: 'image/png' });
         const formData = createFormDataWithFile(largeFile);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -209,9 +209,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test image content', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -236,9 +236,9 @@ describe('ipfsUpload route', () => {
           const file = createMockFile('test', 'avatar', imageType);
           const formData = createFormDataWithFile(file);
           const request = createNextRequest(
-            'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+            'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
             formData,
-            'https://www.base.org/'
+            'https://www.unstable.org/'
           );
 
           const response = await POST(request);
@@ -255,9 +255,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png', exactLimitSize);
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -272,9 +272,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=mybasename',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=mybasename',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         await POST(request);
@@ -295,9 +295,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);
@@ -313,9 +313,9 @@ describe('ipfsUpload route', () => {
         const file = createMockFile('test', 'avatar.png', 'image/png');
         const formData = createFormDataWithFile(file);
         const request = createNextRequest(
-          'https://www.base.org/api/basenames/avatar/ipfsUpload?username=testuser',
+          'https://www.unstable.org/api/basenames/avatar/ipfsUpload?username=testuser',
           formData,
-          'https://www.base.org/'
+          'https://www.unstable.org/'
         );
 
         const response = await POST(request);

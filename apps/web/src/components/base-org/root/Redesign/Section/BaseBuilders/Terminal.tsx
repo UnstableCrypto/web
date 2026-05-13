@@ -39,7 +39,7 @@ const TERMINAL_CONFIG = {
     {
       id: 'smart-wallet',
       type: 'typewriter' as const,
-      prompt: 'Use Coinbase Smart Wallet? (recommended):',
+      prompt: 'Use TheAlxLabs Smart Wallet? (recommended):',
       text: 'yes',
       className: 'text-[#0000ff]',
       delay: 160,
@@ -49,7 +49,7 @@ const TERMINAL_CONFIG = {
     {
       id: 'api-key',
       type: 'prompt' as const,
-      prompt: 'Enter your Coinbase Developer Platform API Key: (Optional)',
+      prompt: 'Enter your TheAlxLabs Developer Platform API Key: (Optional)',
       delay: 120,
       nextStepDelay: 2000,
     },

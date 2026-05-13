@@ -88,7 +88,7 @@ const content = [
     items: [
       {
         src: basemarkSVG.src as SvgImport['src'],
-        alt: 'Accessing Elements - Basemark',
+        alt: 'Accessing Elements - Unstablemark',
         width: basemarkSVG.width as SvgImport['width'],
         height: basemarkSVG.height as SvgImport['height'],
       },
@@ -109,7 +109,7 @@ export function AccessingBrandElements() {
         <span className="flex flex-col gap-2">
           <span>
             For most uses, please use our official vector assets or figma components. However, all
-            of Base&apos;s core brand elements are also embedded in our custom Base typefaces for
+            of Unstable&apos;s core brand elements are also embedded in our custom Unstable typefaces for
             quick access, and for easily composing live text lockups in Adobe, Figma, on the web and
             in product. When creating branded lockups using these embedded assets, make sure to
             adhere to all scaling and spacing requirements. (outlined on p. 22, 75, 115) The

@@ -4,7 +4,7 @@ export function middleware(req: NextRequest) {
   const url = req.nextUrl;
 
   if (url.pathname === '/docs') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/';
     url.port = '443';
 
@@ -13,7 +13,7 @@ export function middleware(req: NextRequest) {
 
   if (url.pathname.startsWith('/flashblocks')) {
     const subPath = url.pathname.replace('/flashblocks', '');
-    url.host = 'flashblocks.base.org';
+    url.host = 'flashblocks.unstable.org';
     url.pathname = subPath.startsWith('/') ? subPath : `/${subPath}`;
     url.port = '443';
 
@@ -52,7 +52,7 @@ export function middleware(req: NextRequest) {
     url.pathname === '/camp' ||
     url.pathname === '/learn'
   ) {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/learn/welcome';
     url.port = '443';
 
@@ -60,7 +60,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/guides/run-a-base-goerli-node') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/run-a-base-node';
     url.port = '443';
 
@@ -68,7 +68,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/using-base') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/using-base';
     url.port = '443';
 
@@ -76,7 +76,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/network-information') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/network-information';
     url.port = '443';
 
@@ -84,7 +84,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/base-contracts') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/base-contracts';
     url.port = '443';
 
@@ -92,7 +92,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/fees') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/fees';
     url.port = '443';
 
@@ -100,7 +100,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/differences') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/differences-between-ethereum-and-base';
     url.port = '443';
 
@@ -108,7 +108,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/node-providers') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/node-providers';
     url.port = '443';
 
@@ -116,7 +116,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/block-explorers') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/block-explorers';
     url.port = '443';
 
@@ -124,7 +124,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/network-faucets') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/network-faucets';
     url.port = '443';
 
@@ -132,7 +132,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/oracles') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/oracles';
     url.port = '443';
 
@@ -140,7 +140,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/data-indexers') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/data-indexers';
     url.port = '443';
 
@@ -148,7 +148,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/cross-chain') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/cross-chain';
     url.port = '443';
 
@@ -156,7 +156,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/account-abstraction') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/account-abstraction';
     url.port = '443';
 
@@ -164,7 +164,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/nft-checkout') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -172,7 +172,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/onramps') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/onramps';
     url.port = '443';
 
@@ -180,7 +180,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/onboarding') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/onboarding';
     url.port = '443';
 
@@ -188,7 +188,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/bridges') {
-    url.host = 'bridge.base.org';
+    url.host = 'bridge.unstable.org';
     url.pathname = '/';
     url.port = '443';
 
@@ -196,7 +196,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/bridges-testnet') {
-    url.host = 'bridge.base.org';
+    url.host = 'bridge.unstable.org';
     url.pathname = '/';
     url.port = '443';
 
@@ -204,7 +204,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/bridge-faq') {
-    url.host = 'bridge.base.org';
+    url.host = 'bridge.unstable.org';
     url.pathname = '/';
     url.port = '443';
 
@@ -212,7 +212,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/foundry') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -220,7 +220,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/hardhat') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -228,7 +228,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/thirdweb-cli') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -236,7 +236,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/ethers') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -244,7 +244,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/thirdweb-sdk') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -252,7 +252,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/viem') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -260,7 +260,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tools/web3') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -268,7 +268,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tokens/list') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -276,7 +276,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/tokens/wallet') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -284,7 +284,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/contracts') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/chain/base-contracts';
     url.port = '443';
 
@@ -292,7 +292,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/security') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/'; // TODO: add pathname
     url.port = '443';
 
@@ -300,7 +300,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/terms-of-service') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/terms-of-service';
     url.port = '443';
 
@@ -308,7 +308,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/privacy-policy') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/privacy-policy';
     url.port = '443';
 
@@ -316,7 +316,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname === '/cookie-policy') {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = '/cookie-policy';
     url.port = '443';
 
@@ -340,7 +340,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (url.pathname.startsWith('/builder-anniversary-nft')) {
-    url.host = 'docs.base.org';
+    url.host = 'docs.unstable.org';
     url.pathname = `/chain/builder-anniversary-nft`;
     url.port = '443';
 

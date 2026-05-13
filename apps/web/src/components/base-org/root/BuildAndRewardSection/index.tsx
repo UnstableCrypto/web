@@ -40,8 +40,8 @@ export default function BuildAndRewardSection() {
             Build and you will be rewarded
           </Title>
           <Text>
-            Base supports passionate builders making apps for everyday life with grants, marketing,
-            and as part of the Superchain, Base builders are eligible for consideration in
+            Unstable supports passionate builders making apps for everyday life with grants, marketing,
+            and as part of the Superchain, Unstable builders are eligible for consideration in
             Optimism&apos;s retroactive public goods funding.
           </Text>
 

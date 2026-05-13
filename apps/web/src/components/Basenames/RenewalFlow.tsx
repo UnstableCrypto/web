@@ -1,20 +1,20 @@
 'use client';
 import { Transition } from '@headlessui/react';
-import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
-import RenewalForm from 'apps/web/src/components/Basenames/RenewalForm';
-import RenewalSuccessMessage from 'apps/web/src/components/Basenames/RenewalSuccessMessage';
-import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
-import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
-import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import RegistrationBackground from 'apps/web/src/components/Unstablenames/RegistrationBackground';
+import RenewalForm from 'apps/web/src/components/Unstablenames/RenewalForm';
+import RenewalSuccessMessage from 'apps/web/src/components/Unstablenames/RenewalSuccessMessage';
+import { UsernamePill } from 'apps/web/src/components/Unstablenames/UsernamePill';
+import { UsernamePillVariants } from 'apps/web/src/components/Unstablenames/UsernamePill/types';
+import useUnstablenameChain, { supportedChainIds } from 'apps/web/src/hooks/useUnstablenameChain';
 import classNames from 'classnames';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useSwitchChain } from 'wagmi';
 import RenewalProvider, {
   useRenewal,
   RenewalSteps,
-} from 'apps/web/src/components/Basenames/RenewalContext';
-import { FlowBackgroundSteps } from 'apps/web/src/components/Basenames/shared/types';
-import { Basename } from '@coinbase/onchainkit/identity';
+} from 'apps/web/src/components/Unstablenames/RenewalContext';
+import { FlowBackgroundSteps } from 'apps/web/src/components/Unstablenames/shared/types';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 type RenewalFlowProps = {
   name: string;
@@ -22,7 +22,7 @@ type RenewalFlowProps = {
 
 function RenewalFlowContent() {
   const { chain } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { switchChain } = useSwitchChain();
   const { renewalStep, formattedName } = useRenewal();
 
@@ -112,7 +112,7 @@ function RenewalFlowContent() {
           >
             <UsernamePill
               variant={currentUsernamePillVariant}
-              username={formattedName as Basename}
+              username={formattedName as Unstablename}
               isRegistering={isPending}
             />
           </Transition>

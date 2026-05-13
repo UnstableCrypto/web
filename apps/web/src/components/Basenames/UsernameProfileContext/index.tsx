@@ -1,14 +1,14 @@
 'use client';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { useErrors } from 'apps/web/contexts/Errors';
-import useBasenameResolver from 'apps/web/src/hooks/useBasenameResolver';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameResolver from 'apps/web/src/hooks/useUnstablenameResolver';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import {
-  buildBasenameOwnerContract,
-  buildBasenameEditorContract,
+  buildUnstablenameOwnerContract,
+  buildUnstablenameEditorContract,
   formatDefaultUsername,
-  getBasenameNameExpires,
+  getUnstablenameNameExpires,
 } from 'apps/web/src/utils/usernames';
 import {
   Dispatch,
@@ -28,12 +28,12 @@ export enum UsernameProfileSteps {}
 
 export type UsernameProfileContextProps = {
   // Profile details
-  profileUsername: Basename;
+  profileUsername: Unstablename;
   profileAddress?: Address;
 
   // Profile owner
   profileEditorAddress?: Address;
-  profileOwnerUsername?: Basename;
+  profileOwnerUsername?: Unstablename;
   profileRefetch: () => Promise<void>;
 
   // State
@@ -75,7 +75,7 @@ export const UsernameProfileContext = createContext<UsernameProfileContextProps>
 
 type UsernameProfileProviderProps = {
   children: ReactNode;
-  username: Basename;
+  username: Unstablename;
 };
 
 export default function UsernameProfileProvider({
@@ -84,9 +84,9 @@ export default function UsernameProfileProvider({
 }: UsernameProfileProviderProps) {
   const [showProfileSettings, setShowProfileSettings] = useState<boolean>(false);
   const [msUntilExpiration, setMsUntilExpiration] = useState<number | undefined>(undefined);
-  const { basenameChain } = useBasenameChain(username);
+  const { basenameChain } = useUnstablenameChain(username);
   const { logError } = useErrors();
-  const { data: resolverAddress } = useBasenameResolver({ username });
+  const { data: resolverAddress } = useUnstablenameResolver({ username });
 
   // Current wallet
   const { address: connectedAddress, isConnected } = useAccount();
@@ -113,12 +113,12 @@ export default function UsernameProfileProvider({
     isFetching: profileEditorAddressIsFetching,
     refetch: profileEditorRefetch,
   } = useReadContract({
-    ...buildBasenameEditorContract(username),
+    ...buildUnstablenameEditorContract(username),
     query: { refetchOnWindowFocus: false },
   });
 
-  // Registry Owner Basename
-  const { data: profileOwnerUsername } = useBaseEnsName({
+  // Registry Owner Unstablename
+  const { data: profileOwnerUsername } = useUnstableEnsName({
     address: profileEditorAddress as Address,
   });
 
@@ -128,7 +128,7 @@ export default function UsernameProfileProvider({
     isFetching: profileOwnerIsFetching,
     refetch: profileOwnerRefetch,
   } = useReadContract({
-    ...buildBasenameOwnerContract(username),
+    ...buildUnstablenameOwnerContract(username),
     query: { refetchOnWindowFocus: false },
   });
 
@@ -152,9 +152,9 @@ export default function UsernameProfileProvider({
     const checkExpiration = async () => {
       try {
         const formattedUsername = await formatDefaultUsername(
-          decodeURIComponent(username) as Basename,
+          decodeURIComponent(username) as Unstablename,
         );
-        const expiresAt = await getBasenameNameExpires(formattedUsername);
+        const expiresAt = await getUnstablenameNameExpires(formattedUsername);
 
         if (expiresAt) {
           const expirationTime = Number(expiresAt) * 1000;

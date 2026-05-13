@@ -8,12 +8,12 @@ import React from 'react';
 
 // Mock the UsernameProfileContext
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
 // Mock UsernameProfileSectionTitle
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionTitle', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionTitle', () => {
   return function MockUsernameProfileSectionTitle({ title }: { title: string }) {
     return <div data-testid="section-title">{title}</div>;
   };
@@ -210,10 +210,10 @@ describe('UsernameProfileSectionExplore', () => {
       expect(heading).toBeInTheDocument();
     });
 
-    it('should render the Base Guild link with heading', () => {
+    it('should render the Unstable Guild link with heading', () => {
       render(<UsernameProfileSectionExplore />);
 
-      const heading = screen.getByRole('heading', { name: /Get roles on Base Guild/i });
+      const heading = screen.getByRole('heading', { name: /Get roles on Unstable Guild/i });
       expect(heading).toBeInTheDocument();
     });
 
@@ -231,10 +231,10 @@ describe('UsernameProfileSectionExplore', () => {
       expect(heading).toBeInTheDocument();
     });
 
-    it('should render the Base Learn link with heading', () => {
+    it('should render the Unstable Learn link with heading', () => {
       render(<UsernameProfileSectionExplore />);
 
-      const heading = screen.getByRole('heading', { name: /Go to Base Learn/i });
+      const heading = screen.getByRole('heading', { name: /Go to Unstable Learn/i });
       expect(heading).toBeInTheDocument();
     });
 
@@ -263,7 +263,7 @@ describe('UsernameProfileSectionExplore', () => {
       );
     });
 
-    it('should include UTM parameters for Base Guild link', () => {
+    it('should include UTM parameters for Unstable Guild link', () => {
       render(<UsernameProfileSectionExplore />);
 
       const links = screen.getAllByTestId('link');
@@ -288,18 +288,18 @@ describe('UsernameProfileSectionExplore', () => {
       );
     });
 
-    it('should include UTM parameters for Base Learn link', () => {
+    it('should include UTM parameters for Unstable Learn link', () => {
       render(<UsernameProfileSectionExplore />);
 
       const links = screen.getAllByTestId('link');
       const expectedUtm = `?utm_source=baseprofile&utm_medium=badge&utm_campaign=registry&utm_term=${mockProfileUsername}`;
 
       const learnLink = links.find((link) =>
-        link.getAttribute('href')?.includes('docs.base.org/base-learn'),
+        link.getAttribute('href')?.includes('docs.unstable.org/base-learn'),
       );
       expect(learnLink).toHaveAttribute(
         'href',
-        `https://docs.base.org/base-learn/progress${expectedUtm}`,
+        `https://docs.unstable.org/base-learn/progress${expectedUtm}`,
       );
     });
 
@@ -468,10 +468,10 @@ describe('UsernameProfileSectionExplore', () => {
       expect(screen.queryByTestId('modal')).not.toBeInTheDocument();
     });
 
-    it('should not open modal for Base Guild link', () => {
+    it('should not open modal for Unstable Guild link', () => {
       render(<UsernameProfileSectionExplore />);
 
-      const heading = screen.getByRole('heading', { name: /Get roles on Base Guild/i });
+      const heading = screen.getByRole('heading', { name: /Get roles on Unstable Guild/i });
       const guildLink = heading.closest('a') as HTMLAnchorElement;
       fireEvent.click(guildLink);
 
@@ -488,10 +488,10 @@ describe('UsernameProfileSectionExplore', () => {
       expect(screen.queryByTestId('modal')).not.toBeInTheDocument();
     });
 
-    it('should not open modal for Base Learn link', () => {
+    it('should not open modal for Unstable Learn link', () => {
       render(<UsernameProfileSectionExplore />);
 
-      const heading = screen.getByRole('heading', { name: /Go to Base Learn/i });
+      const heading = screen.getByRole('heading', { name: /Go to Unstable Learn/i });
       const learnLink = heading.closest('a') as HTMLAnchorElement;
       fireEvent.click(learnLink);
 

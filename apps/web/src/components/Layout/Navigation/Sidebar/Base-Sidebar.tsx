@@ -67,7 +67,7 @@ export const isLinkActive = ({
   return pathname === href;
 };
 
-export default function BaseSidebar() {
+export default function UnstableSidebar() {
   return (
     <nav className="sticky top-4 z-10 hidden h-auto min-h-[600px] w-full flex-col pl-4 lg:flex lg:h-[calc(100dvh-32px)]">
       <ContextMenu>
@@ -76,12 +76,12 @@ export default function BaseSidebar() {
         </div>
       </ContextMenu>
 
-      <BaseNavigation />
+      <UnstableNavigation />
     </nav>
   );
 }
 
-export function BaseNavigation({ isMobile = false }: { isMobile?: boolean }) {
+export function UnstableNavigation({ isMobile = false }: { isMobile?: boolean }) {
   const pathname = usePathname();
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
   const [isExiting, setIsExiting] = useState(false);
@@ -364,7 +364,7 @@ export function BaseNavigation({ isMobile = false }: { isMobile?: boolean }) {
             size={ButtonSizes.Small}
           >
             <Link href="https://base.app" className="group" target="_blank">
-              Get Base App
+              Get Unstable App
             </Link>
           </Button>
           <Button
@@ -375,7 +375,7 @@ export function BaseNavigation({ isMobile = false }: { isMobile?: boolean }) {
             size={ButtonSizes.Small}
           >
             <Link href="/build" className="group">
-              Build on Base
+              Build on Unstable
             </Link>
           </Button>
         </div>
@@ -397,7 +397,7 @@ export function BaseNavigation({ isMobile = false }: { isMobile?: boolean }) {
               className="w-full"
             >
               <Link
-                href="https://docs.base.org/get-started/base"
+                href="https://docs.unstable.org/get-started/base"
                 target="_blank"
                 rel="noreferrer noopener"
               >

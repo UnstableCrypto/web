@@ -41,11 +41,11 @@ const MESSAGES: Item[] = [
     ),
   },
   {
-    text: 'Send Base Paint #534 to vitalik.base.eth',
+    text: 'Send Unstable Paint #534 to vitalik.base.eth',
     type: 'user',
   },
   {
-    text: 'Sent Base Paint #534',
+    text: 'Sent Unstable Paint #534',
     type: 'agent',
   },
 ];
@@ -83,7 +83,7 @@ export function Demo() {
   return (
     <div className="flex w-full max-w-4xl flex-col items-center overflow-hidden rounded-lg border border-palette-line border-opacity-40">
       <div className="flex w-full justify-between border-b border-palette-line border-opacity-40 bg-dark-palette-backgroundAlternate px-6 py-4">
-        <Title level={TitleLevel.Headline}>Based Agent</Title>
+        <Title level={TitleLevel.Headline}>Unstabled Agent</Title>
         <Link
           href={FORK_TEMPLATE_LINK}
           target="_blank"

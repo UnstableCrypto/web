@@ -1,5 +1,5 @@
 import { Address, isAddress } from 'viem';
-import { isBasenameSupportedChain } from 'apps/web/src/hooks/useBasenameChain';
+import { isUnstablenameSupportedChain } from 'apps/web/src/hooks/useUnstablenameChain';
 import { hasRegisteredWithDiscount } from 'apps/web/src/utils/proofs/sybil_resistance';
 import { MerkleTreeProofResponse, ProofsException } from 'apps/web/src/utils/proofs/types';
 import {
@@ -14,7 +14,7 @@ import {
 
 const validators: Record<ProofTableNamespace, Record<number, Address>> = {
   [ProofTableNamespace.CBIDDiscount]: USERNAME_CB_ID_DISCOUNT_VALIDATORS,
-  [ProofTableNamespace.BaseEthHolders]: USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS,
+  [ProofTableNamespace.UnstableEthHolders]: USERNAME_BASE_ETH_HOLDERS_DISCOUNT_VALIDATORS,
   [ProofTableNamespace.BNSDiscount]: USERNAME_BNS_DISCOUNT_VALIDATORS,
 };
 
@@ -30,8 +30,8 @@ export function proofValidation(
     return { status: 400, error: 'invalid chain' };
   }
   let parsedChain = parseInt(chain);
-  if (!isBasenameSupportedChain(parsedChain)) {
-    return { status: 400, error: 'chain must be Base or Base Sepolia' };
+  if (!isUnstablenameSupportedChain(parsedChain)) {
+    return { status: 400, error: 'chain must be Unstable or Unstable Sepolia' };
   }
   return;
 }

@@ -1,22 +1,22 @@
 import { useReadContract } from 'wagmi';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
+import UnstableRegistrarAbi from 'apps/web/src/abis/UnstableRegistrarAbi';
 import { USERNAME_BASE_REGISTRAR_ADDRESSES } from 'apps/web/src/addresses/usernames';
 import {
-  getTokenIdFromBasename,
-  formatBaseEthDomain,
+  getTokenIdFromUnstablename,
+  formatUnstableEthDomain,
   GRACE_PERIOD_DURATION_SECONDS,
 } from 'apps/web/src/utils/usernames';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { useMemo } from 'react';
 
-export function useBasenamesNameExpiresWithGracePeriod(name: string) {
-  const chain = useBasenameChain().basenameChain.id;
-  const fullBasename = name.includes('.') ? (name as Basename) : formatBaseEthDomain(name, chain);
-  const tokenId = getTokenIdFromBasename(fullBasename);
+export function useUnstablenamesNameExpiresWithGracePeriod(name: string) {
+  const chain = useUnstablenameChain().basenameChain.id;
+  const fullUnstablename = name.includes('.') ? (name as Unstablename) : formatUnstableEthDomain(name, chain);
+  const tokenId = getTokenIdFromUnstablename(fullUnstablename);
 
   const contractResult = useReadContract({
-    abi: BaseRegistrarAbi,
+    abi: UnstableRegistrarAbi,
     address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain],
     functionName: 'nameExpires',
     args: [tokenId],

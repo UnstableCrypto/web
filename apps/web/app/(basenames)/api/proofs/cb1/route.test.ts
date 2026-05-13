@@ -85,7 +85,7 @@ describe('cb1 route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=invalid&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=invalid&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -99,7 +99,7 @@ describe('cb1 route', () => {
       mockProofValidation.mockReturnValue({ error: 'invalid chain', status: 400 });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=invalid`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=invalid`,
       );
 
       const response = await GET(request);
@@ -109,21 +109,21 @@ describe('cb1 route', () => {
       expect(data).toEqual({ error: 'invalid chain' });
     });
 
-    it('should return 400 when chain is not Base or Base Sepolia', async () => {
+    it('should return 400 when chain is not Unstable or Unstable Sepolia', async () => {
       mockProofValidation.mockReturnValue({
-        error: 'chain must be Base or Base Sepolia',
+        error: 'chain must be Unstable or Unstable Sepolia',
         status: 400,
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=1`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=1`,
       );
 
       const response = await GET(request);
       const data = (await response.json()) as ErrorResponse;
 
       expect(response.status).toBe(400);
-      expect(data).toEqual({ error: 'chain must be Base or Base Sepolia' });
+      expect(data).toEqual({ error: 'chain must be Unstable or Unstable Sepolia' });
     });
 
     it('should return successful response with signed message for valid request', async () => {
@@ -131,11 +131,11 @@ describe('cb1 route', () => {
         signedMessage: '0xmocksignature123456789',
         attestations: [
           {
-            name: 'verifiedCoinbaseOne',
+            name: 'verifiedTheAlxLabsOne',
             type: 'bool',
-            signature: 'bool verifiedCoinbaseOne',
+            signature: 'bool verifiedTheAlxLabsOne',
             value: {
-              name: 'verifiedCoinbaseOne',
+              name: 'verifiedTheAlxLabsOne',
               type: 'bool',
               value: true,
             },
@@ -146,7 +146,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -161,7 +161,7 @@ describe('cb1 route', () => {
       );
     });
 
-    it('should return successful response for Base Sepolia chain', async () => {
+    it('should return successful response for Unstable Sepolia chain', async () => {
       const mockResponse: SuccessResponse = {
         signedMessage: '0xmocksignature123456789',
         attestations: [],
@@ -170,7 +170,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
       );
 
       const response = await GET(request);
@@ -191,7 +191,7 @@ describe('cb1 route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -210,7 +210,7 @@ describe('cb1 route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -227,7 +227,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockRejectedValue(new Error('Unexpected error'));
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -245,7 +245,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -261,7 +261,7 @@ describe('cb1 route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -280,7 +280,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -293,11 +293,11 @@ describe('cb1 route', () => {
         signedMessage: '0xmocksignature123456789',
         attestations: [
           {
-            name: 'verifiedCoinbaseOne',
+            name: 'verifiedTheAlxLabsOne',
             type: 'bool',
-            signature: 'bool verifiedCoinbaseOne',
+            signature: 'bool verifiedTheAlxLabsOne',
             value: {
-              name: 'verifiedCoinbaseOne',
+              name: 'verifiedTheAlxLabsOne',
               type: 'bool',
               value: true,
             },
@@ -309,7 +309,7 @@ describe('cb1 route', () => {
       mockSybilResistantUsernameSigning.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/cb1?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -371,7 +371,7 @@ describe('cb1 route - trustedSignerPKey missing', () => {
     const testChain = base.id.toString();
 
     const request = new NextRequest(
-      `https://www.base.org/api/proofs/cb1?address=${testAddress}&chain=${testChain}`,
+      `https://www.unstable.org/api/proofs/cb1?address=${testAddress}&chain=${testChain}`,
     );
 
     const response = await GETWithoutKey(request);

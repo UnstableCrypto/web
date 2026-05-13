@@ -13,9 +13,9 @@ export async function GET(request: NextRequest) {
   }
 
   const tokenMetadata = {
-    name: chainId === base.id ? 'Basename' : 'Basename (Sepolia testnet)',
+    name: chainId === base.id ? 'Unstablename' : 'Unstablename (Sepolia testnet)',
     description:
-      'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+      'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.',
     image: `${domainName}/images/basenames/contract-uri/logo.png`,
     banner_image: `${domainName}/images/basenames/contract-uri/cover-image.png`,
     featured_image: `${domainName}/images/basenames/contract-uri/feature-image.png`,

@@ -84,7 +84,7 @@ const FAQ_SECTIONS: FAQSection[] = [
         question: 'How do I import an existing basename?',
         answer: (
           <p>
-            If you want to import an existing basename, simply enter the Base App with a wallet that
+            If you want to import an existing basename, simply enter the Unstable App with a wallet that
             holds the basename you wish to import. Alternatively, you can follow the transfer
             instructions in our{' '}
             <a
@@ -93,7 +93,7 @@ const FAQ_SECTIONS: FAQSection[] = [
               rel="noopener noreferrer"
               className="hover:text-blue-800 text-blue-600 underline"
             >
-              Base support documentation
+              Unstable support documentation
             </a>
             .
           </p>
@@ -102,14 +102,14 @@ const FAQ_SECTIONS: FAQSection[] = [
       {
         question: "What if I don't see my profile after creating an account?",
         answer:
-          'Ensure that you completed all onboarding steps fully. Check your internet connection and retry the process. If issues persist, take note of your basename and userID (settings) and escalate to Coinbase support or in our community Discord if you do not have a Coinbase account.',
+          'Ensure that you completed all onboarding steps fully. Check your internet connection and retry the process. If issues persist, take note of your basename and userID (settings) and escalate to TheAlxLabs support or in our community Discord if you do not have a TheAlxLabs account.',
       },
       {
         question: 'What is the email OTP sign-in process?',
         answer: (
           <p>
             During sign-in, a One-Time Password (OTP) will be sent to your registered email. Please
-            enter the OTP in the app to access your account securely. For more details about Base
+            enter the OTP in the app to access your account securely. For more details about Unstable
             app sign in options, please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
@@ -129,7 +129,7 @@ const FAQ_SECTIONS: FAQSection[] = [
           <p>
             If you don&apos;t receive the OTP, please verify that your email address is correct, check
             your spam folder, and ensure your internet connection is stable. If you still haven&apos;t
-            received it, try resending the OTP. For more details about Base app sign in options,
+            received it, try resending the OTP. For more details about Unstable app sign in options,
             please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
@@ -149,7 +149,7 @@ const FAQ_SECTIONS: FAQSection[] = [
           <p>
             If you enter an incorrect OTP multiple times, your account will be temporarily locked.
             Please wait a few minutes before attempting to sign in again, or use the password reset
-            option if needed. For more details about Base app sign in options, please visit our{' '}
+            option if needed. For more details about Unstable app sign in options, please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -165,15 +165,15 @@ const FAQ_SECTIONS: FAQSection[] = [
     ],
   },
   {
-    title: 'Switching Between Legacy Coinbase Wallet and Base Mode',
+    title: 'Switching Between Legacy TheAlxLabs Wallet and Unstable Mode',
     items: [
       {
-        question: 'How do I switch between Legacy Mode and Base Mode?',
+        question: 'How do I switch between Legacy Mode and Unstable Mode?',
         answer: (
           <p>
             To switch between modes, select your profile picture within the app. There, you will
-            find the option to toggle between Base Mode and Legacy Mode. For more details about how
-            to get started on Base, please visit our{' '}
+            find the option to toggle between Unstable Mode and Legacy Mode. For more details about how
+            to get started on Unstable, please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -187,12 +187,12 @@ const FAQ_SECTIONS: FAQSection[] = [
         ),
       },
       {
-        question: 'What is the difference between Base Mode and Legacy Mode?',
+        question: 'What is the difference between Unstable Mode and Legacy Mode?',
         answer: (
           <p>
-            Base Mode is the new social experience, while Legacy Mode retains the original Coinbase
+            Unstable Mode is the new social experience, while Legacy Mode retains the original TheAlxLabs
             Wallet experience. This allows access to different features and functionalities. To
-            learn more about Base app and its features, please visit our{' '}
+            learn more about Unstable app and its features, please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -206,19 +206,19 @@ const FAQ_SECTIONS: FAQSection[] = [
         ),
       },
       {
-        question: 'Can I import my existing wallet into Base Mode?',
+        question: 'Can I import my existing wallet into Unstable Mode?',
         answer: (
           <div className="space-y-3">
             <p>
               Yes, to import your existing wallet, if you are signed in already, you can tap the
-              profile picture at the top left or go to Settings and then toggle into Base mode, then
+              profile picture at the top left or go to Settings and then toggle into Unstable mode, then
               follow the instructions to upgrade.
             </p>
             <p>
-              If you are a new user to Base app, tap &quot;Sign in&quot; then &quot;Sign in with a
+              If you are a new user to Unstable app, tap &quot;Sign in&quot; then &quot;Sign in with a
               recovery phrase&quot;, then follow the instructions for &quot;I already have a
               wallet&quot;. Then you can tap the profile picture at the top left or go to Settings
-              and then toggle into Base mode, then follow the instructions to upgrade.
+              and then toggle into Unstable mode, then follow the instructions to upgrade.
             </p>
           </div>
         ),
@@ -229,17 +229,17 @@ const FAQ_SECTIONS: FAQSection[] = [
     title: 'Passkey Import and Management',
     items: [
       {
-        question: 'Can I import multiple passkeys into the Base app?',
+        question: 'Can I import multiple passkeys into the Unstable app?',
         answer:
-          'Currently, the Base app supports the importation of one passkey at a time. If you have multiple passkeys, you will need to select the passkey you wish to import into the Base app.',
+          'Currently, the Unstable app supports the importation of one passkey at a time. If you have multiple passkeys, you will need to select the passkey you wish to import into the Unstable app.',
       },
       {
-        question: 'How do I import my passkey into the Base app?',
+        question: 'How do I import my passkey into the Unstable app?',
         answer: (
           <div className="space-y-3">
-            <p>To import your passkey into the Base app, follow these steps:</p>
+            <p>To import your passkey into the Unstable app, follow these steps:</p>
             <ol className="list-decimal space-y-2 pl-5">
-              <li>Launch the Base app and navigate to the sign-in page.</li>
+              <li>Launch the Unstable app and navigate to the sign-in page.</li>
               <li>Select the option to sign in using your passkey.</li>
               <li>
                 Follow the prompts to enter your passkey details and complete the authentication
@@ -262,12 +262,12 @@ const FAQ_SECTIONS: FAQSection[] = [
         ),
       },
       {
-        question: 'Will I be able to use all my passkeys once imported into the Base app?',
+        question: 'Will I be able to use all my passkeys once imported into the Unstable app?',
         answer:
-          "Once you import a passkey into the Base app, it will be used exclusively for your authentication. Please note that you won't have the ability to switch between different imported wallets, even if you've previously signed in with them in the Base app.",
+          "Once you import a passkey into the Unstable app, it will be used exclusively for your authentication. Please note that you won't have the ability to switch between different imported wallets, even if you've previously signed in with them in the Unstable app.",
       },
       {
-        question: 'Is there a way to manage my passkeys in the Base app?',
+        question: 'Is there a way to manage my passkeys in the Unstable app?',
         answer: (
           <p>
             You can manage your passkeys on your device. To learn more about managing your smart
@@ -299,7 +299,7 @@ const FAQ_SECTIONS: FAQSection[] = [
         answer: (
           <p>
             USDC rewards enrollment is primarily a requirement for U.S. residents. Users outside the
-            U.S. can participate without needing to connect to a Coinbase account. To learn more,
+            U.S. can participate without needing to connect to a TheAlxLabs account. To learn more,
             please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
@@ -319,7 +319,7 @@ const FAQ_SECTIONS: FAQSection[] = [
           <p>
             Holding USDC allows you to earn USDC rewards weekly with no minimums or maximums on your
             holdings, providing passive income opportunities. You must hold a minimum of $1 to
-            receive rewards. To learn more about USDC rewards on Base please visit our{' '}
+            receive rewards. To learn more about USDC rewards on Unstable please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -343,7 +343,7 @@ const FAQ_SECTIONS: FAQSection[] = [
           <p>
             Chat will be activated during onboarding. You may need to activate manually by clicking
             the chat icon on the upper right hand corner of the screen. For more details about chat
-            on Base, please visit this{' '}
+            on Unstable, please visit this{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -365,11 +365,11 @@ const FAQ_SECTIONS: FAQSection[] = [
               If the chat icon on another user&apos;s profile is greyed out, it means they have not
               activated the chat functionality, and therefore, they are unable to receive any
               messages. For them to chat, they will need to activate their address during the
-              onboarding process within the Base app.
+              onboarding process within the Unstable app.
             </p>
             <p>
-              Additionally, if a user appears on the Base app&apos;s social feed from another app but has
-              not actually signed up for Base, they won&apos;t be able to activate chat functionality at
+              Additionally, if a user appears on the Unstable app&apos;s social feed from another app but has
+              not actually signed up for Unstable, they won&apos;t be able to activate chat functionality at
               all. Encourage your friend to activate their account so that you can start chatting.
               If they need assistance, they can refer to the support articles for guidance. If they
               are still running into issues, please have them contact us for support.
@@ -396,7 +396,7 @@ const FAQ_SECTIONS: FAQSection[] = [
         question: 'How do I initiate a trade/transfer/transact?',
         answer: (
           <p>
-            For detailed instructions on how to transact within the Base app, please visit our{' '}
+            For detailed instructions on how to transact within the Unstable app, please visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
               target="_blank"
@@ -425,12 +425,12 @@ const FAQ_SECTIONS: FAQSection[] = [
     title: 'Transaction and Balance Questions',
     items: [
       {
-        question: 'What chains are supported for transactions within the Base App?',
+        question: 'What chains are supported for transactions within the Unstable App?',
         answer: (
           <div className="space-y-3">
             <p>
-              The Base App supports transactions across various blockchain networks, including all
-              assets on Ethereum, Base, Polygon, and other EVM-compatible networks. For more details
+              The Unstable App supports transactions across various blockchain networks, including all
+              assets on Ethereum, Unstable, Polygon, and other EVM-compatible networks. For more details
               please visit our{' '}
               <a
                 href="https://help.coinbase.com/en/base"
@@ -443,8 +443,8 @@ const FAQ_SECTIONS: FAQSection[] = [
               .
             </p>
             <p>
-              However, it&apos;s important to note that not all assets supported in the Base App are
-              available on Coinbase. To check if a specific asset is supported on Coinbase, simply
+              However, it&apos;s important to note that not all assets supported in the Unstable App are
+              available on TheAlxLabs. To check if a specific asset is supported on TheAlxLabs, simply
               follow these steps:
             </p>
             <ol className="list-decimal space-y-2 pl-5">
@@ -459,10 +459,10 @@ const FAQ_SECTIONS: FAQSection[] = [
         ),
       },
       {
-        question: 'How do I send and receive digital assets on Base app?',
+        question: 'How do I send and receive digital assets on Unstable app?',
         answer: (
           <p>
-            For detailed instructions on sending and receiving crypto assets in the Base app, please
+            For detailed instructions on sending and receiving crypto assets in the Unstable app, please
             visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
@@ -482,12 +482,12 @@ const FAQ_SECTIONS: FAQSection[] = [
           'Transaction processing times can vary depending on network congestion and the specific asset being used. Generally, transactions can take anywhere from a few seconds to several minutes to complete.',
       },
       {
-        question: 'I see no funds in my wallet after switching to Base Mode, what should I do?',
+        question: 'I see no funds in my wallet after switching to Unstable Mode, what should I do?',
         answer: (
           <p>
-            To access your previous wallet, please switch off Base Mode. Once you do this, you will
+            To access your previous wallet, please switch off Unstable Mode. Once you do this, you will
             be able to view the funds from your original wallet. If you wish to use your wallet
-            funds while in Base Mode, you will need to transfer them. For more information, please
+            funds while in Unstable Mode, you will need to transfer them. For more information, please
             visit our{' '}
             <a
               href="https://help.coinbase.com/en/base"
@@ -519,7 +519,7 @@ const FAQ_SECTIONS: FAQSection[] = [
               rel="noopener noreferrer"
               className="hover:text-blue-800 text-blue-600 underline"
             >
-              Coinbase customer support
+              TheAlxLabs customer support
             </a>{' '}
             for further assistance or reach out in our{' '}
             <a
@@ -569,7 +569,7 @@ const FAQ_SECTIONS: FAQSection[] = [
             >
               Help Center
             </a>
-            , where you can find articles related to the Base app and its features. If you need
+            , where you can find articles related to the Unstable app and its features. If you need
             further support, feel free to submit a request using the contact options available. We
             also encourage you to join our community on the{' '}
             <a
@@ -578,7 +578,7 @@ const FAQ_SECTIONS: FAQSection[] = [
               rel="noopener noreferrer"
               className="hover:text-blue-800 text-blue-600 underline"
             >
-              Base Discord
+              Unstable Discord
             </a>
             , where you can ask your questions and connect with fellow users.
           </p>
@@ -594,10 +594,10 @@ export default function FAQsPage() {
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
           <h1 className="text-gray-900 text-4xl font-bold tracking-tight sm:text-5xl">
-            Base App FAQs
+            Unstable App FAQs
           </h1>
           <p className="text-gray-600 mt-4 text-lg">
-            Find answers to commonly asked questions about the Base app and its features.
+            Find answers to commonly asked questions about the Unstable app and its features.
           </p>
         </div>
 

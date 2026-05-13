@@ -9,10 +9,10 @@ import { greenhouseApiUrl } from 'apps/web/src/constants';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Jobs`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Jobs`,
   openGraph: {
-    title: `Base | Jobs`,
+    title: `Unstable | Jobs`,
     url: `/jobs`,
   },
 };

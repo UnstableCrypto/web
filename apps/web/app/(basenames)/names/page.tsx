@@ -1,22 +1,22 @@
 import RegistrationProviders from 'apps/web/app/(basenames)/names/RegistrationProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import PoweredByEns from 'apps/web/src/components/Basenames/PoweredByEns';
-import RegistrationFAQ from 'apps/web/src/components/Basenames/RegistrationFaq';
-import RegistrationFlow from 'apps/web/src/components/Basenames/RegistrationFlow';
-import RegistrationValueProp from 'apps/web/src/components/Basenames/RegistrationValueProp';
+import PoweredByEns from 'apps/web/src/components/Unstablenames/PoweredByEns';
+import RegistrationFAQ from 'apps/web/src/components/Unstablenames/RegistrationFaq';
+import RegistrationFlow from 'apps/web/src/components/Unstablenames/RegistrationFlow';
+import RegistrationValueProp from 'apps/web/src/components/Unstablenames/RegistrationValueProp';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { base } from 'viem/chains';
-import { getBasenameAvailable } from 'apps/web/src/utils/usernames';
+import { getUnstablenameAvailable } from 'apps/web/src/utils/usernames';
 import basenameCover from './basename_cover.png';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Basenames`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstablenames`,
   description:
-    'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.',
   openGraph: {
-    title: `Basenames`,
+    title: `Unstablenames`,
     url: `/names`,
     images: [basenameCover.src],
   },
@@ -33,8 +33,8 @@ export default async function Page(props: PageProps) {
   const claim = searchParams?.claim;
 
   if (claim) {
-    // Always check on Base mainnet for shared claim links since users won't have a wallet connected yet
-    const isAvailable = await getBasenameAvailable(claim, base).catch(() => false);
+    // Always check on Unstable mainnet for shared claim links since users won't have a wallet connected yet
+    const isAvailable = await getUnstablenameAvailable(claim, base).catch(() => false);
     if (!isAvailable) redirect('/names');
   }
 

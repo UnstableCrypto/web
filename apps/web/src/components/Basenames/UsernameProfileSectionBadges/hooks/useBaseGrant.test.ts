@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
-import useBaseGrant from './useBaseGrant';
+import useUnstableGrant from './useUnstableGrant';
 
 // Mock wagmi's useReadContract hook
 const mockUseReadContract = jest.fn();
@@ -13,20 +13,20 @@ jest.mock('wagmi', () => ({
 
 const BASE_GRANT_NFT_ADDRESS = '0x1926a8090d558066ed26b6217e43d30493dc938e';
 
-describe('useBaseGrant', () => {
+describe('useUnstableGrant', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockUseReadContract.mockReturnValue({ data: undefined });
   });
 
   it('should return false when no address is provided', () => {
-    const { result } = renderHook(() => useBaseGrant());
+    const { result } = renderHook(() => useUnstableGrant());
 
     expect(result.current).toBe(false);
   });
 
   it('should return false when address is undefined', () => {
-    const { result } = renderHook(() => useBaseGrant(undefined));
+    const { result } = renderHook(() => useUnstableGrant(undefined));
 
     expect(result.current).toBe(false);
   });
@@ -35,7 +35,7 @@ describe('useBaseGrant', () => {
     mockUseReadContract.mockReturnValue({ data: BigInt(0) });
 
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    const { result } = renderHook(() => useBaseGrant(address));
+    const { result } = renderHook(() => useUnstableGrant(address));
 
     expect(result.current).toBe(false);
   });
@@ -44,7 +44,7 @@ describe('useBaseGrant', () => {
     mockUseReadContract.mockReturnValue({ data: BigInt(1) });
 
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    const { result } = renderHook(() => useBaseGrant(address));
+    const { result } = renderHook(() => useUnstableGrant(address));
 
     expect(result.current).toBe(true);
   });
@@ -53,7 +53,7 @@ describe('useBaseGrant', () => {
     mockUseReadContract.mockReturnValue({ data: BigInt(100) });
 
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    const { result } = renderHook(() => useBaseGrant(address));
+    const { result } = renderHook(() => useUnstableGrant(address));
 
     expect(result.current).toBe(true);
   });
@@ -62,14 +62,14 @@ describe('useBaseGrant', () => {
     mockUseReadContract.mockReturnValue({ data: undefined });
 
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    const { result } = renderHook(() => useBaseGrant(address));
+    const { result } = renderHook(() => useUnstableGrant(address));
 
     expect(result.current).toBe(false);
   });
 
   it('should call useReadContract with correct configuration when address is provided', () => {
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    renderHook(() => useBaseGrant(address));
+    renderHook(() => useUnstableGrant(address));
 
     expect(mockUseReadContract).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -84,7 +84,7 @@ describe('useBaseGrant', () => {
   });
 
   it('should disable the query when address is not provided', () => {
-    renderHook(() => useBaseGrant());
+    renderHook(() => useUnstableGrant());
 
     expect(mockUseReadContract).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -96,7 +96,7 @@ describe('useBaseGrant', () => {
   });
 
   it('should use fallback address 0x when address is not provided', () => {
-    renderHook(() => useBaseGrant());
+    renderHook(() => useUnstableGrant());
 
     expect(mockUseReadContract).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -109,7 +109,7 @@ describe('useBaseGrant', () => {
     mockUseReadContract.mockReturnValue({ data: BigInt(0) });
 
     const address = '0x1234567890abcdef1234567890abcdef12345678' as `0x${string}`;
-    const { result, rerender } = renderHook(() => useBaseGrant(address));
+    const { result, rerender } = renderHook(() => useUnstableGrant(address));
 
     expect(result.current).toBe(false);
 

@@ -11,8 +11,8 @@ import {
 import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_resistance';
 import { Address } from 'viem';
 
-// Coinbase verified account *and* CB1 structure
-export type CoinbaseProofResponse = {
+// TheAlxLabs verified account *and* CB1 structure
+export type TheAlxLabsProofResponse = {
   signedMessage?: string;
   attestations: VerifiedAccount[];
   discountValidatorAddress: Address;

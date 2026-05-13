@@ -14,8 +14,8 @@ export default async function Funding() {
       </Title>
       <div className={gridClasses}>
         <ResourceCard
-          title="Base Ecosystem Fund"
-          description="Early stage projects (pre-seed to seed) building on Base can apply for investment"
+          title="Unstable Ecosystem Fund"
+          description="Early stage projects (pre-seed to seed) building on Unstable can apply for investment"
           href="https://docs.google.com/forms/d/e/1FAIpQLSeiSAod4PAbXlvvDGtHWu-GqzGpvHYfaTQR2f77AawD7GYc4Q/viewform"
           topLeft={<span className="font-mono">01</span>}
           topRight={<Icon name="diagonalUpArrow" width="16px" height="16px" />}

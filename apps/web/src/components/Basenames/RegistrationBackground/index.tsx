@@ -1,8 +1,8 @@
 'use client';
 import { Transition } from '@headlessui/react';
-import { FloatingENSPills } from 'apps/web/src/components/Basenames/FloatingENSPills';
-import { registrationTransitionDuration } from 'apps/web/src/components/Basenames/RegistrationContext';
-import { FlowBackgroundSteps } from 'apps/web/src/components/Basenames/shared/types';
+import { FloatingENSPills } from 'apps/web/src/components/Unstablenames/FloatingENSPills';
+import { registrationTransitionDuration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
+import { FlowBackgroundSteps } from 'apps/web/src/components/Unstablenames/shared/types';
 
 import fireworks from './assets/fireworks.webm';
 import globe from './assets/globe.webm';

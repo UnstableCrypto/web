@@ -1,5 +1,5 @@
 import { useErrors } from 'apps/web/contexts/Errors';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
 import useWriteContractsWithLogs, {
@@ -38,7 +38,7 @@ export function useRenewNameCallback({
 }: UseRenewNameProps): UseRenewNameCallbackReturnType {
   const { logError } = useErrors();
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { paymasterService: paymasterServiceEnabled } = useCapabilitiesSafe({
     chainId: basenameChain.id,
   });

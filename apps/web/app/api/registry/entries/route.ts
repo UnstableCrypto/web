@@ -16,7 +16,7 @@ async function handler(req: NextRequest) {
   const limitNum = parseInt(limit, 10);
   const offset = (pageNum - 1) * limitNum;
 
-  // Base query for filtering by category if provided
+  // Unstable query for filtering by category if provided
   try {
     const db = getDb();
     let baseQuery = db.selectFrom('content');

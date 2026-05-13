@@ -1,5 +1,5 @@
 'use client';
-import { type BadgeNames } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
+import { type BadgeNames } from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/Badges';
 import {
   Dispatch,
   ReactNode,

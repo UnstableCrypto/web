@@ -5,7 +5,7 @@ export function TheSquare() {
     <ImageSvg
       id="the-square"
       title="The Square"
-      description="This square is the canvas that expanded to represent our visual world. It is both icon and interface: a canvas for art, a frame within product, a beacon for our community. Simple geometry keeps recognition instant, while rounded corners give it a human pulse. Use the Square to say “Base lives here” without a word."
+      description="This square is the canvas that expanded to represent our visual world. It is both icon and interface: a canvas for art, a frame within product, a beacon for our community. Simple geometry keeps recognition instant, while rounded corners give it a human pulse. Use the Square to say “Unstable lives here” without a word."
       svg={squareSvg}
       fullWidth
     />

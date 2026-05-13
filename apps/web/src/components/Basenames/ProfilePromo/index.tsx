@@ -10,24 +10,24 @@ import Link from 'next/link';
 import { ActionType, ComponentType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useAccount } from 'wagmi';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
 
 const videoClasses = classNames('mix-blend-screen');
 
 export default function ProfilePromo() {
   const [shouldShowPromo, setShouldShowPromo] = useLocalStorage('shouldShowPromo', true);
-  const [hasClickedGetBasename, setHasClickedGetBasename] = useLocalStorage(
-    'hasClickedGetBasename',
+  const [hasClickedGetUnstablename, setHasClickedGetUnstablename] = useLocalStorage(
+    'hasClickedGetUnstablename',
     false,
   );
   const [hasClosedPromo, setHasClosedPromo] = useLocalStorage('hasClosedPromo', false);
 
   // Web3 data
   const { address } = useAccount();
-  const { data: basename, isLoading: basenameIsLoading } = useBaseEnsName({
+  const { data: basename, isLoading: basenameIsLoading } = useUnstableEnsName({
     address,
   });
-  const hasExistingBasename = address && basename && !basenameIsLoading;
+  const hasExistingUnstablename = address && basename && !basenameIsLoading;
 
   const { logEventWithContext } = useAnalytics();
 
@@ -44,17 +44,17 @@ export default function ProfilePromo() {
       componentType: ComponentType.button,
     });
     setShouldShowPromo(false);
-    setHasClickedGetBasename(true);
-  }, [logEventWithContext, setShouldShowPromo, setHasClickedGetBasename]);
+    setHasClickedGetUnstablename(true);
+  }, [logEventWithContext, setShouldShowPromo, setHasClickedGetUnstablename]);
 
   useEffect(() => {
-    if (hasExistingBasename) {
+    if (hasExistingUnstablename) {
       setShouldShowPromo(false);
     }
-  }, [hasExistingBasename, setShouldShowPromo]);
+  }, [hasExistingUnstablename, setShouldShowPromo]);
 
-  // Don't show promo if the user has already clicked "Get a Basename" or closed it
-  if (!shouldShowPromo || hasClickedGetBasename || hasClosedPromo) {
+  // Don't show promo if the user has already clicked "Get a Unstablename" or closed it
+  if (!shouldShowPromo || hasClickedGetUnstablename || hasClosedPromo) {
     return null;
   }
 
@@ -75,14 +75,14 @@ export default function ProfilePromo() {
       </button>
       <Image src={globe} alt="Globe" className={videoClasses} />
       <span className="w-full font-display text-2xl font-medium text-white">
-        Basenames are here!
+        Unstablenames are here!
       </span>
       <p className="text-l text-white">
-        Get a Basename and make it easier to connect, collaborate, and contribute onchain.
+        Get a Unstablename and make it easier to connect, collaborate, and contribute onchain.
       </p>
       <Link href="/names" onClick={onCTA}>
         <Button rounded fullWidth>
-          Get a Basename
+          Get a Unstablename
         </Button>
       </Link>
     </div>

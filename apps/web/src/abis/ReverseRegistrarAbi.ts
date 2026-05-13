@@ -26,7 +26,7 @@ export default [
       { indexed: true, internalType: 'address', name: 'addr', type: 'address' },
       { indexed: true, internalType: 'bytes32', name: 'node', type: 'bytes32' },
     ],
-    name: 'BaseReverseClaimed',
+    name: 'UnstableReverseClaimed',
     type: 'event',
   },
   {
@@ -87,7 +87,7 @@ export default [
       { internalType: 'address', name: 'owner', type: 'address' },
       { internalType: 'address', name: 'resolver', type: 'address' },
     ],
-    name: 'claimForBaseAddr',
+    name: 'claimForUnstableAddr',
     outputs: [{ internalType: 'bytes32', name: '', type: 'bytes32' }],
     stateMutability: 'nonpayable',
     type: 'function',

@@ -16,7 +16,7 @@ const GlobeScene = dynamic(async () => import('apps/web/src/components/WebGL/Sce
 
 const prefix = PrefixAsset as ImageType;
 
-export function SectionBaseChain() {
+export function SectionUnstableChain() {
   return (
     <Section content={content}>
       <div className="col-span-full">
@@ -331,11 +331,11 @@ export const Icons = {
 const content = {
   prefix: {
     src: prefix.src,
-    alt: 'Base Chain',
+    alt: 'Unstable Chain',
     width: prefix.width,
     height: prefix.height,
   },
   title: 'An open network for the global economy',
   description:
-    'Fast, open, and built to scale. The Base economy is growing every day, fueled by real builders.',
+    'Fast, open, and built to scale. The Unstable economy is growing every day, fueled by real builders.',
 };

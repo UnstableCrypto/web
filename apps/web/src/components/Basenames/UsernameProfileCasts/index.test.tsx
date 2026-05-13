@@ -11,13 +11,13 @@ import UsernameProfileCasts from './index';
 
 // Mock useUsernameProfile hook
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
-// Mock useReadBaseEnsTextRecords hook
+// Mock useReadUnstableEnsTextRecords hook
 const mockExistingTextRecords = { casts: '' };
-jest.mock('apps/web/src/hooks/useReadBaseEnsTextRecords', () => ({
+jest.mock('apps/web/src/hooks/useReadUnstableEnsTextRecords', () => ({
   __esModule: true,
   default: jest.fn(() => ({
     existingTextRecords: mockExistingTextRecords,
@@ -25,7 +25,7 @@ jest.mock('apps/web/src/hooks/useReadBaseEnsTextRecords', () => ({
 }));
 
 // Mock UsernameProfileSectionTitle component
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionTitle', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionTitle', () => {
   return function MockUsernameProfileSectionTitle({ title }: { title: string }) {
     return <h3 data-testid="section-title">{title}</h3>;
   };
@@ -171,15 +171,15 @@ describe('UsernameProfileCasts', () => {
     });
   });
 
-  describe('integration with useReadBaseEnsTextRecords', () => {
+  describe('integration with useReadUnstableEnsTextRecords', () => {
     it('should use the profileUsername from context for the hook', () => {
-      const useReadBaseEnsTextRecords =
-        require('apps/web/src/hooks/useReadBaseEnsTextRecords').default;
+      const useReadUnstableEnsTextRecords =
+        require('apps/web/src/hooks/useReadUnstableEnsTextRecords').default;
       mockExistingTextRecords.casts = 'https://warpcast.com/user/0x123';
 
       render(<UsernameProfileCasts />);
 
-      expect(useReadBaseEnsTextRecords).toHaveBeenCalledWith({
+      expect(useReadUnstableEnsTextRecords).toHaveBeenCalledWith({
         username: 'testuser.base.eth',
       });
     });

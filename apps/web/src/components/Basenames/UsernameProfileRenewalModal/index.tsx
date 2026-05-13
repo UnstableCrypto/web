@@ -43,7 +43,7 @@ export default function UsernameProfileRenewalModal({
   const { logError } = useErrors();
 
   const {
-    callback: renewBasename,
+    callback: renewUnstablename,
     value: price,
     isPending,
     renewNameStatus,
@@ -79,12 +79,12 @@ export default function UsernameProfileRenewalModal({
     setYears((prevYears) => Math.max(1, prevYears - 1));
   }, []);
 
-  const handleRenewBasename = useCallback(() => {
+  const handleRenewUnstablename = useCallback(() => {
     logEventWithContext('renew_name_initiated', ActionType.click);
-    renewBasename().catch((e) => {
+    renewUnstablename().catch((e) => {
       logError(e, 'Failed to renew basename');
     });
-  }, [logError, logEventWithContext, renewBasename]);
+  }, [logError, logEventWithContext, renewUnstablename]);
 
   useEffect(() => {
     if (
@@ -156,7 +156,7 @@ export default function UsernameProfileRenewalModal({
         <div className="mt-4 flex w-full flex-col gap-6">
           <div className="border-gray-200 space-y-3 rounded-lg border p-4">
             <div className="flex justify-between">
-              <strong className="text-gray-700 text-md">Basename:</strong>
+              <strong className="text-gray-700 text-md">Unstablename:</strong>
               <p className="text-gray-900 text-md">{name}</p>
             </div>
             <div className="flex justify-between">
@@ -175,7 +175,7 @@ export default function UsernameProfileRenewalModal({
             variant={ButtonVariants.Black}
             fullWidth
             rounded
-            onClick={handleRenewBasename}
+            onClick={handleRenewUnstablename}
             disabled={!price}
             isLoading={isPending}
           >

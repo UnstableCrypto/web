@@ -8,8 +8,8 @@ import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteCo
 
 // Mock the usernames module to avoid is-ipfs dependency issue
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getTokenIdFromBasename: jest.fn(),
-  formatBaseEthDomain: jest.fn(),
+  getTokenIdFromUnstablename: jest.fn(),
+  formatUnstableEthDomain: jest.fn(),
   normalizeEnsDomainName: jest.fn((name: string) => name),
   REGISTER_CONTRACT_ABI: [],
   REGISTER_CONTRACT_ADDRESSES: {},
@@ -67,9 +67,9 @@ jest.mock('apps/web/src/hooks/useWriteContractWithReceipt', () => ({
 }));
 
 // Mock useRenewNameCallback hook
-const mockRenewBasename = jest.fn().mockResolvedValue(undefined);
+const mockRenewUnstablename = jest.fn().mockResolvedValue(undefined);
 let mockRenewNameCallbackReturn = {
-  callback: mockRenewBasename,
+  callback: mockRenewUnstablename,
   value: BigInt(1000000000000000), // 0.001 ETH
   isPending: false,
   renewNameStatus: 'idle' as string,
@@ -165,7 +165,7 @@ describe('UsernameProfileRenewalModal', () => {
     jest.clearAllMocks();
     mockAddress = '0x1234567890123456789012345678901234567890';
     mockRenewNameCallbackReturn = {
-      callback: mockRenewBasename,
+      callback: mockRenewUnstablename,
       value: BigInt(1000000000000000), // 0.001 ETH
       isPending: false,
       renewNameStatus: 'idle',
@@ -345,7 +345,7 @@ describe('UsernameProfileRenewalModal', () => {
       render(<UsernameProfileRenewalModal {...defaultProps} />);
       navigateToConfirmStep();
 
-      expect(screen.getByText('Basename:')).toBeInTheDocument();
+      expect(screen.getByText('Unstablename:')).toBeInTheDocument();
       expect(screen.getByText('testname.base.eth')).toBeInTheDocument();
     });
 
@@ -422,7 +422,7 @@ describe('UsernameProfileRenewalModal', () => {
       fireEvent.click(continueButton);
     };
 
-    it('should call renewBasename when Confirm & Renew is clicked', async () => {
+    it('should call renewUnstablename when Confirm & Renew is clicked', async () => {
       render(<UsernameProfileRenewalModal {...defaultProps} />);
       navigateToConfirmStep();
 
@@ -430,7 +430,7 @@ describe('UsernameProfileRenewalModal', () => {
       fireEvent.click(confirmButton);
 
       await waitFor(() => {
-        expect(mockRenewBasename).toHaveBeenCalledTimes(1);
+        expect(mockRenewUnstablename).toHaveBeenCalledTimes(1);
       });
     });
 
@@ -474,7 +474,7 @@ describe('UsernameProfileRenewalModal', () => {
 
     it('should log error when renewal fails', async () => {
       const testError = new Error('Renewal failed');
-      mockRenewBasename.mockRejectedValueOnce(testError);
+      mockRenewUnstablename.mockRejectedValueOnce(testError);
 
       render(<UsernameProfileRenewalModal {...defaultProps} />);
       navigateToConfirmStep();

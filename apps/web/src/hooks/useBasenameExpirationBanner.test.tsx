@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
-import { useBasenameExpirationBanner } from './useBasenameExpirationBanner';
+import { useUnstablenameExpirationBanner } from './useUnstablenameExpirationBanner';
 
 // Constants matching the source file
 const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -10,7 +10,7 @@ const GRACE_PERIOD_DURATION_MS = 90 * 24 * 60 * 60 * 1000; // 90 days
 
 // Mock the UsernameProfileContext
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
@@ -45,7 +45,7 @@ jest.mock('apps/web/src/utils/usernames', () => ({
   GRACE_PERIOD_DURATION_MS: 90 * 24 * 60 * 60 * 1000,
 }));
 
-describe('useBasenameExpirationBanner', () => {
+describe('useUnstablenameExpirationBanner', () => {
   let portalElement: HTMLDivElement;
 
   beforeEach(() => {
@@ -76,7 +76,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -92,7 +92,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -106,7 +106,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -122,7 +122,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -136,7 +136,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -150,7 +150,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -166,7 +166,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -180,7 +180,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -194,7 +194,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -208,7 +208,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -222,7 +222,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -238,7 +238,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -252,7 +252,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -266,7 +266,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -280,7 +280,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });
@@ -296,7 +296,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -310,7 +310,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -324,7 +324,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -343,7 +343,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -359,7 +359,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       // 0 is neither in expiration window (requires > 0) nor grace period (requires < 0)
       expect(result.current.expirationBanner).toBeNull();
@@ -372,7 +372,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'testuser.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).toBeNull();
     });
@@ -388,7 +388,7 @@ describe('useBasenameExpirationBanner', () => {
         profileUsername: 'different-user.base.eth',
       });
 
-      const { result } = renderHook(() => useBasenameExpirationBanner());
+      const { result } = renderHook(() => useUnstablenameExpirationBanner());
 
       expect(result.current.expirationBanner).not.toBeNull();
     });

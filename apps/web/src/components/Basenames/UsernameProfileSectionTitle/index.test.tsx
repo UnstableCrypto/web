@@ -116,8 +116,8 @@ describe('UsernameProfileSectionTitle', () => {
     it('should have items-baseline alignment for small screens', () => {
       const { container } = render(<UsernameProfileSectionTitle title="Test" />);
 
-      const itemsBaseline = container.querySelector('.items-baseline');
-      expect(itemsBaseline).toBeInTheDocument();
+      const itemsUnstableline = container.querySelector('.items-baseline');
+      expect(itemsUnstableline).toBeInTheDocument();
     });
   });
 

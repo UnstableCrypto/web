@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import Page, { metadata } from './page';
 
 // Mock the UsernameProfileNotFound component
-jest.mock('apps/web/src/components/Basenames/UsernameProfileNotFound', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileNotFound', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile-not-found">UsernameProfileNotFound</div>,
 }));
@@ -13,17 +13,17 @@ describe('Name Not Found Page', () => {
   });
 
   describe('metadata', () => {
-    it('should have correct metadataBase', () => {
-      expect(metadata.metadataBase).toEqual(new URL('https://base.org'));
+    it('should have correct metadataUnstable', () => {
+      expect(metadata.metadataUnstable).toEqual(new URL('https://unstable.org'));
     });
 
     it('should have correct title', () => {
-      expect(metadata.title).toBe('Basenames | Not Found');
+      expect(metadata.title).toBe('Unstablenames | Not Found');
     });
 
     it('should have correct openGraph configuration', () => {
       expect(metadata.openGraph).toMatchObject({
-        title: 'Basenames | Not Found',
+        title: 'Unstablenames | Not Found',
         url: '/not-found',
       });
     });

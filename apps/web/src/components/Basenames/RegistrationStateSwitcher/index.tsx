@@ -3,7 +3,7 @@
 import {
   RegistrationSteps,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Dropdown from 'apps/web/src/components/Dropdown';
 import DropdownItem from 'apps/web/src/components/DropdownItem';

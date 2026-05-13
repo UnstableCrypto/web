@@ -10,7 +10,7 @@ const mockSetShowProfileSettings = jest.fn();
 let mockCurrentWalletIsProfileEditor = true;
 const mockProfileUsername = 'testuser.base.eth';
 
-// Mock for useWriteBaseEnsTextRecords
+// Mock for useWriteUnstableEnsTextRecords
 const mockWriteTextRecords = jest.fn();
 const mockUpdateTextRecords = jest.fn();
 let mockWriteTextRecordsIsPending = false;
@@ -20,7 +20,7 @@ let mockUpdatedTextRecords: Record<string, string> = {};
 let mockOnSuccessCallback: (() => void) | undefined;
 
 // Mock context hooks
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileUsername: mockProfileUsername,
     currentWalletIsProfileEditor: mockCurrentWalletIsProfileEditor,
@@ -36,8 +36,8 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useWriteBaseEnsTextRecords hook
-jest.mock('apps/web/src/hooks/useWriteBaseEnsTextRecords', () => ({
+// Mock useWriteUnstableEnsTextRecords hook
+jest.mock('apps/web/src/hooks/useWriteUnstableEnsTextRecords', () => ({
   __esModule: true,
   default: ({ onSuccess }: { onSuccess?: () => void }) => {
     mockOnSuccessCallback = onSuccess;
@@ -85,7 +85,7 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/UsernameDescriptionField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameDescriptionField', () => ({
   __esModule: true,
   default: ({
     onChange,
@@ -107,7 +107,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameDescriptionField', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameLocationField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameLocationField', () => ({
   __esModule: true,
   default: ({
     onChange,
@@ -129,7 +129,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameLocationField', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameKeywordsField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameKeywordsField', () => ({
   __esModule: true,
   default: ({
     onChange,
@@ -151,7 +151,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameKeywordsField', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameCastsField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameCastsField', () => ({
   __esModule: true,
   default: ({
     onChange,
@@ -173,7 +173,7 @@ jest.mock('apps/web/src/components/Basenames/UsernameCastsField', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameTextRecordInlineField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameTextRecordInlineField', () => ({
   __esModule: true,
   default: ({
     textRecordKey,
@@ -505,7 +505,7 @@ describe('UsernameProfileSettingsManageProfile', () => {
   });
 
   describe('onSuccess callback', () => {
-    it('should pass closeSettings as onSuccess to useWriteBaseEnsTextRecords', () => {
+    it('should pass closeSettings as onSuccess to useWriteUnstableEnsTextRecords', () => {
       render(<UsernameProfileSettingsManageProfile />);
 
       // Verify that the callback was captured

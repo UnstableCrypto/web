@@ -26,7 +26,7 @@ let mockSelectedName = 'testname';
 let mockDiscount: { discountKey: string } | undefined;
 let mockYears = 1;
 let mockReverseRecord = false;
-let mockHasExistingBasename = false;
+let mockHasExistingUnstablename = false;
 let mockRegisterNameIsPending = false;
 let mockRegisterNameError: Error | null = null;
 let mockCode: string | undefined;
@@ -34,7 +34,7 @@ const mockSetYears = jest.fn();
 const mockSetReverseRecord = jest.fn();
 const mockRegisterName = jest.fn().mockResolvedValue(undefined);
 
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     selectedName: mockSelectedName,
     discount: mockDiscount,
@@ -42,7 +42,7 @@ jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
     setYears: mockSetYears,
     reverseRecord: mockReverseRecord,
     setReverseRecord: mockSetReverseRecord,
-    hasExistingBasename: mockHasExistingBasename,
+    hasExistingUnstablename: mockHasExistingUnstablename,
     registerName: mockRegisterName,
     registerNameError: mockRegisterNameError,
     registerNameIsPending: mockRegisterNameIsPending,
@@ -50,12 +50,12 @@ jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-const mockBasenameChainId = 8453;
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUnstablenameChainId = 8453;
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: mockBasenameChainId },
+    basenameChain: { id: mockUnstablenameChainId },
   }),
 }));
 
@@ -111,7 +111,7 @@ let mockInitialPrice: bigint | undefined = BigInt(1000000000000000); // 0.001 ET
 let mockDiscountedPrice: bigint | undefined;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 let mockSingleYearEthCost: bigint | undefined = BigInt(1000000000000000);
-let mockSingleYearBasePrice: bigint | undefined = BigInt(800000000000000);
+let mockSingleYearUnstablePrice: bigint | undefined = BigInt(800000000000000);
 let mockPremiumPrice: bigint | undefined = BigInt(0);
 
 jest.mock('apps/web/src/hooks/useNameRegistrationPrice', () => ({
@@ -125,7 +125,7 @@ jest.mock('apps/web/src/hooks/useNameRegistrationPrice', () => ({
 
 jest.mock('apps/web/src/hooks/useRentPrice', () => ({
   useRentPrice: () => ({
-    basePrice: mockSingleYearBasePrice,
+    basePrice: mockSingleYearUnstablePrice,
     premiumPrice: mockPremiumPrice,
   }),
 }));
@@ -160,7 +160,7 @@ jest.mock('apps/web/src/hooks/useCapabilitiesSafe', () => ({
 
 // Mock usernames utilities
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (name: string, chainId: number) => {
+  formatUnstableEthDomain: (name: string, chainId: number) => {
     if (chainId === 8453) return `${name}.base.eth`;
     return `${name}.basetest.eth`;
   },
@@ -185,7 +185,7 @@ jest.mock('apps/web/src/utils/formatUsdPrice', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/PremiumExplainerModal', () => ({
+jest.mock('apps/web/src/components/Unstablenames/PremiumExplainerModal', () => ({
   PremiumExplainerModal: ({
     isOpen,
     toggleModal,
@@ -204,7 +204,7 @@ jest.mock('apps/web/src/components/Basenames/PremiumExplainerModal', () => ({
     ) : null,
 }));
 
-jest.mock('apps/web/src/components/Basenames/RegistrationLearnMoreModal', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationLearnMoreModal', () => ({
   __esModule: true,
   default: ({ isOpen, toggleModal }: { isOpen: boolean; toggleModal: () => void }) =>
     isOpen ? (
@@ -216,7 +216,7 @@ jest.mock('apps/web/src/components/Basenames/RegistrationLearnMoreModal', () => 
     ) : null,
 }));
 
-jest.mock('apps/web/src/components/Basenames/YearSelector', () => ({
+jest.mock('apps/web/src/components/Unstablenames/YearSelector', () => ({
   __esModule: true,
   default: ({
     years,
@@ -318,7 +318,7 @@ describe('RegistrationForm', () => {
     mockDiscount = undefined;
     mockYears = 1;
     mockReverseRecord = false;
-    mockHasExistingBasename = false;
+    mockHasExistingUnstablename = false;
     mockRegisterNameIsPending = false;
     mockRegisterNameError = null;
     mockCode = undefined;
@@ -328,7 +328,7 @@ describe('RegistrationForm', () => {
     mockInitialPrice = BigInt(1000000000000000);
     mockDiscountedPrice = undefined;
     mockSingleYearEthCost = BigInt(1000000000000000);
-    mockSingleYearBasePrice = BigInt(800000000000000);
+    mockSingleYearUnstablePrice = BigInt(800000000000000);
     mockPremiumPrice = BigInt(0);
     mockEthUsdPrice = 2000;
     mockPremiumSeconds = 0n;
@@ -390,15 +390,15 @@ describe('RegistrationForm', () => {
   });
 
   describe('chain switching', () => {
-    it('should render "Switch to Base" button when on wrong chain', () => {
+    it('should render "Switch to Unstable" button when on wrong chain', () => {
       mockConnectedChainId = 1; // Mainnet
 
       render(<RegistrationForm />);
 
-      expect(screen.getByTestId('action-button')).toHaveTextContent('Switch to Base');
+      expect(screen.getByTestId('action-button')).toHaveTextContent('Switch to Unstable');
     });
 
-    it('should call switchChain when Switch to Base button is clicked', async () => {
+    it('should call switchChain when Switch to Unstable button is clicked', async () => {
       mockConnectedChainId = 1;
 
       render(<RegistrationForm />);
@@ -485,16 +485,16 @@ describe('RegistrationForm', () => {
   });
 
   describe('reverse record checkbox', () => {
-    it('should show reverse record checkbox when hasExistingBasename is true', () => {
-      mockHasExistingBasename = true;
+    it('should show reverse record checkbox when hasExistingUnstablename is true', () => {
+      mockHasExistingUnstablename = true;
 
       render(<RegistrationForm />);
 
       expect(screen.getByLabelText(/Set as Primary Name/i)).toBeInTheDocument();
     });
 
-    it('should not show reverse record checkbox when hasExistingBasename is false', () => {
-      mockHasExistingBasename = false;
+    it('should not show reverse record checkbox when hasExistingUnstablename is false', () => {
+      mockHasExistingUnstablename = false;
 
       render(<RegistrationForm />);
 
@@ -502,7 +502,7 @@ describe('RegistrationForm', () => {
     });
 
     it('should call setReverseRecord when checkbox is changed', async () => {
-      mockHasExistingBasename = true;
+      mockHasExistingUnstablename = true;
 
       render(<RegistrationForm />);
 

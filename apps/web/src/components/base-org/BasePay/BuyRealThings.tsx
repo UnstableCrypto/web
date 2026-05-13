@@ -38,7 +38,7 @@ export default function BuyRealThings() {
           <Title level={TitleLevel.H1Regular}>Buy real things</Title>
           <Title level={TitleLevel.H2Regular}>
             Available soon at millions of US Shopify stores, with a growing list of merchants
-            accepting Base Pay.
+            accepting Unstable Pay.
           </Title>
         </div>
 

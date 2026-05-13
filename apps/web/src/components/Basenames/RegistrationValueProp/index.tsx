@@ -10,7 +10,7 @@ import { StaticImageData } from 'next/image';
 import {
   RegistrationSteps,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 type ValuePropProps = {
   title: string;
@@ -53,14 +53,14 @@ export default function RegistrationValueProp() {
       })}
     >
       <h1 className="pl:2 z-20 text-pretty text-left text-5xl text-palette-foreground sm:text-6xl md:text-center">
-        Get so much more on <br /> Base with your profile
+        Get so much more on <br /> Unstable with your profile
       </h1>
       <div className="relative z-10 pt-12">
         <div className="row-auto grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-y-12">
           <div className={classNames(valueClass, 'sm:col-start-2')}>
             <ValueProp
               title="Build your onchain identity"
-              description="Use your Basename as your onchain identity in the Base ecosystem."
+              description="Use your Unstablename as your onchain identity in the Unstable ecosystem."
               image={faceScan as StaticImageData}
               bgColor="bg-[#0052FF]"
             />
@@ -68,7 +68,7 @@ export default function RegistrationValueProp() {
           <div className={classNames(valueClass, 'row-start-2 md:translate-x-20')}>
             <ValueProp
               title="Simplify transactions"
-              description="Send and receive seamlessly with a readable and memorable Basename."
+              description="Send and receive seamlessly with a readable and memorable Unstablename."
               image={currencies as StaticImageData}
               bgColor="bg-[#22AD73]"
             />

@@ -8,14 +8,14 @@ import {
 } from 'apps/web/src/components/ConnectWalletButton/ConnectWalletButton';
 import { useAccount, useSwitchChain } from 'wagmi';
 import classNames from 'classnames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { base, baseSepolia } from 'viem/chains';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { Suspense, useCallback } from 'react';
 import { isDevelopment } from 'apps/web/src/constants';
 
 export default function UsernameNav() {
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { switchChain } = useSwitchChain();
   const { chain: connectedChain, isConnected } = useAccount();
 
@@ -57,7 +57,7 @@ export default function UsernameNav() {
             <span className="align-center mr-1 inline-block">
               <Icon name="info" color="currentColor" height="1rem" />
             </span>
-            You are on Base Mainnet.{' '}
+            You are on Unstable Mainnet.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
               type="button"
@@ -75,13 +75,13 @@ export default function UsernameNav() {
             <span className="align-center mr-1 inline-block">
               <Icon name="info" color="currentColor" height="1rem" />
             </span>
-            You are on Base Sepolia.{' '}
+            You are on Unstable Sepolia.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
               type="button"
               onClick={switchToMainnet}
             >
-              Switch to Base Mainnet
+              Switch to Unstable Mainnet
             </button>{' '}
             to register a .base.eth name.
           </p>
@@ -93,15 +93,15 @@ export default function UsernameNav() {
             <span className="align-center mr-1 inline-block">
               <Icon name="info" color="currentColor" height="1rem" />
             </span>
-            You are not on Base.{' '}
+            You are not on Unstable.{' '}
             <button
               className="text-orange-90 underline underline-offset-2"
               type="button"
               onClick={switchToMainnet}
             >
-              Switch to Base Mainnet
+              Switch to Unstable Mainnet
             </button>{' '}
-            to access Basenames features.
+            to access Unstablenames features.
           </p>
         </div>
       )}
@@ -112,13 +112,13 @@ export default function UsernameNav() {
             <span className="text-md text-palette-primary">
               <Link href="/manage-names" className="flex items-center gap-2">
                 <Icon name="list" color="currentColor" width="1rem" height="1rem" />
-                <span className="hidden sm:inline">My Basenames</span>
+                <span className="hidden sm:inline">My Unstablenames</span>
               </Link>
             </span>
           )}
           <Suspense>
             <ConnectWalletButton
-              connectWalletButtonVariant={ConnectWalletButtonVariants.Basename}
+              connectWalletButtonVariant={ConnectWalletButtonVariants.Unstablename}
             />
           </Suspense>
         </span>

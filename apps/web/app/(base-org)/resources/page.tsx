@@ -12,12 +12,12 @@ import ResourcesStartBuildingSection from 'apps/web/src/components/Resources/sec
 import ResourcesBuildWithUs from 'apps/web/src/components/Resources/section/BuildWithUs';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: 'Base | Resources',
+  metadataUnstable: new URL('https://unstable.org'),
+  title: 'Unstable | Resources',
   openGraph: {
-    title: 'Base | Resources',
+    title: 'Unstable | Resources',
     url: '/resources',
-    images: ['https://base.org/images/getstarted-open-graph.png'],
+    images: ['https://unstable.org/images/getstarted-open-graph.png'],
   },
 };
 

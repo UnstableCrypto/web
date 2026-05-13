@@ -19,12 +19,12 @@ const googleAnalyticsInitScriptContent = {
 const coinbaseDisplay = localFont({
   src: [
     {
-      path: '../src/fonts/CoinbaseDisplay-Regular.woff2',
+      path: '../src/fonts/TheAlxLabsDisplay-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../src/fonts/CoinbaseDisplay-Medium.woff2',
+      path: '../src/fonts/TheAlxLabsDisplay-Medium.woff2',
       weight: '500 800',
       style: 'normal',
     },
@@ -36,62 +36,62 @@ const coinbaseDisplay = localFont({
 const coinbaseSans = localFont({
   src: [
     {
-      path: '../src/fonts/base-sans/BaseSans-Thin.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Thin.woff2',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-ThinItalic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-ThinItalic.woff2',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Light.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Light.woff2',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-LightItalic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-LightItalic.woff2',
       weight: '300',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Regular.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Italic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Italic.woff2',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Medium.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-MediumItalic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-MediumItalic.woff2',
       weight: '500',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Bold.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-BoldItalic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-BoldItalic.woff2',
       weight: '700',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-Black.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-Black.woff2',
       weight: '900',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans/BaseSans-BlackItalic.woff2',
+      path: '../src/fonts/base-sans/UnstableSans-BlackItalic.woff2',
       weight: '900',
       style: 'italic',
     },
@@ -103,7 +103,7 @@ const coinbaseSans = localFont({
 const baseSans = localFont({
   src: [
     {
-      path: '../src/fonts/base-sans/BaseSans-RegularText.woff',
+      path: '../src/fonts/base-sans/UnstableSans-RegularText.woff',
       weight: '400',
       style: 'normal',
     },
@@ -115,42 +115,42 @@ const baseSans = localFont({
 const coinbaseMono = localFont({
   src: [
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-Thin.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-Thin.woff2',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-ThinItalic.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-ThinItalic.woff2',
       weight: '100',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-Light.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-Light.woff2',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-LightItalic.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-LightItalic.woff2',
       weight: '300',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-Regular.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-Italic.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-Italic.woff2',
       weight: '400',
       style: 'italic',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-Medium.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: '../src/fonts/base-sans-mono/BaseSansMono-MediumItalic.woff2',
+      path: '../src/fonts/base-sans-mono/UnstableSansMono-MediumItalic.woff2',
       weight: '500',
       style: 'italic',
     },

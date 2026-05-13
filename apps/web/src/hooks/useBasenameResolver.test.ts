@@ -3,8 +3,8 @@
  */
 import { renderHook } from '@testing-library/react';
 import { type Address } from 'viem';
-import { type Basename } from '@coinbase/onchainkit/identity';
-import useBasenameResolver from './useBasenameResolver';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
+import useUnstablenameResolver from './useUnstablenameResolver';
 
 // Mock wagmi's useReadContract
 const mockUseReadContract = jest.fn();
@@ -16,14 +16,14 @@ jest.mock('wagmi', () => ({
 // Mock the usernames utility
 const mockBuildRegistryResolverReadParams = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  buildRegistryResolverReadParams: (username: Basename) =>
+  buildRegistryResolverReadParams: (username: Unstablename) =>
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     mockBuildRegistryResolverReadParams(username),
 }));
 
-describe('useBasenameResolver', () => {
+describe('useUnstablenameResolver', () => {
   const mockResolverAddress = '0x1234567890123456789012345678901234567890' as Address;
-  const mockUsername = 'testname.base.eth' as Basename;
+  const mockUsername = 'testname.base.eth' as Unstablename;
   const mockRefetch = jest.fn().mockResolvedValue({});
 
   const defaultReadContractReturn = {
@@ -46,7 +46,7 @@ describe('useBasenameResolver', () => {
 
   describe('initialization', () => {
     it('should call buildRegistryResolverReadParams with the provided username', () => {
-      renderHook(() => useBasenameResolver({ username: mockUsername }));
+      renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(mockBuildRegistryResolverReadParams).toHaveBeenCalledWith(mockUsername);
     });
@@ -60,7 +60,7 @@ describe('useBasenameResolver', () => {
       };
       mockBuildRegistryResolverReadParams.mockReturnValue(mockReadParams);
 
-      renderHook(() => useBasenameResolver({ username: mockUsername }));
+      renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(mockUseReadContract).toHaveBeenCalledWith({
         ...mockReadParams,
@@ -72,7 +72,7 @@ describe('useBasenameResolver', () => {
     });
 
     it('should disable the query when username is empty', () => {
-      renderHook(() => useBasenameResolver({ username: '' as Basename }));
+      renderHook(() => useUnstablenameResolver({ username: '' as Unstablename }));
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const expectedQuery = expect.objectContaining({
@@ -92,7 +92,7 @@ describe('useBasenameResolver', () => {
     it('should return undefined data when resolver has not loaded', () => {
       mockUseReadContract.mockReturnValue(defaultReadContractReturn);
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.data).toBeUndefined();
     });
@@ -103,7 +103,7 @@ describe('useBasenameResolver', () => {
         data: mockResolverAddress,
       });
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.data).toBe(mockResolverAddress);
     });
@@ -111,7 +111,7 @@ describe('useBasenameResolver', () => {
     it('should return isError as false when there is no error', () => {
       mockUseReadContract.mockReturnValue(defaultReadContractReturn);
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.isError).toBe(false);
     });
@@ -123,7 +123,7 @@ describe('useBasenameResolver', () => {
         error: new Error('Contract read failed'),
       });
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.isError).toBe(true);
     });
@@ -136,7 +136,7 @@ describe('useBasenameResolver', () => {
         error: mockError,
       });
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.error).toBe(mockError);
     });
@@ -144,7 +144,7 @@ describe('useBasenameResolver', () => {
     it('should return null error when there is no error', () => {
       mockUseReadContract.mockReturnValue(defaultReadContractReturn);
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.error).toBeNull();
     });
@@ -152,7 +152,7 @@ describe('useBasenameResolver', () => {
     it('should return a refetch function', () => {
       mockUseReadContract.mockReturnValue(defaultReadContractReturn);
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       expect(result.current.refetch).toBe(mockRefetch);
     });
@@ -162,7 +162,7 @@ describe('useBasenameResolver', () => {
     it('should call refetch when invoked', async () => {
       mockUseReadContract.mockReturnValue(defaultReadContractReturn);
 
-      const { result } = renderHook(() => useBasenameResolver({ username: mockUsername }));
+      const { result } = renderHook(() => useUnstablenameResolver({ username: mockUsername }));
 
       await result.current.refetch();
 
@@ -172,17 +172,17 @@ describe('useBasenameResolver', () => {
 
   describe('different username formats', () => {
     it('should handle mainnet basenames (.base.eth)', () => {
-      const mainnetUsername = 'myname.base.eth' as Basename;
+      const mainnetUsername = 'myname.base.eth' as Unstablename;
 
-      renderHook(() => useBasenameResolver({ username: mainnetUsername }));
+      renderHook(() => useUnstablenameResolver({ username: mainnetUsername }));
 
       expect(mockBuildRegistryResolverReadParams).toHaveBeenCalledWith(mainnetUsername);
     });
 
     it('should handle testnet basenames (.basetest.eth)', () => {
-      const testnetUsername = 'myname.basetest.eth' as Basename;
+      const testnetUsername = 'myname.basetest.eth' as Unstablename;
 
-      renderHook(() => useBasenameResolver({ username: testnetUsername }));
+      renderHook(() => useUnstablenameResolver({ username: testnetUsername }));
 
       expect(mockBuildRegistryResolverReadParams).toHaveBeenCalledWith(testnetUsername);
     });

@@ -17,7 +17,7 @@ export function PartnershipsLockupSystem() {
     <ImageComponent
       id="lockup-system"
       title="Lockup System"
-      description="Use the logotype lockup when you need stronger brand recognition. When speaking to an audience already familiar with the Base brand, feel free to use more abstract core identifiers to represent the partnership. Always scale both logos optically to maintain equal size relationship."
+      description="Use the logotype lockup when you need stronger brand recognition. When speaking to an audience already familiar with the Unstable brand, feel free to use more abstract core identifiers to represent the partnership. Always scale both logos optically to maintain equal size relationship."
       images={images}
     />
   );

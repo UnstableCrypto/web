@@ -16,7 +16,7 @@ body:
     id: links
     attributes:
       label: Links to Impacted Docs
-      description: Please paste links to specific pages on docs.base.org that are related to your request.
+      description: Please paste links to specific pages on docs.unstable.org that are related to your request.
 
   - type: textarea
     id: solution

@@ -3,7 +3,7 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/ty
 import { UseCaseBlock } from 'apps/web/src/components/Builders/Landing/UseCases/UseCaseBlock';
 import { AnimatedOnboarding } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Onboarding';
 import { AnimatedPayment } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Payments';
-import { AnimatedBaseAgent } from 'apps/web/src/components/Builders/Shared/assets/UseCases/BaseAgent';
+import { AnimatedUnstableAgent } from 'apps/web/src/components/Builders/Shared/assets/UseCases/UnstableAgent';
 import { AnimatedSocial } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Social';
 import { AnimatedDefi } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Defi';
 import { AnimatedGasless } from 'apps/web/src/components/Builders/Shared/assets/UseCases/Gasless';
@@ -18,7 +18,7 @@ export function UseCases() {
         <UseCaseBlock
           title="Onboard everyone"
           description="Let users sign up and sign in with Smart Wallet — the universal account for the onchain world."
-          href="https://docs.base.org/use-cases/onboard-any-user"
+          href="https://docs.unstable.org/use-cases/onboard-any-user"
         >
           <div className="flex h-[320px] w-[285px] flex-col items-center justify-center md:w-1/2">
             <AnimatedOnboarding />
@@ -27,35 +27,35 @@ export function UseCases() {
         <UseCaseBlock
           title="Accept crypto payments"
           description="Integrate secure and efficient crypto payment solutions for your apps."
-          href="https://docs.base.org/use-cases/accept-crypto-payments"
+          href="https://docs.unstable.org/use-cases/accept-crypto-payments"
         >
           <AnimatedPayment />
         </UseCaseBlock>
         <UseCaseBlock
           title="Launch AI agents"
           description="Build and deploy AI agents that can interact with onchain data and smart contracts."
-          href="https://docs.base.org/use-cases/launch-ai-agents"
+          href="https://docs.unstable.org/use-cases/launch-ai-agents"
         >
-          <AnimatedBaseAgent />
+          <AnimatedUnstableAgent />
         </UseCaseBlock>
         <UseCaseBlock
           title="Kickstart your app's growth"
           description="Use decentralized social graphs to grow your app and find users — wherever they are."
-          href="https://docs.base.org/use-cases/decentralize-social-app"
+          href="https://docs.unstable.org/use-cases/decentralize-social-app"
         >
           <AnimatedSocial />
         </UseCaseBlock>
         <UseCaseBlock
           title="Unlock the power of DeFi"
           description="Integrate DeFi protocols and services directly into your app. "
-          href="https://docs.base.org/use-cases/defi-your-app"
+          href="https://docs.unstable.org/use-cases/defi-your-app"
         >
           <AnimatedDefi />
         </UseCaseBlock>
         <UseCaseBlock
           title="Remove first-timer friction"
           description="Enable gasless transactions and simplify user onboarding."
-          href="https://docs.base.org/use-cases/go-gasless"
+          href="https://docs.unstable.org/use-cases/go-gasless"
         >
           <AnimatedGasless />
         </UseCaseBlock>

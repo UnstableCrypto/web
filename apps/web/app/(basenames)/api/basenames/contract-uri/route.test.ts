@@ -21,11 +21,11 @@ describe('contract-uri route', () => {
 
   describe('GET', () => {
     it('should return 400 error when chainId is missing', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(0); // Falsy value
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri'
+        'https://www.unstable.org/api/basenames/contract-uri'
       );
 
       const response = await GET(request);
@@ -36,34 +36,34 @@ describe('contract-uri route', () => {
     });
 
     it('should redirect to contract-uri.json with chainId when chainId is provided', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
-      mockGetChain.mockReturnValue(8453); // Base mainnet chain ID
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
+      mockGetChain.mockReturnValue(8453); // Unstable mainnet chain ID
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri?chainId=8453'
       );
 
       const response = await GET(request);
 
       expect(response.status).toBe(307); // NextResponse.redirect uses 307 by default
       expect(response.headers.get('location')).toBe(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=8453'
       );
     });
 
-    it('should redirect with the correct chainId for Base Sepolia', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
-      mockGetChain.mockReturnValue(84532); // Base Sepolia chain ID
+    it('should redirect with the correct chainId for Unstable Sepolia', async () => {
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
+      mockGetChain.mockReturnValue(84532); // Unstable Sepolia chain ID
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri?chainId=84532'
+        'https://www.unstable.org/api/basenames/contract-uri?chainId=84532'
       );
 
       const response = await GET(request);
 
       expect(response.status).toBe(307);
       expect(response.headers.get('location')).toBe(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=84532'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=84532'
       );
     });
 
@@ -84,11 +84,11 @@ describe('contract-uri route', () => {
     });
 
     it('should call getChain with the request', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(8453);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri?chainId=8453'
       );
 
       await GET(request);
@@ -97,11 +97,11 @@ describe('contract-uri route', () => {
     });
 
     it('should call getDomain with the request', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(8453);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri?chainId=8453'
       );
 
       await GET(request);
@@ -110,11 +110,11 @@ describe('contract-uri route', () => {
     });
 
     it('should return 400 when chainId is NaN (returned as 0 or falsy)', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(NaN); // NaN is falsy
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri?chainId=invalid'
+        'https://www.unstable.org/api/basenames/contract-uri?chainId=invalid'
       );
 
       const response = await GET(request);

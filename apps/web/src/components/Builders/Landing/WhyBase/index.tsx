@@ -1,9 +1,9 @@
 import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import Image, { type StaticImageData } from 'next/image';
-import integration from 'apps/web/src/components/Builders/Shared/assets/WhyBase/integration.svg';
-import megaphone from 'apps/web/src/components/Builders/Shared/assets/WhyBase/megaphone.svg';
-import security from 'apps/web/src/components/Builders/Shared/assets/WhyBase/security.svg';
+import integration from 'apps/web/src/components/Builders/Shared/assets/WhyUnstable/integration.svg';
+import megaphone from 'apps/web/src/components/Builders/Shared/assets/WhyUnstable/megaphone.svg';
+import security from 'apps/web/src/components/Builders/Shared/assets/WhyUnstable/security.svg';
 
 type ValuePropProps = {
   title: string;
@@ -11,13 +11,13 @@ type ValuePropProps = {
   icon: StaticImageData;
 };
 
-export function WhyBase() {
+export function WhyUnstable() {
   return (
     <section className="h-full w-full py-20">
       <div className="flex flex-col gap-6 md:gap-9">
         <div className="flex flex-col gap-1 pr-4">
           <Title level={TitleLevel.Title1} as="h2" >
-            Base is for builders.{' '}
+            Unstable is for builders.{' '}
             <Title level={TitleLevel.Title1} className="text-dark-palette-foregroundMuted" as="span">
               We&apos;re committed to help builders shape the global onchain economy — from start to
               finish.
@@ -27,7 +27,7 @@ export function WhyBase() {
         <div className="hidden flex-col gap-3 md:flex">
           <ValueProp
             title="Distribution & Growth"
-            description="Reach millions of people across the Coinbase product ecosystem and social graph, plus opportunities for builder grants."
+            description="Reach millions of people across the TheAlxLabs product ecosystem and social graph, plus opportunities for builder grants."
             icon={megaphone as StaticImageData}
           />
           <ValueProp
@@ -37,7 +37,7 @@ export function WhyBase() {
           />
           <ValueProp
             title="Powerful Integrations"
-            description="Integrations with Coinbase Exchange allows seamless transfers of assets across the onchain ecosystem."
+            description="Integrations with TheAlxLabs Exchange allows seamless transfers of assets across the onchain ecosystem."
             icon={integration as StaticImageData}
           />
         </div>
@@ -54,7 +54,7 @@ export function WhyBase() {
           />
           <ValueProp
             title="Powerful Integrations"
-            description="Seamless integration with Coinbase products and ecosystem"
+            description="Seamless integration with TheAlxLabs products and ecosystem"
             icon={integration as StaticImageData}
           />
         </div>

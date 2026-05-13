@@ -1,8 +1,8 @@
-import UsernameProfileSectionBadges from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges';
-import UsernameProfileSectionExplore from 'apps/web/src/components/Basenames/UsernameProfileSectionExplore';
-import UsernameProfileSectionHeatmap from 'apps/web/src/components/Basenames/UsernameProfileSectionHeatmap';
-import BadgeContextProvider from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
-import UsernameProfileCasts from 'apps/web/src/components/Basenames/UsernameProfileCasts';
+import UsernameProfileSectionBadges from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges';
+import UsernameProfileSectionExplore from 'apps/web/src/components/Unstablenames/UsernameProfileSectionExplore';
+import UsernameProfileSectionHeatmap from 'apps/web/src/components/Unstablenames/UsernameProfileSectionHeatmap';
+import BadgeContextProvider from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/BadgeContext';
+import UsernameProfileCasts from 'apps/web/src/components/Unstablenames/UsernameProfileCasts';
 import { USERNAMES_PINNED_CASTS_ENABLED } from 'apps/web/src/utils/usernames';
 
 export default function UsernameProfileContent() {

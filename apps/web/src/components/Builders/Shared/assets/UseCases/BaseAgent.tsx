@@ -8,7 +8,7 @@ type Props = {
   className?: string;
 };
 
-export function AnimatedBaseAgent({ className }: Props) {
+export function AnimatedUnstableAgent({ className }: Props) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.85 });
 

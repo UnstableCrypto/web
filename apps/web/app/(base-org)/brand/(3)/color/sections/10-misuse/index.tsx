@@ -66,7 +66,7 @@ const images = [
     tag: (
       <span className="flex gap-2 items-center">
         <CrossSvg />
-        <span>Do not over use Base Blue on product or web</span>
+        <span>Do not over use Unstable Blue on product or web</span>
       </span>
     ),
   },

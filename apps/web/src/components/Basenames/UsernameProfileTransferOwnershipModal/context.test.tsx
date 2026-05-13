@@ -128,16 +128,16 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: 8453, name: 'Base' },
+    basenameChain: { id: 8453, name: 'Unstable' },
   }),
 }));
 
-// Mock useBasenameResolver
-jest.mock('apps/web/src/hooks/useBasenameResolver', () => ({
+// Mock useUnstablenameResolver
+jest.mock('apps/web/src/hooks/useUnstablenameResolver', () => ({
   __esModule: true,
   default: () => ({
     data: '0x1234567890123456789012345678901234567890',
@@ -159,7 +159,7 @@ let mockCanSetAddr = true;
 let mockCanReclaim = true;
 let mockCanSafeTransferFrom = true;
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileUsername: 'testname.base.eth',
     canSetAddr: mockCanSetAddr,
@@ -170,8 +170,8 @@ jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
 
 // Mock usernames utilities
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getTokenIdFromBasename: jest.fn().mockReturnValue(BigInt(12345)),
-  buildBasenameReclaimContract: jest.fn().mockReturnValue({
+  getTokenIdFromUnstablename: jest.fn().mockReturnValue(BigInt(12345)),
+  buildUnstablenameReclaimContract: jest.fn().mockReturnValue({
     abi: [],
     address: '0x0000000000000000000000000000000000000000',
     args: [BigInt(12345), '0xrecipient'],
@@ -182,7 +182,7 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 
 // Mock ABIs
 jest.mock('apps/web/src/abis/L2Resolver', () => [], { virtual: true });
-jest.mock('apps/web/src/abis/BaseRegistrarAbi', () => [], { virtual: true });
+jest.mock('apps/web/src/abis/UnstableRegistrarAbi', () => [], { virtual: true });
 jest.mock('apps/web/src/abis/ReverseRegistrarAbi', () => [], { virtual: true });
 
 // Mock addresses

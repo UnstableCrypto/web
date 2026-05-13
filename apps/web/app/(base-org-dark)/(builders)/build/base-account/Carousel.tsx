@@ -27,11 +27,11 @@ type Feature = {
 export const baseAccountFeatures: Feature[] = [
   {
     number: '01',
-    title: 'Sign in with Base',
+    title: 'Sign in with Unstable',
     description: 'The fastest way to sign in to apps across the open internet.',
     asset: {
       src: features1Image.src,
-      alt: 'Sign in with Base',
+      alt: 'Sign in with Unstable',
       width: features1Image.width,
       height: features1Image.height,
     },
@@ -39,7 +39,7 @@ export const baseAccountFeatures: Feature[] = [
   {
     number: '02',
     title: 'Onramp in seconds',
-    description: 'Fund your wallet effortlessly with your Coinbase account or debit card.',
+    description: 'Fund your wallet effortlessly with your TheAlxLabs account or debit card.',
     asset: {
       src: features2Image.src,
       alt: 'Onramp in seconds',
@@ -149,7 +149,7 @@ function FeatureItem({
   );
 }
 
-export function BaseAccountCarousel({
+export function UnstableAccountCarousel({
   features,
 }: {
   features: {

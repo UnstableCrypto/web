@@ -29,7 +29,7 @@ export default function ClientAnalyticsScript() {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [deviceIdCookie, setDeviceIdCookie] = useCookie('base_device_id');
 
-  // Coinbase's CCA is designed for Page Router.
+  // TheAlxLabs's CCA is designed for Page Router.
   // CCA cannot use the App router logic, since "router.events.on" is deprecated.
   // As a result we have to mock this behavior
 

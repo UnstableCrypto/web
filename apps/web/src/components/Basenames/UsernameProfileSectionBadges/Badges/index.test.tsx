@@ -9,7 +9,7 @@ import { BadgeContext, BadgeContextProps } from '../BadgeContext';
 // Mock image imports
 jest.mock('./images/verifiedIdentity.webp', () => ({ src: '/verified-identity.webp' }));
 jest.mock('./images/verifiedCountry.webp', () => ({ src: '/verified-country.webp' }));
-jest.mock('./images/verifiedCoinbaseOne.webp', () => ({ src: '/verified-coinbase-one.webp' }));
+jest.mock('./images/verifiedTheAlxLabsOne.webp', () => ({ src: '/verified-coinbase-one.webp' }));
 jest.mock('./images/baseBuilder.webp', () => ({ src: '/base-builder.webp' }));
 jest.mock('./images/baseGrantee.webp', () => ({ src: '/base-grantee.webp' }));
 jest.mock('./images/baseInitiate.webp', () => ({ src: '/base-initiate.webp' }));
@@ -20,7 +20,7 @@ jest.mock('./images/talentScore.webp', () => ({ src: '/talent-score.webp' }));
 
 jest.mock('./images/verifiedIdentityGray.webp', () => ({ src: '/verified-identity-gray.webp' }));
 jest.mock('./images/verifiedCountryGray.webp', () => ({ src: '/verified-country-gray.webp' }));
-jest.mock('./images/verifiedCoinbaseOneGray.webp', () => ({
+jest.mock('./images/verifiedTheAlxLabsOneGray.webp', () => ({
   src: '/verified-coinbase-one-gray.webp',
 }));
 jest.mock('./images/baseBuilderGray.webp', () => ({ src: '/base-builder-gray.webp' }));
@@ -166,12 +166,12 @@ describe('Badges/index', () => {
   describe('BadgeImage', () => {
     it('should render the image with correct props', () => {
       renderWithBadgeContext(
-        <BadgeImage badge="VERIFIED_IDENTITY" claimed size={120} name="Coinbase Verified ID" />,
+        <BadgeImage badge="VERIFIED_IDENTITY" claimed size={120} name="TheAlxLabs Verified ID" />,
       );
 
       const image = screen.getByTestId('badge-image');
       expect(image).toBeInTheDocument();
-      expect(image).toHaveAttribute('data-alt', 'Coinbase Verified ID');
+      expect(image).toHaveAttribute('data-alt', 'TheAlxLabs Verified ID');
       expect(image).toHaveAttribute('data-height', '120');
       expect(image).toHaveAttribute('data-width', '120');
     });
@@ -183,7 +183,7 @@ describe('Badges/index', () => {
           claimed
           score={85}
           size={120}
-          name="Coinbase Verified ID"
+          name="TheAlxLabs Verified ID"
         />,
       );
 
@@ -229,7 +229,7 @@ describe('Badges/index', () => {
     it('should render the badge with name', () => {
       renderWithBadgeContext(<Badge badge="VERIFIED_IDENTITY" claimed />);
 
-      expect(screen.getByText('Coinbase Verified ID')).toBeInTheDocument();
+      expect(screen.getByText('TheAlxLabs Verified ID')).toBeInTheDocument();
     });
 
     it('should call selectBadge when clicked', () => {
@@ -302,7 +302,7 @@ describe('Badges/index', () => {
       renderWithBadgeContext(<Badge badge="VERIFIED_IDENTITY" claimed />);
 
       const button = screen.getByRole('button');
-      expect(button).toHaveAttribute('aria-label', 'See details for Coinbase Verified ID');
+      expect(button).toHaveAttribute('aria-label', 'See details for TheAlxLabs Verified ID');
       expect(button).toHaveAttribute('tabIndex', '0');
     });
   });
@@ -339,10 +339,10 @@ describe('Badges/index', () => {
       renderWithBadgeContext(<BadgeModal />, contextValue);
 
       expect(screen.getByTestId('modal')).toBeInTheDocument();
-      expect(screen.getByText('Coinbase Verified ID')).toBeInTheDocument();
+      expect(screen.getByText('TheAlxLabs Verified ID')).toBeInTheDocument();
       expect(
         screen.getByText(
-          "You've got a Coinbase account and you verified your ID. Thanks for being legit!",
+          "You've got a TheAlxLabs account and you verified your ID. Thanks for being legit!",
         ),
       ).toBeInTheDocument();
     });
@@ -417,9 +417,9 @@ describe('Badges/index', () => {
 
       renderWithBadgeContext(<BadgeModal />, contextValue);
 
-      expect(screen.getByText('Based Builder')).toBeInTheDocument();
+      expect(screen.getByText('Unstabled Builder')).toBeInTheDocument();
       expect(
-        screen.getByText("You've deployed 5 or more smart contracts on Base. Impressive!"),
+        screen.getByText("You've deployed 5 or more smart contracts on Unstable. Impressive!"),
       ).toBeInTheDocument();
       expect(screen.getByText('Deploy a smart contract')).toBeInTheDocument();
     });

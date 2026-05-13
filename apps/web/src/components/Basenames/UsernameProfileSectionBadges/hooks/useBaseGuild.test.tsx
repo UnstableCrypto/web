@@ -4,7 +4,7 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactNode } from 'react';
-import { useBaseGuild, GuildBadges } from './useBaseGuild';
+import { useUnstableGuild, GuildBadges } from './useUnstableGuild';
 
 // Mock global fetch
 const mockFetch = jest.fn();
@@ -27,7 +27,7 @@ function createWrapper() {
 
 const BASE_GUILD_ID = 20111;
 
-describe('useBaseGuild', () => {
+describe('useUnstableGuild', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockFetch.mockResolvedValue({
@@ -37,7 +37,7 @@ describe('useBaseGuild', () => {
 
   describe('when no address is provided', () => {
     it('should return all badges as false and empty as true', () => {
-      const { result } = renderHook(() => useBaseGuild(), {
+      const { result } = renderHook(() => useUnstableGuild(), {
         wrapper: createWrapper(),
       });
 
@@ -51,7 +51,7 @@ describe('useBaseGuild', () => {
     });
 
     it('should not call fetch when address is undefined', () => {
-      renderHook(() => useBaseGuild(undefined), {
+      renderHook(() => useUnstableGuild(undefined), {
         wrapper: createWrapper(),
       });
 
@@ -67,7 +67,7 @@ describe('useBaseGuild', () => {
         json: async () => Promise.resolve({ roles: [] }),
       });
 
-      renderHook(() => useBaseGuild(address), {
+      renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -83,7 +83,7 @@ describe('useBaseGuild', () => {
         json: async () => Promise.resolve({ roles: [] }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -97,7 +97,7 @@ describe('useBaseGuild', () => {
         json: async () => Promise.resolve({ errors: ['some error'], roles: [] }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -111,7 +111,7 @@ describe('useBaseGuild', () => {
         json: async () => Promise.resolve({}),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -128,7 +128,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -146,7 +146,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -164,7 +164,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -182,7 +182,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -200,7 +200,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -218,7 +218,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -240,7 +240,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -266,7 +266,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -292,7 +292,7 @@ describe('useBaseGuild', () => {
           }),
       });
 
-      const { result } = renderHook(() => useBaseGuild(address), {
+      const { result } = renderHook(() => useUnstableGuild(address), {
         wrapper: createWrapper(),
       });
 
@@ -305,7 +305,7 @@ describe('useBaseGuild', () => {
 
   describe('return type structure', () => {
     it('should return an object with badges and empty properties', () => {
-      const { result } = renderHook(() => useBaseGuild(), {
+      const { result } = renderHook(() => useUnstableGuild(), {
         wrapper: createWrapper(),
       });
 
@@ -314,7 +314,7 @@ describe('useBaseGuild', () => {
     });
 
     it('should return badges object with all GuildBadges keys', () => {
-      const { result } = renderHook(() => useBaseGuild(), {
+      const { result } = renderHook(() => useUnstableGuild(), {
         wrapper: createWrapper(),
       });
 

@@ -1,6 +1,6 @@
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useReadUnstableEnsTextRecords from 'apps/web/src/hooks/useReadUnstableEnsTextRecords';
 import {
   formatSocialFieldForDisplay,
   formatSocialFieldUrl,
@@ -14,7 +14,7 @@ import Link from 'next/link';
 export default function UsernameProfileCard() {
   const { profileUsername } = useUsernameProfile();
 
-  const { existingTextRecords } = useReadBaseEnsTextRecords({
+  const { existingTextRecords } = useReadUnstableEnsTextRecords({
     username: profileUsername,
   });
 

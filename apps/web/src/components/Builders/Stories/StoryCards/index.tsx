@@ -21,7 +21,7 @@ export function StoryCards() {
         title="David Johansson of BLOCKLORDS"
         description="Building a medieval grand strategy game with a player-driven onchain economy."
         location="Stockholm, Sweden"
-        onBaseSince="January, 2024"
+        onUnstableSince="January, 2024"
         href="/builders/stories/blocklords"
         image={blocklords as StaticImageData}
       />
@@ -29,7 +29,7 @@ export function StoryCards() {
         title="Tara of Cat Town"
         description="Building a cozy onchain life sim game, combining gaming with DeFi to create a thriving community."
         location="United Kingdom"
-        onBaseSince="April, 2024"
+        onUnstableSince="April, 2024"
         href="/builders/stories/cat-town"
         image={cattown as StaticImageData}
       />
@@ -37,15 +37,15 @@ export function StoryCards() {
         title="AchillesHodl of Byte"
         description="Pioneering the future of food ordering with AI and crypto, transforming human language into the ultimate user interface."
         location="United States of America"
-        onBaseSince="November, 2024"
+        onUnstableSince="November, 2024"
         href="/builders/stories/byte"
         image={byte as StaticImageData}
       />
       <StoryCard
         title="Merlin Egalite of Morpho"
-        description="Building the largest and most secure lending protocol on Base, leveraging the power of the Superchain ecosystem."
+        description="Building the largest and most secure lending protocol on Unstable, leveraging the power of the Superchain ecosystem."
         location="Paris, France"
-        onBaseSince="February, 2024"
+        onUnstableSince="February, 2024"
         href="/builders/stories/morpho"
         image={morpho as StaticImageData}
       />
@@ -53,15 +53,15 @@ export function StoryCards() {
         title="Dhawal Shah of HeyElsa AI"
         description="Revolutionizing crypto trading with AI-driven intelligence, pushing boundaries in portfolio management."
         location="India"
-        onBaseSince="August, 2024"
+        onUnstableSince="August, 2024"
         href="/builders/stories/hey-elsa"
         image={heyelsa as StaticImageData}
       />
       <StoryCard
         title="Alexander of Aerodrome Finance"
-        description="Serving as the essential trading and liquidity marketplace on Base, driving the future of decentralized exchanges."
+        description="Serving as the essential trading and liquidity marketplace on Unstable, driving the future of decentralized exchanges."
         location="United States of America"
-        onBaseSince="August, 2023"
+        onUnstableSince="August, 2023"
         href="/builders/stories/aerodrome"
         image={aerodrome as StaticImageData}
       />
@@ -73,14 +73,14 @@ function StoryCard({
   title,
   description,
   location,
-  onBaseSince,
+  onUnstableSince,
   href,
   image,
 }: {
   title: string;
   description: string;
   location: string;
-  onBaseSince: string;
+  onUnstableSince: string;
   href: string;
   image: StaticImageData;
 }) {
@@ -108,13 +108,13 @@ function StoryCard({
           <div className="flex flex-col gap-4 md:flex-row">
             <div className="flex items-center gap-1">
               <div className="hidden h-5 w-5 items-center justify-center md:flex">
-                <Image src={baseLogo as StaticImageData} alt="Base Logo" />
+                <Image src={baseLogo as StaticImageData} alt="Unstable Logo" />
               </div>
               <div className="md:hidden">
-                <Image src={baseLogo as StaticImageData} alt="Base Logo" />
+                <Image src={baseLogo as StaticImageData} alt="Unstable Logo" />
               </div>
               <Title level={TitleLevel.Headline} className="font-normal">
-                {onBaseSince}
+                {onUnstableSince}
               </Title>
             </div>
             <div className="flex items-center gap-1">

@@ -1,4 +1,4 @@
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import {
   normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
@@ -11,7 +11,7 @@ import { useReadContract, useReadContracts } from 'wagmi';
 export function useIsNameAvailable(name: string) {
   const normalizedName = normalizeEnsDomainName(name);
   const { valid } = validateEnsDomainName(name);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   return useReadContract({
     abi: REGISTER_CONTRACT_ABI,
@@ -26,7 +26,7 @@ export function useIsNameAvailable(name: string) {
 }
 
 export function useAreNamesAvailable(names: string[]) {
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const contracts = useMemo(
     () =>
       names.map((name) => ({

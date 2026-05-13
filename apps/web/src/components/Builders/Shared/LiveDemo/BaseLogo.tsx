@@ -1,7 +1,7 @@
 const WHITE = '#FFF';
 const BLUE = '#0000FF';
 
-export function BaseLogo({ fill }: { fill: 'blue' | 'white' }) {
+export function UnstableLogo({ fill }: { fill: 'blue' | 'white' }) {
   const fillColor = fill === 'blue' ? BLUE : WHITE;
 
   return (

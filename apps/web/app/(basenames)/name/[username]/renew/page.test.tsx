@@ -17,11 +17,11 @@ jest.mock('next/navigation', () => ({
 
 // Mock usernames utils
 const mockFormatDefaultUsername = jest.fn();
-let mockIsBasenameRenewalsKilled = false;
+let mockIsUnstablenameRenewalsKilled = false;
 jest.mock('apps/web/src/utils/usernames', () => ({
   formatDefaultUsername: (...args: unknown[]) => mockFormatDefaultUsername(...args) as unknown,
-  get isBasenameRenewalsKilled() {
-    return mockIsBasenameRenewalsKilled;
+  get isUnstablenameRenewalsKilled() {
+    return mockIsUnstablenameRenewalsKilled;
   },
 }));
 
@@ -41,7 +41,7 @@ jest.mock('apps/web/contexts/Errors', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/RenewalFlow', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RenewalFlow', () => ({
   __esModule: true,
   default: ({ name }: { name: string }) => (
     <div data-testid="renewal-flow" data-name={name}>
@@ -53,7 +53,7 @@ jest.mock('apps/web/src/components/Basenames/RenewalFlow', () => ({
 describe('Renew Page', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockIsBasenameRenewalsKilled = false;
+    mockIsUnstablenameRenewalsKilled = false;
     mockFormatDefaultUsername.mockImplementation(async (name: string) =>
       name.endsWith('.base.eth') ? name : `${name}.base.eth`
     );
@@ -155,7 +155,7 @@ describe('Renew Page', () => {
 
   describe('renewals killed behavior', () => {
     it('should call notFound when renewals are killed', async () => {
-      mockIsBasenameRenewalsKilled = true;
+      mockIsUnstablenameRenewalsKilled = true;
 
       await expect(
         Page({ params: Promise.resolve({ username: 'testuser' }) })
@@ -165,7 +165,7 @@ describe('Renew Page', () => {
     });
 
     it('should not call redirectIfNameDoesNotExist when renewals are killed', async () => {
-      mockIsBasenameRenewalsKilled = true;
+      mockIsUnstablenameRenewalsKilled = true;
 
       await expect(
         Page({ params: Promise.resolve({ username: 'testuser' }) })
@@ -175,7 +175,7 @@ describe('Renew Page', () => {
     });
 
     it('should render normally when renewals are not killed', async () => {
-      mockIsBasenameRenewalsKilled = false;
+      mockIsUnstablenameRenewalsKilled = false;
 
       const page = await Page({
         params: Promise.resolve({ username: 'testuser' }),

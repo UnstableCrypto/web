@@ -3,8 +3,8 @@ import { useErrors } from 'apps/web/contexts/Errors';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAccount, useChainId } from 'wagmi';
 import { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddresses';
-import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
-import { Basename } from '@coinbase/onchainkit/identity';
+import useSetPrimaryUnstablename from 'apps/web/src/hooks/useSetPrimaryUnstablename';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 export function useNameList() {
   const { address } = useAccount();
@@ -117,7 +117,7 @@ export function useRemoveNameFromUI() {
   return { removeNameFromUI };
 }
 
-export function useUpdatePrimaryName(domain: Basename) {
+export function useUpdatePrimaryName(domain: Unstablename) {
   const { address } = useAccount();
   const chainId = useChainId();
   const { logError } = useErrors();
@@ -127,7 +127,7 @@ export function useUpdatePrimaryName(domain: Basename) {
   const network = chainId === 8453 ? 'base-mainnet' : 'base-sepolia';
 
   // Hook to update primary name
-  const { setPrimaryName, transactionIsSuccess, transactionPending } = useSetPrimaryBasename({
+  const { setPrimaryName, transactionIsSuccess, transactionPending } = useSetPrimaryUnstablename({
     secondaryUsername: domain,
   });
 

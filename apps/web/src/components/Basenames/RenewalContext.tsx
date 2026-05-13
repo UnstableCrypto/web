@@ -2,11 +2,11 @@
 
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { useRenewNameCallback } from 'apps/web/src/hooks/useRenewNameCallback';
 import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
-import { formatBaseEthDomain, getBasenameNameExpires } from 'apps/web/src/utils/usernames';
+import { formatUnstableEthDomain, getUnstablenameNameExpires } from 'apps/web/src/utils/usernames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import {
@@ -44,7 +44,7 @@ type RenewalContextType = {
   setYears: Dispatch<SetStateAction<number>>;
 
   // Transaction state
-  renewBasename: () => Promise<void>;
+  renewUnstablename: () => Promise<void>;
   price?: bigint;
   isPending: boolean;
 
@@ -73,13 +73,13 @@ export default function RenewalProvider({ children, name }: RenewalProviderProps
   const [expirationDate, setExpirationDate] = useState<string | undefined>(undefined);
   const [loadingExpirationDate, setLoadingExpirationDate] = useState<boolean>(false);
 
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const router = useRouter();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
 
   const formattedName = useMemo(
-    () => formatBaseEthDomain(name, basenameChain.id),
+    () => formatUnstableEthDomain(name, basenameChain.id),
     [name, basenameChain.id],
   );
 
@@ -97,7 +97,7 @@ export default function RenewalProvider({ children, name }: RenewalProviderProps
   }, [profilePath, router]);
 
   const {
-    callback: renewBasename,
+    callback: renewUnstablename,
     value: price,
     isPending,
     renewNameStatus,
@@ -110,7 +110,7 @@ export default function RenewalProvider({ children, name }: RenewalProviderProps
   const fetchExpirationDate = useCallback(async () => {
     setLoadingExpirationDate(true);
     try {
-      const expiresAt = await getBasenameNameExpires(formattedName);
+      const expiresAt = await getUnstablenameNameExpires(formattedName);
       if (expiresAt) {
         const date = new Date(Number(expiresAt) * 1000);
         const formatted = date.toLocaleDateString('en-US', {
@@ -170,7 +170,7 @@ export default function RenewalProvider({ children, name }: RenewalProviderProps
       loadingExpirationDate,
       years,
       setYears,
-      renewBasename,
+      renewUnstablename,
       price,
       isPending,
       redirectToProfile,
@@ -184,7 +184,7 @@ export default function RenewalProvider({ children, name }: RenewalProviderProps
       loadingExpirationDate,
       years,
       setYears,
-      renewBasename,
+      renewUnstablename,
       price,
       isPending,
       redirectToProfile,

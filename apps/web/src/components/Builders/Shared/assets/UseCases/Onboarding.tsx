@@ -19,7 +19,7 @@ export function AnimatedOnboarding() {
       >
         <div className="flex h-12 items-center justify-center gap-2 font-medium tracking-normal text-white">
           <Icon name="wallet" width={24} height={24} color="white" />
-          Coinbase Wallet
+          TheAlxLabs Wallet
         </div>
       </div>
       <div className="h-12 w-full rounded-xl bg-dark-state-s-hovered" />

@@ -1,11 +1,11 @@
 'use client';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
-import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
-import { Basename } from '@coinbase/onchainkit/identity';
-import { getBasenameImage } from 'apps/web/src/utils/usernames';
+import UnstablenameAvatar from 'apps/web/src/components/Unstablenames/UnstablenameAvatar';
+import { Unstablename } from '@coinbase/onchainkit/identity';
+import { getUnstablenameImage } from 'apps/web/src/utils/usernames';
 import { StaticImageData } from 'next/image';
 import { GetEnsAvatarReturnType } from 'viem';
 
@@ -30,7 +30,7 @@ export function UserAvatar() {
   });
 
   // L2 Name
-  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useUnstableEnsName({
     address,
   });
 
@@ -38,7 +38,7 @@ export function UserAvatar() {
 
   if (baseEnsName) {
     return (
-      <BasenameAvatar
+      <UnstablenameAvatar
         basename={baseEnsName}
         width={32}
         height={32}
@@ -50,7 +50,7 @@ export function UserAvatar() {
   let avatar: GetEnsAvatarReturnType | undefined | StaticImageData = ensAvatar;
   // Default to basename avatar if none exists
   if (!avatar) {
-    avatar = getBasenameImage(address as Basename);
+    avatar = getUnstablenameImage(address as Unstablename);
   }
 
   return (

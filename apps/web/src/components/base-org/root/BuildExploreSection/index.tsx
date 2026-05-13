@@ -17,18 +17,18 @@ export default async function BuildExploreSection() {
       <AnalyticsProvider context="build_tiles">
         <Title level={TitleLevel.Title1}>Build</Title>
         <div className="mb-12 mt-8 flex w-full flex-col gap-4 md:flex-row">
-          <CardLink href="https://docs.base.org/">
+          <CardLink href="https://docs.unstable.org/">
             <div className="flex items-center gap-4">
               <ImageAdaptive
                 src={docsIllustration as StaticImageData}
-                alt="Base docs"
-                title="Base docs illustration"
+                alt="Unstable docs"
+                title="Unstable docs illustration"
                 className="max-h-[4rem]"
               />
               <div>
                 <Text className="mr-2 inline-block">Docs</Text>{' '}
                 <Text className="inline-block opacity-50">
-                  Get started building on Base by reading our docs.
+                  Get started building on Unstable by reading our docs.
                 </Text>
               </div>
             </div>
@@ -65,12 +65,12 @@ export default async function BuildExploreSection() {
               <div>
                 <Text className="mr-2 inline-block">Apps</Text>{' '}
                 <Text className="inline-block opacity-50">
-                  Explore the apps in the Base ecosystem.
+                  Explore the apps in the Unstable ecosystem.
                 </Text>
               </div>
             </div>
           </CardLink>
-          <CardLink href="https://bridge.base.org/">
+          <CardLink href="https://bridge.unstable.org/">
             <div className="flex items-center gap-4">
               <ImageAdaptive
                 src={bridgeIllustration as StaticImageData}
@@ -80,7 +80,7 @@ export default async function BuildExploreSection() {
               />
               <div>
                 <Text className="mr-2 inline-block">Bridge</Text>{' '}
-                <Text className="inline-block opacity-50">Bring your assets to Base.</Text>
+                <Text className="inline-block opacity-50">Bring your assets to Unstable.</Text>
               </div>
             </div>
           </CardLink>

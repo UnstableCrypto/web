@@ -5,7 +5,7 @@ import { renderHook, act, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useNameList, useRemoveNameFromUI, useUpdatePrimaryName } from './hooks';
 import React from 'react';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 // Mock wagmi hooks
 const mockAddress = '0x1234567890abcdef1234567890abcdef12345678';
@@ -24,12 +24,12 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useSetPrimaryBasename
+// Mock useSetPrimaryUnstablename
 const mockSetPrimaryName = jest.fn();
 let mockTransactionIsSuccess = false;
 let mockTransactionPending = false;
 
-jest.mock('apps/web/src/hooks/useSetPrimaryBasename', () => ({
+jest.mock('apps/web/src/hooks/useSetPrimaryUnstablename', () => ({
   __esModule: true,
   default: jest.fn(() => ({
     setPrimaryName: mockSetPrimaryName,
@@ -445,7 +445,7 @@ describe('useRemoveNameFromUI', () => {
 });
 
 describe('useUpdatePrimaryName', () => {
-  const testDomain: Basename = 'test.base.eth' as Basename;
+  const testDomain: Unstablename = 'test.base.eth' as Unstablename;
 
   beforeEach(() => {
     jest.clearAllMocks();

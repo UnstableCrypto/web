@@ -15,12 +15,12 @@ import { mockConsoleLog, restoreConsoleLog } from 'apps/web/src/testUtils/consol
 
 // Mock the UsernameProfileContext
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
 // Mock UsernameProfileSectionTitle
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionTitle', () => {
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionTitle', () => {
   return function MockUsernameProfileSectionTitle({ title }: { title: string }) {
     return <div data-testid="section-title">{title}</div>;
   };
@@ -178,7 +178,7 @@ jest.mock('@radix-ui/react-collapsible', () => ({
 jest.mock('./cal.css', () => ({}));
 
 // Mock contracts
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSectionHeatmap/contracts', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSectionHeatmap/contracts', () => ({
   bridges: new Set(['0x8ed95d1746bf1e4dab58d8ed4724f1ef95b20db0']),
   lendBorrowEarn: new Set(['0x1e4b7a6b903680eab0c5dabcb8fd429cd2a9598c']),
 }));
@@ -442,7 +442,7 @@ describe('UsernameProfileSectionHeatmap', () => {
       });
 
       await waitFor(() => {
-        expect(screen.getByText('Transactions on Ethereum & Base')).toBeInTheDocument();
+        expect(screen.getByText('Transactions on Ethereum & Unstable')).toBeInTheDocument();
         expect(screen.getByText('Unique days active')).toBeInTheDocument();
         expect(screen.getByText('Day longest streak')).toBeInTheDocument();
         expect(screen.getByText('Day current streak')).toBeInTheDocument();
@@ -1021,7 +1021,7 @@ describe('UsernameProfileSectionHeatmap', () => {
       });
     });
 
-    it('should count interactions with Basenames RegistrarController', async () => {
+    it('should count interactions with Unstablenames RegistrarController', async () => {
       const basenameTx = createMockTransaction({
         to: '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119a5',
       });
@@ -1038,7 +1038,7 @@ describe('UsernameProfileSectionHeatmap', () => {
       });
     });
 
-    it('should count interactions with Basenames EA RegistrarController', async () => {
+    it('should count interactions with Unstablenames EA RegistrarController', async () => {
       const basenameEaTx = createMockTransaction({
         to: '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda',
       });

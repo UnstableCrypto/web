@@ -2,18 +2,18 @@
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback } from 'react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import {
   SettingsTabs,
   settingTabsForDisplay,
   useUsernameProfileSettings,
-} from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
-import UsernameProfileSettingsMenu from 'apps/web/src/components/Basenames/UsernameProfileSettingsMenu';
-import UsernameProfileSettingsName from 'apps/web/src/components/Basenames/UsernameProfileSettingsName';
-import UsernameProfileSettingsManageProfile from 'apps/web/src/components/Basenames/UsernameProfileSettingsManageProfile';
-import UsernameProfileSettingsAvatar from 'apps/web/src/components/Basenames/UsernameProfileSettingsAvatar';
-import UsernameProfileSettingsOwnership from 'apps/web/src/components/Basenames/UsernameProfileSettingsOwnership';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsContext';
+import UsernameProfileSettingsMenu from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsMenu';
+import UsernameProfileSettingsName from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsName';
+import UsernameProfileSettingsManageProfile from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsManageProfile';
+import UsernameProfileSettingsAvatar from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsAvatar';
+import UsernameProfileSettingsOwnership from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsOwnership';
 
 export default function UsernameProfileSettings() {
   const { currentWalletIsProfileEditor, setShowProfileSettings } = useUsernameProfile();

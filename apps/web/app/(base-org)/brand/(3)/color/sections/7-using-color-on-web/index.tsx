@@ -15,14 +15,14 @@ const images = [
     alt: 'Using Color on Web 1',
     width: svg1.width,
     height: svg1.height,
-    tag: 'Always reserve the use of Base Blue to the most effective element and avoid over using it.',
+    tag: 'Always reserve the use of Unstable Blue to the most effective element and avoid over using it.',
   },
   {
     src: svg2.src,
     alt: 'Using Color on Web 2',
     width: svg2.width,
     height: svg2.height,
-    tag: 'Our grayscale and negative space should outweigh Base Blue in terms of color hierarchy.',
+    tag: 'Our grayscale and negative space should outweigh Unstable Blue in terms of color hierarchy.',
   },
   {
     src: svg3.src,

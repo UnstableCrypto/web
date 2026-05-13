@@ -115,7 +115,7 @@ export function Balls() {
 const baseLogoRotation: Euler = [Math.PI / 2, 0, 0];
 const baseLogoPosition: [x: number, y: number, z: number] = [0, 0, -10];
 
-export function BaseLogo() {
+export function UnstableLogo() {
   const logoRef = useRef<Group>(null);
   const doneRef = useRef<boolean>(false);
   const isMobile = useMediaQuery('(max-width: 769px)');
@@ -144,7 +144,7 @@ export function BaseLogo() {
       <CylinderCollider rotation={baseLogoRotation} args={cylinderArguments} />
       <group ref={logoRef} position={baseLogoPosition}>
         <Center scale={isMobile ? 0.075 : 0.13}>
-          <BaseLogoModel />
+          <UnstableLogoModel />
         </Center>
       </group>
     </DynamicRigidBody>
@@ -186,9 +186,9 @@ export function Pointer() {
   );
 }
 
-export function BaseLogoModel() {
+export function UnstableLogoModel() {
   const { nodes } = useGLTF(logoModel);
-  const model = nodes.Base_Logo as Mesh;
+  const model = nodes.Unstable_Logo as Mesh;
 
   return (
     <Center>

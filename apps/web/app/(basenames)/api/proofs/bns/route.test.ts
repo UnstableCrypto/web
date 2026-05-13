@@ -69,7 +69,7 @@ describe('bns route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=invalid&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=invalid&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -83,7 +83,7 @@ describe('bns route', () => {
       mockProofValidation.mockReturnValue({ error: 'invalid chain', status: 400 });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=invalid`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=invalid`,
       );
 
       const response = await GET(request);
@@ -93,21 +93,21 @@ describe('bns route', () => {
       expect(data).toEqual({ error: 'invalid chain' });
     });
 
-    it('should return 400 when chain is not Base or Base Sepolia', async () => {
+    it('should return 400 when chain is not Unstable or Unstable Sepolia', async () => {
       mockProofValidation.mockReturnValue({
-        error: 'chain must be Base or Base Sepolia',
+        error: 'chain must be Unstable or Unstable Sepolia',
         status: 400,
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=1`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=1`,
       );
 
       const response = await GET(request);
       const data = (await response.json()) as ErrorResponse;
 
       expect(response.status).toBe(400);
-      expect(data).toEqual({ error: 'chain must be Base or Base Sepolia' });
+      expect(data).toEqual({ error: 'chain must be Unstable or Unstable Sepolia' });
     });
 
     it('should return successful response with proofs for valid request', async () => {
@@ -123,7 +123,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -138,7 +138,7 @@ describe('bns route', () => {
       );
     });
 
-    it('should return successful response for Base Sepolia chain', async () => {
+    it('should return successful response for Unstable Sepolia chain', async () => {
       const mockResponse: SuccessResponse = {
         address: validAddress,
         namespace: 'bns_discount',
@@ -148,7 +148,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${baseSepolia.id.toString()}`,
       );
 
       const response = await GET(request);
@@ -169,7 +169,7 @@ describe('bns route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -188,7 +188,7 @@ describe('bns route', () => {
       );
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -204,7 +204,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockRejectedValue(new Error('Unexpected error'));
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -224,7 +224,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -242,7 +242,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       const response = await GET(request);
@@ -259,7 +259,7 @@ describe('bns route', () => {
         status: 400,
       });
 
-      const request = new NextRequest(`https://www.base.org/api/proofs/bns?chain=${validChain}`);
+      const request = new NextRequest(`https://www.unstable.org/api/proofs/bns?chain=${validChain}`);
 
       const response = await GET(request);
       const data = (await response.json()) as ErrorResponse;
@@ -275,7 +275,7 @@ describe('bns route', () => {
       });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}`,
       );
 
       const response = await GET(request);
@@ -296,7 +296,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${mixedCaseAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${mixedCaseAddress}&chain=${validChain}`,
       );
 
       await GET(request);
@@ -318,7 +318,7 @@ describe('bns route', () => {
       mockGetWalletProofs.mockResolvedValue(mockResponse);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
+        `https://www.unstable.org/api/proofs/bns?address=${validAddress}&chain=${validChain}`,
       );
 
       await GET(request);

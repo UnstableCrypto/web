@@ -1,12 +1,12 @@
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 
 const SEARCH_LABEL_COPY_STRINGS = [
-  'Build your Based profile',
-  'Connect with Based builders',
+  'Build your Unstabled profile',
+  'Connect with Unstabled builders',
   'Simplify onchain transactions',
 ];
 
@@ -39,7 +39,7 @@ export default function RegistrationBrand() {
         >
           <Icon name="blueCircle" color="currentColor" width={15} height={15} />
         </span>
-        <h1 className="text-md font-bold md:text-xl">Basenames</h1>
+        <h1 className="text-md font-bold md:text-xl">Unstablenames</h1>
       </div>
       <p className="sm:text-md text-xs md:text-xl" ref={typedTextRef} />
     </div>

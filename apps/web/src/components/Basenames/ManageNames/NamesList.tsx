@@ -2,7 +2,7 @@
 
 import { useCallback } from 'react';
 import NameDisplay from './NameDisplay';
-import { useNameList } from 'apps/web/src/components/Basenames/ManageNames/hooks';
+import { useNameList } from 'apps/web/src/components/Unstablenames/ManageNames/hooks';
 import { useErrors } from 'apps/web/contexts/Errors';
 import Link from 'apps/web/src/components/Link';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
@@ -15,7 +15,7 @@ function NamesLayout({ children }: { children: React.ReactNode }) {
     <AnalyticsProvider context={usernameManagementListAnalyticContext}>
       <div className="mx-auto max-w-2xl space-y-4 px-6 pb-16 pt-4">
         <div className="flex items-center justify-between">
-          <h1 className="mb-4 text-3xl font-bold">My Basenames</h1>
+          <h1 className="mb-4 text-3xl font-bold">My Unstablenames</h1>
           <Link
             className="rounded-lg bg-palette-backgroundAlternate p-2 text-sm text-palette-foreground"
             href="/names/"
@@ -76,7 +76,7 @@ export default function NamesList() {
           <br />
           <br />
           <Link href="/names/" className="text-lg font-bold text-palette-primary underline">
-            Get a Basename!
+            Get a Unstablename!
           </Link>
         </div>
       </NamesLayout>

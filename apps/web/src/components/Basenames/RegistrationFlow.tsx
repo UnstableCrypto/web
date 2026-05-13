@@ -2,34 +2,34 @@
 import dynamic from 'next/dynamic';
 import { useLocalStorage } from 'usehooks-ts';
 import { Transition } from '@headlessui/react';
-import RegistrationBackground from 'apps/web/src/components/Basenames/RegistrationBackground';
-import RegistrationBrand from 'apps/web/src/components/Basenames/RegistrationBrand';
+import RegistrationBackground from 'apps/web/src/components/Unstablenames/RegistrationBackground';
+import RegistrationBrand from 'apps/web/src/components/Unstablenames/RegistrationBrand';
 import {
   RegistrationSteps,
   registrationTransitionDuration,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
-import { FlowBackgroundSteps } from 'apps/web/src/components/Basenames/shared/types';
-import RegistrationForm from 'apps/web/src/components/Basenames/RegistrationForm';
-import RegistrationProfileForm from 'apps/web/src/components/Basenames/RegistrationProfileForm';
-import RegistrationSearchInput from 'apps/web/src/components/Basenames/RegistrationSearchInput';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
+import { FlowBackgroundSteps } from 'apps/web/src/components/Unstablenames/shared/types';
+import RegistrationForm from 'apps/web/src/components/Unstablenames/RegistrationForm';
+import RegistrationProfileForm from 'apps/web/src/components/Unstablenames/RegistrationProfileForm';
+import RegistrationSearchInput from 'apps/web/src/components/Unstablenames/RegistrationSearchInput';
 import { RegistrationSearchInputVariant } from './RegistrationSearchInput/types';
-import RegistrationSuccessMessage from 'apps/web/src/components/Basenames/RegistrationSuccessMessage';
-import { UsernamePill } from 'apps/web/src/components/Basenames/UsernamePill';
-import { UsernamePillVariants } from 'apps/web/src/components/Basenames/UsernamePill/types';
-import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
-import { formatBaseEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
+import RegistrationSuccessMessage from 'apps/web/src/components/Unstablenames/RegistrationSuccessMessage';
+import { UsernamePill } from 'apps/web/src/components/Unstablenames/UsernamePill';
+import { UsernamePillVariants } from 'apps/web/src/components/Unstablenames/UsernamePill/types';
+import useUnstablenameChain, { supportedChainIds } from 'apps/web/src/hooks/useUnstablenameChain';
+import { formatUnstableEthDomain, USERNAME_DOMAINS } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
 import { useAccount, useSwitchChain } from 'wagmi';
-import RegistrationShareOnSocials from 'apps/web/src/components/Basenames/RegistrationShareOnSocials';
+import RegistrationShareOnSocials from 'apps/web/src/components/Unstablenames/RegistrationShareOnSocials';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { isDevelopment } from 'libs/base-ui/constants';
-import RegistrationLandingExplore from 'apps/web/src/components/Basenames/RegistrationLandingExplore';
+import RegistrationLandingExplore from 'apps/web/src/components/Unstablenames/RegistrationLandingExplore';
 
 const RegistrationStateSwitcherDynamic = dynamic(
-  async () => import('apps/web/src/components/Basenames/RegistrationStateSwitcher'),
+  async () => import('apps/web/src/components/Unstablenames/RegistrationStateSwitcher'),
   { ssr: false },
 );
 
@@ -38,7 +38,7 @@ export const claimQueryKey = 'claim';
 export function RegistrationFlow() {
   const { chain } = useAccount();
   const searchParams = useSearchParams();
-  const [, setIsModalOpen] = useLocalStorage('BasenamesLaunchModalVisible', true);
+  const [, setIsModalOpen] = useLocalStorage('UnstablenamesLaunchModalVisible', true);
   const [, setIsBannerVisible] = useLocalStorage('basenamesLaunchBannerVisible', true);
   const [, setIsDocsBannerVisible] = useLocalStorage('basenamesLaunchDocsBannerVisible', true);
 
@@ -49,7 +49,7 @@ export function RegistrationFlow() {
     setSelectedName,
     setRegistrationStep,
   } = useRegistration();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { switchChain } = useSwitchChain();
 
   const isOnSupportedNetwork = useMemo(
@@ -231,7 +231,7 @@ export function RegistrationFlow() {
             >
               <UsernamePill
                 variant={currentUsernamePillVariant}
-                username={formatBaseEthDomain(selectedName, basenameChain.id)}
+                username={formatUnstableEthDomain(selectedName, basenameChain.id)}
                 isRegistering={isPending}
               />
             </Transition>

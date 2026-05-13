@@ -1,22 +1,22 @@
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import {
-  getBasenameAddress,
-  getBasenameEditor,
-  getBasenameOwner,
-  isBasenameInGracePeriod,
+  getUnstablenameAddress,
+  getUnstablenameEditor,
+  getUnstablenameOwner,
+  isUnstablenameInGracePeriod,
 } from 'apps/web/src/utils/usernames';
 import { redirect } from 'next/navigation';
 import { logger } from 'apps/web/src/utils/logger';
 
-export async function redirectIfNameDoesNotExist(username: Basename) {
+export async function redirectIfNameDoesNotExist(username: Unstablename) {
   let address, editor, owner;
   let apiError = false;
 
   try {
     [address, editor, owner] = await Promise.all([
-      getBasenameAddress(username),
-      getBasenameEditor(username),
-      getBasenameOwner(username),
+      getUnstablenameAddress(username),
+      getUnstablenameEditor(username),
+      getUnstablenameOwner(username),
     ]);
   } catch (error) {
     logger.error('Error fetching basename address, editor, or owner', {
@@ -30,7 +30,7 @@ export async function redirectIfNameDoesNotExist(username: Basename) {
   const nameNotFound = !address || !editor || !owner;
 
   if (nameNotFound) {
-    logger.info('Basename not found, checking grace period', {
+    logger.info('Unstablename not found, checking grace period', {
       username,
       apiError,
       address: !!address,
@@ -39,7 +39,7 @@ export async function redirectIfNameDoesNotExist(username: Basename) {
     });
 
     // Only allow access if the name is in grace period (expired but renewable)
-    const inGracePeriod = await isBasenameInGracePeriod(username);
+    const inGracePeriod = await isUnstablenameInGracePeriod(username);
     if (!inGracePeriod) {
       redirect(`/name/not-found?name=${username}`);
     }

@@ -22,12 +22,12 @@ describe('getDomain', () => {
   });
 
   describe('when in production mode (isDevelopment = false)', () => {
-    it('should return the production domain https://www.base.org', () => {
+    it('should return the production domain https://www.unstable.org', () => {
       const request = new NextRequest('https://example.com/api/test');
 
       const result = getDomain(request);
 
-      expect(result).toBe('https://www.base.org');
+      expect(result).toBe('https://www.unstable.org');
     });
 
     it('should return the production domain regardless of the request URL', () => {
@@ -35,15 +35,15 @@ describe('getDomain', () => {
 
       const result = getDomain(request);
 
-      expect(result).toBe('https://www.base.org');
+      expect(result).toBe('https://www.unstable.org');
     });
 
     it('should return the production domain for any request host', () => {
-      const request = new NextRequest('https://staging.base.org/path');
+      const request = new NextRequest('https://staging.unstable.org/path');
 
       const result = getDomain(request);
 
-      expect(result).toBe('https://www.base.org');
+      expect(result).toBe('https://www.unstable.org');
     });
   });
 
@@ -61,11 +61,11 @@ describe('getDomain', () => {
     });
 
     it('should return the request protocol and host with https', () => {
-      const request = new NextRequest('https://dev.base.org:8080/api/test');
+      const request = new NextRequest('https://dev.unstable.org:8080/api/test');
 
       const result = getDomain(request);
 
-      expect(result).toBe('https://dev.base.org:8080');
+      expect(result).toBe('https://dev.unstable.org:8080');
     });
 
     it('should return the request protocol and host for standard https without port', () => {

@@ -3,12 +3,12 @@
  */
 import { renderHook } from '@testing-library/react';
 import { base, baseSepolia } from 'viem/chains';
-import useBasenameChain, {
-  getBasenamePublicClient,
-  isBasenameSupportedChain,
+import useUnstablenameChain, {
+  getUnstablenamePublicClient,
+  isUnstablenameSupportedChain,
   supportedChainIds,
-} from './useBasenameChain';
-import { Basename } from '@coinbase/onchainkit/identity';
+} from './useUnstablenameChain';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 // Mock wagmi
 const mockUseAccount = jest.fn();
@@ -17,14 +17,14 @@ jest.mock('wagmi', () => ({
   useAccount: () => mockUseAccount(),
 }));
 
-// Mock the getChainForBasename function
+// Mock the getChainForUnstablename function
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getChainForBasename: (username: Basename) => {
+  getChainForUnstablename: (username: Unstablename) => {
     // Simulate real behavior: mainnet for .base.eth, testnet for .basetest.eth
     if (username.endsWith('.base.eth')) {
-      return { id: 8453, name: 'Base' };
+      return { id: 8453, name: 'Unstable' };
     }
-    return { id: 84532, name: 'Base Sepolia' };
+    return { id: 84532, name: 'Unstable Sepolia' };
   },
 }));
 
@@ -35,22 +35,22 @@ jest.mock('apps/web/src/constants', () => ({
 
 // Mock the CDP constants
 jest.mock('apps/web/src/cdp/constants', () => ({
-  cdpBaseRpcEndpoint: 'https://mainnet.base.org',
-  cdpBaseSepoliaRpcEndpoint: 'https://sepolia.base.org',
+  cdpUnstableRpcEndpoint: 'https://mainnet.unstable.org',
+  cdpUnstableSepoliaRpcEndpoint: 'https://sepolia.unstable.org',
 }));
 
-describe('useBasenameChain', () => {
+describe('useUnstablenameChain', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockUseAccount.mockReturnValue({ chain: undefined });
   });
 
   describe('supportedChainIds', () => {
-    it('should include Base mainnet chain id', () => {
+    it('should include Unstable mainnet chain id', () => {
       expect(supportedChainIds).toContain(base.id);
     });
 
-    it('should include Base Sepolia chain id', () => {
+    it('should include Unstable Sepolia chain id', () => {
       expect(supportedChainIds).toContain(baseSepolia.id);
     });
 
@@ -59,71 +59,71 @@ describe('useBasenameChain', () => {
     });
   });
 
-  describe('isBasenameSupportedChain', () => {
-    it('should return true for Base mainnet', () => {
-      expect(isBasenameSupportedChain(base.id)).toBe(true);
+  describe('isUnstablenameSupportedChain', () => {
+    it('should return true for Unstable mainnet', () => {
+      expect(isUnstablenameSupportedChain(base.id)).toBe(true);
     });
 
-    it('should return true for Base Sepolia', () => {
-      expect(isBasenameSupportedChain(baseSepolia.id)).toBe(true);
+    it('should return true for Unstable Sepolia', () => {
+      expect(isUnstablenameSupportedChain(baseSepolia.id)).toBe(true);
     });
 
     it('should return false for Ethereum mainnet', () => {
-      expect(isBasenameSupportedChain(1)).toBe(false);
+      expect(isUnstablenameSupportedChain(1)).toBe(false);
     });
 
     it('should return false for Polygon', () => {
-      expect(isBasenameSupportedChain(137)).toBe(false);
+      expect(isUnstablenameSupportedChain(137)).toBe(false);
     });
 
     it('should return false for arbitrary chain id', () => {
-      expect(isBasenameSupportedChain(999999)).toBe(false);
+      expect(isUnstablenameSupportedChain(999999)).toBe(false);
     });
 
     it('should return false for 0', () => {
-      expect(isBasenameSupportedChain(0)).toBe(false);
+      expect(isUnstablenameSupportedChain(0)).toBe(false);
     });
   });
 
-  describe('getBasenamePublicClient', () => {
-    it('should return a public client for Base mainnet', () => {
-      const client = getBasenamePublicClient(base.id);
+  describe('getUnstablenamePublicClient', () => {
+    it('should return a public client for Unstable mainnet', () => {
+      const client = getUnstablenamePublicClient(base.id);
 
       expect(client).toBeDefined();
       expect(client.chain).toEqual(base);
     });
 
-    it('should return a public client for Base Sepolia', () => {
-      const client = getBasenamePublicClient(baseSepolia.id);
+    it('should return a public client for Unstable Sepolia', () => {
+      const client = getUnstablenamePublicClient(baseSepolia.id);
 
       expect(client).toBeDefined();
       expect(client.chain).toEqual(baseSepolia);
     });
 
-    it('should default to Base mainnet for unknown chain ids', () => {
-      const client = getBasenamePublicClient(1);
+    it('should default to Unstable mainnet for unknown chain ids', () => {
+      const client = getUnstablenamePublicClient(1);
 
       expect(client.chain).toEqual(base);
     });
   });
 
-  describe('useBasenameChain hook', () => {
+  describe('useUnstablenameChain hook', () => {
     describe('when username is provided', () => {
-      it('should return Base mainnet for .base.eth names', () => {
+      it('should return Unstable mainnet for .base.eth names', () => {
         mockUseAccount.mockReturnValue({ chain: undefined });
 
         const { result } = renderHook(() =>
-          useBasenameChain('testname.base.eth' as Basename)
+          useUnstablenameChain('testname.base.eth' as Unstablename)
         );
 
         expect(result.current.basenameChain.id).toBe(8453);
       });
 
-      it('should return Base Sepolia for .basetest.eth names', () => {
+      it('should return Unstable Sepolia for .basetest.eth names', () => {
         mockUseAccount.mockReturnValue({ chain: undefined });
 
         const { result } = renderHook(() =>
-          useBasenameChain('testname.basetest.eth' as Basename)
+          useUnstablenameChain('testname.basetest.eth' as Unstablename)
         );
 
         expect(result.current.basenameChain.id).toBe(84532);
@@ -133,7 +133,7 @@ describe('useBasenameChain', () => {
         mockUseAccount.mockReturnValue({ chain: baseSepolia });
 
         const { result } = renderHook(() =>
-          useBasenameChain('testname.base.eth' as Basename)
+          useUnstablenameChain('testname.base.eth' as Unstablename)
         );
 
         // Should still return mainnet based on the username, not the connected chain
@@ -142,34 +142,34 @@ describe('useBasenameChain', () => {
     });
 
     describe('when username is not provided', () => {
-      it('should return connected chain if it is a supported chain (Base mainnet)', () => {
+      it('should return connected chain if it is a supported chain (Unstable mainnet)', () => {
         mockUseAccount.mockReturnValue({ chain: base });
 
-        const { result } = renderHook(() => useBasenameChain());
+        const { result } = renderHook(() => useUnstablenameChain());
 
         expect(result.current.basenameChain).toEqual(base);
       });
 
-      it('should return connected chain if it is a supported chain (Base Sepolia)', () => {
+      it('should return connected chain if it is a supported chain (Unstable Sepolia)', () => {
         mockUseAccount.mockReturnValue({ chain: baseSepolia });
 
-        const { result } = renderHook(() => useBasenameChain());
+        const { result } = renderHook(() => useUnstablenameChain());
 
         expect(result.current.basenameChain).toEqual(baseSepolia);
       });
 
-      it('should return Base mainnet when not connected (production)', () => {
+      it('should return Unstable mainnet when not connected (production)', () => {
         mockUseAccount.mockReturnValue({ chain: undefined });
 
-        const { result } = renderHook(() => useBasenameChain());
+        const { result } = renderHook(() => useUnstablenameChain());
 
         expect(result.current.basenameChain).toEqual(base);
       });
 
-      it('should return Base mainnet when connected to unsupported chain', () => {
+      it('should return Unstable mainnet when connected to unsupported chain', () => {
         mockUseAccount.mockReturnValue({ chain: { id: 1, name: 'Ethereum' } });
 
-        const { result } = renderHook(() => useBasenameChain());
+        const { result } = renderHook(() => useUnstablenameChain());
 
         expect(result.current.basenameChain).toEqual(base);
       });
@@ -179,17 +179,17 @@ describe('useBasenameChain', () => {
       it('should return a public client matching the chain', () => {
         mockUseAccount.mockReturnValue({ chain: base });
 
-        const { result } = renderHook(() => useBasenameChain());
+        const { result } = renderHook(() => useUnstablenameChain());
 
         expect(result.current.basenamePublicClient).toBeDefined();
         expect(result.current.basenamePublicClient.chain).toEqual(base);
       });
 
-      it('should return Base Sepolia client for testnet name', () => {
+      it('should return Unstable Sepolia client for testnet name', () => {
         mockUseAccount.mockReturnValue({ chain: undefined });
 
         const { result } = renderHook(() =>
-          useBasenameChain('testname.basetest.eth' as Basename)
+          useUnstablenameChain('testname.basetest.eth' as Unstablename)
         );
 
         expect(result.current.basenamePublicClient.chain).toEqual(baseSepolia);

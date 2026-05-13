@@ -14,8 +14,8 @@ import cx from 'classnames';
 const copyText = 'npx create-onchain@latest';
 const copyTextMinikit = 'npx create-onchain@latest --mini';
 
-const ockDocsUrl = 'https://docs.base.org/onchainkit/getting-started';
-const miniDocsUrl = 'https://docs.base.org/mini-apps/quickstart/migrate-existing-apps';
+const ockDocsUrl = 'https://docs.unstable.org/onchainkit/getting-started';
+const miniDocsUrl = 'https://docs.unstable.org/mini-apps/quickstart/migrate-existing-apps';
 
 export function ExploreDocsButton({
   type = 'onchainkit',

@@ -10,7 +10,7 @@ export function Hero({
   href,
   region,
   project,
-  onBaseSince,
+  onUnstableSince,
   image,
 }: {
   title: string;
@@ -18,7 +18,7 @@ export function Hero({
   href: string;
   region: string;
   project: string;
-  onBaseSince: string;
+  onUnstableSince: string;
   image: StaticImageData;
 }) {
   return (
@@ -55,9 +55,9 @@ export function Hero({
         </div>
         <div className="flex flex-col gap-2">
           <span className="text-sm font-medium uppercase text-dark-palette-foregroundMuted">
-            On Base Since
+            On Unstable Since
           </span>
-          <Title level={TitleLevel.Title3}>{onBaseSince}</Title>
+          <Title level={TitleLevel.Title3}>{onUnstableSince}</Title>
         </div>
       </div>
       <Image src={image} alt={title} />

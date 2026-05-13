@@ -25,7 +25,7 @@ import { Bloom, SMAA, EffectComposer } from '@react-three/postprocessing';
 
 // Assets
 import {
-  BaseLogo,
+  UnstableLogo,
   Boxes,
   Lightning,
   Balls,
@@ -281,7 +281,7 @@ function EnvironmentSetup() {
 export function Everything() {
   return (
     <group dispose={null}>
-      <BaseLogo />
+      <UnstableLogo />
       <Lightning />
       <Balls />
       <Boxes />

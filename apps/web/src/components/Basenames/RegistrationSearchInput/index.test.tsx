@@ -20,7 +20,7 @@ const mockSetSearchInputFocused = jest.fn();
 const mockSetSearchInputHovered = jest.fn();
 const mockSetSelectedName = jest.fn();
 
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     setSearchInputFocused: mockSetSearchInputFocused,
     setSearchInputHovered: mockSetSearchInputHovered,
@@ -28,8 +28,8 @@ jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
     basenameChain: { id: 8453 },
@@ -63,7 +63,7 @@ jest.mock('apps/web/src/hooks/useIsNameAvailable', () => ({
 
 // Mock usernames utility functions
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (name: string) => `${name}.base.eth`,
+  formatUnstableEthDomain: (name: string) => `${name}.base.eth`,
   validateEnsDomainName: (name: string) => {
     if (name.length === 0) return { valid: false, message: '' };
     if (name.length < 3) return { valid: false, message: 'Name is too short' };

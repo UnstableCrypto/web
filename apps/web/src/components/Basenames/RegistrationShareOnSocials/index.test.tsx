@@ -36,7 +36,7 @@ import RegistrationShareOnSocials, { socialPlatformsEnabled } from './index';
 
 // Mock useRegistration
 const mockSelectedName = 'testuser';
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     selectedName: mockSelectedName,
   }),
@@ -165,7 +165,7 @@ describe('RegistrationShareOnSocials', () => {
       expect(twitterLink).toBeDefined();
       expect(twitterLink?.getAttribute('href')).toContain('x.com/intent/tweet');
       expect(twitterLink?.getAttribute('href')).toContain(
-        encodeURIComponent(`https://base.org/name/${mockSelectedName}`),
+        encodeURIComponent(`https://unstable.org/name/${mockSelectedName}`),
       );
     });
 
@@ -181,7 +181,7 @@ describe('RegistrationShareOnSocials', () => {
       expect(farcasterLink).toBeDefined();
       expect(farcasterLink?.getAttribute('href')).toContain('warpcast.com/~/compose');
       expect(farcasterLink?.getAttribute('href')).toContain(
-        encodeURIComponent(`https://base.org/name/${mockSelectedName}`),
+        encodeURIComponent(`https://unstable.org/name/${mockSelectedName}`),
       );
     });
 
@@ -285,7 +285,7 @@ describe('RegistrationShareOnSocials', () => {
       const twitterLink = links.find((link) => hasHostname(link.getAttribute('href'), 'x.com'));
 
       expect(twitterLink?.getAttribute('href')).toContain(
-        encodeURIComponent('I just got my Basename as part of Onchain Summer!'),
+        encodeURIComponent('I just got my Unstablename as part of Onchain Summer!'),
       );
     });
 

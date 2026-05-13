@@ -51,12 +51,12 @@ const FINAL_INDEX = [BRAND_PAGES_INDEX[5], BRAND_PAGES_INDEX[6]];
 const imgs = [
   { src: img01, alt: 'Bringing the world onchain' },
   { src: img02, alt: 'Subway Posters' },
-  { src: img03, alt: 'Base ad sign' },
+  { src: img03, alt: 'Unstable ad sign' },
   { src: img04, alt: 'Metro ad sign' },
   { src: img05, alt: 'Tote bag' },
-  { src: img06, alt: 'Base shirt' },
-  { src: img07, alt: 'Base socks' },
-  { src: img08, alt: 'Base socks 2' },
-  { src: img09, alt: 'Base t-shirt' },
-  { src: img10, alt: 'Base cap' },
+  { src: img06, alt: 'Unstable shirt' },
+  { src: img07, alt: 'Unstable socks' },
+  { src: img08, alt: 'Unstable socks 2' },
+  { src: img09, alt: 'Unstable t-shirt' },
+  { src: img10, alt: 'Unstable cap' },
 ];

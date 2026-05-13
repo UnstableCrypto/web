@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 import { renderHook, act, waitFor } from '@testing-library/react';
-import { type Basename } from '@coinbase/onchainkit/identity';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
 import { type Address } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
-import useSetPrimaryBasename from './useSetPrimaryBasename';
+import useSetPrimaryUnstablename from './useSetPrimaryUnstablename';
 
 // Mock wagmi
 const mockUseAccount = jest.fn();
@@ -17,12 +17,12 @@ jest.mock('wagmi', () => ({
   useSignMessage: () => mockUseSignMessage(),
 }));
 
-// Mock useBasenameChain
-const mockUseBasenameChain = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUseUnstablenameChain = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: (username: Basename) => mockUseBasenameChain(username),
+  default: (username: Unstablename) => mockUseUnstablenameChain(username),
 }));
 
 // Mock useCapabilitiesSafe
@@ -33,12 +33,12 @@ jest.mock('apps/web/src/hooks/useCapabilitiesSafe', () => ({
   default: (params: { chainId: number }) => mockUseCapabilitiesSafe(params),
 }));
 
-// Mock useBaseEnsName
-const mockUseBaseEnsName = jest.fn();
-jest.mock('apps/web/src/hooks/useBaseEnsName', () => ({
+// Mock useUnstableEnsName
+const mockUseUnstableEnsName = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstableEnsName', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: (params: { address: Address | undefined }) => mockUseBaseEnsName(params),
+  default: (params: { address: Address | undefined }) => mockUseUnstableEnsName(params),
 }));
 
 // Mock useErrors
@@ -69,7 +69,7 @@ jest.mock('apps/web/src/hooks/useWriteContractsWithLogs', () => ({
 
 // Mock useUsernameProfile
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
@@ -113,10 +113,10 @@ jest.mock('apps/web/src/addresses/usernames', () => ({
   },
 }));
 
-describe('useSetPrimaryBasename', () => {
+describe('useSetPrimaryUnstablename', () => {
   const mockAddress = '0x1234567890123456789012345678901234567890' as Address;
-  const mockSecondaryUsername = 'secondary.base.eth' as Basename;
-  const mockPrimaryUsername = 'primary.base.eth' as Basename;
+  const mockSecondaryUsername = 'secondary.base.eth' as Unstablename;
+  const mockPrimaryUsername = 'primary.base.eth' as Unstablename;
   const mockRefetchPrimaryUsername = jest.fn().mockResolvedValue({});
   const mockSignMessageAsync = jest.fn();
 
@@ -125,9 +125,9 @@ describe('useSetPrimaryBasename', () => {
     mockUseSignMessage.mockReturnValue({
       signMessageAsync: mockSignMessageAsync,
     });
-    mockUseBasenameChain.mockReturnValue({ basenameChain: base });
+    mockUseUnstablenameChain.mockReturnValue({ basenameChain: base });
     mockUseCapabilitiesSafe.mockReturnValue({ paymasterService: false });
-    mockUseBaseEnsName.mockReturnValue({
+    mockUseUnstableEnsName.mockReturnValue({
       data: mockPrimaryUsername,
       refetch: mockRefetchPrimaryUsername,
       isLoading: false,
@@ -159,32 +159,32 @@ describe('useSetPrimaryBasename', () => {
   });
 
   describe('initialization', () => {
-    it('should call useBasenameChain with the secondary username', () => {
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+    it('should call useUnstablenameChain with the secondary username', () => {
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
-      expect(mockUseBasenameChain).toHaveBeenCalledWith(mockSecondaryUsername);
+      expect(mockUseUnstablenameChain).toHaveBeenCalledWith(mockSecondaryUsername);
     });
 
     it('should call useCapabilitiesSafe with the chain id', () => {
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
       expect(mockUseCapabilitiesSafe).toHaveBeenCalledWith({ chainId: base.id });
     });
 
-    it('should call useBaseEnsName with the connected address', () => {
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+    it('should call useUnstableEnsName with the connected address', () => {
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
-      expect(mockUseBaseEnsName).toHaveBeenCalledWith({ address: mockAddress });
+      expect(mockUseUnstableEnsName).toHaveBeenCalledWith({ address: mockAddress });
     });
 
     it('should initialize useWriteContractWithReceipt with correct params', () => {
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
       expect(mockUseWriteContractWithReceipt).toHaveBeenCalled();
     });
 
     it('should initialize useWriteContractsWithLogs with correct params', () => {
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
       expect(mockUseWriteContractsWithLogs).toHaveBeenCalled();
     });
@@ -192,7 +192,7 @@ describe('useSetPrimaryBasename', () => {
 
   describe('canSetUsernameAsPrimary', () => {
     it('should return true when usernames differ and user is profile editor', () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockPrimaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: false,
@@ -201,14 +201,14 @@ describe('useSetPrimaryBasename', () => {
       mockUseUsernameProfile.mockReturnValue({ currentWalletIsProfileEditor: true });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.canSetUsernameAsPrimary).toBe(true);
     });
 
     it('should return false when usernames are the same', () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockSecondaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: false,
@@ -217,14 +217,14 @@ describe('useSetPrimaryBasename', () => {
       mockUseUsernameProfile.mockReturnValue({ currentWalletIsProfileEditor: true });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.canSetUsernameAsPrimary).toBe(false);
     });
 
     it('should return false when user is not profile editor', () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockPrimaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: false,
@@ -233,7 +233,7 @@ describe('useSetPrimaryBasename', () => {
       mockUseUsernameProfile.mockReturnValue({ currentWalletIsProfileEditor: false });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.canSetUsernameAsPrimary).toBe(false);
@@ -249,7 +249,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.isLoading).toBe(true);
@@ -263,14 +263,14 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.isLoading).toBe(true);
     });
 
     it('should return true when primary username is loading', () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockPrimaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: true,
@@ -278,14 +278,14 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.isLoading).toBe(true);
     });
 
     it('should return true when primary username is fetching', () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockPrimaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: false,
@@ -293,7 +293,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.isLoading).toBe(true);
@@ -301,7 +301,7 @@ describe('useSetPrimaryBasename', () => {
 
     it('should return false when nothing is loading', () => {
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.isLoading).toBe(false);
@@ -317,7 +317,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionIsSuccess).toBe(true);
@@ -331,7 +331,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionIsSuccess).toBe(true);
@@ -339,7 +339,7 @@ describe('useSetPrimaryBasename', () => {
 
     it('should return false when neither is successful', () => {
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionIsSuccess).toBe(false);
@@ -355,7 +355,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionPending).toBe(true);
@@ -369,7 +369,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionPending).toBe(true);
@@ -377,7 +377,7 @@ describe('useSetPrimaryBasename', () => {
 
     it('should return false when nothing is pending', () => {
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.transactionPending).toBe(false);
@@ -386,7 +386,7 @@ describe('useSetPrimaryBasename', () => {
 
   describe('setPrimaryName', () => {
     it('should return undefined when secondary matches primary username', async () => {
-      mockUseBaseEnsName.mockReturnValue({
+      mockUseUnstableEnsName.mockReturnValue({
         data: mockSecondaryUsername,
         refetch: mockRefetchPrimaryUsername,
         isLoading: false,
@@ -394,7 +394,7 @@ describe('useSetPrimaryBasename', () => {
       });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       let returnValue: boolean | undefined;
@@ -411,7 +411,7 @@ describe('useSetPrimaryBasename', () => {
       mockUseAccount.mockReturnValue({ address: undefined });
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       let returnValue: boolean | undefined;
@@ -431,7 +431,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should call signMessageAsync and initiateTransaction', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -444,7 +444,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should call initiateTransaction with correct function name', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -460,7 +460,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should return true on successful transaction', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         let returnValue: boolean | undefined;
@@ -475,7 +475,7 @@ describe('useSetPrimaryBasename', () => {
         mockSignMessageAsync.mockRejectedValue(new Error('User rejected'));
 
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -491,7 +491,7 @@ describe('useSetPrimaryBasename', () => {
         mockSignMessageAsync.mockRejectedValue(new Error('User rejected'));
 
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         let returnValue: boolean | undefined;
@@ -510,7 +510,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should call initiateBatchCalls instead of initiateTransaction', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -523,7 +523,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should not require signature when using paymaster', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -535,7 +535,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should call initiateBatchCalls with correct contracts', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         await act(async () => {
@@ -558,7 +558,7 @@ describe('useSetPrimaryBasename', () => {
 
       it('should return true on successful batch call', async () => {
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         let returnValue: boolean | undefined;
@@ -575,7 +575,7 @@ describe('useSetPrimaryBasename', () => {
         mockInitiateTransaction.mockRejectedValue(new Error('Transaction failed'));
 
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         let returnValue: boolean | undefined;
@@ -595,7 +595,7 @@ describe('useSetPrimaryBasename', () => {
         mockInitiateBatchCalls.mockRejectedValue(new Error('Batch call failed'));
 
         const { result } = renderHook(() =>
-          useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+          useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
         );
 
         let returnValue: boolean | undefined;
@@ -617,7 +617,7 @@ describe('useSetPrimaryBasename', () => {
         transactionIsSuccess: true,
       });
 
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
       await waitFor(() => {
         expect(mockRefetchPrimaryUsername).toHaveBeenCalled();
@@ -632,7 +632,7 @@ describe('useSetPrimaryBasename', () => {
         transactionIsSuccess: true,
       });
 
-      renderHook(() => useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername }));
+      renderHook(() => useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername }));
 
       await waitFor(() => {
         expect(mockLogError).toHaveBeenCalledWith(expect.any(Error), 'failed to refetch username');
@@ -642,10 +642,10 @@ describe('useSetPrimaryBasename', () => {
 
   describe('different chain handling', () => {
     it('should use the correct chain for testnet basenames', () => {
-      mockUseBasenameChain.mockReturnValue({ basenameChain: baseSepolia });
+      mockUseUnstablenameChain.mockReturnValue({ basenameChain: baseSepolia });
 
       renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: 'test.basetest.eth' as Basename })
+        useSetPrimaryUnstablename({ secondaryUsername: 'test.basetest.eth' as Unstablename })
       );
 
       expect(mockUseCapabilitiesSafe).toHaveBeenCalledWith({ chainId: baseSepolia.id });
@@ -655,7 +655,7 @@ describe('useSetPrimaryBasename', () => {
   describe('error state', () => {
     it('should return null error initially', () => {
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       expect(result.current.error).toBeNull();
@@ -667,7 +667,7 @@ describe('useSetPrimaryBasename', () => {
         .mockResolvedValueOnce('0xsignature');
 
       const { result } = renderHook(() =>
-        useSetPrimaryBasename({ secondaryUsername: mockSecondaryUsername })
+        useSetPrimaryUnstablename({ secondaryUsername: mockSecondaryUsername })
       );
 
       // First call - should set error

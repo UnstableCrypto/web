@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const steps = [
     'L3 Testnet',
-    'Settled on Base L2 with S3',
+    'Settled on Unstable L2 with S3',
     'Automated transaction ordering to ensure optimal performance',
     'Managed nodes',
     'Out-of-the-box block explorer',

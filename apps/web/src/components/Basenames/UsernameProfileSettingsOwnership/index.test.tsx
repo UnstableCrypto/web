@@ -9,7 +9,7 @@ let mockProfileEditorAddress: `0x${string}` | undefined =
   '0x1234567890abcdef1234567890abcdef12345678';
 
 // Mock UsernameProfileContext
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileEditorAddress: mockProfileEditorAddress,
   }),
@@ -35,14 +35,14 @@ const MockTransferOwnershipModal = jest.fn(
     ) : null,
 );
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal', () => ({
   __esModule: true,
   default: (props: { isOpen: boolean; onClose: () => void }) => MockTransferOwnershipModal(props),
 }));
 
 // Mock ProfileTransferOwnershipProvider
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context',
+  'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context',
   () => ({
     __esModule: true,
     default: ({ children }: { children: React.ReactNode }) => (

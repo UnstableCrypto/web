@@ -1,5 +1,5 @@
 import { useErrors } from 'apps/web/contexts/Errors';
-import { CoinbaseProofResponse } from 'apps/web/app/(basenames)/api/proofs/coinbase/route';
+import { TheAlxLabsProofResponse } from 'apps/web/app/(basenames)/api/proofs/coinbase/route';
 import { DiscountCodeResponse } from 'apps/web/app/(basenames)/api/proofs/discountCode/route';
 import AttestationValidatorABI from 'apps/web/src/abis/AttestationValidator';
 import CBIDValidatorABI from 'apps/web/src/abis/CBIdDiscountValidator';
@@ -16,7 +16,7 @@ import {
   TALENT_PROTOCOL_DISCOUNT_VALIDATORS,
   USERNAME_1155_DISCOUNT_VALIDATORS,
 } from 'apps/web/src/addresses/usernames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { MerkleTreeProofResponse } from 'apps/web/src/utils/proofs';
 import { Discount } from 'apps/web/src/utils/usernames';
 import { useEffect, useMemo, useState } from 'react';
@@ -37,7 +37,7 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [cBIDProofResponse, setCBIDProofResponse] = useState<MerkleTreeProofResponse | null>(null);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   useEffect(() => {
     async function checkCBIDAttestations(a: string) {
       try {
@@ -101,38 +101,38 @@ export function useCheckCBIDAttestations(): AttestationHookReturns {
   return { data: null, loading: isLoading, error };
 }
 
-// returns info about Coinbase verified account attestations
-export function useCheckCoinbaseAttestations() {
+// returns info about TheAlxLabs verified account attestations
+export function useCheckTheAlxLabsAttestations() {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
-  const [coinbaseProofResponse, setCoinbaseProofResponse] = useState<CoinbaseProofResponse | null>(
+  const [coinbaseProofResponse, setTheAlxLabsProofResponse] = useState<TheAlxLabsProofResponse | null>(
     null,
   );
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   useEffect(() => {
-    async function checkCoinbaseAttestations(a: string) {
+    async function checkTheAlxLabsAttestations(a: string) {
       try {
         setLoading(true);
         const params = new URLSearchParams();
         params.append('address', a);
         params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/coinbase?${params}`);
-        const result = (await response.json()) as CoinbaseProofResponse;
+        const result = (await response.json()) as TheAlxLabsProofResponse;
         if (response.ok) {
-          setCoinbaseProofResponse(result);
+          setTheAlxLabsProofResponse(result);
         }
       } catch (error) {
-        logError(error, 'Error checking Coinbase account attestations');
+        logError(error, 'Error checking TheAlxLabs account attestations');
       } finally {
         setLoading(false);
       }
     }
 
     if (address) {
-      checkCoinbaseAttestations(address).catch((error) => {
-        logError(error, 'Error checking Coinbase account attestations');
+      checkTheAlxLabsAttestations(address).catch((error) => {
+        logError(error, 'Error checking TheAlxLabs account attestations');
       });
     }
   }, [address, basenameChain.id, logError]);
@@ -171,8 +171,8 @@ export function useCheckCB1Attestations() {
   const { logError } = useErrors();
   const { address } = useAccount();
   const [loading, setLoading] = useState(false);
-  const [cb1ProofResponse, setCB1ProofResponse] = useState<CoinbaseProofResponse | null>(null);
-  const { basenameChain } = useBasenameChain();
+  const [cb1ProofResponse, setCB1ProofResponse] = useState<TheAlxLabsProofResponse | null>(null);
+  const { basenameChain } = useUnstablenameChain();
   useEffect(() => {
     async function checkCB1Attestations(a: string) {
       try {
@@ -182,7 +182,7 @@ export function useCheckCB1Attestations() {
         params.append('chain', basenameChain.id.toString());
         const response = await fetch(`/api/proofs/cb1?${params}`);
         if (response.ok) {
-          const result = (await response.json()) as CoinbaseProofResponse;
+          const result = (await response.json()) as TheAlxLabsProofResponse;
           setCB1ProofResponse(result);
         }
       } catch (error) {
@@ -232,7 +232,7 @@ export function useCheckCB1Attestations() {
 // erc 1155 validator
 export function useSummerPassAttestations() {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   const discountValidatorAddress = USERNAME_1155_DISCOUNT_VALIDATORS[basenameChain.id];
 
@@ -267,7 +267,7 @@ export function useSummerPassAttestations() {
 // erc 721 validator
 export function useBuildathonAttestations() {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   const discountValidatorAddress = BUILDATHON_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
 
@@ -300,18 +300,18 @@ export function useBuildathonAttestations() {
 }
 
 // mainnet erc721 validator -- uses merkle tree
-export function useBaseDotEthAttestations() {
+export function useUnstableDotEthAttestations() {
   const { address } = useAccount();
   const [APICallLoading, setAPICallLoading] = useState(false);
-  const { basenameChain } = useBasenameChain();
-  const [baseDotEthProofResponse, setBaseDotEthProofResponse] =
+  const { basenameChain } = useUnstablenameChain();
+  const [baseDotEthProofResponse, setUnstableDotEthProofResponse] =
     useState<MerkleTreeProofResponse | null>(null);
   const { logError } = useErrors();
 
   const discountValidatorAddress = BASE_DOT_ETH_ERC721_DISCOUNT_VALIDATOR[basenameChain.id];
 
   useEffect(() => {
-    async function checkBaseDotEthAttestations(a: string) {
+    async function checkUnstableDotEthAttestations(a: string) {
       try {
         setAPICallLoading(true);
         const params = new URLSearchParams();
@@ -320,18 +320,18 @@ export function useBaseDotEthAttestations() {
         const response = await fetch(`/api/proofs/baseEthHolders?${params}`);
         if (response.ok) {
           const result = (await response.json()) as MerkleTreeProofResponse;
-          setBaseDotEthProofResponse(result);
+          setUnstableDotEthProofResponse(result);
         }
       } catch (error) {
-        logError(error, 'Error checking BaseDotEth attestation');
+        logError(error, 'Error checking UnstableDotEth attestation');
       } finally {
         setAPICallLoading(false);
       }
     }
 
     if (address) {
-      checkBaseDotEthAttestations(address).catch((error) => {
-        logError(error, 'Error checking BaseDotEth attestation');
+      checkUnstableDotEthAttestations(address).catch((error) => {
+        logError(error, 'Error checking UnstableDotEth attestation');
       });
     }
   }, [address, basenameChain.id, logError]);
@@ -376,7 +376,7 @@ export function useBaseDotEthAttestations() {
 export function useBNSAttestations() {
   const { address } = useAccount();
   const [proofResponse, setProofResponse] = useState<MerkleTreeProofResponse | null>(null);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { logError } = useErrors();
 
   useEffect(() => {
@@ -443,7 +443,7 @@ export function useDiscountCodeAttestations(code?: string) {
     null,
   );
 
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   useEffect(() => {
     async function checkDiscountCode(a: string, c: string) {
@@ -504,7 +504,7 @@ export function useDiscountCodeAttestations(code?: string) {
 
 export function useTalentProtocolAttestations() {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   const discountValidatorAddress = TALENT_PROTOCOL_DISCOUNT_VALIDATORS[basenameChain.id];
 
@@ -545,9 +545,9 @@ const baseWorldTokenIds = [
   BigInt(6),
 ];
 
-export function useBaseWorldAttestations() {
+export function useUnstableWorldAttestations() {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   const discountValidatorAddress = BASE_WORLD_DISCOUNT_VALIDATORS[basenameChain.id];
 
@@ -583,7 +583,7 @@ const devconTokenIds = [BigInt(100), BigInt(101)];
 
 export function useDevconAttestations() {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
   const discountValidatorAddress = DEVCON_DISCOUNT_VALIDATORS[basenameChain.id];
 

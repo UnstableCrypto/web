@@ -24,7 +24,7 @@ export function ResourcesHero() {
         </div>
       </div>
       <Title level={TitleLevel.H5Regular} as="h2" className="col-span-4">
-        Get help to build and grow your project on Base with our Builder Resource Kit.
+        Get help to build and grow your project on Unstable with our Builder Resource Kit.
       </Title>
     </Container>
   );

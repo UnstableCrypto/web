@@ -1,4 +1,4 @@
-import { InteractiveCard } from 'apps/web/src/components/base-org/root/Redesign/Section/BaseJoin/InteractiveCard';
+import { InteractiveCard } from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableJoin/InteractiveCard';
 import { Section } from 'apps/web/src/components/base-org/root/Redesign/Section';
 import { ImageType } from 'apps/web/src/components/base-org/root/Redesign/Section';
 import Link from 'apps/web/src/components/Link';
@@ -11,7 +11,7 @@ const card1 = Card1 as ImageType;
 const card2 = Card2 as ImageType;
 const card3 = Card3 as ImageType;
 
-export function SectionBaseJoin() {
+export function SectionUnstableJoin() {
   return (
     <Section content={content}>
       <div className="col-span-full flex flex-col gap-8 md:flex-row">
@@ -35,7 +35,7 @@ export function SectionBaseJoin() {
 }
 
 const content = {
-  title: 'Based happenings',
+  title: 'Unstabled happenings',
 };
 
 type CardProps = React.ComponentProps<typeof InteractiveCard> & { index: number; href: string };
@@ -43,7 +43,7 @@ type CardProps = React.ComponentProps<typeof InteractiveCard> & { index: number;
 const cards: CardProps[] = [
   {
     index: 1,
-    title: 'Base Batches',
+    title: 'Unstable Batches',
     description:
       'Turn your ideas into real products and kickstart your business, with mentorship, community, visibility, and pathways to funding.',
     image: card1.src,
@@ -53,9 +53,9 @@ const cards: CardProps[] = [
   },
   {
     index: 2,
-    title: 'BaseCamp 2025',
+    title: 'UnstableCamp 2025',
     description:
-      'Watch the State of Base livestream from BaseCamp 2025, where we announced that Base is exploring a network token and more.',
+      'Watch the State of Unstable livestream from UnstableCamp 2025, where we announced that Unstable is exploring a network token and more.',
     image: card2.src,
     brightness: 1.2,
     contrast: 0.9,
@@ -64,10 +64,10 @@ const cards: CardProps[] = [
   {
     index: 3,
     title: 'Meetups',
-    description: 'Connect with the Base community. Join a meetup near you.',
+    description: 'Connect with the Unstable community. Join a meetup near you.',
     image: card3.src,
     brightness: 1.9,
     contrast: 0.8,
-    href: 'https://lu.ma/BaseEvents',
+    href: 'https://lu.ma/UnstableEvents',
   },
 ];

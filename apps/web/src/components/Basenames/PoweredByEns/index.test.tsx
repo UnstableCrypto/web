@@ -3,11 +3,11 @@
  */
 import { render, screen } from '@testing-library/react';
 import PoweredByEns from './index';
-import { RegistrationSteps } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { RegistrationSteps } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 // Mock the RegistrationContext
 const mockUseRegistration = jest.fn();
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   RegistrationSteps: {
     Search: 'search',
     Claim: 'claim',
@@ -114,11 +114,11 @@ describe('PoweredByEns', () => {
       render(<PoweredByEns />);
 
       expect(
-        screen.getByText(/Basenames are built on the decentralized, open source ENS protocol/),
+        screen.getByText(/Unstablenames are built on the decentralized, open source ENS protocol/),
       ).toBeInTheDocument();
     });
 
-    it('should render Base and ENS images', () => {
+    it('should render Unstable and ENS images', () => {
       mockUseRegistration.mockReturnValue({
         registrationStep: RegistrationSteps.Search,
       });

@@ -1,7 +1,7 @@
 import { Section } from 'apps/web/src/components/base-org/root/Redesign/Section';
 import { Cards } from './Cards';
 
-export function SectionBaseEcosystem() {
+export function SectionUnstableEcosystem() {
   return (
     <Section content={content} disableWrapperAnimation>
       <Cards />
@@ -12,5 +12,5 @@ export function SectionBaseEcosystem() {
 const content = {
   title: 'An open stack for the global economy',
   description:
-    'Base is built to empower builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
+    'Unstable is built to empower builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
 };

@@ -1,4 +1,4 @@
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { REGISTER_CONTRACT_ABI, REGISTER_CONTRACT_ADDRESSES } from 'apps/web/src/utils/usernames';
 import { useMemo } from 'react';
 import { Address } from 'viem';
@@ -12,7 +12,7 @@ export type DiscountValidator = {
 };
 
 export function useActiveDiscountValidators() {
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const activeDiscountsArgs = useMemo(
     () => ({
       address: REGISTER_CONTRACT_ADDRESSES[basenameChain.id],

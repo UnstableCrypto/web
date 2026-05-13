@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { base } from 'viem/chains';
 import {
-  formatBaseEthDomain,
-  getBasenameNameExpires,
+  formatUnstableEthDomain,
+  getUnstablenameNameExpires,
   USERNAME_DOMAINS,
 } from 'apps/web/src/utils/usernames';
 import { encodePacked, keccak256, namehash, toHex } from 'viem';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { getUnstablenamePublicClient } from 'apps/web/src/hooks/useUnstablenameChain';
 import L2Resolver from 'apps/web/src/abis/L2Resolver';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { logger } from 'apps/web/src/utils/logger';
 import { premintMapping } from 'apps/web/app/(basenames)/api/basenames/metadata/premintsMapping';
 import { getChain } from 'apps/web/src/utils/basenames/getChain';
@@ -48,7 +48,7 @@ export async function GET(
 
   let basenameFormatted, nameExpires;
   try {
-    const client = getBasenamePublicClient(chainId);
+    const client = getUnstablenamePublicClient(chainId);
     const resolverAddress = await fetchResolverAddressByNode(chainId, namehashNode);
     basenameFormatted = await client.readContract({
       abi: L2Resolver,
@@ -56,18 +56,18 @@ export async function GET(
       args: [namehashNode],
       functionName: 'name',
     });
-    nameExpires = await getBasenameNameExpires(basenameFormatted as Basename);
+    nameExpires = await getUnstablenameNameExpires(basenameFormatted as Unstablename);
   } catch (error) {
     logger.error('Error getting token metadata', error);
   }
 
   // Premints are hardcoded; the list will reduce when/if they are claimed
   if (!basenameFormatted && premintMapping[formattedTokenId]) {
-    basenameFormatted = formatBaseEthDomain(premintMapping[formattedTokenId], chainId);
+    basenameFormatted = formatUnstableEthDomain(premintMapping[formattedTokenId], chainId);
   }
 
   if (!basenameFormatted) {
-    return NextResponse.json({ error: '404: Basename not found' }, { status: 404 });
+    return NextResponse.json({ error: '404: Unstablename not found' }, { status: 404 });
   }
 
   const domainName = getDomain(request);
@@ -81,7 +81,7 @@ export async function GET(
     external_url: `${domainName}/name/${basenameForUrl}`,
 
     // A human-readable description of the item. Markdown is supported.
-    description: `${basenameFormatted}, a Basename`,
+    description: `${basenameFormatted}, a Unstablename`,
 
     // A human-readable description of the item. Markdown is supported.
     name: basenameFormatted,

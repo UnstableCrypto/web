@@ -138,10 +138,10 @@ describe('RegistrationButton', () => {
     });
 
     describe('when on incorrect chain', () => {
-      it('should display "Switch to Base" text', () => {
+      it('should display "Switch to Unstable" text', () => {
         render(<RegistrationButton {...defaultProps} correctChain={false} />);
 
-        expect(screen.getByText('Switch to Base')).toBeInTheDocument();
+        expect(screen.getByText('Switch to Unstable')).toBeInTheDocument();
       });
 
       it('should call switchToIntendedNetwork when clicked', () => {

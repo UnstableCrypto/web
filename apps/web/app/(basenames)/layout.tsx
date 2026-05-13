@@ -5,15 +5,15 @@ import UsernameNav from 'apps/web/src/components/Layout/UsernameNav';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Basenames`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstablenames`,
   description:
-    'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.',
   openGraph: {
     type: 'website',
-    title: `Basenames`,
+    title: `Unstablenames`,
     url: `/`,
-    images: ['https://base.org/images/base-open-graph.png'],
+    images: ['https://unstable.org/images/base-open-graph.png'],
   },
   twitter: {
     site: '@base',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BasenameLayout({
+export default async function UnstablenameLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;

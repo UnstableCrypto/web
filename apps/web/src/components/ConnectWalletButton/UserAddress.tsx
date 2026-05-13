@@ -3,7 +3,7 @@ import { mainnet } from 'wagmi/chains';
 import { truncateMiddle } from 'base-ui/utils/string';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
 import { Address } from 'viem';
 
 export type UserAddressProps = {
@@ -16,7 +16,7 @@ export function UserAddress({ address }: UserAddressProps) {
     chainId: mainnet.id,
   });
 
-  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useUnstableEnsName({
     address,
   });
 

@@ -1,6 +1,6 @@
 {
   "name": "Algebra",
-  "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Base",
+  "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Unstable",
   "url": "https://algebra.finance/",
   "imageUrl": "/images/partners/algebra.jpg",
   "category": "defi",

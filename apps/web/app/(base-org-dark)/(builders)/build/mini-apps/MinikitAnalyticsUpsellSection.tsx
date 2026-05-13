@@ -12,7 +12,7 @@ export function MinikitAnalyticsUpsellSection() {
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-start gap-6 text-3xl leading-[1.125] tracking-[-0.96px] md:flex-row md:items-end md:gap-[100px]">
         <span className="max-w-[450px]">
-          Understand how users interact with your mini apps on Base
+          Understand how users interact with your mini apps on Unstable
         </span>
         <Button
           variant={ButtonVariants.Secondary}

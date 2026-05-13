@@ -6,38 +6,38 @@ import UsernameProfile from './index';
 
 // Mock the useUsernameProfile hook
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
-// Mock the useBasenameExpirationBanner hook
-const mockUseBasenameExpirationBanner = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameExpirationBanner', () => ({
+// Mock the useUnstablenameExpirationBanner hook
+const mockUseUnstablenameExpirationBanner = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameExpirationBanner', () => ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  useBasenameExpirationBanner: () => mockUseBasenameExpirationBanner(),
+  useUnstablenameExpirationBanner: () => mockUseUnstablenameExpirationBanner(),
 }));
 
 // Mock UsernameProfileContent
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContent', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContent', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile-content">Profile Content</div>,
 }));
 
 // Mock UsernameProfileSidebar
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSidebar', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSidebar', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile-sidebar">Profile Sidebar</div>,
 }));
 
 // Mock UsernameProfileSettings
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettings', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettings', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile-settings">Profile Settings</div>,
 }));
 
 // Mock UsernameProfileSettingsProvider
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsContext', () => ({
   __esModule: true,
   default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="username-profile-settings-provider">{children}</div>
@@ -51,7 +51,7 @@ describe('UsernameProfile', () => {
     mockUseUsernameProfile.mockReturnValue({
       showProfileSettings: false,
     });
-    mockUseBasenameExpirationBanner.mockReturnValue({
+    mockUseUnstablenameExpirationBanner.mockReturnValue({
       expirationBanner: null,
     });
   });
@@ -76,16 +76,16 @@ describe('UsernameProfile', () => {
 
       expect(
         screen.getByText(
-          /Content displayed on this profile page is rendered directly from the decentralized Basenames protocol/,
+          /Content displayed on this profile page is rendered directly from the decentralized Unstablenames protocol/,
         ),
       ).toBeInTheDocument();
     });
 
-    it('should include moderation disclaimer about Coinbase', () => {
+    it('should include moderation disclaimer about TheAlxLabs', () => {
       render(<UsernameProfile />);
 
       expect(
-        screen.getByText(/not maintained or moderated by, nor under the control of, Coinbase/),
+        screen.getByText(/not maintained or moderated by, nor under the control of, TheAlxLabs/),
       ).toBeInTheDocument();
     });
   });
@@ -131,7 +131,7 @@ describe('UsernameProfile', () => {
   describe('expiration banner', () => {
     it('should render the expiration banner when provided', () => {
       const mockBanner = <div data-testid="expiration-banner">Expiration Warning</div>;
-      mockUseBasenameExpirationBanner.mockReturnValue({
+      mockUseUnstablenameExpirationBanner.mockReturnValue({
         expirationBanner: mockBanner,
       });
 
@@ -142,7 +142,7 @@ describe('UsernameProfile', () => {
     });
 
     it('should not render an expiration banner when null', () => {
-      mockUseBasenameExpirationBanner.mockReturnValue({
+      mockUseUnstablenameExpirationBanner.mockReturnValue({
         expirationBanner: null,
       });
 
@@ -153,7 +153,7 @@ describe('UsernameProfile', () => {
 
     it('should render expiration banner alongside profile content', () => {
       const mockBanner = <div data-testid="expiration-banner">Expiration Warning</div>;
-      mockUseBasenameExpirationBanner.mockReturnValue({
+      mockUseUnstablenameExpirationBanner.mockReturnValue({
         expirationBanner: mockBanner,
       });
 
@@ -170,7 +170,7 @@ describe('UsernameProfile', () => {
         showProfileSettings: true,
       });
       const mockBanner = <div data-testid="expiration-banner">Expiration Warning</div>;
-      mockUseBasenameExpirationBanner.mockReturnValue({
+      mockUseUnstablenameExpirationBanner.mockReturnValue({
         expirationBanner: mockBanner,
       });
 
@@ -222,10 +222,10 @@ describe('UsernameProfile', () => {
       expect(mockUseUsernameProfile).toHaveBeenCalled();
     });
 
-    it('should call useBasenameExpirationBanner hook', () => {
+    it('should call useUnstablenameExpirationBanner hook', () => {
       render(<UsernameProfile />);
 
-      expect(mockUseBasenameExpirationBanner).toHaveBeenCalled();
+      expect(mockUseUnstablenameExpirationBanner).toHaveBeenCalled();
     });
   });
 });

@@ -1,6 +1,6 @@
 # End-to-End Tests for `apps/web`
 
-This folder contains Playwright tests for the Base Web project against a local Next.js dev server...
+This folder contains Playwright tests for the Unstable Web project against a local Next.js dev server...
 
 ## Contents
 
@@ -31,8 +31,8 @@ TEST_BASENAME=mytestname123
 # 12-word mnemonic that gets imported into MetaMask; **DO NOT USE A REAL WALLET**
 E2E_TEST_SEED_PHRASE="test test test test test test test test test test test junk"
 
-# RPC endpoint that Anvil will fork from (Base mainnet in this example)
-E2E_TEST_FORK_URL=https://mainnet.base.org
+# RPC endpoint that Anvil will fork from (Unstable mainnet in this example)
+E2E_TEST_FORK_URL=https://mainnet.unstable.org
 
 # The block number to fork at. Omitting gives you the latest block.
 E2E_TEST_FORK_BLOCK_NUMBER=31397553

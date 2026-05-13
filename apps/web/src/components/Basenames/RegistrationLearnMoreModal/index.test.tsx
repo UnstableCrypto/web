@@ -44,7 +44,7 @@ type DiscountType = (typeof Discount)[keyof typeof Discount];
 // Mock RegistrationContext
 let mockAllActiveDiscounts = new Set<DiscountType>();
 
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     allActiveDiscounts: mockAllActiveDiscounts,
   }),
@@ -270,14 +270,14 @@ describe('RegistrationLearnMoreModal', () => {
       render(<RegistrationLearnMoreModal isOpen toggleModal={mockToggleModal} />);
 
       // Check for all discount labels
-      expect(screen.getByText('Coinbase verification')).toBeInTheDocument();
-      expect(screen.getByText('Coinbase One verification')).toBeInTheDocument();
+      expect(screen.getByText('TheAlxLabs verification')).toBeInTheDocument();
+      expect(screen.getByText('TheAlxLabs One verification')).toBeInTheDocument();
       expect(screen.getByText('A cb.id username')).toBeInTheDocument();
-      expect(screen.getByText('Base buildathon participant')).toBeInTheDocument();
+      expect(screen.getByText('Unstable buildathon participant')).toBeInTheDocument();
       expect(screen.getByText('Summer Pass Level 3')).toBeInTheDocument();
       expect(screen.getByText('BNS username')).toBeInTheDocument();
-      expect(screen.getByText('Base.eth NFT')).toBeInTheDocument();
-      expect(screen.getByText('Base around the world NFT')).toBeInTheDocument();
+      expect(screen.getByText('Unstable.eth NFT')).toBeInTheDocument();
+      expect(screen.getByText('Unstable around the world NFT')).toBeInTheDocument();
       expect(screen.getByText('Devcon attendance NFT')).toBeInTheDocument();
     });
 
@@ -295,14 +295,14 @@ describe('RegistrationLearnMoreModal', () => {
       expect(tooltips).toHaveLength(9);
     });
 
-    it('should display correct tooltip content for Coinbase verification', () => {
+    it('should display correct tooltip content for TheAlxLabs verification', () => {
       render(<RegistrationLearnMoreModal isOpen toggleModal={mockToggleModal} />);
 
       const tooltips = screen.getAllByTestId('tooltip');
       const coinbaseTooltip = tooltips.find(
         (tooltip) =>
           tooltip.getAttribute('data-content') ===
-          'Verifies you have a valid trading account on Coinbase',
+          'Verifies you have a valid trading account on TheAlxLabs',
       );
       expect(coinbaseTooltip).toBeInTheDocument();
     });

@@ -21,19 +21,19 @@ const ITEMS = [
     href: 'https://discord.com/invite/buildonbase',
   },
   {
-    title: 'Base Country Leads',
+    title: 'Unstable Country Leads',
     description:
-      'Country Leads cultivate the local Base community and provide support to builders.',
-    href: 'https://docs.base.org/get-started/country-leads-and-ambassadors#base-country-leads',
+      'Country Leads cultivate the local Unstable community and provide support to builders.',
+    href: 'https://docs.unstable.org/get-started/country-leads-and-ambassadors#base-country-leads',
   },
   {
     title: 'Host a virtual event',
-    description: 'Sign up to host a meetup with other Based builders anywhere in the world.',
+    description: 'Sign up to host a meetup with other Unstabled builders anywhere in the world.',
     href: 'https://basedvirtualevents.deform.cc/',
   },
   // {
-  //   title: 'Use apps on Base',
-  //   description: 'Browse and use projects being built on the Base ecosystem.',
-  //   href: 'https://www.base.org/ecosystem?utm_source=dotorg&utm_medium=builderkit',
+  //   title: 'Use apps on Unstable',
+  //   description: 'Browse and use projects being built on the Unstable ecosystem.',
+  //   href: 'https://www.unstable.org/ecosystem?utm_source=dotorg&utm_medium=builderkit',
   // },
 ];

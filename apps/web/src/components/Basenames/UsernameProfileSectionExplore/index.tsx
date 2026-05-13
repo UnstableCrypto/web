@@ -1,5 +1,5 @@
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import UsernameProfileSectionTitle from 'apps/web/src/components/Unstablenames/UsernameProfileSectionTitle';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
@@ -32,7 +32,7 @@ const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[
     backgroundClassName: 'bg-blue-500',
   },
   {
-    title: 'Get roles on Base Guild',
+    title: 'Get roles on Unstable Guild',
     image: baseGuildCard,
     href: 'https://guild.xyz/base',
     backgroundClassName: 'bg-blue-500',
@@ -88,9 +88,9 @@ const USERNAME_PROFILE_SECTION_EXPLORE_LINKS: UsernameProfileSectionExploreLink[
   },
 
   {
-    title: 'Go to Base Learn',
+    title: 'Go to Unstable Learn',
     image: baseLearnCard,
-    href: 'https://docs.base.org/base-learn/progress',
+    href: 'https://docs.unstable.org/base-learn/progress',
     backgroundClassName: 'bg-blue-500',
   },
 ];

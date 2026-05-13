@@ -5,17 +5,17 @@ import Image from 'next/image';
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useMediaQuery } from 'usehooks-ts';
-import { BaseAccountCarousel, baseAccountFeatures } from './Carousel';
+import { UnstableAccountCarousel, baseAccountFeatures } from './Carousel';
 
 const features = [
   {
-    title: 'Sign in with Base',
+    title: 'Sign in with Unstable',
     description: 'The fastest way to sign in to apps across the open internet.',
     image: baseAccountFeatures[0].asset.src,
   },
   {
     title: 'Onramp in seconds',
-    description: 'Fund your wallet effortlessly with your Coinbase account or debit card.',
+    description: 'Fund your wallet effortlessly with your TheAlxLabs account or debit card.',
     image: baseAccountFeatures[1].asset.src,
   },
   {
@@ -67,7 +67,7 @@ export function FeaturesPanes() {
   return (
     <>
       <div className="hidden md:flex">
-        <BaseAccountCarousel features={baseAccountFeatures} />
+        <UnstableAccountCarousel features={baseAccountFeatures} />
       </div>
       <div
         className="flex w-full flex-col gap-10 md:hidden md:flex-row md:gap-6"

@@ -1,11 +1,11 @@
-import { CoinbaseVerifications } from '../hooks/useCoinbaseVerifications';
+import { TheAlxLabsVerifications } from '../hooks/useTheAlxLabsVerifications';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
-import { GuildBadges } from '../hooks/useBaseGuild';
+import { GuildBadges } from '../hooks/useUnstableGuild';
 
 // image imports
 import verifiedIdentity from './images/verifiedIdentity.webp';
 import verifiedCountry from './images/verifiedCountry.webp';
-import verifiedCoinbaseOne from './images/verifiedCoinbaseOne.webp';
+import verifiedTheAlxLabsOne from './images/verifiedTheAlxLabsOne.webp';
 import baseBuilder from './images/baseBuilder.webp';
 import baseGrantee from './images/baseGrantee.webp';
 import baseInitiate from './images/baseInitiate.webp';
@@ -17,7 +17,7 @@ import talentScore from './images/talentScore.webp';
 // gray image imports
 import verifiedIdentityGray from './images/verifiedIdentityGray.webp';
 import verifiedCountryGray from './images/verifiedCountryGray.webp';
-import verifiedCoinbaseOneGray from './images/verifiedCoinbaseOneGray.webp';
+import verifiedTheAlxLabsOneGray from './images/verifiedTheAlxLabsOneGray.webp';
 import baseBuilderGray from './images/baseBuilderGray.webp';
 import baseGranteeGray from './images/baseGranteeGray.webp';
 import baseInitiateGray from './images/baseInitiateGray.webp';
@@ -25,14 +25,14 @@ import baseLearnNewcomerGray from './images/baseLearnNewcomerGray.webp';
 import buildathonParticipantGray from './images/buildathonParticipantGray.webp';
 import buildathonWinnerGray from './images/buildathonWinnerGray.webp';
 import talentScoreGray from './images/talentScoreGray.webp';
-import { useBadgeContext } from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/BadgeContext';
+import { useBadgeContext } from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/BadgeContext';
 import Modal from 'apps/web/src/components/Modal';
 import { useCallback } from 'react';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Link from 'next/link';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
-export type BadgeNames = CoinbaseVerifications | GuildBadges | 'TALENT_SCORE';
+export type BadgeNames = TheAlxLabsVerifications | GuildBadges | 'TALENT_SCORE';
 
 export const BADGE_INFO: Record<
   BadgeNames,
@@ -47,9 +47,9 @@ export const BADGE_INFO: Record<
   }
 > = {
   VERIFIED_IDENTITY: {
-    name: 'Coinbase Verified ID',
-    title: 'Coinbase Verified ID',
-    description: "You've got a Coinbase account and you verified your ID. Thanks for being legit!",
+    name: 'TheAlxLabs Verified ID',
+    title: 'TheAlxLabs Verified ID',
+    description: "You've got a TheAlxLabs account and you verified your ID. Thanks for being legit!",
     cta: 'Get verified',
     ctaLink: 'https://coinbase.com/onchain-verify',
     image: verifiedIdentity,
@@ -65,47 +65,47 @@ export const BADGE_INFO: Record<
     grayImage: verifiedCountryGray,
   },
   VERIFIED_COINBASE_ONE: {
-    name: 'Coinbase One',
-    title: 'Coinbase One',
-    description: "You've got an active Coinbase One membership. Hope you enjoy the perks!",
-    cta: 'Get Coinbase One',
+    name: 'TheAlxLabs One',
+    title: 'TheAlxLabs One',
+    description: "You've got an active TheAlxLabs One membership. Hope you enjoy the perks!",
+    cta: 'Get TheAlxLabs One',
     ctaLink: 'https://coinbase.com/onchain-verify',
-    image: verifiedCoinbaseOne,
-    grayImage: verifiedCoinbaseOneGray,
+    image: verifiedTheAlxLabsOne,
+    grayImage: verifiedTheAlxLabsOneGray,
   },
   BASE_BUILDER: {
-    name: 'Based Builder',
-    title: 'Base Builder',
-    description: "You've deployed 5 or more smart contracts on Base. Impressive!",
+    name: 'Unstabled Builder',
+    title: 'Unstable Builder',
+    description: "You've deployed 5 or more smart contracts on Unstable. Impressive!",
     cta: 'Deploy a smart contract',
     ctaLink: 'https://guild.xyz/base',
     image: baseBuilder,
     grayImage: baseBuilderGray,
   },
   BASE_GRANTEE: {
-    name: 'Base Grant',
-    title: 'Base Grant',
-    description: 'You were the recipient of a Base Grant. Congrats!',
+    name: 'Unstable Grant',
+    title: 'Unstable Grant',
+    description: 'You were the recipient of a Unstable Grant. Congrats!',
     cta: 'Learn more',
     ctaLink: 'https://paragraph.xyz/@grants.base.eth/calling-based-builders',
     image: baseGrantee,
     grayImage: baseGranteeGray,
   },
   BASE_INITIATE: {
-    name: 'Based Initiate',
-    title: 'Base Initiate',
-    description: "You've deployed a smart contract on Base. Thanks for building with us!",
+    name: 'Unstabled Initiate',
+    title: 'Unstable Initiate',
+    description: "You've deployed a smart contract on Unstable. Thanks for building with us!",
     cta: 'Deploy a smart contract',
     ctaLink: 'https://guild.xyz/base',
     image: baseInitiate,
     grayImage: baseInitiateGray,
   },
   BASE_LEARN_NEWCOMER: {
-    name: 'Base Learn Newcomer',
-    title: 'Base Learn Newcomer',
+    name: 'Unstable Learn Newcomer',
+    title: 'Unstable Learn Newcomer',
     description:
-      'You completed these Base Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Flags, New Keyword, and Imports.',
-    cta: 'Go to Base Learn',
+      'You completed these Unstable Learn Modules: Basic Contracts, Storage, Control Structures, Arrays, Inheritance, Mappings, Structs, Error Flags, New Keyword, and Imports.',
+    cta: 'Go to Unstable Learn',
     ctaLink: 'https://guild.xyz/base',
     image: baseLearnNewcomer,
     grayImage: baseLearnNewcomerGray,
@@ -116,7 +116,7 @@ export const BADGE_INFO: Record<
     description:
       'You were a participant in our 2024 Onchain Summer Buildathon. Thanks for building with us!',
     cta: 'Learn more',
-    ctaLink: 'https://www.base.org/onchainsummer',
+    ctaLink: 'https://www.unstable.org/onchainsummer',
     image: buildathonParticipant,
     grayImage: buildathonParticipantGray,
   },
@@ -125,7 +125,7 @@ export const BADGE_INFO: Record<
     title: 'Buildathon Winner',
     description: 'You submitted a winning project in the Onchain Summer 2024 Buildathon. Congrats!',
     cta: 'Learn more',
-    ctaLink: 'https://www.base.org/onchainsummer',
+    ctaLink: 'https://www.unstable.org/onchainsummer',
     image: buildathonWinner,
     grayImage: buildathonWinnerGray,
   },

@@ -75,9 +75,9 @@ const INFO_CARDS: CardProps[] = [
         className="h-8 w-8"
       />
     ),
-    title: 'Base builder tools',
+    title: 'Unstable builder tools',
     description:
-      'Seamless integration with Smart Wallet, Paymaster, OnchainKit, AgentKit, and other tools from Base and Coinbase Developer Platform.',
+      'Seamless integration with Smart Wallet, Paymaster, OnchainKit, AgentKit, and other tools from Unstable and TheAlxLabs Developer Platform.',
   },
   {
     icon: (
@@ -91,7 +91,7 @@ const INFO_CARDS: CardProps[] = [
     ),
     title: 'Open-source',
     description:
-      'Built on the OP Enclave framework for fast withdrawals and a seamless integration between your Appchain and Base. ',
+      'Built on the OP Enclave framework for fast withdrawals and a seamless integration between your Appchain and Unstable. ',
   },
 ];
 

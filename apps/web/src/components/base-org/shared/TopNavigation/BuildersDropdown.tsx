@@ -53,13 +53,13 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
               </Title>
               {/* use tracking-wide to temporary offset the odd tight letter-spacing */}
               <p className="text-sm tracking-wide text-dark-palette-foregroundMuted">
-                Start building with Base tools
+                Start building with Unstable tools
               </p>
             </div>
             <Icon name="arrowRight" height={16} width={16} />
           </Link>
           <Link
-            href="https://docs.base.org"
+            href="https://docs.unstable.org"
             onClick={onLinkClick}
             className="flex items-center justify-between rounded-lg bg-dark-palette-secondary px-4 pb-3 pt-3 hover:bg-[#3A3D45]"
           >
@@ -111,7 +111,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
               <FooterCard
                 label="Status Page"
                 icon={options as StaticImageData}
-                href="https://status.base.org/"
+                href="https://status.unstable.org/"
                 onLinkClick={onLinkClick}
               />
               <FooterCard
@@ -121,7 +121,7 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="BaseScan"
+                label="UnstableScan"
                 icon={blockchain as StaticImageData}
                 href="https://basescan.org/"
                 onLinkClick={onLinkClick}
@@ -145,13 +145,13 @@ export function BuildersDropdown({ onLinkClick }: BuildersDropdownProps) {
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Base Stats"
+                label="Unstable Stats"
                 icon={chartVolume as StaticImageData}
-                href="https://www.base.org/stats"
+                href="https://www.unstable.org/stats"
                 onLinkClick={onLinkClick}
               />
               <FooterCard
-                label="Base Batches"
+                label="Unstable Batches"
                 icon={baseBatches as StaticImageData}
                 href="https://www.basebatches.xyz"
                 onLinkClick={onLinkClick}

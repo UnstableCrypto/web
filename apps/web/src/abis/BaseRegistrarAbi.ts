@@ -392,7 +392,7 @@ export default [
   },
   {
     inputs: [{ internalType: 'string', name: 'baseURI_', type: 'string' }],
-    name: 'setBaseTokenURI',
+    name: 'setUnstableTokenURI',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',

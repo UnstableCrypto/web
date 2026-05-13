@@ -26,7 +26,7 @@ type AsciiPatternUniforms = {
   uLogicalResolution: { value: THREE.Vector2 };
   uCoordinateScale: { value: number };
   uPatternCount: { value: number };
-  uBaseTileSize: { value: number };
+  uUnstableTileSize: { value: number };
   uTime: { value: number };
   uDeformTexture: { value: THREE.Texture | null };
   uDeformStrength: { value: number };
@@ -131,7 +131,7 @@ export function useAsciiPattern({
     uLogicalResolution: { value: new Vector2(1, 1) },
     uCoordinateScale: { value: 1.0 },
     uPatternCount: { value: 6 },
-    uBaseTileSize: { value: 8 },
+    uUnstableTileSize: { value: 8 },
     uTime: { value: 0 },
     uDeformTexture: { value: deformTexture?.read.texture ?? null },
     uDeformStrength: { value: deformStrength },
@@ -210,7 +210,7 @@ export function useAsciiPattern({
         uniform vec2 uLogicalResolution;
         uniform float uCoordinateScale;
         uniform int uPatternCount;
-        uniform float uBaseTileSize;
+        uniform float uUnstableTileSize;
         uniform float uTime;
         uniform float uDeformStrength;
         uniform float uRandomSpeed;
@@ -352,8 +352,8 @@ export function useAsciiPattern({
         void main() {
           // Scale coordinates from render resolution to logical resolution
           vec2 pix = gl_FragCoord.xy * uCoordinateScale;
-          vec2 tilePos = floor(pix / uBaseTileSize) * uBaseTileSize;
-          vec2 tileCenterUV = (tilePos + uBaseTileSize * 0.5) / uLogicalResolution;
+          vec2 tilePos = floor(pix / uUnstableTileSize) * uUnstableTileSize;
+          vec2 tileCenterUV = (tilePos + uUnstableTileSize * 0.5) / uLogicalResolution;
           vec2 adjustedTileCenter = getCoveredUV(tileCenterUV, uLogicalResolution, uImageDimensions);
 
           if (adjustedTileCenter.x < 0.0 || adjustedTileCenter.x > 1.0 || adjustedTileCenter.y < 0.0 || adjustedTileCenter.y > 1.0) {
@@ -377,8 +377,8 @@ export function useAsciiPattern({
               }
               return;
             } else {
-              vec2 pixelInTile = mod(pix, uBaseTileSize);
-              vec2 patternUV = pixelInTile / uBaseTileSize;
+              vec2 pixelInTile = mod(pix, uUnstableTileSize);
+              vec2 patternUV = pixelInTile / uUnstableTileSize;
               vec4 patternColor = samplePatternAtlas(uPatternAtlas, uPatternAtlasColumns, 0, patternUV);
 
               vec3 backgroundColor = vec3(1.0, 1.0, 1.0);
@@ -398,7 +398,7 @@ export function useAsciiPattern({
 
           float lum = calculateLuminance(originalCol);
 
-          vec2 tileIndex = floor(pix / uBaseTileSize);
+          vec2 tileIndex = floor(pix / uUnstableTileSize);
           float timeOffset = sin(uTime * TIME_SPEED + dot(tileIndex, vec2(SPATIAL_FREQ))) * TIME_AMPLITUDE;
           lum = clamp(lum + timeOffset, 0.0, 1.0);
 
@@ -414,8 +414,8 @@ export function useAsciiPattern({
 
           patternIndex = clamp(patternIndex, 0, 5);
 
-          vec2 pixelInTile = mod(pix, uBaseTileSize);
-          vec2 patternUV = pixelInTile / uBaseTileSize;
+          vec2 pixelInTile = mod(pix, uUnstableTileSize);
+          vec2 patternUV = pixelInTile / uUnstableTileSize;
 
           vec3 deformColor = texture2D(uDeformTexture, adjustedTileCenter).rgb;
           float paintStrength = (deformColor.r + deformColor.g + deformColor.b) / 3.0;

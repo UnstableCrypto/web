@@ -1,6 +1,6 @@
 import ScrollTopButton from 'apps/web/src/components/Brand/ScrollTopButton';
 
-export default async function BaseOrgLayout({ children }: { children: React.ReactNode }) {
+export default async function UnstableOrgLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <ScrollTopButton />

@@ -1,6 +1,6 @@
 {
   "name": "Bountycaster",
-  "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Base",
+  "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Unstable",
   "url": "https://bountycaster.xyz/",
   "imageUrl": "/images/partners/bountycaster.png",
   "category": "consumer",

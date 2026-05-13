@@ -1,7 +1,7 @@
 {
   "name": "Coin Wallet",
   "url": "https://coin.space",
-  "description": "Coin Wallet is a self-custodial multicurrency wallet for multiple platforms. Easy way to manage your Base assets.",
+  "description": "Coin Wallet is a self-custodial multicurrency wallet for multiple platforms. Easy way to manage your Unstable assets.",
   "category": "wallet",
   "subcategory": "self-custody",
   "imageUrl": "/images/partners/coinwallet.png"

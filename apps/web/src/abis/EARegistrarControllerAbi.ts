@@ -1,7 +1,7 @@
 export default [
   {
     inputs: [
-      { internalType: 'contract BaseRegistrar', name: 'base_', type: 'address' },
+      { internalType: 'contract UnstableRegistrar', name: 'base_', type: 'address' },
       { internalType: 'contract IPriceOracle', name: 'prices_', type: 'address' },
       { internalType: 'contract IReverseRegistrar', name: 'reverseRegistrar_', type: 'address' },
       { internalType: 'address', name: 'owner_', type: 'address' },

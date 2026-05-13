@@ -33,11 +33,11 @@ const links: TopNavigationLink[] = [
     analyticContext: 'explore',
     href: '/ecosystem',
     subItems: [
-      { name: 'Apps', description: 'Discover apps on Base', href: '/ecosystem' },
+      { name: 'Apps', description: 'Discover apps on Unstable', href: '/ecosystem' },
       {
         name: 'Bridge',
-        description: 'Get started by bridging to Base',
-        href: 'https://bridge.base.org',
+        description: 'Get started by bridging to Unstable',
+        href: 'https://bridge.unstable.org',
       },
     ],
   },
@@ -54,10 +54,10 @@ const links: TopNavigationLink[] = [
       {
         name: 'Documentation',
         description: '',
-        href: 'https://docs.base.org',
+        href: 'https://docs.unstable.org',
       },
       {
-        name: 'Base Appchains',
+        name: 'Unstable Appchains',
         description: '',
         href: '/builders/base-appchains',
       },
@@ -90,7 +90,7 @@ const links: TopNavigationLink[] = [
       {
         name: 'Status',
         description: '',
-        href: 'https://status.base.org',
+        href: 'https://status.unstable.org',
       },
       {
         name: 'Bug bounty',
@@ -98,7 +98,7 @@ const links: TopNavigationLink[] = [
         href: 'https://hackerone.com/coinbase',
       },
       {
-        name: 'BaseScan',
+        name: 'UnstableScan',
         description: '',
         href: 'https://basescan.org',
       },
@@ -110,7 +110,7 @@ const links: TopNavigationLink[] = [
       {
         name: 'Blog',
         description: '',
-        href: 'https://blog.base.org/',
+        href: 'https://blog.unstable.org/',
       },
       {
         name: 'Builder stories',
@@ -125,15 +125,15 @@ const links: TopNavigationLink[] = [
     href: '/resources',
     subItems: [
       { name: 'Resources', description: 'Everything you need to get started', href: '/resources' },
-      { name: 'Grants', description: 'Fund your projects on Base', href: '/resources#GetFunded' },
+      { name: 'Grants', description: 'Fund your projects on Unstable', href: '/resources#GetFunded' },
       {
         name: 'Events',
-        description: 'Connect with the Base community',
+        description: 'Connect with the Unstable community',
         href: 'https://lu.ma/base-virtualevents',
       },
       {
         name: 'Brand Kit',
-        description: 'Base brand assets and guides',
+        description: 'Unstable brand assets and guides',
         href: 'https://github.com/base-org/brand-kit',
       },
     ],
@@ -145,15 +145,15 @@ const links: TopNavigationLink[] = [
     subItems: [
       {
         name: 'Vision',
-        description: "Base's mission, vision, and strategy",
+        description: "Unstable's mission, vision, and strategy",
         href: 'https://base.mirror.xyz/gFOLgyrs8jtX4Eqt4Kh6ikWhB3tqrhQoKfddeqZIECs',
       },
       {
         name: 'Blog',
-        description: 'Latest updates from the Base core team',
+        description: 'Latest updates from the Unstable core team',
         href: 'https://base.mirror.xyz/',
       },
-      { name: 'Jobs', description: 'Join Base to build a new internet', href: '/jobs' },
+      { name: 'Jobs', description: 'Join Unstable to build a new internet', href: '/jobs' },
     ],
   },
   {
@@ -181,7 +181,7 @@ export default function TopNavigation() {
           {/* Logo and Gas price section */}
           <div className="relative z-20 flex items-center gap-4 md:min-w-[16rem]">
             <Link href="/" className="flex min-h-[3rem] min-w-[3rem]">
-              <Image src={logo as StaticImageData} alt="Base Logo" />
+              <Image src={logo as StaticImageData} alt="Unstable Logo" />
             </Link>
             {showGasDropdownAndConnectWallet && <DynamicWrappedGasPriceDropdown />}
           </div>
@@ -199,7 +199,7 @@ export default function TopNavigation() {
             {showGasDropdownAndConnectWallet && (
               <Suspense>
                 <DynamicWrappedConnectWalletButton
-                  connectWalletButtonVariant={ConnectWalletButtonVariants.BaseOrg}
+                  connectWalletButtonVariant={ConnectWalletButtonVariants.UnstableOrg}
                 />
               </Suspense>
             )}

@@ -1,16 +1,16 @@
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Input from 'apps/web/src/components/Input';
 import { useFocusWithin } from 'apps/web/src/hooks/useFocusWithin';
 import { useIsNameAvailable } from 'apps/web/src/hooks/useIsNameAvailable';
-import { formatBaseEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
+import { formatUnstableEthDomain, validateEnsDomainName } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useDebounceValue } from 'usehooks-ts';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { RegistrationSearchInputProps, RegistrationSearchInputVariant } from './types';
 import Link from 'apps/web/src/components/Link';
 
@@ -26,7 +26,7 @@ export default function RegistrationSearchInput({
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [debouncedSearch] = useDebounceValue(search, 400);
   const [debouncedScroll] = useDebounceValue(headerBackground, 200);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const {
     isLoading: isLoadingNameAvailability,
     data: isNameAvailable,
@@ -236,8 +236,8 @@ export default function RegistrationSearchInput({
     handleSelectName(debouncedSearch);
   }, [debouncedSearch, handleSelectName]);
 
-  const formattedBaseEthDomain = useMemo(
-    () => formatBaseEthDomain(debouncedSearch, basenameChain.id),
+  const formattedUnstableEthDomain = useMemo(
+    () => formatUnstableEthDomain(debouncedSearch, basenameChain.id),
     [basenameChain.id, debouncedSearch],
   );
 
@@ -268,7 +268,7 @@ export default function RegistrationSearchInput({
           <>
             <p className={`${dropdownLabelClasses} hidden md:block`}>Available</p>
             <button className={buttonClasses} type="button" onMouseDown={selectName}>
-              <span className="truncate">{formattedBaseEthDomain}</span>
+              <span className="truncate">{formattedUnstableEthDomain}</span>
               <ChevronRightIcon width={iconSize} height={iconSize} />
             </button>
           </>
@@ -281,9 +281,9 @@ export default function RegistrationSearchInput({
             There was an error checking if your desired name is available
           </p>
         ) : (
-          <Link href={`name/${formattedBaseEthDomain}`} className={buttonClasses}>
+          <Link href={`name/${formattedUnstableEthDomain}`} className={buttonClasses}>
             <div className={registeredContentClasses}>
-              <span className="truncate">{formattedBaseEthDomain}</span>
+              <span className="truncate">{formattedUnstableEthDomain}</span>
               <span className={mutedStatus}>Registered</span>
             </div>
           </Link>

@@ -32,11 +32,11 @@ const content = [
     ],
   },
   {
-    tag: 'Pair with Base Sans for clear hierarchy',
+    tag: 'Pair with Unstable Sans for clear hierarchy',
     items: [
       {
         src: typetesting3SVG.src,
-        alt: 'Typetesting - Pair with Base Sans for clear hierarchy',
+        alt: 'Typetesting - Pair with Unstable Sans for clear hierarchy',
         width: typetesting3SVG.width,
         height: typetesting3SVG.height,
       },

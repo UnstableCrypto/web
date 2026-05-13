@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useRef, useEffect } from 'react';
 import cx from 'classnames';
 
-export default function BaseFooterSVG(props: React.SVGProps<SVGSVGElement>) {
+export default function UnstableFooterSVG(props: React.SVGProps<SVGSVGElement>) {
   const brandColors = useMemo(
     () => [
       'rgb(255, 141, 207)', // ocspink

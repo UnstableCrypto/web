@@ -1,8 +1,8 @@
 'use client';
 import { useCallback } from 'react';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import useSetPrimaryBasename from 'apps/web/src/hooks/useSetPrimaryBasename';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
+import useSetPrimaryUnstablename from 'apps/web/src/hooks/useSetPrimaryUnstablename';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 
@@ -11,7 +11,7 @@ export default function UsernameProfileSettingsName() {
   const { profileUsername, profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
 
   // Primary username
-  const { data: primaryUsername } = useBaseEnsName({
+  const { data: primaryUsername } = useUnstableEnsName({
     address: profileAddress,
   });
 
@@ -20,7 +20,7 @@ export default function UsernameProfileSettingsName() {
     setPrimaryName,
     isLoading: setPrimaryNameIsLoading,
     canSetUsernameAsPrimary,
-  } = useSetPrimaryBasename({
+  } = useSetPrimaryUnstablename({
     secondaryUsername: profileUsername,
   });
 

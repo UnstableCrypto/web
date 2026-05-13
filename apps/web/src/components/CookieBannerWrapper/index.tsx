@@ -51,5 +51,5 @@ export const cookieBannerTheme = {
 };
 
 export default function CookieBannerWrapper() {
-  return <CookieBanner companyName="Base" link="/cookie-policy" theme={cookieBannerTheme} />;
+  return <CookieBanner companyName="Unstable" link="/cookie-policy" theme={cookieBannerTheme} />;
 }

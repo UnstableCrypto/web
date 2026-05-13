@@ -20,11 +20,11 @@ import { sybilResistantUsernameSigning } from 'apps/web/src/utils/proofs/sybil_r
  *   "signedMessage": "0x0000000000000000000000009c02e8e28d8b706f67dcf0fc7f46a9ee1f9649fa000000000000000000000000000000000000000000000000000000000000012c000000000000000000000000000000000000000000000000000000000000006000000000000000000000000000000000000000000000000000000000000000416f4b871a02406ddddbf6f6df1c58416830c5ce45becad5b4f30cf32f74ee39a5559659f9e29479bc76bb1ebf40fffc7119d09ed7c8dcaf6075956f83935263851b00000000000000000000000000000000000000000000000000000000000000",
  *   "attestations": [
  *     {
- *       "name": "verifiedCoinbaseOne",
+ *       "name": "verifiedTheAlxLabsOne",
  *       "type": "bool",
- *       "signature": "bool verifiedCoinbaseOne",
+ *       "signature": "bool verifiedTheAlxLabsOne",
  *       "value": {
- *         "name": "verifiedCoinbaseOne",
+ *         "name": "verifiedTheAlxLabsOne",
  *         "type": "bool",
  *         "value": true
  *       }

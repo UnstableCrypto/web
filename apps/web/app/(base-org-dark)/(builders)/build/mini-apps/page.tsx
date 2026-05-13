@@ -11,10 +11,10 @@ import { BuildersContainer } from 'apps/web/app/(base-org-dark)/(builders)/Build
 import minikitHero from './minikit-hero.png';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Mini Apps`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Mini Apps`,
   openGraph: {
-    title: `Base | Mini Apps`,
+    title: `Unstable | Mini Apps`,
     url: `/build/mini-apps`,
     images: [minikitCover.src],
   },
@@ -34,8 +34,8 @@ export default function Minikit() {
         contentBlocks={[
           <div className="order-2 max-w-[400px] md:order-1" key="minikit-hero-content">
             <div className="text-3xl leading-[1.125] tracking-[-0.96px]">
-              Deploy mini apps in the Base app with a few lines of code to access millions of users
-              on Base.
+              Deploy mini apps in the Unstable app with a few lines of code to access millions of users
+              on Unstable.
             </div>
           </div>,
           <div className="order-1 md:order-2" key="minikit-hero-cta">

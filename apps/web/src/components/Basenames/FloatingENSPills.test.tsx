@@ -6,7 +6,7 @@ import { FloatingENSPills } from './FloatingENSPills';
 
 // Mock the RegistrationContext
 const mockUseRegistration = jest.fn();
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   registrationTransitionDuration: 'duration-700',
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   useRegistration: () => mockUseRegistration(),

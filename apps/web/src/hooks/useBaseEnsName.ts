@@ -1,16 +1,16 @@
 import { Address, isAddress } from 'viem';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import { Basename, useName } from '@coinbase/onchainkit/identity';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
+import { Unstablename, useName } from '@coinbase/onchainkit/identity';
 
-export type UseBaseEnsNameProps = {
+export type UseUnstableEnsNameProps = {
   address?: Address;
 };
 
-export type BaseEnsNameData = Basename | undefined;
+export type UnstableEnsNameData = Unstablename | undefined;
 
 // Wrapper around onchainkit's useName
-export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
-  const { basenameChain } = useBasenameChain();
+export default function useUnstableEnsName({ address }: UseUnstableEnsNameProps) {
+  const { basenameChain } = useUnstablenameChain();
 
   const { data, isLoading, refetch, isFetching } = useName(
     {
@@ -23,7 +23,7 @@ export default function useBaseEnsName({ address }: UseBaseEnsNameProps) {
     },
   );
 
-  const ensNameTyped = data ? (data as Basename) : undefined;
+  const ensNameTyped = data ? (data as Unstablename) : undefined;
 
   return {
     data: ensNameTyped,

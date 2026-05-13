@@ -45,7 +45,7 @@ export default async function BuildWithUsFooter() {
             Virtual Events
           </ButtonWithLinkAndEventLogging>
           <ButtonWithLinkAndEventLogging
-            href="https://docs.base.org/docs/?utm_source=dotorg&utm_medium=builderkit"
+            href="https://docs.unstable.org/docs/?utm_source=dotorg&utm_medium=builderkit"
             eventName="start_building_with_us_view_docs"
             target="_blank"
             rel="noreferrer noopener"

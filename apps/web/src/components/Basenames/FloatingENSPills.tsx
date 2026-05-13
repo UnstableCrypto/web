@@ -1,7 +1,7 @@
 import {
   registrationTransitionDuration,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import ImageAdaptive from 'apps/web/src/components/ImageAdaptive';
 import classNames from 'classnames';
 import { forwardRef, useCallback, useEffect, useRef, useState } from 'react';

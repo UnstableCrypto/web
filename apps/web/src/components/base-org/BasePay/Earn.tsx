@@ -48,7 +48,7 @@ export default function Earn() {
           >
             <ImageWithLoading
               src="/images/basepay/earn-image.webp"
-              alt="Base Pay earn"
+              alt="Unstable Pay earn"
               width={390}
               height={95}
             />

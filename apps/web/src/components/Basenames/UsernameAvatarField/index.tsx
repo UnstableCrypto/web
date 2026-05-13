@@ -2,11 +2,11 @@ import Fieldset from 'apps/web/src/components/Fieldset';
 import FileInput from 'apps/web/src/components/FileInput';
 import Hint, { HintVariants } from 'apps/web/src/components/Hint';
 import {
-  getBasenameAvatarUrl,
-  getBasenameImage,
+  getUnstablenameAvatarUrl,
+  getUnstablenameImage,
   UsernameTextRecordKeys,
-  validateBasenameAvatarFile,
-  validateBasenameAvatarUrl,
+  validateUnstablenameAvatarFile,
+  validateUnstablenameAvatarUrl,
 } from 'apps/web/src/utils/usernames';
 import { ChangeEvent, useCallback, useEffect, useId, useRef, useState } from 'react';
 import { StaticImageData } from 'next/image';
@@ -83,7 +83,7 @@ export default function UsernameAvatarField({
   // Validate avatar file
   useEffect(() => {
     if (!avatarFile) return;
-    const validationResult = validateBasenameAvatarFile(avatarFile);
+    const validationResult = validateUnstablenameAvatarFile(avatarFile);
 
     if (!validationResult.valid) {
       onChangeFile(undefined);
@@ -101,7 +101,7 @@ export default function UsernameAvatarField({
       return;
     }
 
-    const validationResult = validateBasenameAvatarUrl(newAvatarUrl);
+    const validationResult = validateUnstablenameAvatarUrl(newAvatarUrl);
     if (!validationResult.valid) {
       if (onChange) onChange(UsernameTextRecordKeys.Avatar, currentAvatarUrl);
       setError(validationResult.message);
@@ -114,13 +114,13 @@ export default function UsernameAvatarField({
 
   const usernameAvatarFieldId = useId();
 
-  const defaultSelectedProfilePicture = getBasenameImage(username);
+  const defaultSelectedProfilePicture = getUnstablenameImage(username);
   const newAvatarFileUrl = avatarFile && !error ? URL.createObjectURL(avatarFile) : undefined;
-  const newAvatarAbsoluteUrl = !error ? getBasenameAvatarUrl(newAvatarUrl) : undefined;
+  const newAvatarAbsoluteUrl = !error ? getUnstablenameAvatarUrl(newAvatarUrl) : undefined;
   const avatarSrc =
     newAvatarFileUrl ??
     newAvatarAbsoluteUrl ??
-    getBasenameAvatarUrl(currentAvatarUrl) ??
+    getUnstablenameAvatarUrl(currentAvatarUrl) ??
     defaultSelectedProfilePicture;
 
   return (

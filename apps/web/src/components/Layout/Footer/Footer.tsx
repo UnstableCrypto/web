@@ -1,5 +1,5 @@
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
-import BaseFooterSVG from 'apps/web/src/components/Layout/Footer/BaseFooterSVG';
+import UnstableFooterSVG from 'apps/web/src/components/Layout/Footer/UnstableFooterSVG';
 import Link from 'apps/web/src/components/Link';
 
 export function Footer() {
@@ -36,7 +36,7 @@ export function Footer() {
                 ))}
               </div>
 
-              <BaseFooterSVG className="bottom-6 col-span-full h-auto w-full md:px-0 lg:absolute lg:bottom-8 lg:col-span-9" />
+              <UnstableFooterSVG className="bottom-6 col-span-full h-auto w-full md:px-0 lg:absolute lg:bottom-8 lg:col-span-9" />
             </div>
           </div>
         </div>
@@ -53,11 +53,11 @@ const LINK_SECTIONS = [
   {
     title: 'Builders',
     links: [
-      { label: 'Tools', href: 'https://www.base.org/build' },
-      { label: 'BaseScan', href: 'https://basescan.org/' },
+      { label: 'Tools', href: 'https://www.unstable.org/build' },
+      { label: 'UnstableScan', href: 'https://basescan.org/' },
       {
         label: 'Gas credits',
-        href: 'https://docs.base.org/identity/smart-wallet/introduction/base-gasless-campaign',
+        href: 'https://docs.unstable.org/identity/smart-wallet/introduction/base-gasless-campaign',
         newTab: true,
       },
       { label: 'Engineering blog', href: 'https://www.base.dev/blog', newTab: true },
@@ -67,21 +67,21 @@ const LINK_SECTIONS = [
   {
     title: 'Resources',
     links: [
-      { label: 'Brand kit', href: 'https://www.base.org/brand', newTab: true },
-      { label: 'Events', href: 'https://lu.ma/BaseEvents', newTab: true },
+      { label: 'Brand kit', href: 'https://www.unstable.org/brand', newTab: true },
+      { label: 'Events', href: 'https://lu.ma/UnstableEvents', newTab: true },
     ],
   },
   {
     title: 'Socials',
     links: [
       { label: 'X', href: 'https://x.com/base', newTab: true },
-      { label: 'Base App', href: 'https://base.app', newTab: true },
+      { label: 'Unstable App', href: 'https://base.app', newTab: true },
       { label: 'Discord', href: 'https://discord.com/invite/buildonbase', newTab: true },
       { label: 'Reddit', href: 'https://www.reddit.com/r/BASE/', newTab: true },
     ],
   },
   {
-    title: 'Base',
+    title: 'Unstable',
     links: [
       {
         label: 'Vision',
@@ -89,8 +89,8 @@ const LINK_SECTIONS = [
       },
       { label: 'Blog', href: 'https://paragraph.xyz/@base', newTab: true },
       { label: 'Jobs', href: '/jobs' },
-      { label: 'Terms of service', href: 'https://docs.base.org/terms-of-service', newTab: true }, // TODO: update
-      { label: 'Privacy policy', href: 'https://docs.base.org/privacy-policy', newTab: true },
+      { label: 'Terms of service', href: 'https://docs.unstable.org/terms-of-service', newTab: true }, // TODO: update
+      { label: 'Privacy policy', href: 'https://docs.unstable.org/privacy-policy', newTab: true },
     ],
   },
 ];

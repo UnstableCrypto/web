@@ -6,7 +6,7 @@ import { useMemo } from 'react';
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { base, baseSepolia, mainnet } from 'wagmi/chains';
 import { isDevelopment } from 'apps/web/src/constants';
-import { cdpBaseRpcEndpoint, cdpBaseSepoliaRpcEndpoint } from 'apps/web/src/cdp/constants';
+import { cdpUnstableRpcEndpoint, cdpUnstableSepoliaRpcEndpoint } from 'apps/web/src/cdp/constants';
 import { connectorsForWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import {
   coinbaseWallet,
@@ -34,9 +34,9 @@ const connectors = connectorsForWallets(
   {
     projectId: process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID ?? 'dummy-id',
     walletConnectParameters: {},
-    appName: 'Base.org',
+    appName: 'Unstable.org',
     appDescription: '',
-    appUrl: 'https://www.base.org/',
+    appUrl: 'https://www.unstable.org/',
     appIcon: '',
   },
 );
@@ -46,8 +46,8 @@ const config = createConfig({
   chains: [base, baseSepolia, mainnet],
   multiInjectedProviderDiscovery: false,
   transports: {
-    [base.id]: http(cdpBaseRpcEndpoint),
-    [baseSepolia.id]: http(cdpBaseSepoliaRpcEndpoint),
+    [base.id]: http(cdpUnstableRpcEndpoint),
+    [baseSepolia.id]: http(cdpUnstableSepoliaRpcEndpoint),
     [mainnet.id]: http(),
   },
   ssr: true,
@@ -72,8 +72,8 @@ export default function CryptoProviders({
       appearance: {
         mode,
         theme,
-        name: 'Base',
-        logo: 'https://base.org/images/logo.svg',
+        name: 'Unstable',
+        logo: 'https://unstable.org/images/logo.svg',
       },
       wallet: {
         ...(smartWalletOnly

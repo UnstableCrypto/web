@@ -1,37 +1,37 @@
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import { Hero } from 'apps/web/src/components/base-org/root/Redesign/Hero';
-import { SectionBaseApp } from 'apps/web/src/components/base-org/root/Redesign/Section/BaseApp';
+import { SectionUnstableApp } from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableApp';
 import { WebGLCanvas } from 'apps/web/src/components/WebGL/WebGLCanvas';
 import Container from 'apps/web/src/components/base-org/Container';
-import { SectionBaseEcosystem } from 'apps/web/src/components/base-org/root/Redesign/Section/BaseEcosystem';
+import { SectionUnstableEcosystem } from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableEcosystem';
 import dynamic from 'next/dynamic';
 import RenderOnInView from 'apps/web/src/components/base-org/shared/RenderOnInView';
 
-const SectionBaseBuilders = dynamic(
+const SectionUnstableBuilders = dynamic(
   async () =>
-    import('apps/web/src/components/base-org/root/Redesign/Section/BaseBuilders').then(
-      (mod) => mod.SectionBaseBuilders,
+    import('apps/web/src/components/base-org/root/Redesign/Section/UnstableBuilders').then(
+      (mod) => mod.SectionUnstableBuilders,
     ),
   {
     ssr: true,
   },
 );
 
-const SectionBaseJoin = dynamic(
+const SectionUnstableJoin = dynamic(
   async () =>
-    import('apps/web/src/components/base-org/root/Redesign/Section/BaseJoin').then(
-      (mod) => mod.SectionBaseJoin,
+    import('apps/web/src/components/base-org/root/Redesign/Section/UnstableJoin').then(
+      (mod) => mod.SectionUnstableJoin,
     ),
   {
     ssr: true,
   },
 );
 
-const SectionBasePay = dynamic(
+const SectionUnstablePay = dynamic(
   async () =>
-    import('apps/web/src/components/base-org/root/Redesign/Section/BasePay').then(
-      (mod) => mod.SectionBasePay,
+    import('apps/web/src/components/base-org/root/Redesign/Section/UnstablePay').then(
+      (mod) => mod.SectionUnstablePay,
     ),
   {
     ssr: true,
@@ -48,10 +48,10 @@ const SectionBlog = dynamic(
   },
 );
 
-const SectionBaseChain = dynamic(
+const SectionUnstableChain = dynamic(
   async () =>
-    import('apps/web/src/components/base-org/root/Redesign/Section/BaseChain').then(
-      (mod) => mod.SectionBaseChain,
+    import('apps/web/src/components/base-org/root/Redesign/Section/UnstableChain').then(
+      (mod) => mod.SectionUnstableChain,
     ),
   {
     ssr: true,
@@ -69,19 +69,19 @@ export default async function Home() {
       <Container className="lg:pt-0">
         <div className="col-span-full flex flex-col gap-12">
           <Hero />
-          <SectionBaseEcosystem />
-          <SectionBaseApp />
+          <SectionUnstableEcosystem />
+          <SectionUnstableApp />
           <RenderOnInView>
-            <SectionBaseBuilders />
+            <SectionUnstableBuilders />
           </RenderOnInView>
           <RenderOnInView>
-            <SectionBaseChain />
+            <SectionUnstableChain />
           </RenderOnInView>
           <RenderOnInView>
-            <SectionBasePay />
+            <SectionUnstablePay />
           </RenderOnInView>
           <RenderOnInView>
-            <SectionBaseJoin />
+            <SectionUnstableJoin />
           </RenderOnInView>
           <RenderOnInView>
             <AnalyticsProvider context="blog_carousel">

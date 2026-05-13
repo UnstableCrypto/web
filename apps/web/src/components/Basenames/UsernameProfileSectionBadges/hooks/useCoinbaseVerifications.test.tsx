@@ -5,10 +5,10 @@ import { renderHook, waitFor } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactNode } from 'react';
 import {
-  useCoinbaseVerification,
-  getCoinbaseVerifications,
-  CoinbaseVerifications,
-} from './useCoinbaseVerifications';
+  useTheAlxLabsVerification,
+  getTheAlxLabsVerifications,
+  TheAlxLabsVerifications,
+} from './useTheAlxLabsVerifications';
 
 // Mock the getAttestations function from @coinbase/onchainkit/identity
 const mockGetAttestations = jest.fn();
@@ -43,7 +43,7 @@ function createWrapper() {
   };
 }
 
-describe('getCoinbaseVerifications', () => {
+describe('getTheAlxLabsVerifications', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -52,7 +52,7 @@ describe('getCoinbaseVerifications', () => {
     mockGetAttestations.mockResolvedValue([]);
 
     const address: HexAddress = '0x1234567890abcdef1234567890abcdef12345678';
-    await getCoinbaseVerifications(address);
+    await getTheAlxLabsVerifications(address);
 
     expect(mockGetAttestations).toHaveBeenCalledWith(address, expect.anything(), {
       schemas: expect.arrayContaining([
@@ -72,7 +72,7 @@ describe('getCoinbaseVerifications', () => {
     mockGetAttestations.mockResolvedValue([attestation]);
 
     const address: HexAddress = '0x1234567890abcdef1234567890abcdef12345678';
-    const result = await getCoinbaseVerifications(address);
+    const result = await getTheAlxLabsVerifications(address);
 
     expect(result).toHaveLength(1);
     expect(result[0].data).toEqual({ verified: true });
@@ -84,7 +84,7 @@ describe('getCoinbaseVerifications', () => {
     mockGetAttestations.mockResolvedValue([]);
 
     const address: HexAddress = '0x1234567890abcdef1234567890abcdef12345678';
-    const result = await getCoinbaseVerifications(address);
+    const result = await getTheAlxLabsVerifications(address);
 
     expect(result).toEqual([]);
   });
@@ -105,7 +105,7 @@ describe('getCoinbaseVerifications', () => {
     mockGetAttestations.mockResolvedValue(attestations);
 
     const address: HexAddress = '0x1234567890abcdef1234567890abcdef12345678';
-    const result = await getCoinbaseVerifications(address);
+    const result = await getTheAlxLabsVerifications(address);
 
     expect(result).toHaveLength(2);
     expect(result[0].data).toEqual({ type: 'account' });
@@ -113,7 +113,7 @@ describe('getCoinbaseVerifications', () => {
   });
 });
 
-describe('useCoinbaseVerification', () => {
+describe('useTheAlxLabsVerification', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockGetAttestations.mockResolvedValue([]);
@@ -121,7 +121,7 @@ describe('useCoinbaseVerification', () => {
 
   describe('when no address is provided', () => {
     it('should return all badges as false and empty as true', () => {
-      const { result } = renderHook(() => useCoinbaseVerification(), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(), {
         wrapper: createWrapper(),
       });
 
@@ -132,7 +132,7 @@ describe('useCoinbaseVerification', () => {
     });
 
     it('should not call getAttestations when address is undefined', () => {
-      renderHook(() => useCoinbaseVerification(undefined), {
+      renderHook(() => useTheAlxLabsVerification(undefined), {
         wrapper: createWrapper(),
       });
 
@@ -146,7 +146,7 @@ describe('useCoinbaseVerification', () => {
     it('should call getAttestations with the address', async () => {
       mockGetAttestations.mockResolvedValue([]);
 
-      renderHook(() => useCoinbaseVerification(address), {
+      renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -162,7 +162,7 @@ describe('useCoinbaseVerification', () => {
     it('should return empty true when no attestations exist', async () => {
       mockGetAttestations.mockResolvedValue([]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -180,7 +180,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -199,7 +199,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -209,7 +209,7 @@ describe('useCoinbaseVerification', () => {
       });
     });
 
-    it('should set VERIFIED_COINBASE_ONE badge to true when Coinbase One attestation exists', async () => {
+    it('should set VERIFIED_COINBASE_ONE badge to true when TheAlxLabs One attestation exists', async () => {
       mockGetAttestations.mockResolvedValue([
         {
           schemaId: COINBASE_ONE_SCHEMA_ID,
@@ -218,7 +218,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -237,7 +237,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -266,7 +266,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -297,7 +297,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -318,7 +318,7 @@ describe('useCoinbaseVerification', () => {
         },
       ]);
 
-      const { result } = renderHook(() => useCoinbaseVerification(address), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(address), {
         wrapper: createWrapper(),
       });
 
@@ -333,7 +333,7 @@ describe('useCoinbaseVerification', () => {
 
   describe('return type structure', () => {
     it('should return an object with badges and empty properties', () => {
-      const { result } = renderHook(() => useCoinbaseVerification(), {
+      const { result } = renderHook(() => useTheAlxLabsVerification(), {
         wrapper: createWrapper(),
       });
 
@@ -341,12 +341,12 @@ describe('useCoinbaseVerification', () => {
       expect(result.current).toHaveProperty('empty');
     });
 
-    it('should return badges object with all CoinbaseVerifications keys', () => {
-      const { result } = renderHook(() => useCoinbaseVerification(), {
+    it('should return badges object with all TheAlxLabsVerifications keys', () => {
+      const { result } = renderHook(() => useTheAlxLabsVerification(), {
         wrapper: createWrapper(),
       });
 
-      const expectedBadges: CoinbaseVerifications[] = [
+      const expectedBadges: TheAlxLabsVerifications[] = [
         'VERIFIED_IDENTITY',
         'VERIFIED_COUNTRY',
         'VERIFIED_COINBASE_ONE',

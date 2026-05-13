@@ -1,7 +1,7 @@
 import { generateImageMetadata } from './opengraph-image';
 import OpenGraphImage from './opengraph-image';
 import { UsernameProfileProps } from './page';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 // Mock next/og ImageResponse
 jest.mock('next/og', () => ({
@@ -18,14 +18,14 @@ global.fetch = jest.fn().mockResolvedValue({
 });
 
 // Mock usernames utils
-const mockFormatBaseEthDomain = jest.fn();
-const mockGetBasenameImage = jest.fn();
-const mockGetChainForBasename = jest.fn();
+const mockFormatUnstableEthDomain = jest.fn();
+const mockGetUnstablenameImage = jest.fn();
+const mockGetChainForUnstablename = jest.fn();
 const mockFetchResolverAddress = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (...args: unknown[]) => mockFormatBaseEthDomain(...args) as unknown,
-  getBasenameImage: (...args: unknown[]) => mockGetBasenameImage(...args) as unknown,
-  getChainForBasename: (...args: unknown[]) => mockGetChainForBasename(...args) as unknown,
+  formatUnstableEthDomain: (...args: unknown[]) => mockFormatUnstableEthDomain(...args) as unknown,
+  getUnstablenameImage: (...args: unknown[]) => mockGetUnstablenameImage(...args) as unknown,
+  getChainForUnstablename: (...args: unknown[]) => mockGetChainForUnstablename(...args) as unknown,
   fetchResolverAddress: (...args: unknown[]) => mockFetchResolverAddress(...args) as unknown,
   USERNAME_DOMAINS: {
     8453: 'base.eth',
@@ -36,11 +36,11 @@ jest.mock('apps/web/src/utils/usernames', () => ({
   },
 }));
 
-// Mock useBasenameChain
+// Mock useUnstablenameChain
 const mockGetEnsText = jest.fn();
-const mockGetBasenamePublicClient = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
-  getBasenamePublicClient: (...args: unknown[]) => mockGetBasenamePublicClient(...args) as unknown,
+const mockGetUnstablenamePublicClient = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
+  getUnstablenamePublicClient: (...args: unknown[]) => mockGetUnstablenamePublicClient(...args) as unknown,
 }));
 
 // Mock constants
@@ -82,11 +82,11 @@ describe('opengraph-image', () => {
     jest.clearAllMocks();
 
     // Default mock implementations
-    mockFormatBaseEthDomain.mockImplementation((name: string) => `${name}.base.eth`);
-    mockGetBasenameImage.mockReturnValue({ src: '/default-avatar.png' });
-    mockGetChainForBasename.mockReturnValue({ id: 8453 });
+    mockFormatUnstableEthDomain.mockImplementation((name: string) => `${name}.base.eth`);
+    mockGetUnstablenameImage.mockReturnValue({ src: '/default-avatar.png' });
+    mockGetChainForUnstablename.mockReturnValue({ id: 8453 });
     mockFetchResolverAddress.mockResolvedValue('0x1234567890123456789012345678901234567890');
-    mockGetBasenamePublicClient.mockReturnValue({
+    mockGetUnstablenamePublicClient.mockReturnValue({
       getEnsText: mockGetEnsText,
     });
     mockGetEnsText.mockResolvedValue(null);
@@ -95,18 +95,18 @@ describe('opengraph-image', () => {
   describe('generateImageMetadata', () => {
     it('should return metadata with correct alt text for username', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice' as Basename }),
+        params: Promise.resolve({ username: 'alice' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
 
       expect(result).toHaveLength(1);
-      expect(result[0].alt).toBe('Basenames | alice.base.eth');
+      expect(result[0].alt).toBe('Unstablenames | alice.base.eth');
     });
 
     it('should return correct content type', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'bob' as Basename }),
+        params: Promise.resolve({ username: 'bob' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
@@ -116,7 +116,7 @@ describe('opengraph-image', () => {
 
     it('should return correct size dimensions', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'charlie' as Basename }),
+        params: Promise.resolve({ username: 'charlie' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
@@ -129,7 +129,7 @@ describe('opengraph-image', () => {
 
     it('should sanitize username to alphanumeric for id', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'test-user_123' as Basename }),
+        params: Promise.resolve({ username: 'test-user_123' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
@@ -140,34 +140,34 @@ describe('opengraph-image', () => {
 
     it('should format username with base.eth domain if not already formatted', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice' as Basename }),
+        params: Promise.resolve({ username: 'alice' as Unstablename }),
       };
 
       await generateImageMetadata(props);
 
-      expect(mockFormatBaseEthDomain).toHaveBeenCalledWith('alice', 8453);
+      expect(mockFormatUnstableEthDomain).toHaveBeenCalledWith('alice', 8453);
     });
 
     it('should not reformat username that already ends with base.eth', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice.base.eth' as Basename }),
+        params: Promise.resolve({ username: 'alice.base.eth' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
 
-      expect(mockFormatBaseEthDomain).not.toHaveBeenCalled();
-      expect(result[0].alt).toBe('Basenames | alice.base.eth');
+      expect(mockFormatUnstableEthDomain).not.toHaveBeenCalled();
+      expect(result[0].alt).toBe('Unstablenames | alice.base.eth');
     });
 
     it('should not reformat username that already ends with basetest.eth', async () => {
       const props: UsernameProfileProps = {
-        params: Promise.resolve({ username: 'alice.basetest.eth' as Basename }),
+        params: Promise.resolve({ username: 'alice.basetest.eth' as Unstablename }),
       };
 
       const result = await generateImageMetadata(props);
 
-      expect(mockFormatBaseEthDomain).not.toHaveBeenCalled();
-      expect(result[0].alt).toBe('Basenames | alice.basetest.eth');
+      expect(mockFormatUnstableEthDomain).not.toHaveBeenCalled();
+      expect(result[0].alt).toBe('Unstablenames | alice.basetest.eth');
     });
   });
 
@@ -181,7 +181,7 @@ describe('opengraph-image', () => {
       await OpenGraphImage(props);
 
       // The decoded username should be used
-      expect(mockGetChainForBasename).toHaveBeenCalledWith('hello world.base.eth');
+      expect(mockGetChainForUnstablename).toHaveBeenCalledWith('hello world.base.eth');
     });
 
     it('should fetch avatar from ENS text record', async () => {
@@ -192,7 +192,7 @@ describe('opengraph-image', () => {
 
       await OpenGraphImage(props);
 
-      expect(mockGetBasenamePublicClient).toHaveBeenCalledWith(8453);
+      expect(mockGetUnstablenamePublicClient).toHaveBeenCalledWith(8453);
       expect(mockGetEnsText).toHaveBeenCalledWith({
         name: 'alice.base.eth',
         key: 'avatar',
@@ -210,7 +210,7 @@ describe('opengraph-image', () => {
 
       await OpenGraphImage(props);
 
-      expect(mockGetBasenameImage).toHaveBeenCalledWith('alice.base.eth');
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith('alice.base.eth');
     });
 
     it('should handle custom avatar URL', async () => {
@@ -322,7 +322,7 @@ describe('opengraph-image', () => {
       const call = ImageResponse.mock.calls[0] as { fonts: { name: string; style: string }[] }[];
       expect(call[1].fonts).toHaveLength(1);
       expect(call[1].fonts[0]).toMatchObject({
-        name: 'CoinbaseDisplay',
+        name: 'TheAlxLabsDisplay',
         style: 'normal',
       });
     });
@@ -335,7 +335,7 @@ describe('opengraph-image', () => {
 
       await OpenGraphImage(props);
 
-      expect(mockFormatBaseEthDomain).toHaveBeenCalledWith('bob', 8453);
+      expect(mockFormatUnstableEthDomain).toHaveBeenCalledWith('bob', 8453);
     });
 
     it('should not reformat username if already ends with base.eth', async () => {
@@ -346,7 +346,7 @@ describe('opengraph-image', () => {
 
       await OpenGraphImage(props);
 
-      expect(mockFormatBaseEthDomain).not.toHaveBeenCalled();
+      expect(mockFormatUnstableEthDomain).not.toHaveBeenCalled();
     });
   });
 });

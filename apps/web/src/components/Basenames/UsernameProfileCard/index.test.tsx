@@ -130,15 +130,15 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 
 // Mock the useUsernameProfile hook
 const mockUseUsernameProfile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfile(),
 }));
 
-// Mock the useReadBaseEnsTextRecords hook
-const mockUseReadBaseEnsTextRecords = jest.fn();
-jest.mock('apps/web/src/hooks/useReadBaseEnsTextRecords', () => ({
+// Mock the useReadUnstableEnsTextRecords hook
+const mockUseReadUnstableEnsTextRecords = jest.fn();
+jest.mock('apps/web/src/hooks/useReadUnstableEnsTextRecords', () => ({
   __esModule: true,
-  default: () => mockUseReadBaseEnsTextRecords(),
+  default: () => mockUseReadUnstableEnsTextRecords(),
 }));
 
 // Mock next/link
@@ -191,7 +191,7 @@ describe('UsernameProfileCard', () => {
     mockUseUsernameProfile.mockReturnValue({
       profileUsername: 'testuser.base.eth',
     });
-    mockUseReadBaseEnsTextRecords.mockReturnValue({
+    mockUseReadUnstableEnsTextRecords.mockReturnValue({
       existingTextRecords: defaultEmptyTextRecords,
     });
   });
@@ -207,15 +207,15 @@ describe('UsernameProfileCard', () => {
       expect(mockUseUsernameProfile).toHaveBeenCalled();
     });
 
-    it('should call useReadBaseEnsTextRecords with the profile username', () => {
+    it('should call useReadUnstableEnsTextRecords with the profile username', () => {
       render(<UsernameProfileCard />);
-      expect(mockUseReadBaseEnsTextRecords).toHaveBeenCalled();
+      expect(mockUseReadUnstableEnsTextRecords).toHaveBeenCalled();
     });
   });
 
   describe('when only description is set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Description]: 'This is my bio',
@@ -246,7 +246,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when only location is set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Location]: 'New York, NY',
@@ -272,7 +272,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when Twitter social is set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Twitter]: 'testhandle',
@@ -315,7 +315,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when Farcaster social is set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Farcaster]: 'farcasteruser',
@@ -337,7 +337,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when Github social is set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Github]: 'githubuser',
@@ -359,7 +359,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when URL is set', () => {
     it('should add https:// prefix if not present', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Url]: 'www.example.com',
@@ -371,7 +371,7 @@ describe('UsernameProfileCard', () => {
     });
 
     it('should preserve https:// if already present', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Url]: 'https://www.example.com',
@@ -383,7 +383,7 @@ describe('UsernameProfileCard', () => {
     });
 
     it('should display URL without protocol prefix', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Url]: 'https://www.example.com/',
@@ -394,7 +394,7 @@ describe('UsernameProfileCard', () => {
     });
 
     it('should render the website icon', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Url]: 'www.example.com',
@@ -407,7 +407,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when multiple text records are set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Description]: 'Full stack developer',
@@ -442,7 +442,7 @@ describe('UsernameProfileCard', () => {
 
   describe('when multiple URL fields are set', () => {
     beforeEach(() => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Url]: 'www.site1.com',
@@ -469,7 +469,7 @@ describe('UsernameProfileCard', () => {
 
   describe('social handle sanitization', () => {
     it('should remove @ prefix from Twitter handle', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Twitter]: '@myhandle',
@@ -482,7 +482,7 @@ describe('UsernameProfileCard', () => {
     });
 
     it('should extract handle from full Twitter URL', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Twitter]: 'https://twitter.com/myhandle',
@@ -497,7 +497,7 @@ describe('UsernameProfileCard', () => {
   describe('textRecordsSocialFieldsEnabled ordering', () => {
     it('should only render enabled social fields', () => {
       // Set a social field that is NOT in textRecordsSocialFieldsEnabled
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Telegram]: 'telegramuser', // Not in enabled list
@@ -515,7 +515,7 @@ describe('UsernameProfileCard', () => {
 
   describe('card styling', () => {
     it('should render with correct container classes', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           ...defaultEmptyTextRecords,
           [UsernameTextRecordKeys.Description]: 'Test',

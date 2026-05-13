@@ -12,7 +12,7 @@ export function Hero() {
           level={TitleLevel.Title3}
           className="text-[1.625rem] text-dark-palette-foregroundMuted"
         >
-          Inspirational stories of builders and the new internet they&apos;re building on Base.
+          Inspirational stories of builders and the new internet they&apos;re building on Unstable.
         </Title>
       </div>
     </div>

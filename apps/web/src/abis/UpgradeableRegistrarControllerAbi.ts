@@ -257,7 +257,7 @@ export default [
       {
         name: 'base_',
         type: 'address',
-        internalType: 'contract IBaseRegistrar',
+        internalType: 'contract IUnstableRegistrar',
       },
       {
         name: 'prices_',

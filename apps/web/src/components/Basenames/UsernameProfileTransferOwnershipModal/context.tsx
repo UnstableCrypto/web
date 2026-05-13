@@ -1,12 +1,12 @@
 'use client';
 
 import { useErrors } from 'apps/web/contexts/Errors';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import useWriteContractWithReceipt, {
   WriteTransactionWithReceiptStatus,
 } from 'apps/web/src/hooks/useWriteContractWithReceipt';
-import { buildBasenameReclaimContract, getTokenIdFromBasename } from 'apps/web/src/utils/usernames';
+import { buildUnstablenameReclaimContract, getTokenIdFromUnstablename } from 'apps/web/src/utils/usernames';
 import {
   createContext,
   Dispatch,
@@ -21,7 +21,7 @@ import {
 import { ContractFunctionParameters, Hash, isAddress, namehash, encodeFunctionData } from 'viem';
 import { useAccount } from 'wagmi';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
+import UnstableRegistrarAbi from 'apps/web/src/abis/UnstableRegistrarAbi';
 import {
   USERNAME_BASE_REGISTRAR_ADDRESSES,
   USERNAME_REVERSE_REGISTRAR_ADDRESSES,
@@ -29,7 +29,7 @@ import {
 import useWriteContractsWithLogs, {
   BatchCallsStatus,
 } from 'apps/web/src/hooks/useWriteContractsWithLogs';
-import useBasenameResolver from 'apps/web/src/hooks/useBasenameResolver';
+import useUnstablenameResolver from 'apps/web/src/hooks/useUnstablenameResolver';
 import ReverseRegistrarAbi from 'apps/web/src/abis/ReverseRegistrarAbi';
 import { convertChainIdToCoinTypeUint } from 'apps/web/src/utils/usernames';
 
@@ -84,11 +84,11 @@ export default function ProfileTransferOwnershipProvider({
   // Hooks
   const { address } = useAccount();
   const { profileUsername, canReclaim, canSafeTransferFrom, canSetAddr } = useUsernameProfile();
-  const { basenameChain } = useBasenameChain(profileUsername);
+  const { basenameChain } = useUnstablenameChain(profileUsername);
   const { logError } = useErrors();
 
   // Fetch resolver address from registry for the basename
-  const { data: resolverAddress } = useBasenameResolver({
+  const { data: resolverAddress } = useUnstablenameResolver({
     username: profileUsername,
   });
 
@@ -100,7 +100,7 @@ export default function ProfileTransferOwnershipProvider({
 
   // TODO: Validate that it's not a contract recipient
   const isValidRecipientAddress = isAddress(recipientAddress);
-  const tokenId = getTokenIdFromBasename(profileUsername);
+  const tokenId = getTokenIdFromUnstablename(profileUsername);
 
   // Contract write calls
   // Step 1, set the address records (legacy and ENSIP-11)
@@ -139,7 +139,7 @@ export default function ProfileTransferOwnershipProvider({
   // Step 2, reclaim the basename
   const reclaimContract = useMemo(() => {
     if (!tokenId || !isValidRecipientAddress) return;
-    return buildBasenameReclaimContract(profileUsername, recipientAddress);
+    return buildUnstablenameReclaimContract(profileUsername, recipientAddress);
   }, [isValidRecipientAddress, profileUsername, recipientAddress, tokenId]);
 
   // Step 3, safe transfer the basename NFT to the recipient
@@ -147,7 +147,7 @@ export default function ProfileTransferOwnershipProvider({
     if (!tokenId || !isValidRecipientAddress || !address) return;
 
     return {
-      abi: BaseRegistrarAbi,
+      abi: UnstableRegistrarAbi,
       address: USERNAME_BASE_REGISTRAR_ADDRESSES[basenameChain.id],
       args: [address, recipientAddress, tokenId],
       functionName: 'safeTransferFrom',
@@ -258,14 +258,14 @@ export default function ProfileTransferOwnershipProvider({
       settings.push({
         id: 'setAddr',
         name: 'Address record',
-        description: 'Your Basename will resolve to this address.',
+        description: 'Your Unstablename will resolve to this address.',
         status: setAddrStatus,
         contractFunction: updateSetAddr,
       });
       settings.push({
         id: 'setName',
         name: 'Name record',
-        description: 'Your Basename will no longer be displayed with your address.',
+        description: 'Your Unstablename will no longer be displayed with your address.',
         status: setNameStatus,
         contractFunction: updateSetName,
       });
@@ -285,7 +285,7 @@ export default function ProfileTransferOwnershipProvider({
       settings.push({
         id: 'safeTransferFrom',
         name: 'Token ownership',
-        description: 'Transfer the Basename token to this address.',
+        description: 'Transfer the Unstablename token to this address.',
         status: safeTransferFromStatus,
         contractFunction: updateSafeTransferFrom,
       });

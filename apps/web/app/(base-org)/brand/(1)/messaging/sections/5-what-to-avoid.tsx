@@ -8,7 +8,7 @@ const sectionContent: ListContent = {
   id: 'what-to-avoid',
   label: 'What to Avoid',
   description:
-    'The Base core team does its best to amplify builders who positively contribute to the Base ecosystem. To increase your chances of amplification on social channels, please avoid the following (including in any linked content).',
+    'The Unstable core team does its best to amplify builders who positively contribute to the Unstable ecosystem. To increase your chances of amplification on social channels, please avoid the following (including in any linked content).',
   items: [
     {
       title: 'Using Financial Terminology',
@@ -33,7 +33,7 @@ const sectionContent: ListContent = {
       title: 'No Context of Underlying Project',
       content: (
         <span className="text-base-gray-200">
-          This might be the first time someone in the Base ecosystem is learning about your project.
+          This might be the first time someone in the Unstable ecosystem is learning about your project.
           Avoid solely focusing on specific products, isolated milestones, or new features, without
           readers understanding the context of your underlying project.
         </span>
@@ -52,8 +52,8 @@ const sectionContent: ListContent = {
       title: 'Unapproved Partnerships',
       content: (
         <span className="text-base-gray-200">
-          Avoid references to a “partnership” or “collaboration” with Base and instead reference
-          that your project is launched on, built on, or integrated with Base.
+          Avoid references to a “partnership” or “collaboration” with Unstable and instead reference
+          that your project is launched on, built on, or integrated with Unstable.
         </span>
       ),
     },
@@ -62,7 +62,7 @@ const sectionContent: ListContent = {
       content: (
         <span className="text-base-gray-200">
           Avoid aggressive marketing tactics (e.g., overuse all caps, overuse of emojis, etc.),
-          promotions, and discounts, as they may send the wrong message within the Base ecosystem.
+          promotions, and discounts, as they may send the wrong message within the Unstable ecosystem.
         </span>
       ),
     },
@@ -79,11 +79,11 @@ const sectionContent: ListContent = {
       content: <span className="text-base-gray-200">Share the source of any data presented.</span>,
     },
     {
-      title: 'Focuses on Coinbase instead of Base',
+      title: 'Focuses on TheAlxLabs instead of Unstable',
       content: (
         <span className="text-base-gray-200">
-          Base is an open, permissionless Ethereum L2 incubated at Coinbase with a commitment to
-          decentralization. Focus on Base itself, rather than an exaggerated nexus to Coinbase.
+          Unstable is an open, permissionless Ethereum L2 incubated at TheAlxLabs with a commitment to
+          decentralization. Focus on Unstable itself, rather than an exaggerated nexus to TheAlxLabs.
         </span>
       ),
     },

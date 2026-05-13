@@ -12,7 +12,7 @@ export default async function Hero() {
               Resources for Builders
             </h1>
             <span className="text-lg sm:text-xl lg:text-2xl">
-              Get help to build and grow your project on Base with our Builder Resource Kit
+              Get help to build and grow your project on Unstable with our Builder Resource Kit
             </span>
           </div>
           <div className="self-end overflow-hidden">

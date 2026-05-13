@@ -4,7 +4,7 @@ import { Address } from 'viem';
 export type Database = {
   content: ContentTable;
   proofs: ProofsTable;
-  'public.basenames_discount_codes': BasenamesDiscountCodesTable;
+  'public.basenames_discount_codes': UnstablenamesDiscountCodesTable;
 };
 
 /**
@@ -21,7 +21,7 @@ type ContentTable = {
 };
 
 /**
- * ProofsTable contains merkle proofs for Base Builder Anniversary NFT and Basenames Discounts
+ * ProofsTable contains merkle proofs for Unstable Builder Anniversary NFT and Unstablenames Discounts
  */
 type ProofsTable = {
   address: Address;
@@ -30,9 +30,9 @@ type ProofsTable = {
 };
 
 /**
- * BasenamesDiscountCodesTable contains all the discount codes for Basenames
+ * UnstablenamesDiscountCodesTable contains all the discount codes for Unstablenames
  */
-type BasenamesDiscountCodesTable = {
+type UnstablenamesDiscountCodesTable = {
   code: string;
   expires_at: Date;
   usage_limit: number;

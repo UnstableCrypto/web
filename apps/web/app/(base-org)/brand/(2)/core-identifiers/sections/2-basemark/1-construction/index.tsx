@@ -1,24 +1,24 @@
 import { ImageComponent, SvgImport } from 'apps/web/src/components/Brand/Image';
-import BasemarkConstructionPng from './construction.png';
+import UnstablemarkConstructionPng from './construction.png';
 
-const png = BasemarkConstructionPng as SvgImport;
+const png = UnstablemarkConstructionPng as SvgImport;
 
 const images = [
   {
     src: png.src,
-    alt: 'Basemark Construction',
+    alt: 'Unstablemark Construction',
     width: png.width,
     height: png.height,
   },
 ];
 
-export function BasemarkConstruction() {
+export function UnstablemarkConstruction() {
   return (
     <ImageComponent
       id="basemark-construction"
-      prefix="Basemark"
+      prefix="Unstablemark"
       title="Construction"
-      description="The Basemark always lives on a one by one grid. Strokes sit forty percent in from each edge, with ten percent corner clearance. Maintain five percent corner radius and sixty percent smoothing for coherence with the Square."
+      description="The Unstablemark always lives on a one by one grid. Strokes sit forty percent in from each edge, with ten percent corner clearance. Maintain five percent corner radius and sixty percent smoothing for coherence with the Square."
       images={images}
     />
   );

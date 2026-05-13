@@ -26,24 +26,24 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
     basenameChain: { id: 8453 },
   }),
 }));
 
-// Mock useBasenameResolver
-jest.mock('apps/web/src/hooks/useBasenameResolver', () => ({
+// Mock useUnstablenameResolver
+jest.mock('apps/web/src/hooks/useUnstablenameResolver', () => ({
   __esModule: true,
   default: () => ({
     data: '0x1234567890123456789012345678901234567890',
   }),
 }));
 
-// Mock useBaseEnsName
-jest.mock('apps/web/src/hooks/useBaseEnsName', () => ({
+// Mock useUnstableEnsName
+jest.mock('apps/web/src/hooks/useUnstableEnsName', () => ({
   __esModule: true,
   default: () => ({
     data: 'owner.base.eth',
@@ -93,15 +93,15 @@ jest.mock('wagmi', () => ({
 }));
 
 // Mock usernames utilities
-const mockGetBasenameNameExpires = jest.fn();
+const mockGetUnstablenameNameExpires = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  buildBasenameOwnerContract: () => ({
+  buildUnstablenameOwnerContract: () => ({
     abi: [],
     address: '0x0000000000000000000000000000000000000000',
     args: [BigInt(0)],
     functionName: 'ownerOf',
   }),
-  buildBasenameEditorContract: () => ({
+  buildUnstablenameEditorContract: () => ({
     abi: [],
     address: '0x0000000000000000000000000000000000000000',
     args: ['0x0'],
@@ -109,7 +109,7 @@ jest.mock('apps/web/src/utils/usernames', () => ({
   }),
   formatDefaultUsername: jest.fn().mockResolvedValue('testname.base.eth'),
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  getBasenameNameExpires: (name: string) => mockGetBasenameNameExpires(name),
+  getUnstablenameNameExpires: (name: string) => mockGetUnstablenameNameExpires(name),
 }));
 
 // Test component to consume the context
@@ -168,7 +168,7 @@ describe('UsernameProfileContext', () => {
     mockProfileEditorAddressIsFetching = false;
     mockProfileOwnerIsFetching = false;
     // Set expiration time to 30 days from now
-    mockGetBasenameNameExpires.mockResolvedValue(
+    mockGetUnstablenameNameExpires.mockResolvedValue(
       BigInt(Math.floor((Date.now() + 30 * 24 * 60 * 60 * 1000) / 1000)),
     );
   });
@@ -238,7 +238,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('child')).toBeInTheDocument();
@@ -253,7 +253,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('profileUsername')).toHaveTextContent('testname.base.eth');
@@ -267,13 +267,13 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('profileAddress')).toHaveTextContent(mockProfileAddress);
     });
 
-    it('should provide profile owner username from useBaseEnsName', async () => {
+    it('should provide profile owner username from useUnstableEnsName', async () => {
       render(
         <UsernameProfileProvider username="testname.base.eth">
           <TestConsumer />
@@ -281,7 +281,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('profileOwnerUsername')).toHaveTextContent('owner.base.eth');
@@ -297,7 +297,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('showProfileSettings')).toHaveTextContent('false');
@@ -317,7 +317,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       await act(async () => {
@@ -343,7 +343,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       await act(async () => {
@@ -365,7 +365,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletIsProfileEditor')).toHaveTextContent('true');
@@ -379,7 +379,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletIsProfileOwner')).toHaveTextContent('true');
@@ -393,7 +393,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletIsProfileAddress')).toHaveTextContent('true');
@@ -407,7 +407,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('canSetAddr')).toHaveTextContent('true');
@@ -421,7 +421,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('canReclaim')).toHaveTextContent('true');
@@ -435,7 +435,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('canSafeTransferFrom')).toHaveTextContent('true');
@@ -451,7 +451,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletIsProfileEditor')).toHaveTextContent('false');
@@ -467,7 +467,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletIsProfileEditor')).toHaveTextContent('false');
@@ -477,7 +477,7 @@ describe('UsernameProfileContext', () => {
   describe('expiration date fetching', () => {
     it('should fetch and set expiration time on mount', async () => {
       const futureExpiration = Math.floor((Date.now() + 30 * 24 * 60 * 60 * 1000) / 1000);
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(futureExpiration));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(futureExpiration));
 
       render(
         <UsernameProfileProvider username="testname.base.eth">
@@ -486,7 +486,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       await waitFor(() => {
@@ -496,7 +496,7 @@ describe('UsernameProfileContext', () => {
 
     it('should log error when expiration date fetch fails', async () => {
       const error = new Error('Fetch failed');
-      mockGetBasenameNameExpires.mockRejectedValue(error);
+      mockGetUnstablenameNameExpires.mockRejectedValue(error);
 
       render(
         <UsernameProfileProvider username="testname.base.eth">
@@ -510,7 +510,7 @@ describe('UsernameProfileContext', () => {
     });
 
     it('should handle null expiration date without setting msUntilExpiration', async () => {
-      mockGetBasenameNameExpires.mockResolvedValue(null);
+      mockGetUnstablenameNameExpires.mockResolvedValue(null);
 
       render(
         <UsernameProfileProvider username="testname.base.eth">
@@ -519,7 +519,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       // msUntilExpiration should remain undefined when expiresAt is null
@@ -536,7 +536,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('profileUsername')).toBeInTheDocument();
@@ -556,7 +556,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('profileUsername')).toHaveTextContent('testname.base.eth');
@@ -574,7 +574,7 @@ describe('UsernameProfileContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('currentWalletNeedsToReclaimProfile')).toHaveTextContent('false');

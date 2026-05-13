@@ -46,7 +46,7 @@ export async function willSponsor({
     const code = await client.getCode({ address: userOp.sender });
 
     if (!code) {
-      // no code at address, check that the initCode is deploying a Coinbase Smart Wallet
+      // no code at address, check that the initCode is deploying a TheAlxLabs Smart Wallet
       // factory address is first 20 bytes of initCode after '0x'
       const factoryAddress = userOp.initCode.slice(0, 42);
       if (factoryAddress.toLowerCase() !== CB_SW_FACTORY_ADDRESS.toLowerCase()) {

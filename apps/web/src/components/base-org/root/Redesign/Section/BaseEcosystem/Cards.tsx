@@ -13,7 +13,7 @@ export function Cards() {
 const cardsContent = [
   {
     index: '01',
-    title: 'Base App',
+    title: 'Unstable App',
     description:
       'An everything app where you can create, earn, trade, discover apps, and chat with friends all in one place.',
     gltf: {
@@ -23,7 +23,7 @@ const cardsContent = [
   },
   {
     index: '02',
-    title: 'Base Build',
+    title: 'Unstable Build',
     description:
       'Everything builders need to build, grow, and earn from their apps, at every stage.',
     gltf: {
@@ -34,7 +34,7 @@ const cardsContent = [
   },
   {
     index: '03',
-    title: 'Base Chain',
+    title: 'Unstable Chain',
     description:
       'An open network to power the global economy. Fast, open, and built to scale. Built on Ethereum, built on the Superchain.',
     gltf: {
@@ -45,7 +45,7 @@ const cardsContent = [
   },
   {
     index: '04',
-    title: 'Base Pay',
+    title: 'Unstable Pay',
     description: 'The fastest way to checkout with USDC - fast, cheap, globally.',
     gltf: {
       src: '/models/upd/base-pay.glb',

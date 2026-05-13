@@ -50,11 +50,11 @@ export function Hero() {
             variant={ButtonVariants.SecondaryOutline}
             iconName="arrowRight"
             buttonClassNames="!xs:max-w-[350px] !rounded-full text-xs md:text-sm font-medium tracking-wide bg-white/20 text-white backdrop-blur-sm border-none !px-2.5 !py-1"
-            href="https://flashblocks.base.org/"
+            href="https://flashblocks.unstable.org/"
             eventName="flashblocks-announcement"
             target="_blank"
           >
-            Base is now 10x faster with 200ms block times
+            Unstable is now 10x faster with 200ms block times
           </ButtonWithLinkAndEventLogging>
         </div>
 
@@ -69,7 +69,7 @@ export function Hero() {
                 variant={ButtonVariants.SecondaryOutline}
                 iconName="baseOrgDiagonalUpArrow"
                 buttonClassNames="rounded-xl text-sm font-medium"
-                href="https://docs.base.org/builderkits/onchainkit/getting-started"
+                href="https://docs.unstable.org/builderkits/onchainkit/getting-started"
                 eventName="build-app-in-10-minutes"
                 target="_blank"
               >
@@ -89,7 +89,7 @@ export function Hero() {
                 variant={ButtonVariants.SecondaryOutline}
                 iconName="baseOrgDiagonalUpArrow"
                 buttonClassNames="rounded-xl text-sm font-medium"
-                href="https://docs.base.org/builderkits/onchainkit/checkout/checkout"
+                href="https://docs.unstable.org/builderkits/onchainkit/checkout/checkout"
                 eventName="accept-crypto-payments"
                 target="_blank"
               >

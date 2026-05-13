@@ -3,21 +3,21 @@
  */
 import { render, fireEvent } from '@testing-library/react';
 import UsernameProfileSettings from './index';
-import { SettingsTabs } from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
+import { SettingsTabs } from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsContext';
 
 // Mock the context hooks
 const mockSetShowProfileSettings = jest.fn();
 let mockCurrentWalletIsProfileEditor = true;
 let mockCurrentSettingsTab = SettingsTabs.ManageProfile;
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     currentWalletIsProfileEditor: mockCurrentWalletIsProfileEditor,
     setShowProfileSettings: mockSetShowProfileSettings,
   }),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsContext', () => ({
   useUsernameProfileSettings: () => ({
     currentSettingsTab: mockCurrentSettingsTab,
   }),
@@ -74,29 +74,29 @@ jest.mock('apps/web/src/components/Icon/Icon', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsMenu', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsMenu', () => ({
   __esModule: true,
   default: () => <div data-testid="settings-menu">UsernameProfileSettingsMenu</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsName', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsName', () => ({
   __esModule: true,
   default: () => <div data-testid="settings-name">UsernameProfileSettingsName</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsManageProfile', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsManageProfile', () => ({
   __esModule: true,
   default: () => (
     <div data-testid="settings-manage-profile">UsernameProfileSettingsManageProfile</div>
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsAvatar', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsAvatar', () => ({
   __esModule: true,
   default: () => <div data-testid="settings-avatar">UsernameProfileSettingsAvatar</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileSettingsOwnership', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileSettingsOwnership', () => ({
   __esModule: true,
   default: () => <div data-testid="settings-ownership">UsernameProfileSettingsOwnership</div>,
 }));

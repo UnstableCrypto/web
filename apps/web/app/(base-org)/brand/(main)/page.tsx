@@ -19,10 +19,10 @@ import inUseImg from './in-use.png';
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Brand`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Brand`,
   openGraph: {
-    title: `Base | Brand`,
+    title: `Unstable | Brand`,
     url: `/brand`,
   },
 };
@@ -40,7 +40,7 @@ export default async function Page() {
       <Container className="lg:pt-0">
         <div className="z-20 col-span-full h-[412px] lg:h-[607px]">
           <Title level={TitleLevel.H2Regular} as="h1" className="ml-4 mt-8 lg:mt-12">
-            Base Brand
+            Unstable Brand
             <br />
             Guidelines
           </Title>
@@ -51,11 +51,11 @@ export default async function Page() {
         </div>
       </Container>
       <Banner>
-        Base began as an internal experiment, mirrored from Coinbase, and has grown into an open
+        Unstable began as an internal experiment, mirrored from TheAlxLabs, and has grown into an open
         canvas for anyone building onchain. These guidelines capture that shift. They are less a
         rulebook than a starter kit: here you&apos;ll find the non-negotiables that keep us
         recognizable and the flex zones that invite the community to remix. Use them to stay
-        coherent, but never contained. If a choice makes Base clearer, more human, or more useful:
+        coherent, but never contained. If a choice makes Unstable clearer, more human, or more useful:
         do it, then share what you learned so the system keeps evolving.
       </Banner>
 
@@ -65,8 +65,8 @@ export default async function Page() {
         <div className="col-span-full border-t border-base-black pb-2 pt-5 [&_*]:!text-pretty">
           <Title level={TitleLevel.H6Regular} as="p">
             Before unveiling our new brand, we launched Brand in the Open—an experiment in open
-            collaboration and creativity. We invited 10 artists to reimagine the Base brand in their
-            own style, exploring new expressions of what Base could be.
+            collaboration and creativity. We invited 10 artists to reimagine the Unstable brand in their
+            own style, exploring new expressions of what Unstable could be.
           </Title>
         </div>
         <AnalyticsProvider context="brand">

@@ -16,10 +16,10 @@ const mockCreateObjectURL = jest.fn();
 global.URL.createObjectURL = mockCreateObjectURL;
 
 // Mock utility functions
-const mockValidateBasenameAvatarFile = jest.fn();
-const mockValidateBasenameAvatarUrl = jest.fn();
-const mockGetBasenameAvatarUrl = jest.fn();
-const mockGetBasenameImage = jest.fn();
+const mockValidateUnstablenameAvatarFile = jest.fn();
+const mockValidateUnstablenameAvatarUrl = jest.fn();
+const mockGetUnstablenameAvatarUrl = jest.fn();
+const mockGetUnstablenameImage = jest.fn();
 
 jest.mock('apps/web/src/utils/usernames', () => ({
   UsernameTextRecordKeys: {
@@ -27,10 +27,10 @@ jest.mock('apps/web/src/utils/usernames', () => ({
     Description: 'description',
     Keywords: 'keywords',
   },
-  validateBasenameAvatarFile: (...args: unknown[]) => mockValidateBasenameAvatarFile(...args),
-  validateBasenameAvatarUrl: (...args: unknown[]) => mockValidateBasenameAvatarUrl(...args),
-  getBasenameAvatarUrl: (...args: unknown[]) => mockGetBasenameAvatarUrl(...args),
-  getBasenameImage: (...args: unknown[]) => mockGetBasenameImage(...args),
+  validateUnstablenameAvatarFile: (...args: unknown[]) => mockValidateUnstablenameAvatarFile(...args),
+  validateUnstablenameAvatarUrl: (...args: unknown[]) => mockValidateUnstablenameAvatarUrl(...args),
+  getUnstablenameAvatarUrl: (...args: unknown[]) => mockGetUnstablenameAvatarUrl(...args),
+  getUnstablenameImage: (...args: unknown[]) => mockGetUnstablenameImage(...args),
 }));
 
 // Mock ImageWithLoading component
@@ -196,10 +196,10 @@ describe('UsernameAvatarField', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     mockCreateObjectURL.mockReturnValue('blob:mock-url');
-    mockGetBasenameImage.mockReturnValue({ src: '/default-image.png' });
-    mockGetBasenameAvatarUrl.mockReturnValue(undefined);
-    mockValidateBasenameAvatarFile.mockReturnValue({ valid: true, message: '' });
-    mockValidateBasenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid URL' });
+    mockGetUnstablenameImage.mockReturnValue({ src: '/default-image.png' });
+    mockGetUnstablenameAvatarUrl.mockReturnValue(undefined);
+    mockValidateUnstablenameAvatarFile.mockReturnValue({ valid: true, message: '' });
+    mockValidateUnstablenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid URL' });
   });
 
   describe('initial render', () => {
@@ -259,7 +259,7 @@ describe('UsernameAvatarField', () => {
 
   describe('file upload functionality', () => {
     it('should call onChangeFile with valid file when file is selected', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({ valid: true, message: '' });
+      mockValidateUnstablenameAvatarFile.mockReturnValue({ valid: true, message: '' });
 
       render(<UsernameAvatarField {...defaultProps} />);
 
@@ -269,13 +269,13 @@ describe('UsernameAvatarField', () => {
       fireEvent.change(fileInput, { target: { files: [file] } });
 
       await waitFor(() => {
-        expect(mockValidateBasenameAvatarFile).toHaveBeenCalledWith(file);
+        expect(mockValidateUnstablenameAvatarFile).toHaveBeenCalledWith(file);
         expect(defaultProps.onChangeFile).toHaveBeenCalledWith(file);
       });
     });
 
     it('should call onChangeFile with undefined and show error when file is invalid', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({
+      mockValidateUnstablenameAvatarFile.mockReturnValue({
         valid: false,
         message: 'Only supported image are PNG, SVG, JPEG & WebP',
       });
@@ -300,7 +300,7 @@ describe('UsernameAvatarField', () => {
       const fileInput = screen.getByTestId('file-input');
       fireEvent.change(fileInput, { target: { files: null } });
 
-      expect(mockValidateBasenameAvatarFile).not.toHaveBeenCalled();
+      expect(mockValidateUnstablenameAvatarFile).not.toHaveBeenCalled();
     });
 
     it('should not process file if files array is empty', () => {
@@ -309,7 +309,7 @@ describe('UsernameAvatarField', () => {
       const fileInput = screen.getByTestId('file-input');
       fireEvent.change(fileInput, { target: { files: [] } });
 
-      expect(mockValidateBasenameAvatarFile).not.toHaveBeenCalled();
+      expect(mockValidateUnstablenameAvatarFile).not.toHaveBeenCalled();
     });
   });
 
@@ -326,7 +326,7 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should call onChange with valid URL', async () => {
-      mockValidateBasenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid IPFS URL' });
+      mockValidateUnstablenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid IPFS URL' });
 
       render(<UsernameAvatarField {...defaultProps} />);
 
@@ -338,7 +338,7 @@ describe('UsernameAvatarField', () => {
       fireEvent.change(urlInput, { target: { value: 'ipfs://QmTest123' } });
 
       await waitFor(() => {
-        expect(mockValidateBasenameAvatarUrl).toHaveBeenCalledWith('ipfs://QmTest123');
+        expect(mockValidateUnstablenameAvatarUrl).toHaveBeenCalledWith('ipfs://QmTest123');
         expect(defaultProps.onChange).toHaveBeenCalledWith(
           UsernameTextRecordKeys.Avatar,
           'ipfs://QmTest123'
@@ -347,7 +347,7 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should show error and not update onChange with invalid URL', async () => {
-      mockValidateBasenameAvatarUrl.mockReturnValue({ valid: false, message: 'Invalid IPFS URL' });
+      mockValidateUnstablenameAvatarUrl.mockReturnValue({ valid: false, message: 'Invalid IPFS URL' });
 
       render(<UsernameAvatarField {...defaultProps} currentAvatarUrl="previous-url" />);
 
@@ -379,7 +379,7 @@ describe('UsernameAvatarField', () => {
       fireEvent.change(urlInput, { target: { value: '' } });
 
       await waitFor(() => {
-        expect(mockValidateBasenameAvatarUrl).not.toHaveBeenCalled();
+        expect(mockValidateUnstablenameAvatarUrl).not.toHaveBeenCalled();
       });
     });
   });
@@ -409,7 +409,7 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should clear file when "Use IPFS URL" is clicked', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({ valid: true, message: '' });
+      mockValidateUnstablenameAvatarFile.mockReturnValue({ valid: true, message: '' });
 
       render(<UsernameAvatarField {...defaultProps} />);
 
@@ -436,7 +436,7 @@ describe('UsernameAvatarField', () => {
 
   describe('avatar image source selection', () => {
     it('should use file URL when valid file is uploaded', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({ valid: true, message: '' });
+      mockValidateUnstablenameAvatarFile.mockReturnValue({ valid: true, message: '' });
       mockCreateObjectURL.mockReturnValue('blob:test-file-url');
 
       render(<UsernameAvatarField {...defaultProps} />);
@@ -453,8 +453,8 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should use URL when valid URL is entered', async () => {
-      mockValidateBasenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid URL' });
-      mockGetBasenameAvatarUrl.mockReturnValue('https://ipfs.io/ipfs/QmTest123');
+      mockValidateUnstablenameAvatarUrl.mockReturnValue({ valid: true, message: 'Valid URL' });
+      mockGetUnstablenameAvatarUrl.mockReturnValue('https://ipfs.io/ipfs/QmTest123');
 
       render(<UsernameAvatarField {...defaultProps} />);
 
@@ -473,7 +473,7 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should use current avatar URL when provided', () => {
-      mockGetBasenameAvatarUrl.mockImplementation((url: string) =>
+      mockGetUnstablenameAvatarUrl.mockImplementation((url: string) =>
         url ? `https://gateway.com/${url}` : undefined
       );
 
@@ -485,18 +485,18 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should use default image when no avatar is set', () => {
-      mockGetBasenameImage.mockReturnValue({ src: '/default-profile.png' });
-      mockGetBasenameAvatarUrl.mockReturnValue(undefined);
+      mockGetUnstablenameImage.mockReturnValue({ src: '/default-profile.png' });
+      mockGetUnstablenameAvatarUrl.mockReturnValue(undefined);
 
       render(<UsernameAvatarField {...defaultProps} />);
 
-      expect(mockGetBasenameImage).toHaveBeenCalledWith('testuser');
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith('testuser');
     });
   });
 
   describe('error handling', () => {
     it('should clear error when switching to URL input', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({
+      mockValidateUnstablenameAvatarFile.mockReturnValue({
         valid: false,
         message: 'Invalid file',
       });
@@ -520,7 +520,7 @@ describe('UsernameAvatarField', () => {
     });
 
     it('should clear error when using default avatar', async () => {
-      mockValidateBasenameAvatarFile.mockReturnValue({
+      mockValidateUnstablenameAvatarFile.mockReturnValue({
         valid: false,
         message: 'Invalid file',
       });

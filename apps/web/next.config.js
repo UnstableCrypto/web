@@ -39,7 +39,7 @@ const baseConfig = {
   reactStrictMode: !isProdEnv,
 };
 
-function extendBaseConfig(customConfig = {}, plugins = []) {
+function extendUnstableConfig(customConfig = {}, plugins = []) {
   const defaultConfig = {
     ...baseConfig,
     ...customConfig,
@@ -102,8 +102,8 @@ const contentSecurityPolicy = {
     'https://*.coinbase.com',
     'wss://www.walletlink.org/rpc', // coinbase wallet connection
     'https://analytics-service-dev.cbhq.net',
-    'mainnet.base.org',
-    'sepolia.base.org',
+    'mainnet.unstable.org',
+    'sepolia.unstable.org',
     'https://cloudflare-eth.com',
     'https://i.seadn.io/', // ens avatars
     'https://api.opensea.io', // enables getting ENS avatars
@@ -140,8 +140,8 @@ const contentSecurityPolicy = {
     "'self'",
     'blob:',
     'data:',
-    'https://base.org',
-    'https://*.base.org',
+    'https://unstable.org',
+    'https://*.unstable.org',
     'https://euc.li',
     'https://*.walletconnect.com/', // WalletConnect
     'https://i.seadn.io/', // ens avatars
@@ -199,7 +199,7 @@ module.exports = MillionLint.next({
   enabled: millionEnabled,
   rsc: true,
 })(
-  extendBaseConfig(
+  extendUnstableConfig(
     {
       transpilePackages: ['base-ui'],
       i18n: {
@@ -302,7 +302,7 @@ module.exports = MillionLint.next({
           {
             source: '/brand',
             destination: '/',
-            has: [{ type: 'host', value: 'brand.base.org' }],
+            has: [{ type: 'host', value: 'brand.unstable.org' }],
           },
         ];
       },
@@ -341,7 +341,7 @@ module.exports = MillionLint.next({
           },
           {
             source: '/luma',
-            destination: 'https://luma.com/BaseEvents',
+            destination: 'https://luma.com/UnstableEvents',
             permanent: true,
           },
           {

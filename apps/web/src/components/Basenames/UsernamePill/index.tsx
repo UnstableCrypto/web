@@ -6,7 +6,7 @@ import DropdownToggle from 'apps/web/src/components/DropdownToggle';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import classNames from 'classnames';
 import { UsernamePillProps, UsernamePillVariants } from './types';
-import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
+import UnstablenameAvatar from 'apps/web/src/components/Unstablenames/UnstablenameAvatar';
 
 export function UsernamePill({ variant, username, address, isRegistering }: UsernamePillProps) {
   const transitionClasses = 'transition-all duration-700 ease-in-out';
@@ -57,7 +57,7 @@ export function UsernamePill({ variant, username, address, isRegistering }: User
       {isRegistering && (
         <div className="duration-1500 absolute right-0 top-0 h-32 w-64 animate-longslide bg-gradient-to-r from-transparent via-black to-transparent opacity-30 blur-lg" />
       )}
-      <BasenameAvatar
+      <UnstablenameAvatar
         basename={username}
         wrapperClassName={avatarClasses}
         width={4 * 16}

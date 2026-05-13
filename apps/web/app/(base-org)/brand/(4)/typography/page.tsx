@@ -2,7 +2,7 @@ import { Hero } from 'apps/web/src/components/Brand/Hero';
 
 /* Primary Typeface imports */
 import { PrimaryTypeface } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface';
-import { IntroducingBaseSans } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface/1-introducing-base-sans';
+import { IntroducingUnstableSans } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface/1-introducing-base-sans';
 import { CharacterSet } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface/2-character-set';
 import { Features } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface/3-features';
 import { AccessingBrandElements } from 'apps/web/app/(base-org)/brand/(4)/typography/sections/1-primary-typeface/4-accessing-brand-elements';
@@ -27,7 +27,7 @@ export default function Page() {
       <Hero title="Typography" imageUrl={typography.src} />
 
       <PrimaryTypeface />
-      <IntroducingBaseSans />
+      <IntroducingUnstableSans />
       <CharacterSet />
       <Features />
       <AccessingBrandElements />

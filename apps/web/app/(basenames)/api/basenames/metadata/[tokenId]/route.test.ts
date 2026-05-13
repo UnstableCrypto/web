@@ -21,13 +21,13 @@ jest.mock('apps/web/src/utils/urls', () => ({
 }));
 
 // Mock usernames with the functions we need
-const mockGetBasenameNameExpires = jest.fn();
-const mockFormatBaseEthDomain = jest.fn();
+const mockGetUnstablenameNameExpires = jest.fn();
+const mockFormatUnstableEthDomain = jest.fn();
 const mockFetchResolverAddressByNode = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
   /* eslint-disable @typescript-eslint/no-unsafe-return */
-  getBasenameNameExpires: (...args: unknown[]) => mockGetBasenameNameExpires(...args),
-  formatBaseEthDomain: (...args: unknown[]) => mockFormatBaseEthDomain(...args),
+  getUnstablenameNameExpires: (...args: unknown[]) => mockGetUnstablenameNameExpires(...args),
+  formatUnstableEthDomain: (...args: unknown[]) => mockFormatUnstableEthDomain(...args),
   fetchResolverAddressByNode: (...args: unknown[]) => mockFetchResolverAddressByNode(...args),
   /* eslint-enable @typescript-eslint/no-unsafe-return */
   USERNAME_DOMAINS: {
@@ -36,12 +36,12 @@ jest.mock('apps/web/src/utils/usernames', () => ({
   },
 }));
 
-// Mock useBasenameChain
+// Mock useUnstablenameChain
 const mockReadContract = jest.fn();
-const mockGetBasenamePublicClient = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+const mockGetUnstablenamePublicClient = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   /* eslint-disable @typescript-eslint/no-unsafe-return */
-  getBasenamePublicClient: (...args: unknown[]) => mockGetBasenamePublicClient(...args),
+  getUnstablenamePublicClient: (...args: unknown[]) => mockGetUnstablenamePublicClient(...args),
   /* eslint-enable @typescript-eslint/no-unsafe-return */
 }));
 
@@ -74,9 +74,9 @@ type ErrorResponse = {
 describe('metadata/[tokenId] route', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockGetDomain.mockReturnValue('https://www.base.org');
+    mockGetDomain.mockReturnValue('https://www.unstable.org');
     mockGetChain.mockReturnValue(base.id);
-    mockGetBasenamePublicClient.mockReturnValue({
+    mockGetUnstablenamePublicClient.mockReturnValue({
       readContract: mockReadContract,
     });
     mockFetchResolverAddressByNode.mockResolvedValue('0x1234567890123456789012345678901234567890');
@@ -84,7 +84,7 @@ describe('metadata/[tokenId] route', () => {
 
   describe('GET', () => {
     it('should return 400 when tokenId is missing', async () => {
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '' }) });
       const data = (await response.json()) as ErrorResponse;
@@ -96,7 +96,7 @@ describe('metadata/[tokenId] route', () => {
     it('should return 400 when chainId is missing', async () => {
       mockGetChain.mockReturnValue(0); // Falsy value
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as ErrorResponse;
@@ -108,7 +108,7 @@ describe('metadata/[tokenId] route', () => {
     it('should return 400 when base domain name is missing for unknown chainId', async () => {
       mockGetChain.mockReturnValue(999); // Unknown chain ID
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as ErrorResponse;
@@ -119,15 +119,15 @@ describe('metadata/[tokenId] route', () => {
 
     it('should return 404 when basename is not found and no premint', async () => {
       mockReadContract.mockResolvedValue('');
-      mockGetBasenameNameExpires.mockResolvedValue(undefined);
+      mockGetUnstablenameNameExpires.mockResolvedValue(undefined);
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as ErrorResponse;
 
       expect(response.status).toBe(404);
-      expect(data).toEqual({ error: '404: Basename not found' });
+      expect(data).toEqual({ error: '404: Unstablename not found' });
     });
 
     it('should return token metadata for a valid basename', async () => {
@@ -135,10 +135,10 @@ describe('metadata/[tokenId] route', () => {
       const nameExpires = BigInt(1735689600);
 
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(nameExpires);
+      mockGetUnstablenameNameExpires.mockResolvedValue(nameExpires);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/metadata/12345?chainId=8453'
+        'https://www.unstable.org/api/basenames/metadata/12345?chainId=8453'
       );
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
@@ -146,9 +146,9 @@ describe('metadata/[tokenId] route', () => {
 
       expect(response.status).toBe(200);
       expect(data).toEqual({
-        image: `https://www.base.org/api/basenames/${basename}/assets/cardImage.svg`,
-        external_url: 'https://www.base.org/name/testname',
-        description: `${basename}, a Basename`,
+        image: `https://www.unstable.org/api/basenames/${basename}/assets/cardImage.svg`,
+        external_url: 'https://www.unstable.org/name/testname',
+        description: `${basename}, a Unstablename`,
         name: basename,
         nameExpires: Number(nameExpires),
       });
@@ -159,9 +159,9 @@ describe('metadata/[tokenId] route', () => {
       const nameExpires = BigInt(1735689600);
 
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(nameExpires);
+      mockGetUnstablenameNameExpires.mockResolvedValue(nameExpires);
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345.json');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345.json');
 
       const response = await GET(request, {
         params: Promise.resolve({ tokenId: '12345.json' }),
@@ -180,17 +180,17 @@ describe('metadata/[tokenId] route', () => {
 
       mockReadContract.mockRejectedValue(new Error('Not found'));
       mockPremintMapping[tokenId] = premintName;
-      mockFormatBaseEthDomain.mockReturnValue(formattedName);
+      mockFormatUnstableEthDomain.mockReturnValue(formattedName);
 
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/metadata/${tokenId}`
+        `https://www.unstable.org/api/basenames/metadata/${tokenId}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ tokenId }) });
       const data = (await response.json()) as TokenMetadata;
 
       expect(response.status).toBe(200);
-      expect(mockFormatBaseEthDomain).toHaveBeenCalledWith(premintName, base.id);
+      expect(mockFormatUnstableEthDomain).toHaveBeenCalledWith(premintName, base.id);
       expect(data.name).toBe(formattedName);
 
       // Clean up
@@ -203,17 +203,17 @@ describe('metadata/[tokenId] route', () => {
 
       mockGetChain.mockReturnValue(baseSepolia.id);
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(nameExpires);
+      mockGetUnstablenameNameExpires.mockResolvedValue(nameExpires);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/metadata/12345?chainId=84532'
+        'https://www.unstable.org/api/basenames/metadata/12345?chainId=84532'
       );
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as TokenMetadata;
 
       expect(response.status).toBe(200);
-      expect(data.external_url).toBe('https://www.base.org/name/testname.basetest.eth');
+      expect(data.external_url).toBe('https://www.unstable.org/name/testname.basetest.eth');
     });
 
     it('should use pure basename (without domain) for external_url on base mainnet', async () => {
@@ -222,24 +222,24 @@ describe('metadata/[tokenId] route', () => {
 
       mockGetChain.mockReturnValue(base.id);
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(nameExpires);
+      mockGetUnstablenameNameExpires.mockResolvedValue(nameExpires);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/metadata/12345?chainId=8453'
+        'https://www.unstable.org/api/basenames/metadata/12345?chainId=8453'
       );
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as TokenMetadata;
 
       expect(response.status).toBe(200);
-      expect(data.external_url).toBe('https://www.base.org/name/testname');
+      expect(data.external_url).toBe('https://www.unstable.org/name/testname');
     });
 
     it('should call getChain with the request', async () => {
       mockReadContract.mockResolvedValue('testname.base.eth');
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
 
@@ -248,42 +248,42 @@ describe('metadata/[tokenId] route', () => {
 
     it('should call getDomain with the request', async () => {
       mockReadContract.mockResolvedValue('testname.base.eth');
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
 
       expect(mockGetDomain).toHaveBeenCalledWith(request);
     });
 
-    it('should call getBasenamePublicClient with the chainId', async () => {
+    it('should call getUnstablenamePublicClient with the chainId', async () => {
       mockReadContract.mockResolvedValue('testname.base.eth');
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
 
-      expect(mockGetBasenamePublicClient).toHaveBeenCalledWith(base.id);
+      expect(mockGetUnstablenamePublicClient).toHaveBeenCalledWith(base.id);
     });
 
     it('should handle contract read errors gracefully and check premint', async () => {
       mockReadContract.mockRejectedValue(new Error('Contract error'));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as ErrorResponse;
 
       expect(response.status).toBe(404);
-      expect(data).toEqual({ error: '404: Basename not found' });
+      expect(data).toEqual({ error: '404: Unstablename not found' });
     });
 
     it('should use local domain in development environment', async () => {
       mockGetDomain.mockReturnValue('http://localhost:3000');
       mockReadContract.mockResolvedValue('testname.base.eth');
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
       const request = new NextRequest('http://localhost:3000/api/basenames/metadata/12345');
 
@@ -302,9 +302,9 @@ describe('metadata/[tokenId] route', () => {
       const nameExpires = BigInt(1735689600);
 
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(nameExpires);
+      mockGetUnstablenameNameExpires.mockResolvedValue(nameExpires);
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as TokenMetadata;
@@ -317,37 +317,37 @@ describe('metadata/[tokenId] route', () => {
       const basename = 'myname.base.eth';
 
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       const response = await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
       const data = (await response.json()) as TokenMetadata;
 
-      expect(data.description).toBe('myname.base.eth, a Basename');
+      expect(data.description).toBe('myname.base.eth, a Unstablename');
     });
 
     it('should call fetchResolverAddressByNode with chainId and namehash', async () => {
       mockReadContract.mockResolvedValue('testname.base.eth');
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
 
       expect(mockFetchResolverAddressByNode).toHaveBeenCalledWith(base.id, expect.any(String));
     });
 
-    it('should call getBasenameNameExpires with the formatted basename', async () => {
+    it('should call getUnstablenameNameExpires with the formatted basename', async () => {
       const basename = 'testname.base.eth';
       mockReadContract.mockResolvedValue(basename);
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
-      const request = new NextRequest('https://www.base.org/api/basenames/metadata/12345');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/metadata/12345');
 
       await GET(request, { params: Promise.resolve({ tokenId: '12345' }) });
 
-      expect(mockGetBasenameNameExpires).toHaveBeenCalledWith(basename);
+      expect(mockGetUnstablenameNameExpires).toHaveBeenCalledWith(basename);
     });
   });
 });

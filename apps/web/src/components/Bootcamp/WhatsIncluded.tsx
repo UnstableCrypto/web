@@ -10,12 +10,12 @@ export async function WhatsIncluded() {
           <Title level={TitleLevel.Display3}>What&apos;s included?</Title>
 
           <div className="text-md font-sans text-white">
-            <p className="font-bold">Base Learn Curriculum</p>
+            <p className="font-bold">Unstable Learn Curriculum</p>
             <p>
               Participants will work through the{' '}
-              <a href="https://docs.base.org/learn/welcome/">Base Learn</a> content, which
-              is publicly available. However, as part of the Base Bootcamp program, they will also
-              have access to supplemental resources and graded projects, reviewed by Coinbase
+              <a href="https://docs.unstable.org/learn/welcome/">Unstable Learn</a> content, which
+              is publicly available. However, as part of the Unstable Bootcamp program, they will also
+              have access to supplemental resources and graded projects, reviewed by TheAlxLabs
               engineers.
             </p>
             <br />
@@ -24,14 +24,14 @@ export async function WhatsIncluded() {
             <br />
             <p className="font-bold">Office Hours</p>
             <p>
-              Base Bootcamp staff will host regular open office hours via Google Meet to answer
+              Unstable Bootcamp staff will host regular open office hours via Google Meet to answer
               questions.
             </p>
             <br />
             <p className="font-bold">Discord</p>
             <p>
-              All students will have access to a private channel in the Base Discord where they can
-              interact with Coinbase staff, mentors and other Base Bootcamp students.
+              All students will have access to a private channel in the Unstable Discord where they can
+              interact with TheAlxLabs staff, mentors and other Unstable Bootcamp students.
             </p>
           </div>
         </div>

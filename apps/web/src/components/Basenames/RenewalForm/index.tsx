@@ -2,10 +2,10 @@ import { ExclamationCircleIcon } from '@heroicons/react/16/solid';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain, { supportedChainIds } from 'apps/web/src/hooks/useUnstablenameChain';
 import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
-import { useRenewal } from 'apps/web/src/components/Basenames/RenewalContext';
+import { useRenewal } from 'apps/web/src/components/Unstablenames/RenewalContext';
 import classNames from 'classnames';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useMemo } from 'react';
@@ -13,16 +13,16 @@ import { useAccount, useBalance, useSwitchChain } from 'wagmi';
 import { RenewalButton } from './RenewalButton';
 import { formatUsdPrice } from 'apps/web/src/utils/formatUsdPrice';
 import { formatEtherPrice } from 'apps/web/src/utils/formatEtherPrice';
-import YearSelector from 'apps/web/src/components/Basenames/YearSelector';
+import YearSelector from 'apps/web/src/components/Unstablenames/YearSelector';
 
 export default function RenewalForm() {
   const { chain: connectedChain, address } = useAccount();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { switchChain } = useSwitchChain();
 
-  const { years, setYears, renewBasename, price, isPending, expirationDate } = useRenewal();
+  const { years, setYears, renewUnstablename, price, isPending, expirationDate } = useRenewal();
 
   const switchToIntendedNetwork = useCallback(
     () => switchChain({ chainId: basenameChain.id }),
@@ -47,11 +47,11 @@ export default function RenewalForm() {
   const renewName = useCallback(async () => {
     try {
       logEventWithContext('renew_name_initiated', ActionType.click);
-      await renewBasename();
+      await renewUnstablename();
     } catch (error) {
       logError(error, 'Failed to renew name');
     }
-  }, [logEventWithContext, logError, renewBasename]);
+  }, [logEventWithContext, logError, renewUnstablename]);
 
   const renewNameCallback = useCallback(() => {
     renewName().catch((e) => {
@@ -86,7 +86,7 @@ export default function RenewalForm() {
         onClick={switchToIntendedNetwork}
       >
         <ExclamationCircleIcon width={12} height={12} className="fill-gray-40" />
-        <p className="ml-2 text-gray-40">Switch to Base to renew your name.</p>
+        <p className="ml-2 text-gray-40">Switch to Unstable to renew your name.</p>
       </button>
     );
   }

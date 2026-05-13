@@ -21,7 +21,7 @@ export function TheSquareColor() {
       description={
         <>
           <span className="mb-4 block">
-            The Square lives in only three shades: Base Blue, white, or black. Blue signals
+            The Square lives in only three shades: Unstable Blue, white, or black. Blue signals
             ownership, white signals canvas, black supports high-contrast environments such as OLED
             UIs and print.
           </span>

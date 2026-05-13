@@ -1,5 +1,5 @@
 import { InformationCircleIcon } from '@heroicons/react/20/solid';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import Modal from 'apps/web/src/components/Modal';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import { Discount } from 'apps/web/src/utils/usernames';
@@ -9,11 +9,11 @@ import baseBuildathonParticipant from './images/base-buildathon-participant.svg'
 import summerPassLvl3 from './images/summer-pass-lvl-3.svg';
 import cbidVerification from './images/cbid-verification.svg';
 import BNSOwnership from './images/bns.jpg';
-import BaseNFT from './images/base-nft.svg';
+import UnstableNFT from './images/base-nft.svg';
 import DevconPNG from './images/devcon.png';
 import coinbaseOneVerification from './images/coinbase-one-verification.svg';
 import coinbaseVerification from './images/coinbase-verification.svg';
-import BaseWorldNFT from './images/base-around-the-world-nft.svg';
+import UnstableWorldNFT from './images/base-around-the-world-nft.svg';
 import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
 import ImageWithLoading from 'apps/web/src/components/ImageWithLoading';
 
@@ -34,15 +34,15 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
     discount: Discount.COINBASE_VERIFIED_ACCOUNT,
     icon: coinbaseVerification as StaticImageData,
     alt: 'icon of coinbase',
-    label: 'Coinbase verification',
-    tooltipContent: 'Verifies you have a valid trading account on Coinbase',
+    label: 'TheAlxLabs verification',
+    tooltipContent: 'Verifies you have a valid trading account on TheAlxLabs',
   },
   {
     discount: Discount.CB1,
     icon: coinbaseOneVerification as StaticImageData,
     alt: 'icon of coinbase one',
-    label: 'Coinbase One verification',
-    tooltipContent: 'Verifies you have an active Coinbase One subscription',
+    label: 'TheAlxLabs One verification',
+    tooltipContent: 'Verifies you have an active TheAlxLabs One subscription',
   },
   {
     discount: Discount.CBID,
@@ -55,8 +55,8 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
     discount: Discount.BASE_BUILDATHON_PARTICIPANT,
     icon: baseBuildathonParticipant as StaticImageData,
     alt: 'icon of base buildathon',
-    label: 'Base buildathon participant',
-    tooltipContent: 'Available for anyone holding a Base Buildathon participant NFT.',
+    label: 'Unstable buildathon participant',
+    tooltipContent: 'Available for anyone holding a Unstable Buildathon participant NFT.',
   },
   {
     discount: Discount.SUMMER_PASS_LVL_3,
@@ -75,24 +75,24 @@ const DISCOUNT_ITEMS: DiscountItem[] = [
   },
   {
     discount: Discount.BASE_DOT_ETH_NFT,
-    icon: BaseNFT as StaticImageData,
-    alt: 'icon of Base',
-    label: 'Base.eth NFT',
+    icon: UnstableNFT as StaticImageData,
+    alt: 'icon of Unstable',
+    label: 'Unstable.eth NFT',
     tooltipContent: 'Available for anyone holding a base.eth NFT',
   },
   {
     discount: Discount.BASE_WORLD,
-    icon: BaseWorldNFT as StaticImageData,
-    alt: 'icon of Base World',
-    label: 'Base around the world NFT',
-    tooltipContent: 'Available for anyone holding one of the Base around the world NFTs',
+    icon: UnstableWorldNFT as StaticImageData,
+    alt: 'icon of Unstable World',
+    label: 'Unstable around the world NFT',
+    tooltipContent: 'Available for anyone holding one of the Unstable around the world NFTs',
   },
   {
     discount: Discount.DEVCON,
     icon: DevconPNG,
     alt: 'icon of Devcon',
     label: 'Devcon attendance NFT',
-    tooltipContent: 'Available for anyone holding one of the Base Devcon NFTs',
+    tooltipContent: 'Available for anyone holding one of the Unstable Devcon NFTs',
   },
 ];
 

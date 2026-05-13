@@ -1,13 +1,13 @@
 import classNames from 'classnames';
-import UsernameProfileNotFound from 'apps/web/src/components/Basenames/UsernameProfileNotFound';
+import UsernameProfileNotFound from 'apps/web/src/components/Unstablenames/UsernameProfileNotFound';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Basenames | Not Found`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstablenames | Not Found`,
   openGraph: {
-    title: `Basenames | Not Found`,
+    title: `Unstablenames | Not Found`,
     url: `/not-found`,
   },
 };

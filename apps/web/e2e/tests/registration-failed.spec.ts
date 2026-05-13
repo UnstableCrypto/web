@@ -1,10 +1,10 @@
 import { test } from '../testFixture';
 import { expect } from '@playwright/test';
-import { prepareBasenameFlow, handleTransaction } from '../appSession';
+import { prepareUnstablenameFlow, handleTransaction } from '../appSession';
 import { initiateRegistration } from '../basenameHelpers';
 import { ActionApprovalType } from '@coinbase/onchaintestkit';
 
-test.describe('Basename Registration', () => {
+test.describe('Unstablename Registration', () => {
   test.skip('should fail registration when wallet has insufficient funds', async ({
     page,
     metamask,
@@ -20,7 +20,7 @@ test.describe('Basename Registration', () => {
     }
 
     // Common preparation steps (wallet needs funds to connect)
-    const { mainPage } = await prepareBasenameFlow(page, metamask);
+    const { mainPage } = await prepareUnstablenameFlow(page, metamask);
 
     // Add a small delay to ensure everything is stable
     console.log('[test] Waiting for network to stabilize...');

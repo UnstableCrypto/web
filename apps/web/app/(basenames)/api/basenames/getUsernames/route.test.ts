@@ -7,7 +7,7 @@ import type { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddress
 
 // Mock the CDP constants
 jest.mock('apps/web/src/cdp/constants', () => ({
-  cdpBaseUri: 'api.coinbase.com',
+  cdpUnstableUri: 'api.coinbase.com',
 }));
 
 describe('getUsernames route', () => {
@@ -44,7 +44,7 @@ describe('getUsernames route', () => {
 
   describe('GET', () => {
     it('should return 400 when no address is provided', async () => {
-      const request = new NextRequest('https://www.base.org/api/basenames/getUsernames');
+      const request = new NextRequest('https://www.unstable.org/api/basenames/getUsernames');
 
       const response = await GET(request);
       const data = (await response.json()) as ManagedAddressesResponse | { error: string };
@@ -55,7 +55,7 @@ describe('getUsernames route', () => {
 
     it('should return 400 when an invalid address is provided', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x123'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x123'
       );
 
       const response = await GET(request);
@@ -67,7 +67,7 @@ describe('getUsernames route', () => {
 
     it('should return 400 when an invalid network is provided', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=invalid-network'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=invalid-network'
       );
 
       const response = await GET(request);
@@ -84,7 +84,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       await GET(request);
@@ -107,7 +107,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=base-mainnet'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=base-mainnet'
       );
 
       await GET(request);
@@ -125,7 +125,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=base-sepolia'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&network=base-sepolia'
       );
 
       await GET(request);
@@ -143,7 +143,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&page=abc123'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890&page=abc123'
       );
 
       await GET(request);
@@ -161,7 +161,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       await GET(request);
@@ -177,7 +177,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       const response = await GET(request);
@@ -194,7 +194,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       await GET(request);
@@ -216,7 +216,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       await GET(request);
@@ -266,7 +266,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1111111111111111111111111111111111111111'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1111111111111111111111111111111111111111'
       );
 
       const response = await GET(request);
@@ -293,7 +293,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x0000000000000000000000000000000000000000'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x0000000000000000000000000000000000000000'
       );
 
       const response = await GET(request);
@@ -311,7 +311,7 @@ describe('getUsernames route', () => {
       });
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
+        'https://www.unstable.org/api/basenames/getUsernames?address=0x1234567890123456789012345678901234567890'
       );
 
       await GET(request);

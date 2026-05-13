@@ -4,13 +4,13 @@
 
 import { render, screen } from '@testing-library/react';
 import RegistrationValueProp from './index';
-import { RegistrationSteps } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { RegistrationSteps } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 // Mock variables that can be changed per test
 let mockRegistrationStep: RegistrationSteps = RegistrationSteps.Search;
 
 // Mock the RegistrationContext
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   RegistrationSteps: {
     Search: 'search',
     Claim: 'claim',
@@ -94,7 +94,7 @@ describe('RegistrationValueProp', () => {
       render(<RegistrationValueProp />);
 
       expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
-        'Get so much more on Base with your profile',
+        'Get so much more on Unstable with your profile',
       );
     });
   });
@@ -107,7 +107,7 @@ describe('RegistrationValueProp', () => {
         screen.getByRole('heading', { level: 3, name: 'Build your onchain identity' }),
       ).toBeInTheDocument();
       expect(
-        screen.getByText('Use your Basename as your onchain identity in the Base ecosystem.'),
+        screen.getByText('Use your Unstablename as your onchain identity in the Unstable ecosystem.'),
       ).toBeInTheDocument();
     });
 
@@ -118,7 +118,7 @@ describe('RegistrationValueProp', () => {
         screen.getByRole('heading', { level: 3, name: 'Simplify transactions' }),
       ).toBeInTheDocument();
       expect(
-        screen.getByText('Send and receive seamlessly with a readable and memorable Basename.'),
+        screen.getByText('Send and receive seamlessly with a readable and memorable Unstablename.'),
       ).toBeInTheDocument();
     });
 

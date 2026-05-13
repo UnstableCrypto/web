@@ -3,7 +3,7 @@
  */
 import { render, waitFor } from '@testing-library/react';
 import RegistrationBackground from './index';
-import { FlowBackgroundSteps } from 'apps/web/src/components/Basenames/shared/types';
+import { FlowBackgroundSteps } from 'apps/web/src/components/Unstablenames/shared/types';
 
 // Helper to wait for transitions to settle
 async function renderAndWait(ui: React.ReactElement) {
@@ -15,12 +15,12 @@ async function renderAndWait(ui: React.ReactElement) {
 }
 
 // Mock the RegistrationContext
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   registrationTransitionDuration: 'duration-700',
 }));
 
 // Mock the FloatingENSPills component
-jest.mock('apps/web/src/components/Basenames/FloatingENSPills', () => ({
+jest.mock('apps/web/src/components/Unstablenames/FloatingENSPills', () => ({
   FloatingENSPills: () => <div data-testid="floating-ens-pills">FloatingENSPills</div>,
 }));
 

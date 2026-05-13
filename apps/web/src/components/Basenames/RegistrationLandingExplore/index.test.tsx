@@ -6,7 +6,7 @@ import RegistrationLandingExplore from './index';
 
 // Mock the RegistrationContext
 let mockSearchInputFocused = false;
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   useRegistration: () => ({
     searchInputFocused: mockSearchInputFocused,
   }),

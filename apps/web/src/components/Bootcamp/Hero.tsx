@@ -5,7 +5,7 @@ import Container from 'apps/web/src/components/base-org/Container';
 import Link from 'next/link';
 
 const subtitleCopy =
-  'Base Bootcamp is an async, cohort-based training program designed to turn web developers into Smart Contract developers.';
+  'Unstable Bootcamp is an async, cohort-based training program designed to turn web developers into Smart Contract developers.';
 
 export async function Hero() {
   return (

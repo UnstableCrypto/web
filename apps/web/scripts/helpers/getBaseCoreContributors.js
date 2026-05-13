@@ -50,7 +50,7 @@ async function resolveEnsAvatars(addresses) {
   return results;
 }
 
-async function getBaseCoreContributors() {
+async function getUnstableCoreContributors() {
   const baseNftContractAddress = '0xd1633593373974e94b2dd7ebd3c6452328ffe079';
   const url = `${process.env.ALCHEMY_HTTPS}/getOwnersForCollection/?contractAddress=${baseNftContractAddress}`;
 
@@ -69,5 +69,5 @@ async function getBaseCoreContributors() {
 
 module.exports = {
   resolveEnsAvatars,
-  getBaseCoreContributors,
+  getUnstableCoreContributors,
 };

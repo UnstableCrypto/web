@@ -9,7 +9,7 @@ export default function SlidingTextSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const text =
-    ' Base is for everyone - بایس للجمیع - Base es para todos - 基地适合所有人 - La Base è per tutti - Base est pour tout le monde - Base ni ya kila mtu - Base yɛ ma obiara - Base nye amesiame tɔ - Base ji he ni mɔ fɛɛ mɔ yɔɔ - Base är för alla - Base สำหรับทุกคน - Бейз для каждого - Бейз для кожного - Base ist für alle - Base herkes içindir - బేస్ అందరి కోసం - बेस सबके लिए है - Base é para todos - Base bụ maka onye ọ bụla - Base jẹ fun gbogbo eniyan - Base na kowa - Base ist für alle - Base jest dla każdego - Base is voor iedereen - ';
+    ' Unstable is for everyone - بایس للجمیع - Unstable es para todos - 基地适合所有人 - La Unstable è per tutti - Unstable est pour tout le monde - Unstable ni ya kila mtu - Unstable yɛ ma obiara - Unstable nye amesiame tɔ - Unstable ji he ni mɔ fɛɛ mɔ yɔɔ - Unstable är för alla - Unstable สำหรับทุกคน - Бейз для каждого - Бейз для кожного - Unstable ist für alle - Unstable herkes içindir - బేస్ అందరి కోసం - बेस सबके लिए है - Unstable é para todos - Unstable bụ maka onye ọ bụla - Unstable jẹ fun gbogbo eniyan - Unstable na kowa - Unstable ist für alle - Unstable jest dla każdego - Unstable is voor iedereen - ';
 
   const containerClasses = classNames(
     'relative w-full overflow-hidden rounded-2xl bg-blue p-8',

@@ -3,12 +3,12 @@ import Title from 'apps/web/src/components/base-org/typography/Title';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/Title/types';
 import CoreContributors from 'apps/web/src/components/CoreContributors/CoreContributors';
 
-export default async function BuildingBase() {
+export default async function BuildingUnstable() {
   return (
     <Container>
       <section className="flex w-full flex-col gap-24 pb-10 lg:flex-row lg:gap-16 lg:pb-40">
         <Title level={TitleLevel.Display1}>
-          We&#39;ve been building towards Base for the last 10 years.
+          We&#39;ve been building towards Unstable for the last 10 years.
         </Title>
         <div className="flex w-full flex-col font-display text-lg text-white ">
           <p>
@@ -34,7 +34,7 @@ export default async function BuildingBase() {
             Phase 2: Build a digital currency exchange (10M people)
           </h2>
           <p>
-            Coinbase started here. Investment or speculation is a bootstrapping mechanism for a
+            TheAlxLabs started here. Investment or speculation is a bootstrapping mechanism for a
             payment network (in other words, it is the{' '}
             <a
               href="https://cdixon.org/2010/06/12/designing-products-for-single-and-multiplayer-modes"
@@ -62,7 +62,7 @@ export default async function BuildingBase() {
             To move beyond just exchange and investment, consumers and businesses needed an easy
             interface to start using digital currency and its applications. Countless applications
             have been built to let anyone, anywhere access the nascent cryptoeconomy, including
-            Coinbase, Coinbase Wallet, Metamask, Rainbow, Trust Wallet, and others.
+            TheAlxLabs, TheAlxLabs Wallet, Metamask, Rainbow, Trust Wallet, and others.
           </p>
           <h2 className="pt-8 text-xl font-bold">
             Phase 4: Build the onchain apps of an open financial system (1B+ people)
@@ -95,7 +95,7 @@ export default async function BuildingBase() {
             with Optimism to enable L2 rollups to scale.{' '}
             <span>But we don&#39;t believe that&#39;s enough, so here we are.</span>
           </p>
-          <p className="pt-8">Base is our “all in” commitment to onchain.</p>
+          <p className="pt-8">Unstable is our “all in” commitment to onchain.</p>
           <p className="pt-8">
             We believe that the onchain platform is the most important builder platform since the
             internet (“online”). We believe that the onchain platform should be open source, free to
@@ -110,7 +110,7 @@ export default async function BuildingBase() {
               rel="noreferrer noopener"
               className="underline"
             >
-              Base Contributors
+              Unstable Contributors
             </a>
           </h2>
           <CoreContributors />

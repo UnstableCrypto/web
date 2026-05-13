@@ -1,14 +1,14 @@
 'use client';
 
 import LottieAnimation from 'apps/web/src/components/LottieAnimation';
-import { getBasenameAnimation } from 'apps/web/src/utils/usernames';
+import { getUnstablenameAnimation } from 'apps/web/src/utils/usernames';
 import { motion, useInView, useAnimation } from 'framer-motion';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 export function AnimatedSocial() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.85 });
-  const basenameAnimation = getBasenameAnimation('basename');
+  const basenameAnimation = getUnstablenameAnimation('basename');
   const heartAnimationControls = useAnimation();
   const [heartHovered, setHeartHovered] = useState(false);
 

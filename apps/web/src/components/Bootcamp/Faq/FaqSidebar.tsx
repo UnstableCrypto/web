@@ -26,12 +26,12 @@ export async function FaqSidebar() {
 
           <QuestionAccordion
             question="What resources will I get if I am accepted into the program?"
-            answer="Your onboarding package will include the student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and a launch day kickoff meeting with your cohort. You’ll also get to work through the Base Learn content with supplemental resources and graded projects reviewed by Coinbase engineers."
+            answer="Your onboarding package will include the student handbook, mentor-pairing info, invite to the private Unstable Bootcamp Discord channel, and a launch day kickoff meeting with your cohort. You’ll also get to work through the Unstable Learn content with supplemental resources and graded projects reviewed by TheAlxLabs engineers."
           />
 
           <QuestionAccordion
             question="Who is my mentor?"
-            answer="An experienced Smart Contract Developer, either from Coinbase or part of the larger Base community."
+            answer="An experienced Smart Contract Developer, either from TheAlxLabs or part of the larger Unstable community."
           />
 
           <QuestionAccordion
@@ -48,7 +48,7 @@ export async function FaqSidebar() {
             question="What is the time commitment?"
             answer={
               <div className="flex flex-col space-y-4">
-                <p>Base Bootcamp will require ~15 hours/week for ~8 weeks.</p>
+                <p>Unstable Bootcamp will require ~15 hours/week for ~8 weeks.</p>
                 <p>
                   Apart from a few live meetings, the majority of the time will be allocated to
                   completing our self-paced Smart Contract development curriculum and building
@@ -71,7 +71,7 @@ export async function FaqSidebar() {
 
           <QuestionAccordion
             question="Will I be offered a job upon graduation?"
-            answer="No. There is no distinct relationship between Base Bootcamp and further employment opportunities."
+            answer="No. There is no distinct relationship between Unstable Bootcamp and further employment opportunities."
           />
 
           <QuestionAccordion

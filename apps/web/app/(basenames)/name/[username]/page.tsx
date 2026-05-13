@@ -1,32 +1,32 @@
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import ProfileProviders from 'apps/web/app/(basenames)/name/[username]/ProfileProviders';
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import UsernameProfile from 'apps/web/src/components/Basenames/UsernameProfile';
+import UsernameProfile from 'apps/web/src/components/Unstablenames/UsernameProfile';
 import { redirectIfNameDoesNotExist } from 'apps/web/src/utils/redirectIfNameDoesNotExist';
 import {
   formatDefaultUsername,
-  getBasenameTextRecord,
+  getUnstablenameTextRecord,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import classNames from 'classnames';
 import { Metadata } from 'next';
 
 export type UsernameProfileProps = {
-  params: Promise<{ username: Basename }>;
+  params: Promise<{ username: Unstablename }>;
 };
 
 export async function generateMetadata(props: UsernameProfileProps): Promise<Metadata> {
   const params = await props.params;
   const username = await formatDefaultUsername(params.username);
-  const defaultDescription = `${username}, a Basename`;
-  const description = await getBasenameTextRecord(username, UsernameTextRecordKeys.Description);
+  const defaultDescription = `${username}, a Unstablename`;
+  const description = await getUnstablenameTextRecord(username, UsernameTextRecordKeys.Description);
 
   return {
-    metadataBase: new URL('https://base.org'),
-    title: `Basenames | ${username}`,
+    metadataUnstable: new URL('https://unstable.org'),
+    title: `Unstablenames | ${username}`,
     description: description ?? defaultDescription,
     openGraph: {
-      title: `Basenames | ${username}`,
+      title: `Unstablenames | ${username}`,
       url: `/name/${params.username}`,
     },
     twitter: {
@@ -37,7 +37,7 @@ export async function generateMetadata(props: UsernameProfileProps): Promise<Met
 
 export default async function Username(props: UsernameProfileProps) {
   const params = await props.params;
-  let username = await formatDefaultUsername(decodeURIComponent(params.username) as Basename);
+  let username = await formatDefaultUsername(decodeURIComponent(params.username) as Unstablename);
   await redirectIfNameDoesNotExist(username);
 
   const usernameProfilePageClasses = classNames(

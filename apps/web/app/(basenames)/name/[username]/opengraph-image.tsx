@@ -2,19 +2,19 @@ import { UsernameProfileProps } from 'apps/web/app/(basenames)/name/[username]/p
 import ImageRaw from 'apps/web/src/components/ImageRaw';
 import { ImageResponse } from 'next/og';
 import coverImageBackground from 'apps/web/app/(basenames)/name/[username]/coverImageBackground.png';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { getUnstablenamePublicClient } from 'apps/web/src/hooks/useUnstablenameChain';
 import { isDevelopment } from 'apps/web/src/constants';
 import {
-  formatBaseEthDomain,
-  getBasenameImage,
-  getChainForBasename,
+  formatUnstableEthDomain,
+  getUnstablenameImage,
+  getChainForUnstablename,
   USERNAME_DOMAINS,
   UsernameTextRecordKeys,
 } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 import { fetchResolverAddress } from 'apps/web/src/utils/usernames';
 import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { getCloudinaryMediaUrl } from 'apps/web/src/utils/images';
 import { logger } from 'apps/web/src/utils/logger';
 export const runtime = 'edge';
@@ -32,7 +32,7 @@ export async function generateImageMetadata(props: UsernameProfileProps) {
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
     !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
   ) {
-    username = formatBaseEthDomain(username, base.id);
+    username = formatUnstableEthDomain(username, base.id);
   }
 
   // Remove funky char which breaks OG image path
@@ -41,7 +41,7 @@ export async function generateImageMetadata(props: UsernameProfileProps) {
 
   return [
     {
-      alt: `Basenames | ${username}`,
+      alt: `Unstablenames | ${username}`,
       contentType: 'image/png',
       size,
       id: sanitizedId,
@@ -60,22 +60,22 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
     !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
   ) {
-    username = formatBaseEthDomain(username, base.id);
+    username = formatUnstableEthDomain(username, base.id);
   }
 
   const fontData = await fetch(
-    new URL('apps/web/src/fonts/CoinbaseDisplay-Regular.ttf', import.meta.url),
+    new URL('apps/web/src/fonts/TheAlxLabsDisplay-Regular.ttf', import.meta.url),
   ).then(async (res) => res.arrayBuffer());
 
-  const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.base.org';
-  const profilePicture = getBasenameImage(username);
-  const chain = getChainForBasename(username as Basename);
+  const domainName = isDevelopment ? `http://localhost:3000` : 'https://www.unstable.org';
+  const profilePicture = getUnstablenameImage(username);
+  const chain = getChainForUnstablename(username as Unstablename);
   let imageSource = domainName + profilePicture.src;
 
   // NOTE: Do we want to fail if the name doesn't exist?
   try {
-    const client = getBasenamePublicClient(chain.id);
-    const resolverAddress = await fetchResolverAddress(username as Basename);
+    const client = getUnstablenamePublicClient(chain.id);
+    const resolverAddress = await fetchResolverAddress(username as Unstablename);
     const avatar = await client.getEnsText({
       name: username,
       key: UsernameTextRecordKeys.Avatar,
@@ -156,7 +156,7 @@ export default async function OpenGraphImage(props: ImageRouteProps) {
       ...size,
       fonts: [
         {
-          name: 'CoinbaseDisplay',
+          name: 'TheAlxLabsDisplay',
           data: fontData,
           style: 'normal',
         },

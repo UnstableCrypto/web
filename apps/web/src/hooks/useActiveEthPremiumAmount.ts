@@ -1,4 +1,4 @@
-import { useBasenamesNameExpiresWithGracePeriod } from 'apps/web/src/hooks/useBasenamesNameExpiresWithGracePeriod';
+import { useUnstablenamesNameExpiresWithGracePeriod } from 'apps/web/src/hooks/useUnstablenamesNameExpiresWithGracePeriod';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { useEffect, useState } from 'react';
 import { useInterval } from 'usehooks-ts';
@@ -31,7 +31,7 @@ export function usePremiumEndDurationRemaining(name: string) {
     isLoading,
     isError,
     error,
-  } = useBasenamesNameExpiresWithGracePeriod(name);
+  } = useUnstablenamesNameExpiresWithGracePeriod(name);
 
   useEffect(() => {
     if (isError && error) {

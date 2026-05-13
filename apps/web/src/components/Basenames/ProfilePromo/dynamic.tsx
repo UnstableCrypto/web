@@ -2,7 +2,7 @@
 import dynamic from 'next/dynamic';
 
 const DynamicProfilePromo = dynamic(
-  async () => import('apps/web/src/components/Basenames/ProfilePromo'),
+  async () => import('apps/web/src/components/Unstablenames/ProfilePromo'),
   {
     ssr: false,
   },

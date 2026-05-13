@@ -18,7 +18,7 @@ let mockUseUsernameProfileValue = {
   currentWalletNeedsToReclaimProfile: false,
 };
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => mockUseUsernameProfileValue,
 }));
 
@@ -28,11 +28,11 @@ jest.mock('wagmi', () => ({
   useAccount: () => mockUseAccount(),
 }));
 
-// Mock useBasenameChain
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: 8453, name: 'Base' },
+    basenameChain: { id: 8453, name: 'Unstable' },
   }),
 }));
 
@@ -69,11 +69,11 @@ jest.mock('next/navigation', () => ({
   }),
 }));
 
-// Mock useReadBaseEnsTextRecords
-const mockUseReadBaseEnsTextRecords = jest.fn();
-jest.mock('apps/web/src/hooks/useReadBaseEnsTextRecords', () => ({
+// Mock useReadUnstableEnsTextRecords
+const mockUseReadUnstableEnsTextRecords = jest.fn();
+jest.mock('apps/web/src/hooks/useReadUnstableEnsTextRecords', () => ({
   __esModule: true,
-  default: () => mockUseReadBaseEnsTextRecords(),
+  default: () => mockUseReadUnstableEnsTextRecords(),
 }));
 
 // Mock useWriteContractWithReceipt
@@ -100,13 +100,13 @@ jest.mock('apps/web/src/hooks/useWriteContractWithReceipt', () => ({
 }));
 
 // Mock usernames utilities
-const mockBuildBasenameReclaimContract = jest.fn();
-let mockIsBasenameRenewalsKilled = false;
+const mockBuildUnstablenameReclaimContract = jest.fn();
+let mockIsUnstablenameRenewalsKilled = false;
 
 jest.mock('apps/web/src/utils/usernames', () => ({
-  buildBasenameReclaimContract: (...args: unknown[]) => mockBuildBasenameReclaimContract(...args),
-  get isBasenameRenewalsKilled() {
-    return mockIsBasenameRenewalsKilled;
+  buildUnstablenameReclaimContract: (...args: unknown[]) => mockBuildUnstablenameReclaimContract(...args),
+  get isUnstablenameRenewalsKilled() {
+    return mockIsUnstablenameRenewalsKilled;
   },
   UsernameTextRecordKeys: {
     Description: 'description',
@@ -130,7 +130,7 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/UsernamePill', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernamePill', () => ({
   UsernamePill: ({
     variant,
     username,
@@ -152,12 +152,12 @@ jest.mock('../UsernamePill/types', () => ({
   },
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileCard', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileCard', () => ({
   __esModule: true,
   default: () => <div data-testid="username-profile-card">UsernameProfileCard</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileKeywords', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileKeywords', () => ({
   __esModule: true,
   default: ({ keywords }: { keywords: string }) => (
     <div data-testid="username-profile-keywords" data-keywords={keywords}>
@@ -211,15 +211,15 @@ describe('UsernameProfileSidebar', () => {
       currentWalletNeedsToReclaimProfile: false,
     };
     mockUseAccount.mockReturnValue({ address: '0x1234567890abcdef1234567890abcdef12345678' });
-    mockUseReadBaseEnsTextRecords.mockReturnValue({
+    mockUseReadUnstableEnsTextRecords.mockReturnValue({
       existingTextRecords: {
         keywords: '',
       },
     });
     mockTransactionStatus = 'idle';
     mockTransactionIsLoading = false;
-    mockIsBasenameRenewalsKilled = false;
-    mockBuildBasenameReclaimContract.mockReturnValue({ abi: [], address: '0x123', args: [], functionName: 'reclaim' });
+    mockIsUnstablenameRenewalsKilled = false;
+    mockBuildUnstablenameReclaimContract.mockReturnValue({ abi: [], address: '0x123', args: [], functionName: 'reclaim' });
     mockProfileRefetch.mockResolvedValue({});
     mockInitiateTransaction.mockResolvedValue({});
   });
@@ -300,21 +300,21 @@ describe('UsernameProfileSidebar', () => {
   describe('extend registration button', () => {
     it('should show extend registration button when user is profile editor and renewals are not killed', () => {
       mockUseUsernameProfileValue.currentWalletIsProfileEditor = true;
-      mockIsBasenameRenewalsKilled = false;
+      mockIsUnstablenameRenewalsKilled = false;
       render(<UsernameProfileSidebar />);
       expect(screen.getByText('Extend Registration')).toBeInTheDocument();
     });
 
     it('should not show extend registration button when renewals are killed', () => {
       mockUseUsernameProfileValue.currentWalletIsProfileEditor = true;
-      mockIsBasenameRenewalsKilled = true;
+      mockIsUnstablenameRenewalsKilled = true;
       render(<UsernameProfileSidebar />);
       expect(screen.queryByText('Extend Registration')).not.toBeInTheDocument();
     });
 
     it('should navigate to renew page and log analytics when clicking extend registration', () => {
       mockUseUsernameProfileValue.currentWalletIsProfileEditor = true;
-      mockIsBasenameRenewalsKilled = false;
+      mockIsUnstablenameRenewalsKilled = false;
       render(<UsernameProfileSidebar />);
 
       fireEvent.click(screen.getByText('Extend Registration'));
@@ -372,7 +372,7 @@ describe('UsernameProfileSidebar', () => {
 
   describe('keywords section', () => {
     it('should not render keywords component when no keywords exist', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           keywords: '',
         },
@@ -382,7 +382,7 @@ describe('UsernameProfileSidebar', () => {
     });
 
     it('should render keywords component when keywords exist', () => {
-      mockUseReadBaseEnsTextRecords.mockReturnValue({
+      mockUseReadUnstableEnsTextRecords.mockReturnValue({
         existingTextRecords: {
           keywords: 'web3,blockchain,defi',
         },

@@ -10,10 +10,10 @@ jest.mock('next/navigation', () => ({
   },
 }));
 
-// Mock getBasenameAvailable
-const mockGetBasenameAvailable = jest.fn();
+// Mock getUnstablenameAvailable
+const mockGetUnstablenameAvailable = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getBasenameAvailable: (...args: unknown[]) => mockGetBasenameAvailable(...args) as unknown,
+  getUnstablenameAvailable: (...args: unknown[]) => mockGetUnstablenameAvailable(...args) as unknown,
 }));
 
 // Mock the child components
@@ -35,22 +35,22 @@ jest.mock('apps/web/contexts/Errors', () => ({
   ),
 }));
 
-jest.mock('apps/web/src/components/Basenames/PoweredByEns', () => ({
+jest.mock('apps/web/src/components/Unstablenames/PoweredByEns', () => ({
   __esModule: true,
   default: () => <div data-testid="powered-by-ens">PoweredByEns</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/RegistrationFaq', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationFaq', () => ({
   __esModule: true,
   default: () => <div data-testid="registration-faq">RegistrationFAQ</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/RegistrationFlow', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationFlow', () => ({
   __esModule: true,
   default: () => <div data-testid="registration-flow">RegistrationFlow</div>,
 }));
 
-jest.mock('apps/web/src/components/Basenames/RegistrationValueProp', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationValueProp', () => ({
   __esModule: true,
   default: () => <div data-testid="registration-value-prop">RegistrationValueProp</div>,
 }));
@@ -66,22 +66,22 @@ describe('Names Page', () => {
   });
 
   describe('metadata', () => {
-    it('should have correct metadataBase', () => {
-      expect(metadata.metadataBase).toEqual(new URL('https://base.org'));
+    it('should have correct metadataUnstable', () => {
+      expect(metadata.metadataUnstable).toEqual(new URL('https://unstable.org'));
     });
 
     it('should have correct title', () => {
-      expect(metadata.title).toBe('Basenames');
+      expect(metadata.title).toBe('Unstablenames');
     });
 
     it('should have correct description', () => {
-      expect(metadata.description).toContain('Basenames are a core onchain building block');
-      expect(metadata.description).toContain('ENS infrastructure deployed on Base');
+      expect(metadata.description).toContain('Unstablenames are a core onchain building block');
+      expect(metadata.description).toContain('ENS infrastructure deployed on Unstable');
     });
 
     it('should have correct openGraph configuration', () => {
       expect(metadata.openGraph).toMatchObject({
-        title: 'Basenames',
+        title: 'Unstablenames',
         url: '/names',
       });
       expect(metadata.openGraph?.images).toBeDefined();
@@ -165,34 +165,34 @@ describe('Names Page', () => {
 
   describe('claim parameter handling', () => {
     it('should check availability when claim param is provided', async () => {
-      mockGetBasenameAvailable.mockResolvedValue(true);
+      mockGetUnstablenameAvailable.mockResolvedValue(true);
 
       const page = await Page({ searchParams: Promise.resolve({ claim: 'testname' }) });
       render(page);
 
-      expect(mockGetBasenameAvailable).toHaveBeenCalledWith('testname', expect.any(Object));
+      expect(mockGetUnstablenameAvailable).toHaveBeenCalledWith('testname', expect.any(Object));
       expect(mockRedirect).not.toHaveBeenCalled();
     });
 
     it('should redirect to /names when claimed name is not available', async () => {
-      mockGetBasenameAvailable.mockResolvedValue(false);
+      mockGetUnstablenameAvailable.mockResolvedValue(false);
 
       await expect(
         Page({ searchParams: Promise.resolve({ claim: 'unavailable-name' }) })
       ).rejects.toThrow('NEXT_REDIRECT');
 
-      expect(mockGetBasenameAvailable).toHaveBeenCalledWith('unavailable-name', expect.any(Object));
+      expect(mockGetUnstablenameAvailable).toHaveBeenCalledWith('unavailable-name', expect.any(Object));
       expect(mockRedirect).toHaveBeenCalledWith('/names');
     });
 
-    it('should redirect to /names when getBasenameAvailable throws an error', async () => {
-      mockGetBasenameAvailable.mockRejectedValue(new Error('Network error'));
+    it('should redirect to /names when getUnstablenameAvailable throws an error', async () => {
+      mockGetUnstablenameAvailable.mockRejectedValue(new Error('Network error'));
 
       await expect(
         Page({ searchParams: Promise.resolve({ claim: 'error-name' }) })
       ).rejects.toThrow('NEXT_REDIRECT');
 
-      expect(mockGetBasenameAvailable).toHaveBeenCalledWith('error-name', expect.any(Object));
+      expect(mockGetUnstablenameAvailable).toHaveBeenCalledWith('error-name', expect.any(Object));
       expect(mockRedirect).toHaveBeenCalledWith('/names');
     });
 
@@ -200,18 +200,18 @@ describe('Names Page', () => {
       const page = await Page({ searchParams: Promise.resolve({}) });
       render(page);
 
-      expect(mockGetBasenameAvailable).not.toHaveBeenCalled();
+      expect(mockGetUnstablenameAvailable).not.toHaveBeenCalled();
     });
 
     it('should handle both code and claim params together when name is available', async () => {
-      mockGetBasenameAvailable.mockResolvedValue(true);
+      mockGetUnstablenameAvailable.mockResolvedValue(true);
 
       const page = await Page({
         searchParams: Promise.resolve({ code: 'discount-code', claim: 'available-name' }),
       });
       render(page);
 
-      expect(mockGetBasenameAvailable).toHaveBeenCalledWith('available-name', expect.any(Object));
+      expect(mockGetUnstablenameAvailable).toHaveBeenCalledWith('available-name', expect.any(Object));
       const registrationProviders = screen.getByTestId('registration-providers');
       expect(registrationProviders).toHaveAttribute('data-code', 'discount-code');
     });

@@ -22,7 +22,7 @@ export default async function GetNoticed() {
           classnames="bg-pink-80 border-pink-80"
         />
         <ResourceCard
-          title="Base Builds Channel"
+          title="Unstable Builds Channel"
           description="Share your project on /base and /base-builds to get community feedback on Farcaster"
           href="https://warpcast.com/~/channel/base-builds/?utm_source=dotorg&utm_medium=builderkit"
           topLeft={<span className="font-mono">02</span>}

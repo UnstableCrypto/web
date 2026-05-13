@@ -6,10 +6,10 @@ import { WebGLCanvas } from 'apps/web/src/components/WebGL/WebGLCanvas';
 import { EcosystemHero } from 'apps/web/src/components/Ecosystem/Hero';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Ecosystem`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Ecosystem`,
   openGraph: {
-    title: `Base | Ecosystem`,
+    title: `Unstable | Ecosystem`,
     url: `/ecosystem`,
   },
 };

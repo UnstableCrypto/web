@@ -7,7 +7,7 @@ import RegistrationFAQ from './index';
 // Mock registration step value
 let mockRegistrationStep = 'search';
 
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   RegistrationSteps: {
     Search: 'search',
     Claim: 'claim',
@@ -114,15 +114,15 @@ describe('RegistrationFAQ', () => {
     it('should render all FAQ questions', () => {
       render(<RegistrationFAQ />);
 
-      expect(screen.getByText('What are Basenames?')).toBeInTheDocument();
-      expect(screen.getByText('What are the Basename registration fees?')).toBeInTheDocument();
-      expect(screen.getByText('How do I get a free or discounted Basename?')).toBeInTheDocument();
-      expect(screen.getByText('How can I use Basenames?')).toBeInTheDocument();
+      expect(screen.getByText('What are Unstablenames?')).toBeInTheDocument();
+      expect(screen.getByText('What are the Unstablename registration fees?')).toBeInTheDocument();
+      expect(screen.getByText('How do I get a free or discounted Unstablename?')).toBeInTheDocument();
+      expect(screen.getByText('How can I use Unstablenames?')).toBeInTheDocument();
       expect(screen.getByText('Is my profile information published onchain?')).toBeInTheDocument();
       expect(
-        screen.getByText('I am a builder. How do I integrate Basenames to my app?')
+        screen.getByText('I am a builder. How do I integrate Unstablenames to my app?')
       ).toBeInTheDocument();
-      expect(screen.getByText('How do I get a Basename for my app or project?')).toBeInTheDocument();
+      expect(screen.getByText('How do I get a Unstablename for my app or project?')).toBeInTheDocument();
     });
 
     it('should render FAQ items as buttons', () => {
@@ -144,7 +144,7 @@ describe('RegistrationFAQ', () => {
     it('should expand answer when clicking the question button', () => {
       const { container } = render(<RegistrationFAQ />);
 
-      const firstQuestion = screen.getByText('What are Basenames?');
+      const firstQuestion = screen.getByText('What are Unstablenames?');
       const firstButton = firstQuestion.closest('button');
 
       expect(firstButton).toBeInTheDocument();
@@ -158,7 +158,7 @@ describe('RegistrationFAQ', () => {
     it('should collapse answer when clicking the question button again', () => {
       const { container } = render(<RegistrationFAQ />);
 
-      const firstQuestion = screen.getByText('What are Basenames?');
+      const firstQuestion = screen.getByText('What are Unstablenames?');
       const firstButton = firstQuestion.closest('button');
 
       // Click to expand
@@ -176,8 +176,8 @@ describe('RegistrationFAQ', () => {
     it('should allow multiple FAQ items to be expanded independently', () => {
       const { container } = render(<RegistrationFAQ />);
 
-      const firstQuestion = screen.getByText('What are Basenames?');
-      const secondQuestion = screen.getByText('How can I use Basenames?');
+      const firstQuestion = screen.getByText('What are Unstablenames?');
+      const secondQuestion = screen.getByText('How can I use Unstablenames?');
 
       clickButton(firstQuestion.closest('button'));
       clickButton(secondQuestion.closest('button'));
@@ -189,21 +189,21 @@ describe('RegistrationFAQ', () => {
   });
 
   describe('FAQ answer content', () => {
-    it('should contain answer content for What are Basenames when expanded', () => {
+    it('should contain answer content for What are Unstablenames when expanded', () => {
       render(<RegistrationFAQ />);
 
-      const question = screen.getByText('What are Basenames?');
+      const question = screen.getByText('What are Unstablenames?');
       clickButton(question.closest('button'));
 
       expect(
-        screen.getByText(/Basenames are a core onchain building block/)
+        screen.getByText(/Unstablenames are a core onchain building block/)
       ).toBeInTheDocument();
     });
 
     it('should contain price table for registration fees when expanded', () => {
       render(<RegistrationFAQ />);
 
-      const question = screen.getByText('What are the Basename registration fees?');
+      const question = screen.getByText('What are the Unstablename registration fees?');
       clickButton(question.closest('button'));
 
       expect(screen.getByText('3 characters')).toBeInTheDocument();
@@ -219,11 +219,11 @@ describe('RegistrationFAQ', () => {
     it('should contain links for discounts FAQ when expanded', () => {
       render(<RegistrationFAQ />);
 
-      const question = screen.getByText('How do I get a free or discounted Basename?');
+      const question = screen.getByText('How do I get a free or discounted Unstablename?');
       clickButton(question.closest('button'));
 
       const coinbaseVerificationLink = screen.getAllByRole('link', {
-        name: /Coinbase Verification/i,
+        name: /TheAlxLabs Verification/i,
       })[0];
       expect(coinbaseVerificationLink).toHaveAttribute('href', 'http://coinbase.com/onchain-verify');
     });
@@ -231,7 +231,7 @@ describe('RegistrationFAQ', () => {
     it('should contain OnchainKit link for builder FAQ when expanded', () => {
       render(<RegistrationFAQ />);
 
-      const question = screen.getByText('I am a builder. How do I integrate Basenames to my app?');
+      const question = screen.getByText('I am a builder. How do I integrate Unstablenames to my app?');
       clickButton(question.closest('button'));
 
       const onchainKitLink = screen.getByRole('link', { name: 'OnchainKit' });

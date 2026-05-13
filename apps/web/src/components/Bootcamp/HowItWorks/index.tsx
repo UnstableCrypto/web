@@ -11,7 +11,7 @@ const featureItems = [
       <div className="text-md font-sans text-white">
         <p>
           Are you a crypto-proficient software engineer interested in learning to build smart
-          contracts? Start out by applying to Base Bootcamp.
+          contracts? Start out by applying to Unstable Bootcamp.
         </p>
       </div>
     ),
@@ -20,7 +20,7 @@ const featureItems = [
     number: '2',
     title: 'Onboard',
     description:
-      'Upon acceptance, you’ll receive an email with all relevant onboarding materials (student handbook, mentor-pairing info, invite to the private Base Bootcamp Discord channel, and invite to the launch day).',
+      'Upon acceptance, you’ll receive an email with all relevant onboarding materials (student handbook, mentor-pairing info, invite to the private Unstable Bootcamp Discord channel, and invite to the launch day).',
   },
   {
     number: '3',
@@ -38,10 +38,10 @@ const featureItems = [
           <a
             className="underline"
             target="_blank"
-            href="https://docs.base.org/base-learn/docs/welcome"
+            href="https://docs.unstable.org/base-learn/docs/welcome"
             rel="noreferrer"
           >
-            Base Learn
+            Unstable Learn
           </a>
           , meeting regularly with your mentor. You’ll build your final project during the final two
           weeks - a real-world, onchain app that you’ll demo virtually on Demo Day.
@@ -57,7 +57,7 @@ const featureItems = [
             target="_blank"
             rel="noreferrer"
           >
-            Base Bootcamp Grad NFT
+            Unstable Bootcamp Grad NFT
           </a>
           .
         </p>

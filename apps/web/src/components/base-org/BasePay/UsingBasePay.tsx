@@ -3,16 +3,16 @@ import { TitleLevel } from 'apps/web/src/components/base-org/typography/TitleRed
 import Text from 'apps/web/src/components/base-org/typography/TextRedesign';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/TextRedesign/types';
 
-export default function UsingBasePay() {
+export default function UsingUnstablePay() {
   return (
     <section className="col-span-full pb-24 pt-12 text-black">
       <div className="flex flex-col items-center justify-between gap-12 md:flex-row md:items-start md:gap-24">
         <Title level={TitleLevel.H1Regular} as="h1">
-          Using Base Pay
+          Using Unstable Pay
         </Title>
         <div className="flex flex-col gap-6 md:w-1/2 lg:w-3/5">
           <div className="flex flex-col gap-2">
-            <Title level={TitleLevel.H2Regular}>Select Base Pay at checkout</Title>
+            <Title level={TitleLevel.H2Regular}>Select Unstable Pay at checkout</Title>
             <Text variant={TextVariant.Body} className="!text-base-gray-200">
               Available on participating Shopify stores
             </Text>

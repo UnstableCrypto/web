@@ -91,7 +91,7 @@ const ITEMS = [
   },
   {
     title: 'Create your profile',
-    href: 'https://www.base.org/names?utm_source=dotorg&utm_medium=builderkit',
+    href: 'https://www.unstable.org/names?utm_source=dotorg&utm_medium=builderkit',
     description: 'Claim a basename and create your based profile to connect with other builders.',
   },
   {

@@ -2,8 +2,8 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 import SuccessMessage, {
   SuccessAction,
-} from 'apps/web/src/components/Basenames/shared/SuccessMessage';
-import { useRenewal, RenewalSteps } from 'apps/web/src/components/Basenames/RenewalContext';
+} from 'apps/web/src/components/Unstablenames/shared/SuccessMessage';
+import { useRenewal, RenewalSteps } from 'apps/web/src/components/Unstablenames/RenewalContext';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useRouter } from 'next/navigation';
 import { useCallback, useMemo } from 'react';

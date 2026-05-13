@@ -1,6 +1,6 @@
 'use client';
 import { WebGLView } from 'apps/web/src/components/WebGL/WebGLView';
-import { useImageTexture } from 'apps/web/src/components/base-org/root/Redesign/Section/BaseJoin/InteractiveCard';
+import { useImageTexture } from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableJoin/InteractiveCard';
 import { useEffect, useMemo, useState, useRef } from 'react';
 import * as THREE from 'three';
 import { useWebGLInteraction } from 'apps/web/src/hooks/useWebGLInteraction';
@@ -30,7 +30,7 @@ export function NotFoundScene() {
 
     const uniforms: Record<string, THREE.Uniform> = {
       uImage: new THREE.Uniform(imageTexture),
-      uBaseTileSize: new THREE.Uniform(8),
+      uUnstableTileSize: new THREE.Uniform(8),
       uPatternAtlasColumns: new THREE.Uniform(6),
       u_imageDimensions: new THREE.Uniform(
         new THREE.Vector2(imageDimensions.width, imageDimensions.height),

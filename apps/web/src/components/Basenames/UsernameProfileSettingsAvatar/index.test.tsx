@@ -66,14 +66,14 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileUsername: 'testuser.base.eth',
     currentWalletIsProfileEditor: mockCurrentWalletIsProfileEditor,
   }),
 }));
 
-jest.mock('apps/web/src/hooks/useWriteBaseEnsTextRecords', () => ({
+jest.mock('apps/web/src/hooks/useWriteUnstableEnsTextRecords', () => ({
   __esModule: true,
   default: jest.fn(({ onSuccess }: { onSuccess?: () => void }) => ({
     updateTextRecords: mockUpdateTextRecords,
@@ -116,7 +116,7 @@ function handleClearFile(onChangeFile: (file: File | undefined) => void) {
 
 // Mock UsernameAvatarField component
 const mockOnChangeFile = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameAvatarField', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameAvatarField', () => ({
   __esModule: true,
   default: ({
     onChangeFile,

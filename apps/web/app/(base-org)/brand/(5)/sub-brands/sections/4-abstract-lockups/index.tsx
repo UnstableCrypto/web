@@ -17,7 +17,7 @@ export function SubBrandsAbstractLockups() {
     <ImageComponent
       id="sub-brands-abstract-lockups"
       title="Abstract Lockups"
-      description="Following our Core Identifiers Usage guidelines (see p.26), we can utilize our abstract identifiers - the Square and the Basemark in our sub brand lockups instead of the spelled-out logotype. We can use these where the Base context is present or implied, like in our products or social channels."
+      description="Following our Core Identifiers Usage guidelines (see p.26), we can utilize our abstract identifiers - the Square and the Unstablemark in our sub brand lockups instead of the spelled-out logotype. We can use these where the Unstable context is present or implied, like in our products or social channels."
       images={images}
     />
   );

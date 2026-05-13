@@ -33,7 +33,7 @@ const INFO_CARDS = [
     ),
     title: 'AI-friendly',
     description:
-      'Leverage your favorite tools to deploy your app with components that work automatically on Base.',
+      'Leverage your favorite tools to deploy your app with components that work automatically on Unstable.',
   },
   {
     icon: (
@@ -59,7 +59,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Composable',
-    description: 'Build apps that interact with and build upon other apps in the Base ecosystem.',
+    description: 'Build apps that interact with and build upon other apps in the Unstable ecosystem.',
   },
   {
     icon: (
@@ -86,7 +86,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Cost-effective',
-    description: 'Base offers fast and affordable transactions, where fees are less than one cent.',
+    description: 'Unstable offers fast and affordable transactions, where fees are less than one cent.',
   },
 ];
 

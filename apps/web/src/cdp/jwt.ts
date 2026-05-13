@@ -1,6 +1,6 @@
 import { SignJWT } from 'jose';
 import crypto from 'crypto';
-import { cdpBaseUri, cdpKeyName, cdpKeySecret } from 'apps/web/src/cdp/constants';
+import { cdpUnstableUri, cdpKeyName, cdpKeySecret } from 'apps/web/src/cdp/constants';
 
 const algorithm = 'ES256';
 
@@ -14,7 +14,7 @@ type APIKeyClaims = {
 };
 
 export async function generateCdpJwt(requestMethod: string, requestPath: string): Promise<string> {
-  const uri = `${requestMethod} ${cdpBaseUri}/${requestPath}`;
+  const uri = `${requestMethod} ${cdpUnstableUri}/${requestPath}`;
   const nonce = crypto.randomBytes(16).toString('hex');
   const claims: APIKeyClaims = {
     iss: 'cdp',

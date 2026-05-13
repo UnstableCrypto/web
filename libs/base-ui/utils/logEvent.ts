@@ -63,7 +63,7 @@ enum AnalyticsEventContext {
   Socials = 'socials',
 
   // Feature-specific contexts
-  BasenamesClaimFrame = 'basenames_claim_frame',
+  UnstablenamesClaimFrame = 'basenames_claim_frame',
   SliceSo = 'slice.so',
   HypersubXyz = 'hypersub.xyz',
   HighlightXyz = 'highlight.xyz',

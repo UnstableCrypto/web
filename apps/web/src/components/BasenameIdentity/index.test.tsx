@@ -3,23 +3,23 @@
  */
 import { render, screen } from '@testing-library/react';
 import { type Address } from 'viem';
-import { type Basename } from '@coinbase/onchainkit/identity';
-import BasenameIdentity from './index';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
+import UnstablenameIdentity from './index';
 
-// Mock useBasenameChain
-const mockUseBasenameChain = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUseUnstablenameChain = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: () => mockUseBasenameChain(),
+  default: () => mockUseUnstablenameChain(),
 }));
 
-// Mock useBasenameResolver
-const mockUseBasenameResolver = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameResolver', () => ({
+// Mock useUnstablenameResolver
+const mockUseUnstablenameResolver = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameResolver', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: (params: unknown) => mockUseBasenameResolver(params),
+  default: (params: unknown) => mockUseUnstablenameResolver(params),
 }));
 
 // Mock wagmi's useEnsAddress
@@ -29,8 +29,8 @@ jest.mock('wagmi', () => ({
   useEnsAddress: (params: unknown) => mockUseEnsAddress(params),
 }));
 
-// Mock BasenameAvatar component
-jest.mock('apps/web/src/components/Basenames/BasenameAvatar', () => ({
+// Mock UnstablenameAvatar component
+jest.mock('apps/web/src/components/Unstablenames/UnstablenameAvatar', () => ({
   __esModule: true,
   default: ({
     basename,
@@ -60,26 +60,26 @@ jest.mock('libs/base-ui/utils/string', () => ({
   truncateMiddle: (...args: unknown[]) => mockTruncateMiddle(...args),
 }));
 
-describe('BasenameIdentity', () => {
-  const mockUsername = 'testname.base.eth' as Basename;
+describe('UnstablenameIdentity', () => {
+  const mockUsername = 'testname.base.eth' as Unstablename;
   const mockResolverAddress = '0x1234567890123456789012345678901234567890' as Address;
-  const mockBasenameAddress = '0xabcdef0123456789abcdef0123456789abcdef01' as Address;
+  const mockUnstablenameAddress = '0xabcdef0123456789abcdef0123456789abcdef01' as Address;
   const mockTruncatedAddress = '0xabcd...ef01';
 
   beforeEach(() => {
     jest.clearAllMocks();
 
     // Default mock implementations
-    mockUseBasenameChain.mockReturnValue({
-      basenameChain: { id: 8453, name: 'Base' },
+    mockUseUnstablenameChain.mockReturnValue({
+      basenameChain: { id: 8453, name: 'Unstable' },
     });
 
-    mockUseBasenameResolver.mockReturnValue({
+    mockUseUnstablenameResolver.mockReturnValue({
       data: mockResolverAddress,
     });
 
     mockUseEnsAddress.mockReturnValue({
-      data: mockBasenameAddress,
+      data: mockUnstablenameAddress,
     });
 
     mockTruncateMiddle.mockReturnValue(mockTruncatedAddress);
@@ -87,13 +87,13 @@ describe('BasenameIdentity', () => {
 
   describe('rendering', () => {
     it('should render the username', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(screen.getByText(mockUsername)).toBeInTheDocument();
     });
 
-    it('should render the BasenameAvatar with correct props', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+    it('should render the UnstablenameAvatar with correct props', () => {
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       const avatar = screen.getByTestId('basename-avatar');
       expect(avatar).toBeInTheDocument();
@@ -103,9 +103,9 @@ describe('BasenameIdentity', () => {
     });
 
     it('should render the truncated address when basenameAddress is available', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
-      expect(mockTruncateMiddle).toHaveBeenCalledWith(mockBasenameAddress, 6, 4);
+      expect(mockTruncateMiddle).toHaveBeenCalledWith(mockUnstablenameAddress, 6, 4);
       expect(screen.getByText(mockTruncatedAddress)).toBeInTheDocument();
     });
 
@@ -114,7 +114,7 @@ describe('BasenameIdentity', () => {
         data: undefined,
       });
 
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(mockTruncateMiddle).not.toHaveBeenCalled();
       expect(screen.queryByText(mockTruncatedAddress)).not.toBeInTheDocument();
@@ -122,20 +122,20 @@ describe('BasenameIdentity', () => {
   });
 
   describe('hook integration', () => {
-    it('should call useBasenameChain without arguments', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+    it('should call useUnstablenameChain without arguments', () => {
+      render(<UnstablenameIdentity username={mockUsername} />);
 
-      expect(mockUseBasenameChain).toHaveBeenCalled();
+      expect(mockUseUnstablenameChain).toHaveBeenCalled();
     });
 
-    it('should call useBasenameResolver with the username', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+    it('should call useUnstablenameResolver with the username', () => {
+      render(<UnstablenameIdentity username={mockUsername} />);
 
-      expect(mockUseBasenameResolver).toHaveBeenCalledWith({ username: mockUsername });
+      expect(mockUseUnstablenameResolver).toHaveBeenCalledWith({ username: mockUsername });
     });
 
     it('should call useEnsAddress with correct parameters', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(mockUseEnsAddress).toHaveBeenCalledWith({
         name: mockUsername,
@@ -146,11 +146,11 @@ describe('BasenameIdentity', () => {
     });
 
     it('should disable useEnsAddress query when resolver address is undefined', () => {
-      mockUseBasenameResolver.mockReturnValue({
+      mockUseUnstablenameResolver.mockReturnValue({
         data: undefined,
       });
 
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(mockUseEnsAddress).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -159,13 +159,13 @@ describe('BasenameIdentity', () => {
       );
     });
 
-    it('should use the chain id from useBasenameChain', () => {
+    it('should use the chain id from useUnstablenameChain', () => {
       const testnetChainId = 84532;
-      mockUseBasenameChain.mockReturnValue({
-        basenameChain: { id: testnetChainId, name: 'Base Sepolia' },
+      mockUseUnstablenameChain.mockReturnValue({
+        basenameChain: { id: testnetChainId, name: 'Unstable Sepolia' },
       });
 
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(mockUseEnsAddress).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -177,41 +177,41 @@ describe('BasenameIdentity', () => {
 
   describe('different username formats', () => {
     it('should handle mainnet basenames (.base.eth)', () => {
-      const mainnetUsername = 'myname.base.eth' as Basename;
+      const mainnetUsername = 'myname.base.eth' as Unstablename;
 
-      render(<BasenameIdentity username={mainnetUsername} />);
+      render(<UnstablenameIdentity username={mainnetUsername} />);
 
       expect(screen.getByText(mainnetUsername)).toBeInTheDocument();
-      expect(mockUseBasenameResolver).toHaveBeenCalledWith({ username: mainnetUsername });
+      expect(mockUseUnstablenameResolver).toHaveBeenCalledWith({ username: mainnetUsername });
     });
 
     it('should handle testnet basenames (.basetest.eth)', () => {
-      const testnetUsername = 'myname.basetest.eth' as Basename;
+      const testnetUsername = 'myname.basetest.eth' as Unstablename;
 
-      render(<BasenameIdentity username={testnetUsername} />);
+      render(<UnstablenameIdentity username={testnetUsername} />);
 
       expect(screen.getByText(testnetUsername)).toBeInTheDocument();
-      expect(mockUseBasenameResolver).toHaveBeenCalledWith({ username: testnetUsername });
+      expect(mockUseUnstablenameResolver).toHaveBeenCalledWith({ username: testnetUsername });
     });
   });
 
   describe('layout and styling', () => {
     it('should render with flex layout and gap', () => {
-      const { container } = render(<BasenameIdentity username={mockUsername} />);
+      const { container } = render(<UnstablenameIdentity username={mockUsername} />);
 
       const wrapper = container.firstChild;
       expect(wrapper).toHaveClass('flex', 'items-center', 'gap-4');
     });
 
     it('should render username in a strong tag', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       const strong = screen.getByText(mockUsername).closest('strong');
       expect(strong).toBeInTheDocument();
     });
 
     it('should render address with gray styling', () => {
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       const addressElement = screen.getByText(mockTruncatedAddress);
       expect(addressElement).toHaveClass('text-gray-40');
@@ -224,17 +224,17 @@ describe('BasenameIdentity', () => {
         data: null,
       });
 
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       expect(mockTruncateMiddle).not.toHaveBeenCalled();
     });
 
     it('should handle empty string resolver address', () => {
-      mockUseBasenameResolver.mockReturnValue({
+      mockUseUnstablenameResolver.mockReturnValue({
         data: '' as Address,
       });
 
-      render(<BasenameIdentity username={mockUsername} />);
+      render(<UnstablenameIdentity username={mockUsername} />);
 
       // Empty string is falsy, so query should be disabled
       expect(mockUseEnsAddress).toHaveBeenCalledWith(

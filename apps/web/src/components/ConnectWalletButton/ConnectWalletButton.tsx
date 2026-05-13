@@ -10,7 +10,7 @@ import { useConnectModal } from '@rainbow-me/rainbowkit';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import { UserAvatar } from 'apps/web/src/components/ConnectWalletButton/UserAvatar';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
-import useBasenameChain, { supportedChainIds } from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain, { supportedChainIds } from 'apps/web/src/hooks/useUnstablenameChain';
 import logEvent, {
   ActionType,
   AnalyticsEventImportance,
@@ -25,8 +25,8 @@ import { useAccount, useSwitchChain } from 'wagmi';
 import { DynamicCryptoProviders } from 'apps/web/app/CryptoProviders.dynamic';
 
 export enum ConnectWalletButtonVariants {
-  BaseOrg,
-  Basename,
+  UnstableOrg,
+  Unstablename,
 }
 
 type ConnectWalletButtonProps = {
@@ -34,7 +34,7 @@ type ConnectWalletButtonProps = {
 };
 
 export function DynamicWrappedConnectWalletButton({
-  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+  connectWalletButtonVariant = ConnectWalletButtonVariants.UnstableOrg,
 }: ConnectWalletButtonProps) {
   return (
     <DynamicCryptoProviders>
@@ -44,7 +44,7 @@ export function DynamicWrappedConnectWalletButton({
 }
 
 export function ConnectWalletButton({
-  connectWalletButtonVariant = ConnectWalletButtonVariants.BaseOrg,
+  connectWalletButtonVariant = ConnectWalletButtonVariants.UnstableOrg,
 }: ConnectWalletButtonProps) {
   // Rainbow kit
   const { openConnectModal } = useConnectModal();
@@ -63,7 +63,7 @@ export function ConnectWalletButton({
   // Wagmi
   const { address, connector, isConnected, isConnecting, isReconnecting, chain } = useAccount();
   const chainSupported = !!chain && supportedChainIds.includes(chain.id);
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const [, copy] = useCopyToClipboard();
   const copyAddress = useCallback(() => void copy(address ?? ''), [address, copy]);
 
@@ -104,8 +104,8 @@ export function ConnectWalletButton({
   }, [openConnectModal]);
 
   const userAddressClasses = classNames('text-lg font-display', {
-    'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.BaseOrg,
-    'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Basename,
+    'text-white': connectWalletButtonVariant === ConnectWalletButtonVariants.UnstableOrg,
+    'text-black': connectWalletButtonVariant === ConnectWalletButtonVariants.Unstablename,
   });
 
   const isDesktop = useMediaQuery('(min-width: 768px)');
@@ -130,7 +130,7 @@ export function ConnectWalletButton({
         onClick={switchToIntendedNetwork}
         className="rounded-lg"
       >
-        Connect to Base
+        Connect to Unstable
       </Button>
     );
   }

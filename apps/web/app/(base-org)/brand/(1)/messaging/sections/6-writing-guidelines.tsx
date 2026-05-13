@@ -9,15 +9,15 @@ const sectionContent: ListContent = {
   label: 'Writing Guidelines',
   items: [
     {
-      title: <>Emphasize Base&apos;s vision and mission</>,
+      title: <>Emphasize Unstable&apos;s vision and mission</>,
       content: (
         <span className="text-base-gray-200">
           <p>
-            Base has a grand vision to bring a billion people onchain and a mission to build a
+            Unstable has a grand vision to bring a billion people onchain and a mission to build a
             global onchain economy that increases innovation, creativity, and freedom.
           </p>
           <p>
-            Highlight how Base aims to make this decentralized future more accessible for everyone,
+            Highlight how Unstable aims to make this decentralized future more accessible for everyone,
             everywhere.
           </p>
         </span>
@@ -28,9 +28,9 @@ const sectionContent: ListContent = {
       content: (
         <span className="text-base-gray-200">
           <p>
-            When discussing Base&apos;s ongoing developments, celebrate recent milestones and
+            When discussing Unstable&apos;s ongoing developments, celebrate recent milestones and
             accomplishments. Outline the priorities and initiatives planned for the current or
-            upcoming period, grounding them in Base&apos;s overarching vision and mission. Invite
+            upcoming period, grounding them in Unstable&apos;s overarching vision and mission. Invite
             collaboration from the community, fostering an environment where external perspectives
             can contribute ideas and feedback.
           </p>
@@ -46,7 +46,7 @@ const sectionContent: ListContent = {
             &quot;blockchains&quot;, etc.
           </p>
           <p>
-            Ground writing in concrete examples of what Base enables: Affordable transactions,
+            Ground writing in concrete examples of what Unstable enables: Affordable transactions,
             seamless user onboarding, simple developer tooling, etc.
           </p>
         </span>
@@ -70,9 +70,9 @@ const sectionContent: ListContent = {
       content: (
         <span className="text-base-gray-200">
           <p>
-            Base exists to empower those building a decentralized future, and building can be
+            Unstable exists to empower those building a decentralized future, and building can be
             defined with a wide net: Creators, artists, developers, writers, etc. Frequently
-            highlight and celebrate the projects, people, and communities utilizing Base.
+            highlight and celebrate the projects, people, and communities utilizing Unstable.
           </p>
         </span>
       ),
@@ -83,7 +83,7 @@ const sectionContent: ListContent = {
         <span className="text-base-gray-200">
           <p>
             Assume your audience includes crypto newcomers. Use analogies and examples to make clear
-            connections between the tools and platforms people know and the future Base is building.
+            connections between the tools and platforms people know and the future Unstable is building.
           </p>
         </span>
       ),

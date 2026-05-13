@@ -1,11 +1,11 @@
 import ColorList from 'apps/web/src/components/Brand/ColorList';
 
-export function ColorBaseBlue() {
+export function ColorUnstableBlue() {
   return (
     <ColorList
       id="base-blue"
-      title="Base Blue"
-      description="Base Blue is screen native RGB 0 0 255. In print convert to PMS 286. Base Blue on white (or vice versa) passes AA contrast."
+      title="Unstable Blue"
+      description="Unstable Blue is screen native RGB 0 0 255. In print convert to PMS 286. Unstable Blue on white (or vice versa) passes AA contrast."
       colors={COLORS}
     />
   );

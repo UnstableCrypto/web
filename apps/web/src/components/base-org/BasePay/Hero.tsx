@@ -32,7 +32,7 @@ export default function Hero() {
           <div className="h-[19px] w-[82px] md:h-[33px] md:w-[142px]">
             <ImageWithLoading
               src="/images/basepay/logo.svg"
-              alt="Base Pay logo"
+              alt="Unstable Pay logo"
               width={142}
               height={33}
             />
@@ -48,11 +48,11 @@ export default function Hero() {
               className="w-full pointer-events-auto"
             >
               <Link
-                href="https://docs.base.org/base-account/guides/accept-payments"
+                href="https://docs.unstable.org/base-account/guides/accept-payments"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Accept Base Pay
+                Accept Unstable Pay
               </Link>
             </Button>
 
@@ -66,7 +66,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Shop with Base Pay
+                Shop with Unstable Pay
               </Link>
             </Button>
           </div>

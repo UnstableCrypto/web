@@ -1,13 +1,13 @@
 import { useReadContract } from 'wagmi';
 import { type Address } from 'viem';
-import { type Basename } from '@coinbase/onchainkit/identity';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
 import { buildRegistryResolverReadParams } from 'apps/web/src/utils/usernames';
 
-export type UseBasenameResolverProps = {
-  username: Basename;
+export type UseUnstablenameResolverProps = {
+  username: Unstablename;
 };
 
-export type UseBasenameResolverReturn = {
+export type UseUnstablenameResolverReturn = {
   data: Address | undefined;
   isError: boolean;
   error: Error | null;
@@ -17,9 +17,9 @@ export type UseBasenameResolverReturn = {
 /**
  * Hook to fetch the resolver contract address for a given basename from the registry contract
  */
-export default function useBasenameResolver({
+export default function useUnstablenameResolver({
   username,
-}: UseBasenameResolverProps): UseBasenameResolverReturn {
+}: UseUnstablenameResolverProps): UseUnstablenameResolverReturn {
   const readParams = buildRegistryResolverReadParams(username);
 
   const {

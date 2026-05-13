@@ -5,34 +5,34 @@ const content = [
     tag: 'base sans',
     items: [
       <span key="thin1" className="font-sans text-3xl font-thin leading-none lg:text-scale-5xl/6xl">
-        Base Sans Thin
+        Unstable Sans Thin
       </span>,
       <span
         key="light1"
         className="font-sans text-3xl font-light leading-none lg:text-scale-5xl/6xl"
       >
-        Base Sans Light
+        Unstable Sans Light
       </span>,
       <span
         key="regular1"
         className="font-sans text-3xl font-normal leading-none lg:text-scale-5xl/6xl"
       >
-        Base Sans Regular
+        Unstable Sans Regular
       </span>,
       <span
         key="medium1"
         className="font-sans text-3xl font-medium leading-none lg:text-scale-5xl/6xl"
       >
-        Base Sans Medium
+        Unstable Sans Medium
       </span>,
       <span key="bold1" className="font-sans text-3xl font-bold leading-none lg:text-scale-5xl/6xl">
-        Base Sans Bold
+        Unstable Sans Bold
       </span>,
       <span
         key="black1"
         className="font-sans text-3xl font-black leading-none lg:text-scale-5xl/6xl"
       >
-        Base Sans Black
+        Unstable Sans Black
       </span>,
     ],
   },
@@ -84,25 +84,25 @@ const content = [
         key="thin1"
         className="font-mono text-3xl font-thin italic leading-none lg:text-scale-5xl/6xl"
       >
-        Base Mono Thin
+        Unstable Mono Thin
       </span>,
       <span
         key="light1"
         className="font-mono text-3xl font-light italic leading-none lg:text-scale-5xl/6xl"
       >
-        Base Mono Light
+        Unstable Mono Light
       </span>,
       <span
         key="regular1"
         className="font-mono text-3xl font-normal italic leading-none lg:text-scale-5xl/6xl"
       >
-        Base Mono Regular
+        Unstable Mono Regular
       </span>,
       <span
         key="medium1"
         className="font-mono text-3xl font-medium italic leading-none lg:text-scale-5xl/6xl"
       >
-        Base Mono Medium
+        Unstable Mono Medium
       </span>,
     ],
   },
@@ -137,21 +137,21 @@ const content = [
   },
 ];
 
-export function IntroducingBaseSans() {
+export function IntroducingUnstableSans() {
   return (
     <VariantListComponent
       id="primary-typeface-introducing-base-sans"
       prefix="Primary Typeface"
-      title="Introducing Base Sans"
+      title="Introducing Unstable Sans"
       description={
         <span className="flex flex-col gap-2">
           <span>
-            Base Sans is the primary typeface of Base. It is at the heart of our identity and is
+            Unstable Sans is the primary typeface of Unstable. It is at the heart of our identity and is
             purpose built for legibility and adaptability in the fast moving onchain world. Its open
             counters echo the Square&apos;s geometry.
           </span>
           <span>
-            Base Mono complements Base Sans, and is meant for setting metadata, code blocks, and for
+            Unstable Mono complements Unstable Sans, and is meant for setting metadata, code blocks, and for
             display purposes in more developer-facing contexts.
           </span>
         </span>

@@ -3,22 +3,22 @@ import {
   UsernameTextRecords,
   UsernameTextRecordKeys,
   textRecordsKeysEnabled,
-  getBasenameTextRecords,
+  getUnstablenameTextRecords,
 } from 'apps/web/src/utils/usernames';
 import { useQuery } from '@tanstack/react-query';
-import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import { UnstableEnsNameData } from 'apps/web/src/hooks/useUnstableEnsName';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 
-export type UseReadBaseEnsTextRecordsProps = {
-  username: BaseEnsNameData;
+export type UseReadUnstableEnsTextRecordsProps = {
+  username: UnstableEnsNameData;
   refetchInterval?: number;
 };
 
-export default function useReadBaseEnsTextRecords({
+export default function useReadUnstableEnsTextRecords({
   username,
   refetchInterval = Infinity,
-}: UseReadBaseEnsTextRecordsProps) {
-  const { basenameChain } = useBasenameChain(username);
+}: UseReadUnstableEnsTextRecordsProps) {
+  const { basenameChain } = useUnstablenameChain(username);
 
   const defaultTextRecords = useMemo(() => {
     return {
@@ -56,7 +56,7 @@ export default function useReadBaseEnsTextRecords({
 
   const getExistingTextRecords = useCallback(async () => {
     if (!username) return;
-    const result = await getBasenameTextRecords(username);
+    const result = await getUnstablenameTextRecords(username);
     return result;
   }, [username]);
 
@@ -66,7 +66,7 @@ export default function useReadBaseEnsTextRecords({
     refetch: refetchExistingTextRecords,
     error: existingTextRecordsError,
   } = useQuery({
-    queryKey: ['useReadBaseEnsTextRecords', textRecordsKeysEnabled, basenameChain.id, username],
+    queryKey: ['useReadUnstableEnsTextRecords', textRecordsKeysEnabled, basenameChain.id, username],
     queryFn: getExistingTextRecords,
     enabled: !!username,
     retry: false,

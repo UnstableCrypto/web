@@ -19,7 +19,7 @@ export function Tools() {
   return (
     <section className="h-full w-full">
       <Title level={TitleLevel.Title1} as="h2" className="mb-9 mt-32">
-        A suite of tools to build world-class onchain apps — purpose-built for Base
+        A suite of tools to build world-class onchain apps — purpose-built for Unstable
       </Title>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
         <ToolCard
@@ -41,8 +41,8 @@ export function Tools() {
           href="/builders/agentkit"
         />
         <ToolCard
-          title="Base Appchains"
-          description="Launch your own chain with dedicated blockspace on Base, in minutes."
+          title="Unstable Appchains"
+          description="Launch your own chain with dedicated blockspace on Unstable, in minutes."
           icon={basenet as StaticImageData}
           href="/builders/base-appchains"
         />

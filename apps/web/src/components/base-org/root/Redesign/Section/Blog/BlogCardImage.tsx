@@ -1,7 +1,7 @@
 import {
   interactiveCardFragmentShader,
   useImageTexture,
-} from 'apps/web/src/components/base-org/root/Redesign/Section/BaseJoin/InteractiveCard';
+} from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableJoin/InteractiveCard';
 import { useWebGLInteraction } from 'apps/web/src/hooks/useWebGLInteraction';
 import * as THREE from 'three';
 import { useEffect, useRef } from 'react';
@@ -46,7 +46,7 @@ export function BlogCardImage({
 
   const customUniforms = useUniforms({
     uImage: new THREE.Uniform(imageTexture),
-    uBaseTileSize: new THREE.Uniform(tileSize),
+    uUnstableTileSize: new THREE.Uniform(tileSize),
     uPatternAtlasColumns: new THREE.Uniform(6),
     uPatternAtlas: new THREE.Uniform<THREE.Texture | null>(null),
     u_brightness: new THREE.Uniform(brightness),
@@ -58,7 +58,7 @@ export function BlogCardImage({
   });
 
   customUniforms.uImage.value = imageTexture;
-  customUniforms.uBaseTileSize.value = tileSize;
+  customUniforms.uUnstableTileSize.value = tileSize;
   customUniforms.u_brightness.value = brightness;
   customUniforms.u_contrast.value = contrast;
   customUniforms.u_imageDimensions.value.set(imageDimensions.width, imageDimensions.height);

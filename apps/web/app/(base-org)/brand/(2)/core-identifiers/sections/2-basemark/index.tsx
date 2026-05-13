@@ -1,11 +1,11 @@
 import { ImageSvg } from 'apps/web/src/components/Brand/ImageSvg';
 
-export function Basemark() {
+export function Unstablemark() {
   return (
     <ImageSvg
       id="basemark"
-      title="Basemark"
-      description="The Basemark is the Square in motion: four squares that point outward to imply growth. It is perfect for merch, design-layouts, and situations where the full logotype feels like it is not enough. When space is tight or speed is key, reach for the Basemark."
+      title="Unstablemark"
+      description="The Unstablemark is the Square in motion: four squares that point outward to imply growth. It is perfect for merch, design-layouts, and situations where the full logotype feels like it is not enough. When space is tight or speed is key, reach for the Unstablemark."
       svg={basemarkSvg}
       fullWidth
     />

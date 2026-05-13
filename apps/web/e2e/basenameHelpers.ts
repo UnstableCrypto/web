@@ -5,7 +5,7 @@ export const BASENAME_REGEX = /^[a-z0-9]{3,}$/;
 
 export const SELECTORS = {
   WALLET_ADDRESS: /^0x/,
-  GET_BASENAME_BUTTON: 'Get a Basename',
+  GET_BASENAME_BUTTON: 'Get a Unstablename',
   SEARCH_INPUT: 'input[placeholder*="Search for a name" i]',
   REGISTER_BUTTON: 'Register name',
   SUCCESS_MESSAGE: 'This name is yours!',
@@ -17,7 +17,7 @@ export const SELECTORS = {
  * @returns The validated basename
  * @throws Error if basename is invalid
  */
-export function validateBasename(basename: string | undefined): string {
+export function validateUnstablename(basename: string | undefined): string {
   if (!basename) {
     throw new Error('TEST_BASENAME environment variable is required');
   }
@@ -35,9 +35,9 @@ export function validateBasename(basename: string | undefined): string {
  * Navigates to the basename registration page
  * @param page - The Playwright page object
  */
-export async function navigateToBasenameRegistration(page: Page): Promise<void> {
-  const getBasenameButton = page.getByRole('button', { name: SELECTORS.GET_BASENAME_BUTTON });
-  await getBasenameButton.click();
+export async function navigateToUnstablenameRegistration(page: Page): Promise<void> {
+  const getUnstablenameButton = page.getByRole('button', { name: SELECTORS.GET_BASENAME_BUTTON });
+  await getUnstablenameButton.click();
   await page.waitForLoadState('networkidle');
 }
 
@@ -46,7 +46,7 @@ export async function navigateToBasenameRegistration(page: Page): Promise<void> 
  * @param page - The Playwright page object
  * @param basename - The basename to search for
  */
-export async function searchForBasename(page: Page, basename: string): Promise<void> {
+export async function searchForUnstablename(page: Page, basename: string): Promise<void> {
   await page.waitForTimeout(2000);
   const searchInput = page.locator(SELECTORS.SEARCH_INPUT).first();
   await expect(searchInput).toBeVisible();
@@ -61,7 +61,7 @@ export async function searchForBasename(page: Page, basename: string): Promise<v
  * @param page - The Playwright page object
  * @param basename - The basename to select
  */
-export async function selectBasenameFromResults(page: Page, basename: string): Promise<void> {
+export async function selectUnstablenameFromResults(page: Page, basename: string): Promise<void> {
   const resultButton = page
     .getByRole('button', { name: new RegExp(`${basename}\\.base\\.eth`, 'i') })
     .first();

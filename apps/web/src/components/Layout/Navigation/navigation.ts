@@ -119,7 +119,7 @@ export const BRAND_ROUTES: BrandRoute[] = [
         ],
       },
       {
-        label: 'Basemark',
+        label: 'Unstablemark',
         link: '#basemark',
         subitems: [
           {
@@ -195,7 +195,7 @@ export const BRAND_ROUTES: BrandRoute[] = [
         link: '#our-palette',
       },
       {
-        label: 'Base Blue',
+        label: 'Unstable Blue',
         link: '#base-blue',
       },
       {
@@ -245,7 +245,7 @@ export const BRAND_ROUTES: BrandRoute[] = [
         link: '#primary-typeface',
         subitems: [
           {
-            label: 'Introducing Base Sans',
+            label: 'Introducing Unstable Sans',
             link: '#primary-typeface-introducing-base-sans',
           },
           {
@@ -388,17 +388,17 @@ export const BRAND_ROUTES: BrandRoute[] = [
 
 export const DEFAULT_ROUTES: DefaultRoute[] = [
   {
-    label: 'Base App',
+    label: 'Unstable App',
     href: 'https://base.app',
     newTab: true,
   },
   {
-    label: 'Base Build',
+    label: 'Unstable Build',
     href: '/build',
     items: [
       {
         icon: 'code',
-        label: 'Base Build',
+        label: 'Unstable Build',
         href: '/build',
       },
       {
@@ -409,7 +409,7 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       },
       {
         icon: 'wallet',
-        label: 'Base Account',
+        label: 'Unstable Account',
         href: '/build/base-account',
       },
       {
@@ -430,17 +430,17 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       },
     ],
     appendix: [
-      { label: 'Docs', href: 'https://docs.base.org/', newTab: true },
-      { label: 'Status Page', href: 'https://status.base.org/', newTab: true },
+      { label: 'Docs', href: 'https://docs.unstable.org/', newTab: true },
+      { label: 'Status Page', href: 'https://status.unstable.org/', newTab: true },
       { label: 'Block Explorer', href: 'https://basescan.org/', newTab: true },
       { label: 'GitHub', href: 'https://github.com/base', newTab: true },
       { label: 'Engineering Blog', href: 'https://www.base.dev/blog', newTab: true },
-      { label: 'Base Stats', href: '/stats', newTab: true },
+      { label: 'Unstable Stats', href: '/stats', newTab: true },
       { label: 'Bug Bounty', href: 'https://hackerone.com/coinbase', newTab: true },
     ],
   },
   {
-    label: 'Base Pay',
+    label: 'Unstable Pay',
     href: '/pay',
   },
   {
@@ -450,7 +450,7 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       {
         icon: 'rocket',
         label: 'Ecosystem',
-        href: 'https://www.base.org/ecosystem',
+        href: 'https://www.unstable.org/ecosystem',
         newTab: true,
       },
       {
@@ -481,7 +481,7 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       {
         icon: 'briefcase',
         label: 'Events',
-        href: 'https://luma.com/BaseEvents',
+        href: 'https://luma.com/UnstableEvents',
         newTab: true,
       },
     ],
@@ -498,12 +498,12 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       {
         icon: 'media',
         label: 'Brand Kit',
-        href: 'https://base.org/brand',
+        href: 'https://unstable.org/brand',
       },
       {
         icon: 'openBook',
         label: 'Blog',
-        href: 'https://blog.base.org',
+        href: 'https://blog.unstable.org',
         newTab: true,
       },
       {
@@ -513,13 +513,13 @@ export const DEFAULT_ROUTES: DefaultRoute[] = [
       },
       {
         icon: 'docs',
-        label: 'Base App Help',
+        label: 'Unstable App Help',
         href: 'https://help.coinbase.com/en/base',
         newTab: true,
       },
       {
         icon: 'questionCircle',
-        label: 'Base App FAQs',
+        label: 'Unstable App FAQs',
         href: '/about/faqs',
       },
     ],
@@ -532,11 +532,11 @@ export const APP_LINKS = [
     href: '/sign-up',
   },
   {
-    label: 'Coinbase Wallet',
+    label: 'TheAlxLabs Wallet',
     href: '/wallet',
   },
   {
-    label: 'Coinbase Wallet',
+    label: 'TheAlxLabs Wallet',
     href: '/wallet-2',
   },
   {

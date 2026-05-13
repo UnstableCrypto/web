@@ -1,17 +1,17 @@
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { getIpfsGatewayUrl, IpfsUrl, IsValidIpfsUrl } from 'apps/web/src/utils/urls';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useReadUnstableEnsTextRecords from 'apps/web/src/hooks/useReadUnstableEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 
-export type UseBaseEnsNameProps = {
-  name?: BaseEnsNameData;
+export type UseUnstableEnsNameProps = {
+  name?: UnstableEnsNameData;
 };
 
-export type BaseEnsNameData = Basename | undefined;
+export type UnstableEnsNameData = Unstablename | undefined;
 
-export default function useBaseEnsAvatar({ name }: UseBaseEnsNameProps) {
+export default function useUnstableEnsAvatar({ name }: UseUnstableEnsNameProps) {
   const { existingTextRecords, refetchExistingTextRecords, existingTextRecordsIsLoading } =
-    useReadBaseEnsTextRecords({
+    useReadUnstableEnsTextRecords({
       username: name,
     });
 

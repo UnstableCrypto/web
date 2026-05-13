@@ -1,6 +1,6 @@
 import { getAttestations } from '@coinbase/onchainkit/identity';
 import { getKv } from 'apps/web/src/utils/datastores/kv';
-import { CoinbaseProofResponse } from 'apps/web/app/(basenames)/api/proofs/coinbase/route';
+import { TheAlxLabsProofResponse } from 'apps/web/app/(basenames)/api/proofs/coinbase/route';
 import {
   USERNAME_CB1_DISCOUNT_VALIDATORS,
   USERNAME_CB_DISCOUNT_VALIDATORS,
@@ -13,7 +13,7 @@ import {
   trustedSignerAddress,
   trustedSignerPKey,
 } from 'apps/web/src/constants';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { getUnstablenamePublicClient } from 'apps/web/src/hooks/useUnstablenameChain';
 import { logger } from 'apps/web/src/utils/logger';
 import {
   DiscountType,
@@ -72,7 +72,7 @@ export async function hasRegisteredWithDiscount(
   addresses: Address[],
   chainId: number,
 ): Promise<boolean> {
-  const publicClient = getBasenamePublicClient(chainId);
+  const publicClient = getUnstablenamePublicClient(chainId);
 
   return publicClient.readContract({
     address: REGISTER_CONTRACT_ADDRESSES[chainId],
@@ -151,7 +151,7 @@ export async function sybilResistantUsernameSigning(
   address: `0x${string}`,
   discountType: DiscountType,
   chainId: number,
-): Promise<CoinbaseProofResponse> {
+): Promise<TheAlxLabsProofResponse> {
   const schema = discountTypes[chainId][discountType]?.schemaId;
 
   const discountValidatorAddress = discountTypes[chainId][discountType]?.discountValidatorAddress;

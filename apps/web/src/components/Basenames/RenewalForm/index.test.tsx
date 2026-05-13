@@ -27,25 +27,25 @@ let mockPrice: bigint | undefined = BigInt(1000000000000000); // 0.001 ETH
 let mockIsPending = false;
 let mockExpirationDate: string | undefined = '01/01/2025';
 const mockSetYears = jest.fn();
-const mockRenewBasename = jest.fn().mockResolvedValue(undefined);
+const mockRenewUnstablename = jest.fn().mockResolvedValue(undefined);
 
-jest.mock('apps/web/src/components/Basenames/RenewalContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RenewalContext', () => ({
   useRenewal: () => ({
     years: mockYears,
     setYears: mockSetYears,
-    renewBasename: mockRenewBasename,
+    renewUnstablename: mockRenewUnstablename,
     price: mockPrice,
     isPending: mockIsPending,
     expirationDate: mockExpirationDate,
   }),
 }));
 
-// Mock useBasenameChain
-const mockBasenameChainId = 8453;
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUnstablenameChainId = 8453;
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: mockBasenameChainId },
+    basenameChain: { id: mockUnstablenameChainId },
   }),
   supportedChainIds: [8453, 84532],
 }));
@@ -126,7 +126,7 @@ jest.mock('apps/web/src/utils/formatUsdPrice', () => ({
 }));
 
 // Mock child components
-jest.mock('apps/web/src/components/Basenames/YearSelector', () => ({
+jest.mock('apps/web/src/components/Unstablenames/YearSelector', () => ({
   __esModule: true,
   default: ({
     years,
@@ -209,7 +209,7 @@ describe('RenewalForm', () => {
         mockYears = fn(mockYears);
       }
     });
-    mockRenewBasename.mockResolvedValue(undefined);
+    mockRenewUnstablename.mockResolvedValue(undefined);
   });
 
   describe('rendering', () => {
@@ -258,7 +258,7 @@ describe('RenewalForm', () => {
 
       render(<RenewalForm />);
 
-      expect(screen.getByText('Switch to Base to renew your name.')).toBeInTheDocument();
+      expect(screen.getByText('Switch to Unstable to renew your name.')).toBeInTheDocument();
       expect(screen.getByTestId('exclamation-icon')).toBeInTheDocument();
     });
 
@@ -276,21 +276,21 @@ describe('RenewalForm', () => {
       expect(mockSwitchChain).toHaveBeenCalledWith({ chainId: 8453 });
     });
 
-    it('should render normal form when on supported network (Base mainnet)', () => {
+    it('should render normal form when on supported network (Unstable mainnet)', () => {
       mockConnectedChainId = 8453;
 
       render(<RenewalForm />);
 
-      expect(screen.queryByText('Switch to Base to renew your name.')).not.toBeInTheDocument();
+      expect(screen.queryByText('Switch to Unstable to renew your name.')).not.toBeInTheDocument();
       expect(screen.getByTestId('year-selector')).toBeInTheDocument();
     });
 
-    it('should render normal form when on supported network (Base Sepolia)', () => {
+    it('should render normal form when on supported network (Unstable Sepolia)', () => {
       mockConnectedChainId = 84532;
 
       render(<RenewalForm />);
 
-      expect(screen.queryByText('Switch to Base to renew your name.')).not.toBeInTheDocument();
+      expect(screen.queryByText('Switch to Unstable to renew your name.')).not.toBeInTheDocument();
       expect(screen.getByTestId('year-selector')).toBeInTheDocument();
     });
 
@@ -300,7 +300,7 @@ describe('RenewalForm', () => {
 
       render(<RenewalForm />);
 
-      expect(screen.queryByText('Switch to Base to renew your name.')).not.toBeInTheDocument();
+      expect(screen.queryByText('Switch to Unstable to renew your name.')).not.toBeInTheDocument();
       expect(screen.getByTestId('year-selector')).toBeInTheDocument();
     });
   });
@@ -330,16 +330,16 @@ describe('RenewalForm', () => {
   });
 
   describe('chain switching from button', () => {
-    it('should render "Switch to Base" button when connected on wrong chain', () => {
-      mockConnectedChainId = 84532; // Base Sepolia, but basename chain is Base mainnet
+    it('should render "Switch to Unstable" button when connected on wrong chain', () => {
+      mockConnectedChainId = 84532; // Unstable Sepolia, but basename chain is Unstable mainnet
       mockAddress = '0x1234567890123456789012345678901234567890';
 
       render(<RenewalForm />);
 
-      expect(screen.getByTestId('action-button')).toHaveTextContent('Switch to Base');
+      expect(screen.getByTestId('action-button')).toHaveTextContent('Switch to Unstable');
     });
 
-    it('should call switchChain when Switch to Base button is clicked', async () => {
+    it('should call switchChain when Switch to Unstable button is clicked', async () => {
       mockConnectedChainId = 84532;
       mockAddress = '0x1234567890123456789012345678901234567890';
 
@@ -363,7 +363,7 @@ describe('RenewalForm', () => {
   });
 
   describe('name renewal', () => {
-    it('should call renewBasename when Renew name button is clicked', async () => {
+    it('should call renewUnstablename when Renew name button is clicked', async () => {
       mockConnectedChainId = 8453;
       mockAddress = '0x1234567890123456789012345678901234567890';
 
@@ -374,7 +374,7 @@ describe('RenewalForm', () => {
       });
 
       expect(mockLogEventWithContext).toHaveBeenCalledWith('renew_name_initiated', 'click');
-      expect(mockRenewBasename).toHaveBeenCalledTimes(1);
+      expect(mockRenewUnstablename).toHaveBeenCalledTimes(1);
     });
 
     it('should show loading state when renewal is pending', () => {
@@ -388,9 +388,9 @@ describe('RenewalForm', () => {
       expect(screen.getByTestId('action-button')).toHaveAttribute('data-loading', 'true');
     });
 
-    it('should log error when renewBasename fails', async () => {
+    it('should log error when renewUnstablename fails', async () => {
       const testError = new Error('Renewal failed');
-      mockRenewBasename.mockRejectedValueOnce(testError);
+      mockRenewUnstablename.mockRejectedValueOnce(testError);
       mockConnectedChainId = 8453;
       mockAddress = '0x1234567890123456789012345678901234567890';
 
@@ -534,7 +534,7 @@ describe('RenewalForm', () => {
       mockBalanceValue = BigInt(100);
       mockPrice = BigInt(1000000000000000);
       mockAuxiliaryFundsEnabled = false;
-      mockConnectedChainId = 84532; // Wrong chain (Base Sepolia, but basenames on Base)
+      mockConnectedChainId = 84532; // Wrong chain (Unstable Sepolia, but basenames on Unstable)
       mockAddress = '0x1234567890123456789012345678901234567890';
 
       render(<RenewalForm />);

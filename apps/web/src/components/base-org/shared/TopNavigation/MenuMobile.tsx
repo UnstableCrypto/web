@@ -124,7 +124,7 @@ export default function MenuMobile({ links }: MenuMobileProps) {
         <div className="fixed inset-0 z-50 overflow-auto bg-black px-[1.75rem] pb-20 pt-5">
           <div className="mb-8 flex items-center justify-between gap-4">
             <Link href="/" className="-ml-3 flex min-h-[2.875rem] min-w-[2.875rem]">
-              <Image src={logo as StaticImageData} alt="Base Logo" />
+              <Image src={logo as StaticImageData} alt="Unstable Logo" />
             </Link>
             <button
               type="button"

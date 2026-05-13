@@ -2,15 +2,15 @@
  * @jest-environment jsdom
  */
 import { render, screen } from '@testing-library/react';
-import { type Basename } from '@coinbase/onchainkit/identity';
-import BasenameAvatar from './index';
+import { type Unstablename } from '@coinbase/onchainkit/identity';
+import UnstablenameAvatar from './index';
 
-// Mock useBaseEnsAvatar hook
-const mockUseBaseEnsAvatar = jest.fn();
-jest.mock('apps/web/src/hooks/useBaseEnsAvatar', () => ({
+// Mock useUnstableEnsAvatar hook
+const mockUseUnstableEnsAvatar = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstableEnsAvatar', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: (params: unknown) => mockUseBaseEnsAvatar(params),
+  default: (params: unknown) => mockUseUnstableEnsAvatar(params),
 }));
 
 // Mock ImageWithLoading component
@@ -70,18 +70,18 @@ jest.mock('apps/web/src/components/LottieAnimation', () => ({
   ),
 }));
 
-// Mock getBasenameAnimation and getBasenameImage utilities
-const mockGetBasenameImage = jest.fn();
-const mockGetBasenameAnimation = jest.fn();
+// Mock getUnstablenameAnimation and getUnstablenameImage utilities
+const mockGetUnstablenameImage = jest.fn();
+const mockGetUnstablenameAnimation = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  getBasenameImage: (...args: unknown[]) => mockGetBasenameImage(...args),
+  getUnstablenameImage: (...args: unknown[]) => mockGetUnstablenameImage(...args),
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  getBasenameAnimation: (...args: unknown[]) => mockGetBasenameAnimation(...args),
+  getUnstablenameAnimation: (...args: unknown[]) => mockGetUnstablenameAnimation(...args),
 }));
 
-describe('BasenameAvatar', () => {
-  const mockBasename = 'testuser.base.eth' as Basename;
+describe('UnstablenameAvatar', () => {
+  const mockUnstablename = 'testuser.base.eth' as Unstablename;
   const mockAvatarUrl = 'https://example.com/avatar.png';
   const mockDefaultImage = { src: '/images/default.svg', blurDataURL: '' };
   const mockAnimationData = { v: '5.0.0', layers: [] };
@@ -90,38 +90,38 @@ describe('BasenameAvatar', () => {
     jest.clearAllMocks();
 
     // Default mock implementations
-    mockUseBaseEnsAvatar.mockReturnValue({
+    mockUseUnstableEnsAvatar.mockReturnValue({
       data: undefined,
       isLoading: false,
     });
 
-    mockGetBasenameImage.mockReturnValue(mockDefaultImage);
-    mockGetBasenameAnimation.mockReturnValue(mockAnimationData);
+    mockGetUnstablenameImage.mockReturnValue(mockDefaultImage);
+    mockGetUnstablenameAnimation.mockReturnValue(mockAnimationData);
   });
 
   describe('rendering with custom avatar', () => {
     it('should render ImageWithLoading when user has a custom avatar', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toBeInTheDocument();
       expect(imageElement).toHaveAttribute('data-src', mockAvatarUrl);
-      expect(imageElement).toHaveAttribute('data-alt', mockBasename);
-      expect(imageElement).toHaveAttribute('data-title', mockBasename);
+      expect(imageElement).toHaveAttribute('data-alt', mockUnstablename);
+      expect(imageElement).toHaveAttribute('data-title', mockUnstablename);
     });
 
     it('should render ImageWithLoading with custom avatar even when animate is true', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toBeInTheDocument();
@@ -129,12 +129,12 @@ describe('BasenameAvatar', () => {
     });
 
     it('should not render LottieAnimation when user has a custom avatar', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate />);
 
       expect(screen.queryByTestId('lottie-animation')).not.toBeInTheDocument();
     });
@@ -142,40 +142,40 @@ describe('BasenameAvatar', () => {
 
   describe('rendering without custom avatar', () => {
     it('should render ImageWithLoading with default image when no avatar and animate is false', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate={false} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate={false} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toBeInTheDocument();
       expect(imageElement).toHaveAttribute('data-src', 'static-image');
-      expect(mockGetBasenameImage).toHaveBeenCalledWith(mockBasename);
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith(mockUnstablename);
     });
 
     it('should render LottieAnimation when no avatar and animate is true', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate />);
 
       const lottieElement = screen.getByTestId('lottie-animation');
       expect(lottieElement).toBeInTheDocument();
       expect(lottieElement).toHaveAttribute('data-has-data', 'true');
-      expect(mockGetBasenameAnimation).toHaveBeenCalledWith(mockBasename);
+      expect(mockGetUnstablenameAnimation).toHaveBeenCalledWith(mockUnstablename);
     });
 
     it('should not render ImageWithLoading when no avatar and animate is true', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate />);
 
       expect(screen.queryByTestId('image-with-loading')).not.toBeInTheDocument();
     });
@@ -183,24 +183,24 @@ describe('BasenameAvatar', () => {
 
   describe('loading state', () => {
     it('should pass isLoading to ImageWithLoading forceIsLoading prop', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: true,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-force-is-loading', 'true');
     });
 
     it('should pass false to forceIsLoading when not loading', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-force-is-loading', 'false');
@@ -209,12 +209,12 @@ describe('BasenameAvatar', () => {
 
   describe('wrapperClassName prop', () => {
     it('should use default wrapperClassName when not provided', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute(
@@ -224,26 +224,26 @@ describe('BasenameAvatar', () => {
     });
 
     it('should pass custom wrapperClassName to ImageWithLoading', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
       const customClassName = 'h-16 w-16 rounded-lg';
-      render(<BasenameAvatar basename={mockBasename} wrapperClassName={customClassName} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} wrapperClassName={customClassName} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-wrapper-class', customClassName);
     });
 
     it('should pass custom wrapperClassName to LottieAnimation', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
       const customClassName = 'h-20 w-20';
-      render(<BasenameAvatar basename={mockBasename} animate wrapperClassName={customClassName} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate wrapperClassName={customClassName} />);
 
       const lottieElement = screen.getByTestId('lottie-animation');
       expect(lottieElement).toHaveAttribute('data-wrapper-class', customClassName);
@@ -252,12 +252,12 @@ describe('BasenameAvatar', () => {
 
   describe('width and height props', () => {
     it('should pass width and height to ImageWithLoading', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} width={64} height={64} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} width={64} height={64} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-width', '64');
@@ -265,12 +265,12 @@ describe('BasenameAvatar', () => {
     });
 
     it('should pass string number format for width and height', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} width="100" height="100" />);
+      render(<UnstablenameAvatar basename={mockUnstablename} width="100" height="100" />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-width', '100');
@@ -278,12 +278,12 @@ describe('BasenameAvatar', () => {
     });
 
     it('should handle undefined width and height', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       // undefined values result in null when using getAttribute
@@ -293,41 +293,41 @@ describe('BasenameAvatar', () => {
   });
 
   describe('hook integration', () => {
-    it('should call useBaseEnsAvatar with the basename', () => {
-      render(<BasenameAvatar basename={mockBasename} />);
+    it('should call useUnstableEnsAvatar with the basename', () => {
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
-      expect(mockUseBaseEnsAvatar).toHaveBeenCalledWith({ name: mockBasename });
+      expect(mockUseUnstableEnsAvatar).toHaveBeenCalledWith({ name: mockUnstablename });
     });
 
-    it('should call useBaseEnsAvatar with different basenames', () => {
-      const differentBasename = 'anotheruser.base.eth' as Basename;
+    it('should call useUnstableEnsAvatar with different basenames', () => {
+      const differentUnstablename = 'anotheruser.base.eth' as Unstablename;
 
-      render(<BasenameAvatar basename={differentBasename} />);
+      render(<UnstablenameAvatar basename={differentUnstablename} />);
 
-      expect(mockUseBaseEnsAvatar).toHaveBeenCalledWith({ name: differentBasename });
+      expect(mockUseUnstableEnsAvatar).toHaveBeenCalledWith({ name: differentUnstablename });
     });
   });
 
   describe('ImageWithLoading styling props', () => {
     it('should pass correct imageClassName to ImageWithLoading', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-image-class', 'object-cover w-full h-full');
     });
 
     it('should pass correct backgroundClassName to ImageWithLoading', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: mockAvatarUrl,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toHaveAttribute('data-background-class', 'bg-blue-500');
@@ -336,40 +336,40 @@ describe('BasenameAvatar', () => {
 
   describe('different basename formats', () => {
     it('should handle mainnet basenames (.base.eth)', () => {
-      const mainnetBasename = 'mainnetuser.base.eth' as Basename;
-      mockUseBaseEnsAvatar.mockReturnValue({
+      const mainnetUnstablename = 'mainnetuser.base.eth' as Unstablename;
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mainnetBasename} />);
+      render(<UnstablenameAvatar basename={mainnetUnstablename} />);
 
-      expect(mockUseBaseEnsAvatar).toHaveBeenCalledWith({ name: mainnetBasename });
-      expect(mockGetBasenameImage).toHaveBeenCalledWith(mainnetBasename);
+      expect(mockUseUnstableEnsAvatar).toHaveBeenCalledWith({ name: mainnetUnstablename });
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith(mainnetUnstablename);
     });
 
     it('should handle testnet basenames (.basetest.eth)', () => {
-      const testnetBasename = 'testnetuser.basetest.eth' as Basename;
-      mockUseBaseEnsAvatar.mockReturnValue({
+      const testnetUnstablename = 'testnetuser.basetest.eth' as Unstablename;
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: undefined,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={testnetBasename} />);
+      render(<UnstablenameAvatar basename={testnetUnstablename} />);
 
-      expect(mockUseBaseEnsAvatar).toHaveBeenCalledWith({ name: testnetBasename });
-      expect(mockGetBasenameImage).toHaveBeenCalledWith(testnetBasename);
+      expect(mockUseUnstableEnsAvatar).toHaveBeenCalledWith({ name: testnetUnstablename });
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith(testnetUnstablename);
     });
   });
 
   describe('edge cases', () => {
     it('should render LottieAnimation with empty string avatar url when animate is true', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: '',
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate />);
 
       // Empty string is not nullish, so `basenameAvatar ?? !animate` returns ''
       // which is falsy, leading to the LottieAnimation branch
@@ -378,12 +378,12 @@ describe('BasenameAvatar', () => {
     });
 
     it('should handle null avatar data by using default image', () => {
-      mockUseBaseEnsAvatar.mockReturnValue({
+      mockUseUnstableEnsAvatar.mockReturnValue({
         data: null,
         isLoading: false,
       });
 
-      render(<BasenameAvatar basename={mockBasename} animate={false} />);
+      render(<UnstablenameAvatar basename={mockUnstablename} animate={false} />);
 
       const imageElement = screen.getByTestId('image-with-loading');
       expect(imageElement).toBeInTheDocument();

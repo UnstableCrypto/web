@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import { renderHook } from '@testing-library/react';
-import { useBasenamesNameExpiresWithGracePeriod } from './useBasenamesNameExpiresWithGracePeriod';
+import { useUnstablenamesNameExpiresWithGracePeriod } from './useUnstablenamesNameExpiresWithGracePeriod';
 import { GRACE_PERIOD_DURATION_SECONDS } from 'apps/web/src/utils/usernames';
 import { base, baseSepolia } from 'viem/chains';
 
@@ -13,21 +13,21 @@ jest.mock('wagmi', () => ({
   useReadContract: (config: unknown) => mockUseReadContract(config),
 }));
 
-// Mock useBasenameChain
-const mockUseBasenameChain = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUseUnstablenameChain = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  default: () => mockUseBasenameChain(),
+  default: () => mockUseUnstablenameChain(),
 }));
 
 // Mock usernames utilities
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getTokenIdFromBasename: jest.fn((name: string) => {
+  getTokenIdFromUnstablename: jest.fn((name: string) => {
     // Simulate generating a token ID from the basename
     return BigInt(name.length);
   }),
-  formatBaseEthDomain: jest.fn((name: string, chainId: number) => {
+  formatUnstableEthDomain: jest.fn((name: string, chainId: number) => {
     if (chainId === 84532) {
       return `${name}.basetest.eth`;
     }
@@ -39,19 +39,19 @@ jest.mock('apps/web/src/utils/usernames', () => ({
 // Mock addresses
 jest.mock('apps/web/src/addresses/usernames', () => ({
   USERNAME_BASE_REGISTRAR_ADDRESSES: {
-    [8453]: '0xBaseRegistrar8453',
-    [84532]: '0xBaseRegistrar84532',
+    [8453]: '0xUnstableRegistrar8453',
+    [84532]: '0xUnstableRegistrar84532',
   },
 }));
 
 // Mock the ABI
-jest.mock('apps/web/src/abis/BaseRegistrarAbi', () => []);
+jest.mock('apps/web/src/abis/UnstableRegistrarAbi', () => []);
 
-describe('useBasenamesNameExpiresWithGracePeriod', () => {
+describe('useUnstablenamesNameExpiresWithGracePeriod', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    // Default to Base mainnet
-    mockUseBasenameChain.mockReturnValue({
+    // Default to Unstable mainnet
+    mockUseUnstablenameChain.mockReturnValue({
       basenameChain: base,
     });
   });
@@ -67,7 +67,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       const expectedAuctionStart = expirationTime + BigInt(GRACE_PERIOD_DURATION_SECONDS);
       expect(result.current.data).toBe(expectedAuctionStart);
@@ -82,7 +82,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.isLoading).toBe(true);
       expect(result.current.data).toBeUndefined();
@@ -98,7 +98,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.isError).toBe(true);
       expect(result.current.error).toBe(mockError);
@@ -116,7 +116,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.data).toBeUndefined();
     });
@@ -130,7 +130,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.data).toBeUndefined();
     });
@@ -146,15 +146,15 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname.base.eth'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname.base.eth'));
 
-      // The formatBaseEthDomain should not be called for names that already include a dot
+      // The formatUnstableEthDomain should not be called for names that already include a dot
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const { getTokenIdFromBasename } = jest.requireMock('apps/web/src/utils/usernames');
-      expect(getTokenIdFromBasename).toHaveBeenCalledWith('testname.base.eth');
+      const { getTokenIdFromUnstablename } = jest.requireMock('apps/web/src/utils/usernames');
+      expect(getTokenIdFromUnstablename).toHaveBeenCalledWith('testname.base.eth');
     });
 
-    it('should format name without dot using formatBaseEthDomain', () => {
+    it('should format name without dot using formatUnstableEthDomain', () => {
       mockUseReadContract.mockReturnValue({
         data: BigInt(1700000000),
         isLoading: false,
@@ -163,20 +163,20 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const { formatBaseEthDomain, getTokenIdFromBasename } = jest.requireMock(
+      const { formatUnstableEthDomain, getTokenIdFromUnstablename } = jest.requireMock(
         'apps/web/src/utils/usernames'
       );
-      expect(formatBaseEthDomain).toHaveBeenCalledWith('testname', base.id);
-      expect(getTokenIdFromBasename).toHaveBeenCalledWith('testname.base.eth');
+      expect(formatUnstableEthDomain).toHaveBeenCalledWith('testname', base.id);
+      expect(getTokenIdFromUnstablename).toHaveBeenCalledWith('testname.base.eth');
     });
   });
 
   describe('chain handling', () => {
-    it('should use Base mainnet chain', () => {
-      mockUseBasenameChain.mockReturnValue({
+    it('should use Unstable mainnet chain', () => {
+      mockUseUnstablenameChain.mockReturnValue({
         basenameChain: base,
       });
 
@@ -188,18 +188,18 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(mockUseReadContract).toHaveBeenCalledWith(
         expect.objectContaining({
           chainId: base.id,
-          address: '0xBaseRegistrar8453',
+          address: '0xUnstableRegistrar8453',
         })
       );
     });
 
-    it('should use Base Sepolia chain when on testnet', () => {
-      mockUseBasenameChain.mockReturnValue({
+    it('should use Unstable Sepolia chain when on testnet', () => {
+      mockUseUnstablenameChain.mockReturnValue({
         basenameChain: baseSepolia,
       });
 
@@ -211,12 +211,12 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(mockUseReadContract).toHaveBeenCalledWith(
         expect.objectContaining({
           chainId: baseSepolia.id,
-          address: '0xBaseRegistrar84532',
+          address: '0xUnstableRegistrar84532',
         })
       );
     });
@@ -233,7 +233,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: mockRefetch,
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.refetch).toBe(mockRefetch);
     });
@@ -249,7 +249,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(mockUseReadContract).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -267,7 +267,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       // Token ID is calculated from the mock - 'testname.base.eth' has length 17
       expect(mockUseReadContract).toHaveBeenCalledWith(
@@ -289,7 +289,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       // 90 days = 90 * 24 * 60 * 60 = 7776000 seconds
       expect(result.current.data).toBe(BigInt(7776000));
@@ -306,7 +306,7 @@ describe('useBasenamesNameExpiresWithGracePeriod', () => {
         refetch: jest.fn(),
       });
 
-      const { result } = renderHook(() => useBasenamesNameExpiresWithGracePeriod('testname'));
+      const { result } = renderHook(() => useUnstablenamesNameExpiresWithGracePeriod('testname'));
 
       expect(result.current.data).toBe(BigInt(2000000000 + 7776000));
     });

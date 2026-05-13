@@ -25,23 +25,23 @@ const mockSatori = satori as jest.MockedFunction<typeof satori>;
 const mockReadFile = readFile as jest.MockedFunction<typeof readFile>;
 
 // Mock usernames utils
-const mockGetBasenameImage = jest.fn();
-const mockGetChainForBasename = jest.fn();
+const mockGetUnstablenameImage = jest.fn();
+const mockGetChainForUnstablename = jest.fn();
 const mockFetchResolverAddress = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getBasenameImage: (...args: unknown[]) => mockGetBasenameImage(...args) as unknown,
-  getChainForBasename: (...args: unknown[]) => mockGetChainForBasename(...args) as unknown,
+  getUnstablenameImage: (...args: unknown[]) => mockGetUnstablenameImage(...args) as unknown,
+  getChainForUnstablename: (...args: unknown[]) => mockGetChainForUnstablename(...args) as unknown,
   fetchResolverAddress: (...args: unknown[]) => mockFetchResolverAddress(...args) as unknown,
   UsernameTextRecordKeys: {
     Avatar: 'avatar',
   },
 }));
 
-// Mock useBasenameChain
+// Mock useUnstablenameChain
 const mockGetEnsText = jest.fn();
-const mockGetBasenamePublicClient = jest.fn();
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
-  getBasenamePublicClient: (...args: unknown[]) => mockGetBasenamePublicClient(...args) as unknown,
+const mockGetUnstablenamePublicClient = jest.fn();
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
+  getUnstablenamePublicClient: (...args: unknown[]) => mockGetUnstablenamePublicClient(...args) as unknown,
 }));
 
 // Mock constants
@@ -78,10 +78,10 @@ describe('cardImage.svg route', () => {
     jest.clearAllMocks();
 
     // Default mock implementations
-    mockGetBasenameImage.mockReturnValue({ src: '/default-avatar.png' });
-    mockGetChainForBasename.mockReturnValue({ id: 8453 });
+    mockGetUnstablenameImage.mockReturnValue({ src: '/default-avatar.png' });
+    mockGetChainForUnstablename.mockReturnValue({ id: 8453 });
     mockFetchResolverAddress.mockResolvedValue('0x1234567890123456789012345678901234567890');
-    mockGetBasenamePublicClient.mockReturnValue({
+    mockGetUnstablenamePublicClient.mockReturnValue({
       getEnsText: mockGetEnsText,
     });
     mockGetEnsText.mockResolvedValue(null);
@@ -89,7 +89,7 @@ describe('cardImage.svg route', () => {
 
   describe('GET', () => {
     it('should return an SVG response with correct content type', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       const response = await GET(request, { params });
@@ -98,7 +98,7 @@ describe('cardImage.svg route', () => {
     });
 
     it('should return SVG content in the response body', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       const response = await GET(request, { params });
@@ -109,30 +109,30 @@ describe('cardImage.svg route', () => {
     });
 
     it('should use username from params', async () => {
-      const request = new Request('https://www.base.org/api/basenames/testuser/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/testuser/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'testuser' });
 
       await GET(request, { params });
 
-      expect(mockGetChainForBasename).toHaveBeenCalledWith('testuser');
+      expect(mockGetChainForUnstablename).toHaveBeenCalledWith('testuser');
     });
 
     it('should default to "yourname" when name param is missing', async () => {
-      const request = new Request('https://www.base.org/api/basenames/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/assets/cardImage.svg');
       const params = Promise.resolve({ name: undefined as unknown as string });
 
       await GET(request, { params });
 
-      expect(mockGetChainForBasename).toHaveBeenCalledWith('yourname');
+      expect(mockGetChainForUnstablename).toHaveBeenCalledWith('yourname');
     });
 
     it('should fetch avatar from ENS text record', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
 
-      expect(mockGetBasenamePublicClient).toHaveBeenCalledWith(8453);
+      expect(mockGetUnstablenamePublicClient).toHaveBeenCalledWith(8453);
       expect(mockGetEnsText).toHaveBeenCalledWith({
         name: 'alice',
         key: 'avatar',
@@ -143,12 +143,12 @@ describe('cardImage.svg route', () => {
     it('should use default image when no avatar is set', async () => {
       mockGetEnsText.mockResolvedValue(null);
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
 
-      expect(mockGetBasenameImage).toHaveBeenCalledWith('alice');
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith('alice');
     });
 
     it('should handle custom avatar URL', async () => {
@@ -156,7 +156,7 @@ describe('cardImage.svg route', () => {
       const { getCloudinaryMediaUrl } = require('apps/web/src/utils/images') as { getCloudinaryMediaUrl: jest.Mock };
       mockGetEnsText.mockResolvedValue('https://example.com/avatar.png');
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -177,7 +177,7 @@ describe('cardImage.svg route', () => {
       getIpfsGatewayUrl.mockReturnValue('https://ipfs.io/ipfs/Qm123');
       mockGetEnsText.mockResolvedValue('ipfs://Qm123');
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -200,16 +200,16 @@ describe('cardImage.svg route', () => {
       getIpfsGatewayUrl.mockReturnValue(null);
       mockGetEnsText.mockResolvedValue('ipfs://Qm123');
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
 
       expect(IsValidIpfsUrl).toHaveBeenCalledWith('ipfs://Qm123');
       expect(getIpfsGatewayUrl).toHaveBeenCalledWith('ipfs://Qm123');
-      // When gateway returns null, image source remains unchanged (default image with base.org domain prefix)
+      // When gateway returns null, image source remains unchanged (default image with unstable.org domain prefix)
       expect(getCloudinaryMediaUrl).toHaveBeenCalledWith({
-        media: 'https://www.base.org/default-avatar.png',
+        media: 'https://www.unstable.org/default-avatar.png',
         format: 'png',
         width: 120,
       });
@@ -221,7 +221,7 @@ describe('cardImage.svg route', () => {
       const error = new Error('Failed to fetch avatar');
       mockGetEnsText.mockRejectedValue(error);
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       // Should not throw
@@ -248,7 +248,7 @@ describe('cardImage.svg route', () => {
       await GETDev(request, { params });
 
       // In development mode, the domain should be extracted from the request URL
-      expect(mockGetBasenameImage).toHaveBeenCalledWith('alice');
+      expect(mockGetUnstablenameImage).toHaveBeenCalledWith('alice');
 
       // Restore the original mock
       jest.resetModules();
@@ -258,7 +258,7 @@ describe('cardImage.svg route', () => {
     });
 
     it('should call satori with correct dimensions', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -273,7 +273,7 @@ describe('cardImage.svg route', () => {
     });
 
     it('should load custom font for the image', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -284,7 +284,7 @@ describe('cardImage.svg route', () => {
         expect.objectContaining({
           fonts: expect.arrayContaining([
             expect.objectContaining({
-              name: 'CoinbaseDisplay',
+              name: 'TheAlxLabsDisplay',
               weight: 500,
               style: 'normal',
             }),
@@ -299,7 +299,7 @@ describe('cardImage.svg route', () => {
         text: jest.fn().mockResolvedValue('<svg>emoji svg</svg>'),
       });
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -317,7 +317,7 @@ describe('cardImage.svg route', () => {
     });
 
     it('should return code for non-emoji assets', async () => {
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });
@@ -335,7 +335,7 @@ describe('cardImage.svg route', () => {
         text: jest.fn().mockResolvedValue('<svg>emoji svg</svg>'),
       });
 
-      const request = new Request('https://www.base.org/api/basenames/alice/assets/cardImage.svg');
+      const request = new Request('https://www.unstable.org/api/basenames/alice/assets/cardImage.svg');
       const params = Promise.resolve({ name: 'alice' });
 
       await GET(request, { params });

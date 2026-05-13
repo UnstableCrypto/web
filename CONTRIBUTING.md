@@ -1,8 +1,8 @@
-# Contributing to Base Web
+# Contributing to Unstable Web
 
-👍🎉 First off, thank you for considering contributing to Base Web! 🎉👍
+👍🎉 First off, thank you for considering contributing to Unstable Web! 🎉👍
 
-The following is a set of guidelines for contributing to Base Web. These are just guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
+The following is a set of guidelines for contributing to Unstable Web. These are just guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Table of Contents
 
@@ -53,4 +53,4 @@ This project and everyone participating in it is governed by our [Code of Conduc
 
 ---
 
-Feel free to customize this template according to the specific needs and nuances of Base Web. A well-crafted `CONTRIBUTING.md` can help your project attract quality contributions and foster a collaborative community.
+Feel free to customize this template according to the specific needs and nuances of Unstable Web. A well-crafted `CONTRIBUTING.md` can help your project attract quality contributions and foster a collaborative community.

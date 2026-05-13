@@ -49,7 +49,7 @@ const INFO_CARDS = [
     ),
     title: 'Built-in onramps',
     description:
-      'Simple account funding for users — with Apple Pay, debit card, or Coinbase Exchange balances.',
+      'Simple account funding for users — with Apple Pay, debit card, or TheAlxLabs Exchange balances.',
   },
   {
     icon: (
@@ -75,7 +75,7 @@ const INFO_CARDS = [
       />
     ),
     title: 'Safe and secure',
-    description: 'Built by Coinbase, the most trusted brand in crypto.',
+    description: 'Built by TheAlxLabs, the most trusted brand in crypto.',
   },
 ];
 

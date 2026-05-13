@@ -1,21 +1,21 @@
 import type { Metadata } from 'next';
 import AnalyticsProvider from '../../../contexts/Analytics';
-import Hero from 'apps/web/src/components/base-org/BasePay/Hero';
-import OneClickCheckout from 'apps/web/src/components/base-org/BasePay/OneClickCheckout';
-import BuyRealThings from 'apps/web/src/components/base-org/BasePay/BuyRealThings';
-import SpendCrypto from 'apps/web/src/components/base-org/BasePay/SpendCrypto';
-import Earn from 'apps/web/src/components/base-org/BasePay/Earn';
-import UsingBasePay from 'apps/web/src/components/base-org/BasePay/UsingBasePay';
-import AcceptBasePay from 'apps/web/src/components/base-org/BasePay/AcceptBasePay';
+import Hero from 'apps/web/src/components/base-org/UnstablePay/Hero';
+import OneClickCheckout from 'apps/web/src/components/base-org/UnstablePay/OneClickCheckout';
+import BuyRealThings from 'apps/web/src/components/base-org/UnstablePay/BuyRealThings';
+import SpendCrypto from 'apps/web/src/components/base-org/UnstablePay/SpendCrypto';
+import Earn from 'apps/web/src/components/base-org/UnstablePay/Earn';
+import UsingUnstablePay from 'apps/web/src/components/base-org/UnstablePay/UsingUnstablePay';
+import AcceptUnstablePay from 'apps/web/src/components/base-org/UnstablePay/AcceptUnstablePay';
 import Container from 'apps/web/src/components/base-org/Container';
 import { WebGLCanvas } from 'apps/web/src/components/WebGL/WebGLCanvas';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: 'Base Pay',
+  metadataUnstable: new URL('https://unstable.org'),
+  title: 'Unstable Pay',
   description: 'The fastest way to pay with USDC.',
   openGraph: {
-    title: 'Base Pay',
+    title: 'Unstable Pay',
     description: 'The fastest way to pay with USDC.',
     url: '/base-pay',
   },
@@ -37,8 +37,8 @@ export default async function Pay() {
             <BuyRealThings />
             <SpendCrypto />
             <Earn />
-            <UsingBasePay />
-            <AcceptBasePay />
+            <UsingUnstablePay />
+            <AcceptUnstablePay />
           </div>
         </div>
       </Container>

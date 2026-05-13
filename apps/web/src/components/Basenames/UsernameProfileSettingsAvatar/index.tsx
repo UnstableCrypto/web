@@ -4,10 +4,10 @@ import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useEffect, useState } from 'react';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
-import UsernameAvatarField from 'apps/web/src/components/Basenames/UsernameAvatarField';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import UsernameAvatarField from 'apps/web/src/components/Unstablenames/UsernameAvatarField';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import { Button, ButtonSizes, ButtonVariants } from 'apps/web/src/components/Button/Button';
-import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
+import useWriteUnstableEnsTextRecords from 'apps/web/src/hooks/useWriteUnstableEnsTextRecords';
 import { UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { PinResponse } from 'pinata';
@@ -29,7 +29,7 @@ export default function UsernameProfileSettingsAvatar() {
     writeTextRecords,
     writeTextRecordsIsPending,
     hasChanged,
-  } = useWriteBaseEnsTextRecords({
+  } = useWriteUnstableEnsTextRecords({
     username: profileUsername,
     onSuccess: () => {
       setAvatarFile(undefined);

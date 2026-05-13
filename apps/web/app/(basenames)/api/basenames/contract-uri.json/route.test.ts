@@ -33,11 +33,11 @@ describe('contract-uri.json route', () => {
 
   describe('GET', () => {
     it('should return 400 error when chainId is missing', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(0); // Falsy value
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json'
+        'https://www.unstable.org/api/basenames/contract-uri.json'
       );
 
       const response = await GET(request);
@@ -47,12 +47,12 @@ describe('contract-uri.json route', () => {
       expect(data).toEqual({ error: '400: chainId is missing' });
     });
 
-    it('should return correct metadata for Base mainnet', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+    it('should return correct metadata for Unstable mainnet', async () => {
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(base.id);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=8453'
       );
 
       const response = await GET(request);
@@ -60,32 +60,32 @@ describe('contract-uri.json route', () => {
 
       expect(response.status).toBe(200);
       expect(data).toEqual({
-        name: 'Basename',
+        name: 'Unstablename',
         description:
-          'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
-        image: 'https://www.base.org/images/basenames/contract-uri/logo.png',
-        banner_image: 'https://www.base.org/images/basenames/contract-uri/cover-image.png',
-        featured_image: 'https://www.base.org/images/basenames/contract-uri/feature-image.png',
-        external_link: 'https://www.base.org/names',
+          'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.',
+        image: 'https://www.unstable.org/images/basenames/contract-uri/logo.png',
+        banner_image: 'https://www.unstable.org/images/basenames/contract-uri/cover-image.png',
+        featured_image: 'https://www.unstable.org/images/basenames/contract-uri/feature-image.png',
+        external_link: 'https://www.unstable.org/names',
         collaborators: [],
       });
     });
 
-    it('should return correct metadata for Base Sepolia testnet', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+    it('should return correct metadata for Unstable Sepolia testnet', async () => {
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(baseSepolia.id);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=84532'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=84532'
       );
 
       const response = await GET(request);
       const data = (await response.json()) as ContractMetadata;
 
       expect(response.status).toBe(200);
-      expect(data.name).toBe('Basename (Sepolia testnet)');
+      expect(data.name).toBe('Unstablename (Sepolia testnet)');
       expect(data.description).toBe(
-        'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.'
+        'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.'
       );
     });
 
@@ -112,11 +112,11 @@ describe('contract-uri.json route', () => {
     });
 
     it('should call getChain with the request', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(base.id);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=8453'
       );
 
       await GET(request);
@@ -125,11 +125,11 @@ describe('contract-uri.json route', () => {
     });
 
     it('should call getDomain with the request', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(base.id);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=8453'
       );
 
       await GET(request);
@@ -138,11 +138,11 @@ describe('contract-uri.json route', () => {
     });
 
     it('should return 400 when chainId is NaN', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(NaN); // NaN is falsy
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=invalid'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=invalid'
       );
 
       const response = await GET(request);
@@ -153,11 +153,11 @@ describe('contract-uri.json route', () => {
     });
 
     it('should always return empty collaborators array', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(base.id);
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=8453'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=8453'
       );
 
       const response = await GET(request);
@@ -167,11 +167,11 @@ describe('contract-uri.json route', () => {
     });
 
     it('should return mainnet name for any non-Sepolia chain ID', async () => {
-      mockGetDomain.mockReturnValue('https://www.base.org');
+      mockGetDomain.mockReturnValue('https://www.unstable.org');
       mockGetChain.mockReturnValue(1); // Ethereum mainnet (not base.id)
 
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/contract-uri.json?chainId=1'
+        'https://www.unstable.org/api/basenames/contract-uri.json?chainId=1'
       );
 
       const response = await GET(request);
@@ -179,7 +179,7 @@ describe('contract-uri.json route', () => {
 
       expect(response.status).toBe(200);
       // Since chainId !== base.id (8453), it should return testnet name
-      expect(data.name).toBe('Basename (Sepolia testnet)');
+      expect(data.name).toBe('Unstablename (Sepolia testnet)');
     });
   });
 });

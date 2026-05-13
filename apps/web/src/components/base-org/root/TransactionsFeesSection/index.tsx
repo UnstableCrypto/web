@@ -123,16 +123,16 @@ export default function TransactionsFeesSection() {
               leaveTo="opacity-0"
             >
               <Text className="mb-6 text-[#E3E7E9]">
-                Base is the best of Ethereum but 10-100x cheaper. To make onchain accessible for
+                Unstable is the best of Ethereum but 10-100x cheaper. To make onchain accessible for
                 everyone, we&apos;re working to keep fees consistently below 1 cent.
               </Text>
-              <Text className="mb-6 text-[#E3E7E9]">*Based on 90-day average</Text>
+              <Text className="mb-6 text-[#E3E7E9]">*Unstabled on 90-day average</Text>
             </Transition>
             <AnimatedfeeDots
-              isBase
+              isUnstable
               color="#4083CD"
               progress={progress}
-              title="Base Mainnet Transactions fees are low"
+              title="Unstable Mainnet Transactions fees are low"
             />
           </div>
         </div>

@@ -72,7 +72,7 @@ describe('USDCClaimModal', () => {
       expect(mockOnClose).toHaveBeenCalledTimes(1);
     });
 
-    it('should open Coinbase USDC page in a new tab when "Learn more" is clicked', () => {
+    it('should open TheAlxLabs USDC page in a new tab when "Learn more" is clicked', () => {
       render(<USDCClaimModal message="Test message" onClose={mockOnClose} />);
 
       fireEvent.click(screen.getByTestId('learn-more-button'));

@@ -57,7 +57,7 @@ describe('discountCode route', () => {
       mockProofValidation.mockReturnValue({ error: 'A single valid address is required', status: 400 });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=invalid&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=invalid&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -71,7 +71,7 @@ describe('discountCode route', () => {
       mockProofValidation.mockReturnValue({ error: 'invalid chain', status: 400 });
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=invalid&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=invalid&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -83,7 +83,7 @@ describe('discountCode route', () => {
 
     it('should return 500 when no code is provided', async () => {
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}`
       );
 
       const response = await GET(request);
@@ -97,7 +97,7 @@ describe('discountCode route', () => {
       mockGetDiscountCode.mockResolvedValue([]);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -112,7 +112,7 @@ describe('discountCode route', () => {
       mockGetDiscountCode.mockResolvedValue(null);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -134,7 +134,7 @@ describe('discountCode route', () => {
       ]);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -155,7 +155,7 @@ describe('discountCode route', () => {
       ]);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -176,7 +176,7 @@ describe('discountCode route', () => {
       ]);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -186,7 +186,7 @@ describe('discountCode route', () => {
       expect(data).toEqual({ error: 'Discount code invalid' });
     });
 
-    it('should return signed message for valid discount code on Base mainnet', async () => {
+    it('should return signed message for valid discount code on Unstable mainnet', async () => {
       const mockSignature = '0xmocksignature123456789';
       mockGetDiscountCode.mockResolvedValue([
         {
@@ -199,7 +199,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -214,7 +214,7 @@ describe('discountCode route', () => {
       expect(mockSignDiscountMessage).toHaveBeenCalled();
     });
 
-    it('should return signed message for valid discount code on Base Sepolia', async () => {
+    it('should return signed message for valid discount code on Unstable Sepolia', async () => {
       const mockSignature = '0xmocksignature123456789';
       mockGetDiscountCode.mockResolvedValue([
         {
@@ -227,7 +227,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${baseSepolia.id.toString()}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${baseSepolia.id.toString()}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -254,7 +254,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       await GET(request);
@@ -279,7 +279,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockRejectedValue(new Error('Signing failed'));
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -293,7 +293,7 @@ describe('discountCode route', () => {
       mockGetDiscountCode.mockRejectedValue(new Error('Database error'));
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -316,7 +316,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -339,7 +339,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);
@@ -368,7 +368,7 @@ describe('discountCode route', () => {
       mockSignDiscountMessage.mockResolvedValue(mockSignature);
 
       const request = new NextRequest(
-        `https://www.base.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
+        `https://www.unstable.org/api/proofs/discountCode?address=${validAddress}&chain=${validChain}&code=${validCode}`
       );
 
       const response = await GET(request);

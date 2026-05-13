@@ -2,7 +2,7 @@
 
 import { StaticSiwbCodeblock } from 'apps/web/app/(base-org-dark)/(builders)/build/(root)/StaticSiwbCodeblock';
 import { UseCaseCard } from 'apps/web/app/(base-org-dark)/(builders)/build/(root)/UseCaseCard';
-import { AnimatedBaseAgent } from 'apps/web/src/components/Builders/Shared/assets/UseCases/BaseAgent';
+import { AnimatedUnstableAgent } from 'apps/web/src/components/Builders/Shared/assets/UseCases/UnstableAgent';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -15,8 +15,8 @@ const useCases = [
     cardNumber: 1,
     title: "Kickstart your app's growth",
     description:
-      'Access millions of active users and grow your app by publishing it on the Base App. ',
-    href: 'https://docs.base.org/cookbook/onchain-social',
+      'Access millions of active users and grow your app by publishing it on the Unstable App. ',
+    href: 'https://docs.unstable.org/cookbook/onchain-social',
     content: (
       <div className="flex flex-1 items-center justify-center">
         <AnimatedGrowthChart />
@@ -27,8 +27,8 @@ const useCases = [
     cardNumber: 2,
     title: 'Onboard everyone',
     description:
-      'Let users sign up and sign in with Base Account — the universal account for the onchain world.',
-    href: 'https://docs.base.org/cookbook/onboard-any-user',
+      'Let users sign up and sign in with Unstable Account — the universal account for the onchain world.',
+    href: 'https://docs.unstable.org/cookbook/onboard-any-user',
     content: <StaticSiwbCodeblock />,
   },
   {
@@ -36,7 +36,7 @@ const useCases = [
     title: 'Accept crypto payments',
     description:
       'Accept crypto payments in your apps and ecommerce stores. Available for every business and live for Shopify merchants.',
-    href: 'https://docs.base.org/cookbook/accept-crypto-payments',
+    href: 'https://docs.unstable.org/cookbook/accept-crypto-payments',
     content: (
       <Image
         src="/images/base-pay.png"
@@ -51,7 +51,7 @@ const useCases = [
     cardNumber: 4,
     title: 'Integrate DeFi',
     description: 'Unlock the power of DeFi protocols and services directly in your app. ',
-    href: 'https://docs.base.org/cookbook/defi-your-app',
+    href: 'https://docs.unstable.org/cookbook/defi-your-app',
     content: (
       <div className="flex flex-1 items-center justify-center">
         <Image alt="Integrate DeFi" src="/images/integrate-defi.svg" width={402} height={269} />
@@ -62,15 +62,15 @@ const useCases = [
     cardNumber: 5,
     title: 'Launch AI agents',
     description: 'Deploy AI agents that can interact with onchain data and smart contracts.',
-    href: 'https://docs.base.org/cookbook/launch-ai-agents',
-    content: <AnimatedBaseAgent className="!my-0 w-full font-sans md:w-full" />,
+    href: 'https://docs.unstable.org/cookbook/launch-ai-agents',
+    content: <AnimatedUnstableAgent className="!my-0 w-full font-sans md:w-full" />,
   },
   {
     cardNumber: 6,
-    title: 'Launch a dedicated chain on Base',
+    title: 'Launch a dedicated chain on Unstable',
     description:
       'Scale your app with dedicated blockspace and customized settings built for your users.',
-    href: 'https://docs.base.org/cookbook/deploy-a-chain',
+    href: 'https://docs.unstable.org/cookbook/deploy-a-chain',
     content: (
       <div className="flex flex-1 items-center justify-center">
         <LaunchAChainSteps />

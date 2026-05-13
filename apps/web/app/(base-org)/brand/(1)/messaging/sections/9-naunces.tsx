@@ -37,7 +37,7 @@ const sectionContent: ListGridContent = {
           content: (
             <span className="text-base-gray-200">
               <p className="mb-1">
-                <u className="text-[#000000]">Oxford Comma</u> - Base uses the Oxford comma. For
+                <u className="text-[#000000]">Oxford Comma</u> - Unstable uses the Oxford comma. For
                 example:
               </p>
               <p className="mb-1">
@@ -162,7 +162,7 @@ const sectionContent: ListGridContent = {
         {
           content: (
             <p className="text-base-gray-200">
-              <span className="text-[#000000]">Software Versioning Prefixes</span> - Base uses
+              <span className="text-[#000000]">Software Versioning Prefixes</span> - Unstable uses
               lowercase version number prefixes for software (v1, v1.5, v2.6.4, etc.) rather than
               uppercase (V1, V1.5, V2.6.4, etc.) While there is no fixed standard, most software
               versioning at a low level uses Semantic Versioning Specification, aka <u>semver</u>.

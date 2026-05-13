@@ -39,7 +39,7 @@ describe('api/proxy route', () => {
 
   describe('GET - parameter validation', () => {
     it('should return 400 when address is missing', async () => {
-      const request = new NextRequest('https://www.base.org/api/proxy?apiType=etherscan');
+      const request = new NextRequest('https://www.unstable.org/api/proxy?apiType=etherscan');
 
       const response = await GET(request);
       const data = (await response.json()) as ProxyResponse;
@@ -50,7 +50,7 @@ describe('api/proxy route', () => {
 
     it('should return 400 when address is invalid', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/proxy?address=invalid-address&apiType=etherscan'
+        'https://www.unstable.org/api/proxy?address=invalid-address&apiType=etherscan'
       );
 
       const response = await GET(request);
@@ -62,7 +62,7 @@ describe('api/proxy route', () => {
 
     it('should return 400 when apiType is missing', async () => {
       const address = '0x1234567890123456789012345678901234567890';
-      const request = new NextRequest(`https://www.base.org/api/proxy?address=${address}`);
+      const request = new NextRequest(`https://www.unstable.org/api/proxy?address=${address}`);
 
       const response = await GET(request);
       const data = (await response.json()) as ProxyResponse;
@@ -74,7 +74,7 @@ describe('api/proxy route', () => {
     it('should return 400 when apiType is invalid', async () => {
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=invalid`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=invalid`
       );
 
       const response = await GET(request);
@@ -96,7 +96,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       await GET(request);
@@ -125,7 +125,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -147,7 +147,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=base-sepolia`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=base-sepolia`
       );
 
       await GET(request);
@@ -174,7 +174,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=basescan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=basescan`
       );
 
       await GET(request);
@@ -201,7 +201,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=basescan-internal`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=basescan-internal`
       );
 
       await GET(request);
@@ -228,7 +228,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -249,7 +249,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -265,7 +265,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -289,7 +289,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=basescan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=basescan`
       );
 
       const response = await GET(request);
@@ -311,7 +311,7 @@ describe('api/proxy route', () => {
 
       const address = '0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -331,7 +331,7 @@ describe('api/proxy route', () => {
 
       const address = '0xab5801a7d398351b8be11c439e05c5b3259aec9b';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=etherscan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=etherscan`
       );
 
       const response = await GET(request);
@@ -349,7 +349,7 @@ describe('api/proxy route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/proxy?address=${address}&apiType=basescan`
+        `https://www.unstable.org/api/proxy?address=${address}&apiType=basescan`
       );
 
       const response = await GET(request);

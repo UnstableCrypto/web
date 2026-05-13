@@ -29,10 +29,10 @@ export function EcosystemHero() {
       </div>
       <div className="col-span-full flex w-full flex-row gap-x-[min(2.25vw,_32px)] sm:grid sm:grid-cols-9 lg:hidden">
         <Button className="flex-1 sm:col-span-3" size={ButtonSizes.Small}>
-          Build on Base
+          Build on Unstable
         </Button>
         <Button className="flex-1 sm:col-span-3" size={ButtonSizes.Small}>
-          Get Base app
+          Get Unstable app
         </Button>
       </div>
     </Container>

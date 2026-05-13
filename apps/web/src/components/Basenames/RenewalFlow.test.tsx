@@ -28,12 +28,12 @@ jest.mock('./RenewalContext', () => ({
   },
 }));
 
-// Mock useBasenameChain
-const mockBasenameChainId = 8453;
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+const mockUnstablenameChainId = 8453;
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: mockBasenameChainId },
+    basenameChain: { id: mockUnstablenameChainId },
   }),
   supportedChainIds: [8453, 84532],
 }));
@@ -247,7 +247,7 @@ describe('RenewalFlow', () => {
     });
 
     it('should not switch network when already on supported chain', () => {
-      mockChainId = 8453; // Base (supported)
+      mockChainId = 8453; // Unstable (supported)
 
       render(<RenewalFlow name="testname" />);
 

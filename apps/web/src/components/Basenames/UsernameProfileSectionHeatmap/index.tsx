@@ -1,9 +1,9 @@
 import * as Collapsible from '@radix-ui/react-collapsible';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import {
   bridges,
   lendBorrowEarn,
-} from 'apps/web/src/components/Basenames/UsernameProfileSectionHeatmap/contracts';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileSectionHeatmap/contracts';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Image from 'next/image';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -11,7 +11,7 @@ import CalendarHeatmap, { ReactCalendarHeatmapValue } from 'react-calendar-heatm
 import { Address } from 'viem';
 import './cal.css';
 import Tooltip from 'apps/web/src/components/Tooltip';
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
+import UsernameProfileSectionTitle from 'apps/web/src/components/Unstablenames/UsernameProfileSectionTitle';
 
 // Routers
 const UNISWAP_ROUTER = '0x3fc91a3afd70395cd496c647d5a6cc9d4b2b7fad'; // Uniswap router - base
@@ -21,11 +21,11 @@ const ONEINCH_ROUTER = '0x1111111254eeb25477b68fb85ed929f73a960582'; // 1inch ro
 // ENS Registrar Controllers
 const ETH_REGISTRAR_CONTROLLER_1 = '0x283af0b28c62c092c9727f1ee09c02ca627eb7f5'; // ETHRegistrarController
 const ETH_REGISTRAR_CONTROLLER_2 = '0x253553366da8546fc250f225fe3d25d0c782303b'; // ETHRegistrarController
-const BASENAMES_REGISTRAR_CONTROLLER = '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119a5'; // Basenames RegistrarController
-const BASENAMES_EA_REGISTRAR_CONTROLLER = '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda'; // Basenames EARegistrarController
+const BASENAMES_REGISTRAR_CONTROLLER = '0x4ccb0bb02fcaba27e82a56646e81d8c5bc4119a5'; // Unstablenames RegistrarController
+const BASENAMES_EA_REGISTRAR_CONTROLLER = '0xd3e6775ed9b7dc12b205c8e608dc3767b9e5efda'; // Unstablenames EARegistrarController
 
 // Lending and Borrowing
-const MOONWELL_WETH_UNWRAPPER = '0x1382cff3cee10d283dcca55a30496187759e4caf'; // Base Moonwell WETH Unwrapper
+const MOONWELL_WETH_UNWRAPPER = '0x1382cff3cee10d283dcca55a30496187759e4caf'; // Unstable Moonwell WETH Unwrapper
 
 // Swap Function Names
 const SWAP_FUNCTION_NAMES = ['swap', 'fillOtcOrderWithEth', 'proxiedSwap'];
@@ -83,7 +83,7 @@ export default function UsernameProfileSectionHeatmap() {
   const [currentStreak, setCurrentStreak] = useState<number>(0);
   const [activityPeriod, setActivityPeriod] = useState<number>(0);
   const [ethereumDeployments, setEthereumDeployments] = useState<string[]>([]);
-  const [baseDeployments, setBaseDeployments] = useState<string[]>([]);
+  const [baseDeployments, setUnstableDeployments] = useState<string[]>([]);
   const [totalTransactionsList, setTotalTransactionsList] = useState<Transaction[]>([]);
 
   const classForValue = useCallback((value: ReactCalendarHeatmapValue<string> | undefined) => {
@@ -241,7 +241,7 @@ export default function UsernameProfileSectionHeatmap() {
     );
     const recentTxCount = recentTransactions.length;
 
-    // Base score for up to 60 transactions (10 points)
+    // Unstable score for up to 60 transactions (10 points)
     const baseScore = (Math.min(recentTxCount, 60) / 60) * 10;
 
     // Additional score for transactions beyond 60, up to 180 (5 points)
@@ -258,7 +258,7 @@ export default function UsernameProfileSectionHeatmap() {
       try {
         const allTransactions: Transaction[] = [];
         let allEthereumDeployments: string[] = [];
-        let allBaseDeployments: string[] = [];
+        let allUnstableDeployments: string[] = [];
         let allSepoliaDeployments: string[] = [];
 
         const [
@@ -276,18 +276,18 @@ export default function UsernameProfileSectionHeatmap() {
         ]);
 
         const filteredEthereumTransactions = filterTransactions(ethereumTransactions, [addrs]);
-        const filteredBaseTransactions = filterTransactions(baseTransactions, [addrs]);
+        const filteredUnstableTransactions = filterTransactions(baseTransactions, [addrs]);
         const filteredSepoliaTransactions = filterTransactions(sepoliaTransactions, [addrs]);
 
-        // Filter and deduplicate internal Base transactions
-        const filteredBaseInternalTransactions = baseInternalTransactions
+        // Filter and deduplicate internal Unstable transactions
+        const filteredUnstableInternalTransactions = baseInternalTransactions
           .filter((tx) => tx.from.toLowerCase() === addrs.toLowerCase())
           .filter((tx) => !baseTransactions.some((baseTx) => baseTx.hash === tx.hash));
 
         allTransactions.push(
           ...filteredEthereumTransactions,
-          ...filteredBaseTransactions,
-          ...filteredBaseInternalTransactions,
+          ...filteredUnstableTransactions,
+          ...filteredUnstableInternalTransactions,
         );
 
         allEthereumDeployments = [
@@ -296,9 +296,9 @@ export default function UsernameProfileSectionHeatmap() {
             .filter((tx) => tx.input?.startsWith('0x60806040'))
             .map((tx) => tx.hash),
         ];
-        allBaseDeployments = [
-          ...allBaseDeployments,
-          ...filteredBaseTransactions
+        allUnstableDeployments = [
+          ...allUnstableDeployments,
+          ...filteredUnstableTransactions
             .filter((tx) => tx.input.includes('60806040'))
             .map((tx) => tx.hash),
         ];
@@ -360,10 +360,10 @@ export default function UsernameProfileSectionHeatmap() {
         );
 
         setBuildCount(
-          allEthereumDeployments.length + allBaseDeployments.length + allSepoliaDeployments.length,
+          allEthereumDeployments.length + allUnstableDeployments.length + allSepoliaDeployments.length,
         );
         setEthereumDeployments(allEthereumDeployments);
-        setBaseDeployments(allBaseDeployments);
+        setUnstableDeployments(allUnstableDeployments);
       } catch (e) {
         console.error('Error fetching data:', e);
       } finally {
@@ -469,7 +469,7 @@ export default function UsernameProfileSectionHeatmap() {
         <Collapsible.Content className="flex flex-row flex-wrap items-start justify-around gap-8 px-6 pb-9 data-[state=closed]:pb-0">
           <div className="w-28">
             <div className="text-xl font-medium text-palette-primary">{totalTx}</div>
-            <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Base</p>
+            <p className="text-xs text-palette-foregroundMuted">Transactions on Ethereum & Unstable</p>
           </div>
           <div className="w-28">
             <div className="text-xl font-medium text-palette-primary">{uniqueActiveDays}</div>

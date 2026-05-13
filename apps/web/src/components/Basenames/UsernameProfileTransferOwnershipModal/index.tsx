@@ -5,18 +5,18 @@ import Modal from 'apps/web/src/components/Modal';
 import SearchAddressInput from 'apps/web/src/components/SearchAddressInput';
 import { isAddress } from 'viem';
 import { useAccount } from 'wagmi';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import { useErrors } from 'apps/web/contexts/Errors';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import {
   OwnershipSteps,
   useProfileTransferOwnership,
-} from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context';
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
-import BasenameIdentity from 'apps/web/src/components/BasenameIdentity';
-import { OwnershipTransactionState } from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState';
+import UnstablenameIdentity from 'apps/web/src/components/UnstablenameIdentity';
+import { OwnershipTransactionState } from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/OwnershipTransactionState';
 import TransactionLink from 'apps/web/src/components/TransactionLink';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 
 const ownershipStepsTitleForDisplay = {
   [OwnershipSteps.Search]: 'Send name',
@@ -51,7 +51,7 @@ export default function UsernameProfileTransferOwnershipModal({
     ownershipTransactionHash,
   } = useProfileTransferOwnership();
 
-  const { basenameChain } = useBasenameChain(profileUsername);
+  const { basenameChain } = useUnstablenameChain(profileUsername);
 
   // States
   const isValidRecipientAddress = isAddress(recipientAddress);
@@ -136,7 +136,7 @@ export default function UsernameProfileTransferOwnershipModal({
       {currentOwnershipStep === OwnershipSteps.OwnershipOverview && (
         <div className="mt-2 flex flex-col gap-4">
           <div className="flex items-center gap-4 rounded-2xl border border-gray-40/20 px-4 py-3">
-            <BasenameIdentity username={profileUsername} />
+            <UnstablenameIdentity username={profileUsername} />
           </div>
           <h2 className="w-full text-3xl font-bold text-illoblack">To</h2>
           {isValidRecipientAddress && (

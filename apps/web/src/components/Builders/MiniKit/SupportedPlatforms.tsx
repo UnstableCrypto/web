@@ -76,7 +76,7 @@ export function SupportedPlatforms() {
         />
         <SupportedPlatformCard
           description="In Alpha"
-          value="Coinbase Wallet"
+          value="TheAlxLabs Wallet"
           image={bg1}
           logo={
             <Image src={walletLogo as StaticImageData} alt="Wallet logo" width={20} height={20} />

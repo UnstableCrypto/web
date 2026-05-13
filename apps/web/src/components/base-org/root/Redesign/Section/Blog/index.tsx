@@ -22,7 +22,7 @@ export function SectionBlog() {
     <Section content={content}>
       <BlogCarousel />
 
-      <Link href="https://blog.base.org">
+      <Link href="https://blog.unstable.org">
         <AnimatedButton text="Read more" />
       </Link>
     </Section>
@@ -30,7 +30,7 @@ export function SectionBlog() {
 }
 
 const content = {
-  title: 'Read the latest from Base',
+  title: 'Read the latest from Unstable',
 };
 
 function BlogCarouselControls({

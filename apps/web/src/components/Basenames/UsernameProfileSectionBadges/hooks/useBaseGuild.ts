@@ -25,7 +25,7 @@ type Memberships = {
   errors?: [];
 };
 
-export function useBaseGuild(address?: `0x${string}`): {
+export function useUnstableGuild(address?: `0x${string}`): {
   badges: Record<GuildBadges, boolean>;
   empty: boolean;
 } {

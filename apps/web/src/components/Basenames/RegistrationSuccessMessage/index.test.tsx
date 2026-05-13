@@ -5,7 +5,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { mockConsoleLog, restoreConsoleLog } from 'apps/web/src/testUtils/console';
 import RegistrationSuccessMessage from './index';
-import { RegistrationSteps } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { RegistrationSteps } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 // Mock variables that can be changed per test
 const mockSetRegistrationStep = jest.fn();
@@ -15,7 +15,7 @@ let mockCode: string | undefined = undefined;
 let mockAddress: string | undefined = '0x1234567890abcdef1234567890abcdef12345678';
 
 // Mock the RegistrationContext
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   RegistrationSteps: {
     Search: 'search',
     Claim: 'claim',
@@ -47,7 +47,7 @@ jest.mock('apps/web/contexts/Analytics', () => ({
 type MockAction = { label: string; onClick: () => void; isPrimary?: boolean };
 
 // Mock the SuccessMessage component
-jest.mock('apps/web/src/components/Basenames/shared/SuccessMessage', () => ({
+jest.mock('apps/web/src/components/Unstablenames/shared/SuccessMessage', () => ({
   __esModule: true,
   default: ({
     title,

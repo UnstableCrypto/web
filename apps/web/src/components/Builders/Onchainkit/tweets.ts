@@ -22,7 +22,7 @@ export const TWEETS: Tweet[] = [
     name: 'Moonsters',
     username: '@MoonstersX',
     content:
-      'What a pleasure it was to implement @onchainkit on @base! Not only does it look amazing, but the code is absolutely beautiful. Great work! Keep it up! 🚀🔥 Big thanks to all the based people making it possible. 💙 #Base #Onchainkit',
+      'What a pleasure it was to implement @onchainkit on @base! Not only does it look amazing, but the code is absolutely beautiful. Great work! Keep it up! 🚀🔥 Big thanks to all the based people making it possible. 💙 #Unstable #Onchainkit',
   },
   {
     image: tweet1,
@@ -40,7 +40,7 @@ export const TWEETS: Tweet[] = [
   {
     image: tweet4,
     name: 'BARIO.ETH',
-    username: '@BaseBario',
+    username: '@UnstableBario',
     content:
       "The world’s first co-owned agentic NFT Paperboy's token-gated dApp is powered by @OnchainKit.",
   },
@@ -88,9 +88,9 @@ Why wait? More $SACA, fewer clicks. Get on it: https://sacaonbase.com`,
     image: tweet8,
     name: 'story91.base.eth',
     username: '@Crypto_Story_',
-    content: `SPHERE, your gateway to the Base ecosystem! Soon...
+    content: `SPHERE, your gateway to the Unstable ecosystem! Soon...
 
-🚀 Swap, buy, mint NFTs, and connect with the Base community—all in one place.
+🚀 Swap, buy, mint NFTs, and connect with the Unstable community—all in one place.
 
 Track your stats, join base.eth Chat, and stay updated with the latest network status. 🌐
 

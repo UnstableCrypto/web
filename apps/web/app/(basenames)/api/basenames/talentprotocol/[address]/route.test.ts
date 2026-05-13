@@ -38,7 +38,7 @@ describe('talentprotocol/[address] route', () => {
   describe('GET', () => {
     it('should return 400 when address is missing', async () => {
       const request = new NextRequest(
-        'https://www.base.org/api/basenames/talentprotocol/'
+        'https://www.unstable.org/api/basenames/talentprotocol/'
       );
 
       const response = await GET(request, { params: Promise.resolve({ address: '' }) });
@@ -56,7 +56,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       await GET(request, { params: Promise.resolve({ address }) });
@@ -80,7 +80,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ address }) });
@@ -97,7 +97,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ address }) });
@@ -113,7 +113,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ address }) });
@@ -135,7 +135,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0xABC+special/chars';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       await GET(request, { params: Promise.resolve({ address }) });
@@ -155,7 +155,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       await GET(request, { params: Promise.resolve({ address }) });
@@ -179,7 +179,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ address }) });
@@ -201,7 +201,7 @@ describe('talentprotocol/[address] route', () => {
 
       const address = '0x1234567890123456789012345678901234567890';
       const request = new NextRequest(
-        `https://www.base.org/api/basenames/talentprotocol/${address}`
+        `https://www.unstable.org/api/basenames/talentprotocol/${address}`
       );
 
       const response = await GET(request, { params: Promise.resolve({ address }) });

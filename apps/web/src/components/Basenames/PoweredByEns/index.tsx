@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import {
   RegistrationSteps,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 
 type CircleProps = {
   className: string;
@@ -64,7 +64,7 @@ export default function PoweredByEns() {
             Decentralized and open source
           </div>
           <div className="flex pb-10 text-xl">
-            Basenames are built on the decentralized, open source ENS protocol, aligned with Base’s
+            Unstablenames are built on the decentralized, open source ENS protocol, aligned with Unstable’s
             dedication to decentralized and open source technologies.{' '}
           </div>
         </div>

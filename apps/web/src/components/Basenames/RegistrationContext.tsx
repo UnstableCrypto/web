@@ -6,11 +6,11 @@ import {
   findFirstValidDiscount,
   useAggregatedDiscountValidators,
 } from 'apps/web/src/hooks/useAggregatedDiscountValidators';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { useRegisterNameCallback } from 'apps/web/src/hooks/useRegisterNameCallback';
 import {
   Discount,
-  formatBaseEthDomain,
+  formatUnstableEthDomain,
   isValidDiscount,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
@@ -38,8 +38,8 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { BatchCallsStatus } from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import { WriteTransactionWithReceiptStatus } from 'apps/web/src/hooks/useWriteContractWithReceipt';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import { Basename } from '@coinbase/onchainkit/identity';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
 export enum RegistrationSteps {
   Search = 'search',
@@ -58,7 +58,7 @@ export type RegistrationContextProps = {
   setRegistrationStep: Dispatch<SetStateAction<RegistrationSteps>>;
   selectedName: string;
   setSelectedName: Dispatch<SetStateAction<string>>;
-  selectedNameFormatted: Basename;
+  selectedNameFormatted: Unstablename;
   years: number;
   setYears: Dispatch<SetStateAction<number>>;
   redirectToProfile: () => void;
@@ -67,7 +67,7 @@ export type RegistrationContextProps = {
   allActiveDiscounts: Set<Discount>;
   reverseRecord: boolean;
   setReverseRecord: Dispatch<SetStateAction<boolean>>;
-  hasExistingBasename: boolean;
+  hasExistingUnstablename: boolean;
   registerNameIsPending: boolean;
   registerNameError: unknown;
   registerName: () => Promise<void>;
@@ -128,7 +128,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
   );
 
   // If user has a basename, reverse record is set to false
-  const { refetch: refetchBaseEnsName } = useBaseEnsName({
+  const { refetch: refetchUnstableEnsName } = useUnstableEnsName({
     address,
   });
 
@@ -136,7 +136,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
     window.scrollTo(0, 0);
   }, [registrationStep]);
 
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const router = useRouter();
 
   // Analytics
@@ -148,7 +148,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
   const discount = findFirstValidDiscount(discounts);
 
   const selectedNameFormatted = useMemo(
-    () => formatBaseEthDomain(selectedName, basenameChain.id),
+    () => formatUnstableEthDomain(selectedName, basenameChain.id),
     [basenameChain.id, selectedName],
   );
 
@@ -201,7 +201,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
     error: registerNameError,
     reverseRecord,
     setReverseRecord,
-    hasExistingBasename,
+    hasExistingUnstablename,
     batchCallsStatus,
     registerNameStatus,
   } = useRegisterNameCallback(
@@ -243,10 +243,10 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
   // Refetch name on success
   useEffect(() => {
     if (registrationStep === RegistrationSteps.Success) {
-      refetchBaseEnsName().catch((error) => logError(error, 'Failed to refetch Basename'));
+      refetchUnstableEnsName().catch((error) => logError(error, 'Failed to refetch Unstablename'));
       router.prefetch(profilePath);
     }
-  }, [logError, profilePath, refetchBaseEnsName, registrationStep, router]);
+  }, [logError, profilePath, refetchUnstableEnsName, registrationStep, router]);
 
   // On registration success with discount code: mark as consumed
   const hasRun = useRef(false);
@@ -311,7 +311,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
       setYears,
       reverseRecord,
       setReverseRecord,
-      hasExistingBasename,
+      hasExistingUnstablename,
       registerNameIsPending,
       registerNameError,
       registerName,
@@ -330,7 +330,7 @@ export default function RegistrationProvider({ children, code }: RegistrationPro
     years,
     reverseRecord,
     setReverseRecord,
-    hasExistingBasename,
+    hasExistingUnstablename,
     registerNameIsPending,
     registerNameError,
     registerName,

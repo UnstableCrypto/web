@@ -8,14 +8,14 @@ import Image from 'next/image';
 const TRANSACTIONS = [
   {
     label: 'Onboard',
-    title: 'Connect with Coinbase Wallet',
+    title: 'Connect with TheAlxLabs Wallet',
     description: 'The fastest way to sign in to apps across the open internet.',
     content: <Image src={onboarding} alt="Onboarding" width={276} />,
   },
   {
     label: 'Fund',
     title: 'Get users onchain in seconds',
-    description: 'Built-in user onramps including Apple Pay, debit card, and Coinbase balances.',
+    description: 'Built-in user onramps including Apple Pay, debit card, and TheAlxLabs balances.',
     content: <Image src={fund} alt="Fund" width={436} />,
   },
   {

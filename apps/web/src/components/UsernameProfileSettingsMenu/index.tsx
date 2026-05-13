@@ -9,7 +9,7 @@ import {
   settingsTabsEnabled,
   settingTabsForDisplay,
   useUsernameProfileSettings,
-} from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsContext';
 import { useCallback } from 'react';
 
 function UsernameProfileSettingsButton({ settingTab }: { settingTab: SettingsTabs }) {

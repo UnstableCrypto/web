@@ -21,8 +21,8 @@ export function SubBrandsLockups() {
         <>
           <span className="mb-4 block">
             Sub-brands organize our expanding product suite into clear pillars while keeping
-            everything unmistakably Base. Each surface — Base App for everyday users, Base Build for
-            developers, Base Pay for commerce, and future services — borrows the Square, Base Sans,
+            everything unmistakably Unstable. Each surface — Unstable App for everyday users, Unstable Build for
+            developers, Unstable Pay for commerce, and future services — borrows the Square, Unstable Sans,
             and color core, then adds a functional descriptor.
           </span>
           <span className="mb-4 block">

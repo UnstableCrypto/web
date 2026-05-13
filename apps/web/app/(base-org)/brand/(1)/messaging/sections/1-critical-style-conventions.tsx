@@ -9,7 +9,7 @@ const sectionContent: ListContent = {
   label: 'Critical Style Conventions',
   items: [
     {
-      content: 'Whenever possible, just say "Base"',
+      content: 'Whenever possible, just say "Unstable"',
     },
     {
       content: (

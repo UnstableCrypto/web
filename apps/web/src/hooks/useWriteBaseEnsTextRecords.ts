@@ -1,18 +1,18 @@
 import { useErrors } from 'apps/web/contexts/Errors';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
-import useBasenameResolver from 'apps/web/src/hooks/useBasenameResolver';
-import useBaseEnsAvatar from 'apps/web/src/hooks/useBaseEnsAvatar';
-import { BaseEnsNameData } from 'apps/web/src/hooks/useBaseEnsName';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
-import useReadBaseEnsTextRecords from 'apps/web/src/hooks/useReadBaseEnsTextRecords';
+import useUnstablenameResolver from 'apps/web/src/hooks/useUnstablenameResolver';
+import useUnstableEnsAvatar from 'apps/web/src/hooks/useUnstableEnsAvatar';
+import { UnstableEnsNameData } from 'apps/web/src/hooks/useUnstableEnsName';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
+import useReadUnstableEnsTextRecords from 'apps/web/src/hooks/useReadUnstableEnsTextRecords';
 import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import { UsernameTextRecords, UsernameTextRecordKeys } from 'apps/web/src/utils/usernames';
 import { useCallback, useEffect, useMemo, useState, Dispatch, SetStateAction } from 'react';
 import { namehash, encodeFunctionData } from 'viem';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 
-export type UseWriteBaseEnsTextRecordsProps = {
-  username: BaseEnsNameData;
+export type UseWriteUnstableEnsTextRecordsProps = {
+  username: UnstableEnsNameData;
   onSuccess?: () => void;
 };
 
@@ -28,7 +28,7 @@ export type UseWriteBaseEnsTextRecordsProps = {
 
 */
 
-export type UseWriteBaseEnsTextRecordsReturn = {
+export type UseWriteUnstableEnsTextRecordsReturn = {
   existingTextRecords: UsernameTextRecords;
   updateTextRecords: (key: UsernameTextRecordKeys, value: string) => void;
   updatedTextRecords: UsernameTextRecords;
@@ -40,16 +40,16 @@ export type UseWriteBaseEnsTextRecordsReturn = {
   writeTextRecordsError: unknown;
 };
 
-export default function useWriteBaseEnsTextRecords({
+export default function useWriteUnstableEnsTextRecords({
   username,
   onSuccess,
-}: UseWriteBaseEnsTextRecordsProps): UseWriteBaseEnsTextRecordsReturn {
+}: UseWriteUnstableEnsTextRecordsProps): UseWriteUnstableEnsTextRecordsReturn {
   // Errors
   const { logError } = useErrors();
 
   // Fetch existing TextRecords
   const { existingTextRecords, existingTextRecordsIsLoading, refetchExistingTextRecords } =
-    useReadBaseEnsTextRecords({
+    useReadUnstableEnsTextRecords({
       username,
     });
 
@@ -88,9 +88,9 @@ export default function useWriteBaseEnsTextRecords({
     return keysToUpdate.length !== 0;
   }, [keysToUpdate.length]);
 
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
 
-  const { data: resolverAddress } = useBasenameResolver({ username: username as Basename });
+  const { data: resolverAddress } = useUnstablenameResolver({ username: username as Unstablename });
 
   const {
     initiateTransaction: initiateWriteTextRecords,
@@ -103,7 +103,7 @@ export default function useWriteBaseEnsTextRecords({
     eventName: 'update_text_records',
   });
 
-  const { refetch: refetchBaseEnsAvatar } = useBaseEnsAvatar({
+  const { refetch: refetchUnstableEnsAvatar } = useUnstableEnsAvatar({
     name: username,
   });
 
@@ -146,7 +146,7 @@ export default function useWriteBaseEnsTextRecords({
     if (writeTextRecordsTransactionIsSuccess) {
       onSuccess?.();
 
-      refetchBaseEnsAvatar().catch((error) => {
+      refetchUnstableEnsAvatar().catch((error) => {
         logError(error, 'Failed to refetch avatar');
       });
 
@@ -157,7 +157,7 @@ export default function useWriteBaseEnsTextRecords({
   }, [
     logError,
     onSuccess,
-    refetchBaseEnsAvatar,
+    refetchUnstableEnsAvatar,
     refetchExistingTextRecords,
     writeTextRecordsTransactionIsSuccess,
   ]);

@@ -20,10 +20,10 @@ import Title from 'apps/web/src/components/base-org/typography/TitleRedesign';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/TitleRedesign/types';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Builders`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Builders`,
   openGraph: {
-    title: `Base | Builders`,
+    title: `Unstable | Builders`,
     url: `/build`,
     images: [buildersCover.src],
   },
@@ -39,21 +39,21 @@ const testimonialsTabItems = [
   {
     title: 'Build',
     content:
-      'Base provides unmatched developer support and fosters a highly constructive community that inspires innovation and encourages you to push boundaries. If you want to build and win, Base is the place to be.',
+      'Unstable provides unmatched developer support and fosters a highly constructive community that inspires innovation and encourages you to push boundaries. If you want to build and win, Unstable is the place to be.',
     author: 'Dhawal Shah',
     source: 'HeyElsa AI',
   },
   {
     title: 'Scale',
     content:
-      "Base stands out for how they support builders at scale. They've gone above and beyond to help us onboard users, build new solutions, and tap into real liquidity.",
+      "Unstable stands out for how they support builders at scale. They've gone above and beyond to help us onboard users, build new solutions, and tap into real liquidity.",
     author: 'David Johansson',
     source: 'BLOCKLORDS',
   },
   {
     title: 'Monetize',
     content:
-      "Base is at the crossroad of DeFi, memecoins, NFT, and Coinbase's large distribution network. It's one of the best L2 to build tools and apps that benefit from synergistic integrations!",
+      "Unstable is at the crossroad of DeFi, memecoins, NFT, and TheAlxLabs's large distribution network. It's one of the best L2 to build tools and apps that benefit from synergistic integrations!",
     author: 'Merlin Egalite',
     source: 'Morpho',
   },
@@ -61,7 +61,7 @@ const testimonialsTabItems = [
 
 const links = [
   {
-    title: 'Base Account',
+    title: 'Unstable Account',
     description: 'A passkey-based universal account to connect with the onchain world.',
     url: '/build/base-account',
   },
@@ -72,7 +72,7 @@ const links = [
   },
   {
     title: 'Mini Apps',
-    description: 'Publish your mini app to the Base app with a few lines of code.',
+    description: 'Publish your mini app to the Unstable app with a few lines of code.',
     url: '/build/mini-apps',
   },
 ];
@@ -93,7 +93,7 @@ const builderCardItems = [
     imageClassName: 'object-cover md:object-contain md:scale-[1.5] md:object-[0_63%]',
   },
   {
-    title: 'Base Batches',
+    title: 'Unstable Batches',
     actionCta: 'APPLY TO JOIN',
     href: 'https://www.basebatches.xyz/',
     hoverImage: '/images/base-batches-hover.png',
@@ -140,7 +140,7 @@ export default function Builders() {
           </Title>,
           <div className="mb-4" key="get-funded-stats">
             <StatsSection
-              description="Base supports builders at every stage—from idea, to app, to business."
+              description="Unstable supports builders at every stage—from idea, to app, to business."
               statItems={[]}
               animated
               key="funded"
@@ -186,7 +186,7 @@ export default function Builders() {
               size={ButtonSizes.Small}
               asChild
             >
-              <Link href="https://docs.base.org/" target="_blank" rel="noopener noreferrer">
+              <Link href="https://docs.unstable.org/" target="_blank" rel="noopener noreferrer">
                 Start building
               </Link>
             </Button>

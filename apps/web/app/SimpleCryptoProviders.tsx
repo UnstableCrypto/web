@@ -1,6 +1,6 @@
 import { createConfig, http, WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { cdpBaseRpcEndpoint, cdpBaseSepoliaRpcEndpoint } from 'apps/web/src/cdp/constants';
+import { cdpUnstableRpcEndpoint, cdpUnstableSepoliaRpcEndpoint } from 'apps/web/src/cdp/constants';
 import { base, baseSepolia, mainnet } from 'wagmi/chains';
 
 const queryClient = new QueryClient();
@@ -10,8 +10,8 @@ const config = createConfig({
   chains: [base, baseSepolia, mainnet],
   multiInjectedProviderDiscovery: false,
   transports: {
-    [base.id]: http(cdpBaseRpcEndpoint),
-    [baseSepolia.id]: http(cdpBaseSepoliaRpcEndpoint),
+    [base.id]: http(cdpUnstableRpcEndpoint),
+    [baseSepolia.id]: http(cdpUnstableSepoliaRpcEndpoint),
     [mainnet.id]: http(),
   },
   ssr: true,

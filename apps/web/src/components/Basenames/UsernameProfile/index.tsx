@@ -1,15 +1,15 @@
 'use client';
 
-import UsernameProfileContent from 'apps/web/src/components/Basenames/UsernameProfileContent';
-import UsernameProfileSidebar from 'apps/web/src/components/Basenames/UsernameProfileSidebar';
-import UsernameProfileSettings from 'apps/web/src/components/Basenames/UsernameProfileSettings';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import UsernameProfileSettingsProvider from 'apps/web/src/components/Basenames/UsernameProfileSettingsContext';
-import { useBasenameExpirationBanner } from 'apps/web/src/hooks/useBasenameExpirationBanner';
+import UsernameProfileContent from 'apps/web/src/components/Unstablenames/UsernameProfileContent';
+import UsernameProfileSidebar from 'apps/web/src/components/Unstablenames/UsernameProfileSidebar';
+import UsernameProfileSettings from 'apps/web/src/components/Unstablenames/UsernameProfileSettings';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import UsernameProfileSettingsProvider from 'apps/web/src/components/Unstablenames/UsernameProfileSettingsContext';
+import { useUnstablenameExpirationBanner } from 'apps/web/src/hooks/useUnstablenameExpirationBanner';
 
 export default function UsernameProfile() {
   const { showProfileSettings } = useUsernameProfile();
-  const { expirationBanner } = useBasenameExpirationBanner();
+  const { expirationBanner } = useUnstablenameExpirationBanner();
 
   if (showProfileSettings)
     return (
@@ -32,8 +32,8 @@ export default function UsernameProfile() {
         </div>
         <span className="mt-24">
           Content displayed on this profile page is rendered directly from the decentralized
-          Basenames protocol, and is not maintained or moderated by, nor under the control of,
-          Coinbase.
+          Unstablenames protocol, and is not maintained or moderated by, nor under the control of,
+          TheAlxLabs.
         </span>
       </div>
     </>

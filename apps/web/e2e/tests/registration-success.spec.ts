@@ -1,10 +1,10 @@
 import { expect } from '@playwright/test';
 import { test } from '../testFixture';
-import { handleTransaction, prepareBasenameFlow } from '../appSession';
+import { handleTransaction, prepareUnstablenameFlow } from '../appSession';
 import { initiateRegistration, SELECTORS } from '../basenameHelpers';
 
 // Main test
-test.describe('Basename Registration', () => {
+test.describe('Unstablename Registration', () => {
   test.skip('should successfully register a basename', async ({ page, metamask }) => {
     // Validate prerequisites
     if (!metamask) {
@@ -12,7 +12,7 @@ test.describe('Basename Registration', () => {
     }
 
     // Common preparation steps (connect wallet, switch network, navigate & select basename)
-    const { mainPage } = await prepareBasenameFlow(page, metamask);
+    const { mainPage } = await prepareUnstablenameFlow(page, metamask);
 
     await mainPage.waitForTimeout(2000);
 

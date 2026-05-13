@@ -4,14 +4,14 @@ import {
   USERNAME_REVERSE_REGISTRAR_ADDRESSES,
   USERNAME_L2_RESOLVER_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import { useCallback, useEffect, useState } from 'react';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { useAccount, useSignMessage } from 'wagmi';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
 import { useErrors } from 'apps/web/contexts/Errors';
 import useWriteContractWithReceipt from 'apps/web/src/hooks/useWriteContractWithReceipt';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import useWriteContractsWithLogs from 'apps/web/src/hooks/useWriteContractsWithLogs';
 import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import L2ReverseRegistrarAbi from 'apps/web/src/abis/L2ReverseRegistrarAbi';
@@ -29,16 +29,16 @@ import { buildReverseRegistrarSignatureDigest } from 'apps/web/src/utils/usernam
   - Refetch basename on successful request
 */
 
-type UseSetPrimaryBasenameProps = {
-  secondaryUsername: Basename;
+type UseSetPrimaryUnstablenameProps = {
+  secondaryUsername: Unstablename;
 };
 
-export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrimaryBasenameProps) {
+export default function useSetPrimaryUnstablename({ secondaryUsername }: UseSetPrimaryUnstablenameProps) {
   const { address } = useAccount();
   const { logError } = useErrors();
 
   const { currentWalletIsProfileEditor } = useUsernameProfile();
-  const { basenameChain: secondaryUsernameChain } = useBasenameChain(secondaryUsername);
+  const { basenameChain: secondaryUsernameChain } = useUnstablenameChain(secondaryUsername);
   const { paymasterService: paymasterServiceEnabled } = useCapabilitiesSafe({
     chainId: secondaryUsernameChain.id,
   });
@@ -53,7 +53,7 @@ export default function useSetPrimaryBasename({ secondaryUsername }: UseSetPrima
     refetch: refetchPrimaryUsername,
     isLoading: primaryUsernameIsLoading,
     isFetching: primaryUsernameIsFetching,
-  } = useBaseEnsName({
+  } = useUnstableEnsName({
     address: address,
   });
 

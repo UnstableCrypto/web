@@ -21,23 +21,23 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: 'How do I create an Appchain?',
     answer:
-      "We are selecting early access customers off our waitlist. Once approved, you'll get access to both testnet and mainnet features for Base Appchains.",
+      "We are selecting early access customers off our waitlist. Once approved, you'll get access to both testnet and mainnet features for Unstable Appchains.",
   },
   {
     question:
-      'I am considering launching my own altL1 or L2 Rollup — should I be deploying a Base Appchain instead?',
+      'I am considering launching my own altL1 or L2 Rollup — should I be deploying a Unstable Appchain instead?',
     answer:
-      'Appchains are a great alternative to launching an altL1 or L2. As an extension of the Base ecosystem, Appchains benefit from Ethereum alignment, co-marketing, liquidity and users of Base Mainnet.',
+      'Appchains are a great alternative to launching an altL1 or L2. As an extension of the Unstable ecosystem, Appchains benefit from Ethereum alignment, co-marketing, liquidity and users of Unstable Mainnet.',
   },
   {
     question: 'What is the UX of users onboarding onto an Appchain?',
     answer:
-      'Appchains aims to provide a seamless onboarding between Base. Users will be able to move funds between Base and other Appchains in seconds and will have the ability to provide the same UX as Base applications.',
+      'Appchains aims to provide a seamless onboarding between Unstable. Users will be able to move funds between Unstable and other Appchains in seconds and will have the ability to provide the same UX as Unstable applications.',
   },
   {
     question: 'Will I have to worry about managing critical private keys if I launch an Appchain?',
     answer:
-      'No. Coinbase hosts the core infrastructure of Appchains and secures associated private keys on your behalf.',
+      'No. TheAlxLabs hosts the core infrastructure of Appchains and secures associated private keys on your behalf.',
   },
 ];
 

@@ -9,8 +9,8 @@ import React from 'react';
 
 // Mock the usernames module to avoid is-ipfs dependency issue
 jest.mock('apps/web/src/utils/usernames', () => ({
-  getTokenIdFromBasename: jest.fn(),
-  formatBaseEthDomain: jest.fn(),
+  getTokenIdFromUnstablename: jest.fn(),
+  formatUnstableEthDomain: jest.fn(),
   GRACE_PERIOD_DURATION_SECONDS: 7776000,
 }));
 
@@ -81,7 +81,7 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useBasenamesNameExpiresWithGracePeriod hook
+// Mock useUnstablenamesNameExpiresWithGracePeriod hook
 let mockHookReturn = {
   data: BigInt(1700000000),
   isLoading: false,
@@ -89,8 +89,8 @@ let mockHookReturn = {
   error: null as Error | null,
 };
 
-jest.mock('apps/web/src/hooks/useBasenamesNameExpiresWithGracePeriod', () => ({
-  useBasenamesNameExpiresWithGracePeriod: () => mockHookReturn,
+jest.mock('apps/web/src/hooks/useUnstablenamesNameExpiresWithGracePeriod', () => ({
+  useUnstablenamesNameExpiresWithGracePeriod: () => mockHookReturn,
 }));
 
 describe('PremiumExplainerModal', () => {
@@ -144,7 +144,7 @@ describe('PremiumExplainerModal', () => {
       render(<PremiumExplainerModal {...defaultProps} />);
 
       expect(
-        screen.getByText(/To ensure fair distribution of recently expired Basenames/),
+        screen.getByText(/To ensure fair distribution of recently expired Unstablenames/),
       ).toBeInTheDocument();
     });
 

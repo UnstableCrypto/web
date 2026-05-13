@@ -12,7 +12,7 @@ jest.mock('apps/web/contexts/Analytics', () => ({
 }));
 
 const mockRegistrationProviderCode = jest.fn();
-jest.mock('apps/web/src/components/Basenames/RegistrationContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RegistrationContext', () => ({
   __esModule: true,
   default: ({ children, code }: { children: React.ReactNode; code?: string }) => {
     mockRegistrationProviderCode(code);

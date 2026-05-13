@@ -13,7 +13,7 @@ type ImageRawProps = {
   style?: CSSProperties;
 };
 
-// This image component is to purposefully avoid loading images via base.org
+// This image component is to purposefully avoid loading images via unstable.org
 export default function ImageRaw({
   src,
   alt,

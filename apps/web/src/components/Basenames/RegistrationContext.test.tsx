@@ -94,8 +94,8 @@ jest.mock('wagmi', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
     basenameChain: { id: 8453 },
@@ -123,12 +123,12 @@ jest.mock('apps/web/src/hooks/useNameRegistrationPrice', () => ({
   }),
 }));
 
-// Mock useBaseEnsName
-const mockRefetchBaseEnsName = jest.fn().mockResolvedValue({});
-jest.mock('apps/web/src/hooks/useBaseEnsName', () => ({
+// Mock useUnstableEnsName
+const mockRefetchUnstableEnsName = jest.fn().mockResolvedValue({});
+jest.mock('apps/web/src/hooks/useUnstableEnsName', () => ({
   __esModule: true,
   default: () => ({
-    refetch: mockRefetchBaseEnsName,
+    refetch: mockRefetchUnstableEnsName,
   }),
 }));
 
@@ -144,7 +144,7 @@ jest.mock('apps/web/src/hooks/useRegisterNameCallback', () => ({
     error: null,
     reverseRecord: true,
     setReverseRecord: mockSetReverseRecord,
-    hasExistingBasename: false,
+    hasExistingUnstablename: false,
     batchCallsStatus: mockBatchCallsStatus,
     registerNameStatus: mockRegisterNameStatus,
   }),
@@ -152,7 +152,7 @@ jest.mock('apps/web/src/hooks/useRegisterNameCallback', () => ({
 
 // Mock usernames utilities
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (name: string) => `${name}.base.eth`,
+  formatUnstableEthDomain: (name: string) => `${name}.base.eth`,
   isValidDiscount: () => false,
   Discount: {
     CBID: 'CBID',
@@ -191,7 +191,7 @@ function TestConsumer() {
       <span data-testid="searchInputFocused">{String(context.searchInputFocused)}</span>
       <span data-testid="searchInputHovered">{String(context.searchInputHovered)}</span>
       <span data-testid="selectedNameFormatted">{context.selectedNameFormatted}</span>
-      <span data-testid="hasExistingBasename">{String(context.hasExistingBasename)}</span>
+      <span data-testid="hasExistingUnstablename">{String(context.hasExistingUnstablename)}</span>
       <span data-testid="reverseRecord">{String(context.reverseRecord)}</span>
       <button
         type="button"
@@ -562,14 +562,14 @@ describe('RegistrationContext', () => {
   });
 
   describe('context values from hooks', () => {
-    it('should provide hasExistingBasename from useRegisterNameCallback', () => {
+    it('should provide hasExistingUnstablename from useRegisterNameCallback', () => {
       render(
         <RegistrationProvider>
           <TestConsumer />
         </RegistrationProvider>
       );
 
-      expect(screen.getByTestId('hasExistingBasename')).toHaveTextContent('false');
+      expect(screen.getByTestId('hasExistingUnstablename')).toHaveTextContent('false');
     });
 
     it('should provide reverseRecord from useRegisterNameCallback', () => {

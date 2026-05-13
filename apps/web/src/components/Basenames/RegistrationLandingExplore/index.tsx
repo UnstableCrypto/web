@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 
 export default function RegistrationLandingExplore() {

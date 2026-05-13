@@ -4,8 +4,8 @@ import {
   UPGRADEABLE_L2_RESOLVER_ADDRESSES,
   USERNAME_L2_REVERSE_REGISTRAR_ADDRESSES,
 } from 'apps/web/src/addresses/usernames';
-import useBaseEnsName from 'apps/web/src/hooks/useBaseEnsName';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstableEnsName from 'apps/web/src/hooks/useUnstableEnsName';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import useWriteContractsWithLogs, {
   BatchCallsStatus,
@@ -15,7 +15,7 @@ import useWriteContractWithReceipt, {
 } from 'apps/web/src/hooks/useWriteContractWithReceipt';
 import {
   convertChainIdToCoinTypeUint,
-  formatBaseEthDomain,
+  formatUnstableEthDomain,
   normalizeEnsDomainName,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
@@ -35,7 +35,7 @@ type UseRegisterNameCallbackReturnType = {
   error: Error | null;
   reverseRecord: boolean;
   setReverseRecord: Dispatch<SetStateAction<boolean>>;
-  hasExistingBasename: boolean;
+  hasExistingUnstablename: boolean;
   batchCallsStatus: BatchCallsStatus;
   registerNameStatus: WriteTransactionWithReceiptStatus;
 };
@@ -48,7 +48,7 @@ export function useRegisterNameCallback(
   validationData?: `0x${string}`,
 ): UseRegisterNameCallbackReturnType {
   const { address } = useAccount();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { logError } = useErrors();
   const { paymasterService: paymasterServiceEnabled } = useCapabilitiesSafe({
     chainId: basenameChain.id,
@@ -57,16 +57,16 @@ export function useRegisterNameCallback(
   const signMessageIsLoading = signMessageStatus === 'pending';
 
   // If user has a basename, reverse record is set to false
-  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useBaseEnsName({
+  const { data: baseEnsName, isLoading: baseEnsNameIsLoading } = useUnstableEnsName({
     address,
   });
 
-  const hasExistingBasename = useMemo(
+  const hasExistingUnstablename = useMemo(
     () => !baseEnsNameIsLoading && !!baseEnsName,
     [baseEnsName, baseEnsNameIsLoading],
   );
 
-  const [reverseRecord, setReverseRecord] = useState<boolean>(!hasExistingBasename);
+  const [reverseRecord, setReverseRecord] = useState<boolean>(!hasExistingUnstablename);
   const [signatureError, setSignatureError] = useState<Error | null>(null);
 
   // Transaction with paymaster enabled
@@ -119,14 +119,14 @@ export function useRegisterNameCallback(
     const addressData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setAddr',
-      args: [namehash(formatBaseEthDomain(name, basenameChain.id)), address],
+      args: [namehash(formatUnstableEthDomain(name, basenameChain.id)), address],
     });
 
     const baseCointypeData = encodeFunctionData({
       abi: L2ResolverAbi,
       functionName: 'setAddr',
       args: [
-        namehash(formatBaseEthDomain(name, basenameChain.id)),
+        namehash(formatUnstableEthDomain(name, basenameChain.id)),
         BigInt(convertChainIdToCoinTypeUint(basenameChain.id)),
         address,
       ],
@@ -136,8 +136,8 @@ export function useRegisterNameCallback(
       abi: L2ResolverAbi,
       functionName: 'setName',
       args: [
-        namehash(formatBaseEthDomain(name, basenameChain.id)),
-        formatBaseEthDomain(name, basenameChain.id),
+        namehash(formatUnstableEthDomain(name, basenameChain.id)),
+        formatUnstableEthDomain(name, basenameChain.id),
       ],
     });
 
@@ -200,7 +200,7 @@ export function useRegisterNameCallback(
                     abi: L2ReverseRegistrarAbi,
                     address: USERNAME_L2_REVERSE_REGISTRAR_ADDRESSES[basenameChain.id],
                     functionName: 'setName',
-                    args: [formatBaseEthDomain(name, basenameChain.id)],
+                    args: [formatUnstableEthDomain(name, basenameChain.id)],
                   },
                 ]
               : []),
@@ -236,7 +236,7 @@ export function useRegisterNameCallback(
     error: signatureError ?? registerNameError ?? batchCallsError,
     reverseRecord,
     setReverseRecord,
-    hasExistingBasename,
+    hasExistingUnstablename,
     batchCallsStatus,
     registerNameStatus,
   };

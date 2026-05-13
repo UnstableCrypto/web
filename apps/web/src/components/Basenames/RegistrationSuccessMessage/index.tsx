@@ -2,11 +2,11 @@ import { useAnalytics } from 'apps/web/contexts/Analytics';
 import {
   RegistrationSteps,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import { ButtonVariants } from 'apps/web/src/components/Button/Button';
 import SuccessMessage, {
   SuccessAction,
-} from 'apps/web/src/components/Basenames/shared/SuccessMessage';
+} from 'apps/web/src/components/Unstablenames/shared/SuccessMessage';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useCallback, useState, useMemo } from 'react';
 import { useAccount } from 'wagmi';

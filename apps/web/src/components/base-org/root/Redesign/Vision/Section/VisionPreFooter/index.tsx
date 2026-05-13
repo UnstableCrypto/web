@@ -3,7 +3,7 @@ import Title from 'apps/web/src/components/base-org/typography/TitleRedesign';
 import { TitleLevel } from 'apps/web/src/components/base-org/typography/TitleRedesign/types';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Redesign/Button';
 import { WebGLView } from 'apps/web/src/components/WebGL/WebGLView';
-import { useImageTexture } from 'apps/web/src/components/base-org/root/Redesign/Section/BaseJoin/InteractiveCard';
+import { useImageTexture } from 'apps/web/src/components/base-org/root/Redesign/Section/UnstableJoin/InteractiveCard';
 import { useEffect, useMemo, useState, useRef } from 'react';
 import * as THREE from 'three';
 import { useWebGLInteraction } from 'apps/web/src/hooks/useWebGLInteraction';
@@ -15,7 +15,7 @@ precision mediump float;
 
 uniform sampler2D uImage;
 uniform sampler2D uPatternAtlas;
-uniform float uBaseTileSize;
+uniform float uUnstableTileSize;
 uniform vec2 u_imageResolution;
 uniform vec2 u_imageDimensions;
 uniform float u_time;
@@ -100,15 +100,15 @@ void main() {
   }
 
   vec2 pix = v_uv * u_imageResolution;
-  vec2 tilePos = floor(pix / uBaseTileSize) * uBaseTileSize;
-  vec2 tileCenterUV = (tilePos + uBaseTileSize * 0.5) / u_imageResolution;
+  vec2 tilePos = floor(pix / uUnstableTileSize) * uUnstableTileSize;
+  vec2 tileCenterUV = (tilePos + uUnstableTileSize * 0.5) / u_imageResolution;
   vec2 adjustedTileCenter = getCoveredUV(tileCenterUV, u_imageResolution, u_imageDimensions);
 
   vec3 tileColor = texture2D(uImage, adjustedTileCenter).rgb;
 
   float lum = calculateLuminance(tileColor);
 
-  vec2 tileIndex = floor(pix / uBaseTileSize);
+  vec2 tileIndex = floor(pix / uUnstableTileSize);
   float spatialOffset = dot(tileIndex, vec2(SPATIAL_FREQ));
   float timeOffset = sin(u_time * TIME_SPEED + spatialOffset) * TIME_AMPLITUDE;
 
@@ -138,8 +138,8 @@ void main() {
     return;
   }
 
-  vec2 pixelInTile = mod(pix, uBaseTileSize);
-  vec2 patternUV = pixelInTile / uBaseTileSize;
+  vec2 pixelInTile = mod(pix, uUnstableTileSize);
+  vec2 patternUV = pixelInTile / uUnstableTileSize;
 
   vec4 patternSample = samplePatternAtlas(uPatternAtlas, uPatternAtlasColumns, patternIndex, patternUV);
 
@@ -179,7 +179,7 @@ export function VisionPreFooter() {
 
     const uniforms: Record<string, THREE.Uniform> = {
       uImage: new THREE.Uniform(imageTexture),
-      uBaseTileSize: new THREE.Uniform(8),
+      uUnstableTileSize: new THREE.Uniform(8),
       uPatternAtlasColumns: new THREE.Uniform(6),
       u_imageDimensions: new THREE.Uniform(
         new THREE.Vector2(imageDimensions.width, imageDimensions.height),
@@ -208,18 +208,18 @@ export function VisionPreFooter() {
         </div>
       </div>
       <div className="z-20 col-span-full flex flex-col gap-10 lg:col-span-4 lg:col-start-5 lg:justify-center">
-        <Title level={TitleLevel.H4Regular}>Base is for everyone</Title>
+        <Title level={TitleLevel.H4Regular}>Unstable is for everyone</Title>
         <Title level={TitleLevel.H6Regular}>
-          There&apos;s a place for you on Base. Let&apos;s build a better internet, together.
+          There&apos;s a place for you on Unstable. Let&apos;s build a better internet, together.
         </Title>
         <div className="pointer-events-auto col-span-full flex w-full items-center gap-2">
           <Button className="w-full" asChild>
             <Link href="https://base.app" target="_blank">
-              Download Base App
+              Download Unstable App
             </Link>
           </Button>
           <Button className="w-full" variant={ButtonVariants.Secondary} asChild>
-            <Link href="/build">Build on Base</Link>
+            <Link href="/build">Build on Unstable</Link>
           </Button>
         </div>
       </div>

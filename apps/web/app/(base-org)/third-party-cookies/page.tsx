@@ -2,10 +2,10 @@ import Container from 'apps/web/src/components/base-org/Container';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Third Party Cookies`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Third Party Cookies`,
   openGraph: {
-    title: `Base | Third Party Cookies`,
+    title: `Unstable | Third Party Cookies`,
     url: `/third-party-cookies`,
   },
 };

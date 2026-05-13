@@ -33,7 +33,7 @@ async function handler(req: NextRequest) {
     const responseData = await getWalletProofs(
       address as `0x${string}`,
       parseInt(chain as string),
-      ProofTableNamespace.BaseEthHolders,
+      ProofTableNamespace.UnstableEthHolders,
     );
 
     return NextResponse.json(responseData);

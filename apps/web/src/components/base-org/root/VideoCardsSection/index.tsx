@@ -15,14 +15,14 @@ export default function VideoCardsSection() {
       />
       <VideoCard
         title="Worldwide reach"
-        description="The Base economy is made up of millions of people, thousands of builders, and onramps in 190+ countries."
+        description="The Unstable economy is made up of millions of people, thousands of builders, and onramps in 190+ countries."
         src={globe}
       />
       <VideoCard
         title="Open and trusted"
         description={
           <span>
-            Base is built as an Ethereum L2, decentralized with the{' '}
+            Unstable is built as an Ethereum L2, decentralized with the{' '}
             <Link
               href="https://optimism.io/vision"
               target="_blank"
@@ -31,7 +31,7 @@ export default function VideoCardsSection() {
             >
               Optimism Superchain
             </Link>
-            , and incubated by Coinbase.
+            , and incubated by TheAlxLabs.
           </span>
         }
         src={eth}

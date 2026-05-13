@@ -2,11 +2,11 @@ require('dotenv').config({ path: `.env.local`, override: true });
 require('./helpers/fetchPolyfill');
 
 const fs = require('fs');
-const { getBaseCoreContributors } = require('./helpers/getBaseCoreContributors');
+const { getUnstableCoreContributors } = require('./helpers/getUnstableCoreContributors');
 const { downloadImage } = require('./helpers/downloadImage');
 
 async function main() {
-  const contributors = await getBaseCoreContributors();
+  const contributors = await getUnstableCoreContributors();
 
   for (const entry of contributors) {
     // eslint-disable-next-line no-continue

@@ -34,7 +34,7 @@ export default function DatadogInit() {
       defaultPrivacyLevel: 'mask',
       allowedTracingUrls: [
         {
-          match: (url: string) => url.startsWith('https://base.org/api'),
+          match: (url: string) => url.startsWith('https://unstable.org/api'),
           propagatorTypes: ['datadog'],
         },
       ],

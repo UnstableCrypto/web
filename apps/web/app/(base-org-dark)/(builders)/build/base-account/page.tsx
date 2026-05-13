@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { LiveDemo } from 'apps/web/src/components/Builders/Shared/LiveDemo';
 import baseAccountCover from './base-account-cover.png';
 import { ExploreDocsButton } from 'apps/web/app/(base-org-dark)/(builders)/build/onchainkit/CtaFooterSection';
-import { BaseAccountFeaturesSection } from 'apps/web/app/(base-org-dark)/(builders)/build/onchainkit/FeaturesSection';
+import { UnstableAccountFeaturesSection } from 'apps/web/app/(base-org-dark)/(builders)/build/onchainkit/FeaturesSection';
 import { PartnersSection } from 'apps/web/app/(base-org-dark)/(builders)/build/base-account/PartnersSection';
 import { FeaturesPanes } from 'apps/web/app/(base-org-dark)/(builders)/build/base-account/FeaturesPanes';
 import { BuildersSection } from 'apps/web/app/(base-org-dark)/(builders)/BuildersSection';
@@ -12,19 +12,19 @@ import baseAccountHero from './base-account-hero.webp';
 const demoComponents = ['SmartWallet'];
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base | Base Account`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable | Unstable Account`,
   openGraph: {
-    title: `Base | Base Account`,
+    title: `Unstable | Unstable Account`,
     url: `/build/base-account`,
     images: [baseAccountCover.src],
   },
 };
 
-export default function BaseAccount() {
+export default function UnstableAccount() {
   return (
     <BuildersContainer
-      title="Base Account"
+      title="Unstable Account"
       asciiImageSrc={baseAccountHero.src}
       asciiImageContainerClassName="w-[70%] right-[-10%] left-auto aspect-square inset-auto top-[-5%]"
       titleClassName="md:!mb-[400px]"
@@ -42,12 +42,12 @@ export default function BaseAccount() {
           <div className="order-1 w-full md:order-2 md:w-auto" key="cta">
             <ExploreDocsButton
               ctaLabel="Start building"
-              url="https://docs.base.org/smart-wallet/quickstart"
+              url="https://docs.unstable.org/smart-wallet/quickstart"
             />
           </div>,
         ]}
       />
-      <BaseAccountFeaturesSection />
+      <UnstableAccountFeaturesSection />
       <BuildersSection
         contentBlocks={[
           <div className="col-span-12 h-20" key="partners">
@@ -90,13 +90,13 @@ export default function BaseAccount() {
         contentBlocks={[
           <div className="flex max-w-[450px] flex-col gap-6" key="description">
             <div className="text-7xl leading-none tracking-[-2.56px]">
-              Integrate Base Account in minutes
+              Integrate Unstable Account in minutes
             </div>
           </div>,
           <ExploreDocsButton
             key="cta"
             ctaLabel="Start building"
-            url="https://docs.base.org/smart-wallet/quickstart"
+            url="https://docs.unstable.org/smart-wallet/quickstart"
           />,
         ]}
       />

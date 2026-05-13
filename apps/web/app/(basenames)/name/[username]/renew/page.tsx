@@ -1,7 +1,7 @@
 import ErrorsProvider from 'apps/web/contexts/Errors';
-import RenewalFlow from 'apps/web/src/components/Basenames/RenewalFlow';
+import RenewalFlow from 'apps/web/src/components/Unstablenames/RenewalFlow';
 import { redirectIfNameDoesNotExist } from 'apps/web/src/utils/redirectIfNameDoesNotExist';
-import { formatDefaultUsername, isBasenameRenewalsKilled } from 'apps/web/src/utils/usernames';
+import { formatDefaultUsername, isUnstablenameRenewalsKilled } from 'apps/web/src/utils/usernames';
 import { notFound } from 'next/navigation';
 
 type PageProps = {
@@ -14,7 +14,7 @@ export default async function Page(props: PageProps) {
   const name = decodedUsername.split('.')[0];
   const formattedName = await formatDefaultUsername(name);
 
-  if (isBasenameRenewalsKilled) {
+  if (isUnstablenameRenewalsKilled) {
     return notFound();
   }
 

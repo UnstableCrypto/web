@@ -22,7 +22,7 @@ const baseConfig = configure()
   })
   // Add the network with the actual port in a custom setup
   .withNetwork({
-    name: 'Base Mainnet',
+    name: 'Unstable Mainnet',
     chainId: base.id,
     symbol: 'ETH',
     // placeholder for the actual rpcUrl, which is auto injected by the node fixture

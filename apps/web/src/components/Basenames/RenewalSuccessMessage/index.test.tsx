@@ -4,7 +4,7 @@
 
 import { render, screen, fireEvent } from '@testing-library/react';
 import RenewalSuccessMessage from './index';
-import { RenewalSteps } from 'apps/web/src/components/Basenames/RenewalContext';
+import { RenewalSteps } from 'apps/web/src/components/Unstablenames/RenewalContext';
 
 // Mock variables that can be changed per test
 const mockRedirectToProfile = jest.fn();
@@ -15,7 +15,7 @@ let mockExpirationDate: string | undefined = '01/15/2026';
 let mockLoadingExpirationDate = false;
 
 // Mock the RenewalContext
-jest.mock('apps/web/src/components/Basenames/RenewalContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/RenewalContext', () => ({
   RenewalSteps: {
     Form: 'form',
     Pending: 'pending',
@@ -51,7 +51,7 @@ type MockAction = {
 };
 
 // Mock the SuccessMessage component
-jest.mock('apps/web/src/components/Basenames/shared/SuccessMessage', () => ({
+jest.mock('apps/web/src/components/Unstablenames/shared/SuccessMessage', () => ({
   __esModule: true,
   default: ({
     title,

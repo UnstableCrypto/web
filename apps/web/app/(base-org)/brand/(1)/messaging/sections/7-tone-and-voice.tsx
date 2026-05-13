@@ -87,7 +87,7 @@ const sectionContent: ListGridContent = {
             Millions of builders are already creating what they love. Tools, apps, communities,
             movements.
           </span>
-          <span>Base is for everyone.</span>
+          <span>Unstable is for everyone.</span>
         </Text>
       </div>
       <div className="grid pt-8 md:grid-cols-2 md:gap-8 md:pt-12">

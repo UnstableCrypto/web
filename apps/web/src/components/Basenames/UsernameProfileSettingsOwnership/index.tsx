@@ -1,11 +1,11 @@
 'use client';
 import classNames from 'classnames';
 import { useCallback, useState } from 'react';
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import Label from 'apps/web/src/components/Label';
-import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal';
-import ProfileTransferOwnershipProvider from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
+import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal';
+import ProfileTransferOwnershipProvider from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context';
 import WalletIdentity from 'apps/web/src/components/WalletIdentity';
 
 const settingTabClass = classNames(

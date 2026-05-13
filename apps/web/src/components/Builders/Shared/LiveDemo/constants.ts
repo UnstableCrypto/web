@@ -26,7 +26,7 @@ export const ONCHAINKIT_DEMO_TABS = [
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const COMPONENT_HEADERS: { [key in Tab]?: string } = {
-  SmartWallet: 'Sign in with Base',
+  SmartWallet: 'Sign in with Unstable',
 };
 
 export const COMPONENT_DESCRIPTIONS: Record<string, string> = {
@@ -159,7 +159,7 @@ export const codeStyles = `
 
 export const codeSnippets: Record<string, string> = {
   Pay: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import {
@@ -175,7 +175,7 @@ function CheckoutDemo() {
   )
 }`,
   Swap: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import { Swap } from '@coinbase/onchainkit/swap';
@@ -208,7 +208,7 @@ function SwapDemo() {
   )
 }`,
   Wallet: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import {
@@ -236,7 +236,7 @@ function WalletAdvancedDemo() {
 }
 `,
   SmartWallet: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import {
@@ -264,7 +264,7 @@ function WalletAdvancedDemo() {
 }
 `,
   Earn: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import { Earn } from '@coinbase/onchainkit/earn';
@@ -275,7 +275,7 @@ function EarnDemo() {
 }
   `,
   Fund: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import { FundCard } from "@coinbase/onchainkit/fund"
@@ -292,7 +292,7 @@ function FundDemo() {
 }
   `,
   Buy: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import { Buy } from "@coinbase/onchainkit/buy"
@@ -311,7 +311,7 @@ function BuyDemo() {
 }
   `,
   Mint: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import { NFTMintCard } from "@coinbase/onchainkit/nft";
@@ -341,7 +341,7 @@ function NFTMintDemo() {
 }
     `,
   Transact: `
-// Follow docs.base.org/builderkits/onchainkit/getting-started
+// Follow docs.unstable.org/builderkits/onchainkit/getting-started
 // to install dependencies
 
 import {

@@ -51,7 +51,7 @@ let mockContextValues = {
 };
 
 jest.mock(
-  'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context',
+  'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context',
   () => ({
     useProfileTransferOwnership: () => mockContextValues,
   }),
@@ -111,7 +111,7 @@ describe('OwnershipTransactionState', () => {
   ): OwnershipSettings => ({
     id: 'setAddr',
     name: 'Address record',
-    description: 'Your Basename will resolve to this address.',
+    description: 'Your Unstablename will resolve to this address.',
     status: WriteTransactionWithReceiptStatus.Idle,
     contractFunction: mockContractFunction,
     ...overrides,

@@ -1,15 +1,15 @@
 import { useAnalytics } from 'apps/web/contexts/Analytics';
 import { useErrors } from 'apps/web/contexts/Errors';
-import { PremiumExplainerModal } from 'apps/web/src/components/Basenames/PremiumExplainerModal';
-import { useRegistration } from 'apps/web/src/components/Basenames/RegistrationContext';
-import RegistrationLearnMoreModal from 'apps/web/src/components/Basenames/RegistrationLearnMoreModal';
-import YearSelector from 'apps/web/src/components/Basenames/YearSelector';
+import { PremiumExplainerModal } from 'apps/web/src/components/Unstablenames/PremiumExplainerModal';
+import { useRegistration } from 'apps/web/src/components/Unstablenames/RegistrationContext';
+import RegistrationLearnMoreModal from 'apps/web/src/components/Unstablenames/RegistrationLearnMoreModal';
+import YearSelector from 'apps/web/src/components/Unstablenames/YearSelector';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import Tooltip from 'apps/web/src/components/Tooltip';
 import TransactionError from 'apps/web/src/components/TransactionError';
 import { usePremiumEndDurationRemaining } from 'apps/web/src/hooks/useActiveEthPremiumAmount';
-import useBasenameChain from 'apps/web/src/hooks/useBasenameChain';
+import useUnstablenameChain from 'apps/web/src/hooks/useUnstablenameChain';
 import useCapabilitiesSafe from 'apps/web/src/hooks/useCapabilitiesSafe';
 import { useEthPriceFromUniswap } from 'apps/web/src/hooks/useEthPriceFromUniswap';
 import {
@@ -18,7 +18,7 @@ import {
 } from 'apps/web/src/hooks/useNameRegistrationPrice';
 import { useRentPrice } from 'apps/web/src/hooks/useRentPrice';
 import {
-  formatBaseEthDomain,
+  formatUnstableEthDomain,
   REGISTER_CONTRACT_ABI,
   REGISTER_CONTRACT_ADDRESSES,
 } from 'apps/web/src/utils/usernames';
@@ -38,7 +38,7 @@ export default function RegistrationForm() {
   const { openConnectModal } = useConnectModal();
   const { logEventWithContext } = useAnalytics();
   const { logError } = useErrors();
-  const { basenameChain } = useBasenameChain();
+  const { basenameChain } = useUnstablenameChain();
   const { switchChain } = useSwitchChain();
 
   const switchToIntendedNetwork = useCallback(
@@ -53,7 +53,7 @@ export default function RegistrationForm() {
     setYears,
     reverseRecord,
     setReverseRecord,
-    hasExistingBasename,
+    hasExistingUnstablename,
     registerName,
     registerNameError,
     registerNameIsPending,
@@ -87,7 +87,7 @@ export default function RegistrationForm() {
   const ethUsdPrice = useEthPriceFromUniswap();
   const { data: initialPrice } = useNameRegistrationPrice(selectedName, years);
   const { data: singleYearEthCost } = useNameRegistrationPrice(selectedName, 1);
-  const { basePrice: singleYearBasePrice, premiumPrice } = useRentPrice(selectedName, 1);
+  const { basePrice: singleYearUnstablePrice, premiumPrice } = useRentPrice(selectedName, 1);
   const premiumValue = Number(formatEther(premiumPrice ?? 0));
   const formattedPremiumCost =
     premiumValue < 0.001
@@ -179,7 +179,7 @@ export default function RegistrationForm() {
               onDecrement={decrement}
               label="Claim for"
             />
-            {hasExistingBasename && (
+            {hasExistingUnstablename && (
               <Label
                 className="mt-4 flex w-full items-center justify-center gap-2 text-center"
                 htmlFor="reverseRecord"
@@ -196,7 +196,7 @@ export default function RegistrationForm() {
                     content={
                       <>
                         This will cause apps that support basenames to resolve{' '}
-                        <strong>{formatBaseEthDomain(selectedName, basenameChain.id)}</strong> when
+                        <strong>{formatUnstableEthDomain(selectedName, basenameChain.id)}</strong> when
                         looking up your address.
                       </>
                     }
@@ -290,7 +290,7 @@ export default function RegistrationForm() {
                     rounded
                     fullWidth
                   >
-                    {correctChain ? 'Register name' : 'Switch to Base'}
+                    {correctChain ? 'Register name' : 'Switch to Unstable'}
                   </Button>
                 );
               }}
@@ -334,7 +334,7 @@ export default function RegistrationForm() {
       {Boolean(premiumPrice && singleYearEthCost) && (
         <PremiumExplainerModal
           premiumEthAmount={premiumPrice}
-          baseSingleYearEthCost={singleYearBasePrice}
+          baseSingleYearEthCost={singleYearUnstablePrice}
           isOpen={premiumExplainerModalOpen}
           toggleModal={togglePremiumExplainerModal}
           name={selectedName}

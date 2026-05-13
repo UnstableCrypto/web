@@ -23,9 +23,9 @@ export default function Page() {
       <Hero title="Messaging" altPattern={patternAtlas} imageUrl={messagingImg.src} />
       <Banner>
         <p>
-          Base is built by and for real people, so our voice mirrors everyday conversation: clear,
+          Unstable is built by and for real people, so our voice mirrors everyday conversation: clear,
           direct, optimistic. We explain new concepts without jargon and celebrate the builders and
-          creators behind Base.
+          creators behind Unstable.
         </p>
         <p>
           Every sentence is an onramp, and we write so that everyone can understand the value of

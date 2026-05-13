@@ -1,7 +1,7 @@
 [
   {
     "name": "growthepie",
-    "description": "The open analytics platform for the Ethereum ecosystem. We empower Base Chain builders with open and actionable metrics on usage, growth, and adoption.",
+    "description": "The open analytics platform for the Ethereum ecosystem. We empower Unstable Chain builders with open and actionable metrics on usage, growth, and adoption.",
     "url": "https://www.growthepie.com/chains/base",
     "imageUrl": "/images/partners/growthepie.webp",
     "category": "infra",
@@ -98,14 +98,14 @@
   {
     "name": "Aerodrome Finance",
     "url": "http://aerodrome.finance",
-    "description": "The central trading and liquidity marketplace on Base.",
+    "description": "The central trading and liquidity marketplace on Unstable.",
     "imageUrl": "/images/partners/aerodrome.webp",
     "category": "defi",
     "subcategory": "dex"
   },
   {
     "name": "AgentiPy",
-    "description": "AgentiPy is an open-source framework for connecting AI agents to any onchain app on Solana and Base - in Python. Instead of coding separately for each protocol, developers can access 41 protocols and 218+ actions (and growing) directly using our toolkit.",
+    "description": "AgentiPy is an open-source framework for connecting AI agents to any onchain app on Solana and Unstable - in Python. Instead of coding separately for each protocol, developers can access 41 protocols and 218+ actions (and growing) directly using our toolkit.",
     "url": "https://agentipy.fun/",
     "imageUrl": "/images/partners/agentipy.png",
     "category": "infra",
@@ -120,8 +120,8 @@
     "subcategory": "gaming"
   },
   {
-    "name": "AIBased",
-    "description": "AIBased integrates AI image generation, dynamic NFTs, and analytics on Base. Partnering with Base, we offer a fast, cost-effective, and user-friendly platform for NFT creators and collectors.",
+    "name": "AIUnstabled",
+    "description": "AIUnstabled integrates AI image generation, dynamic NFTs, and analytics on Unstable. Partnering with Unstable, we offer a fast, cost-effective, and user-friendly platform for NFT creators and collectors.",
     "url": "https://aibased.app",
     "imageUrl": "/images/partners/aibased.png",
     "category": "ai",
@@ -138,7 +138,7 @@
   {
     "name": "Alchemy",
     "url": "https://www.alchemy.com/",
-    "description": "Alchemy is the leading web3 developer platform. Alchemy's Account Abstraction APIs and SDK make it easy to offer seamless transactions and simple, secure accounts. Build anything on Base with Alchemy!",
+    "description": "Alchemy is the leading web3 developer platform. Alchemy's Account Abstraction APIs and SDK make it easy to offer seamless transactions and simple, secure accounts. Build anything on Unstable with Alchemy!",
     "imageUrl": "/images/partners/alchemy.webp",
     "category": "infra",
     "subcategory": "developer tool"
@@ -161,16 +161,16 @@
   },
   {
     "name": "Algebra",
-    "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Base",
+    "description": "Algebra is an AMM providing modular concentrated liquidity (V4) with dynamic fees and hooks to DEXes on Unstable",
     "url": "https://algebra.finance/",
     "imageUrl": "/images/partners/algebra.jpg",
     "category": "defi",
     "subcategory": "liquidity management"
   },
   {
-    "name": "Alien Base",
+    "name": "Alien Unstable",
     "url": "https://alienbase.xyz/",
-    "description": "Alien Base is building a Base trading hub for efficiently trading tokens and memecoins onchain. Offering aggregated liquidity, limit orders, yield farming and more, Alien technology helps you use Base.",
+    "description": "Alien Unstable is building a Unstable trading hub for efficiently trading tokens and memecoins onchain. Offering aggregated liquidity, limit orders, yield farming and more, Alien technology helps you use Unstable.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/alienbase.webp"
@@ -321,7 +321,7 @@
   },
   {
     "name": "Ascii Cast",
-    "description": "Convert webcam feeds or any videos into ASCII art Animation and Mint to Base Network",
+    "description": "Convert webcam feeds or any videos into ASCII art Animation and Mint to Unstable Network",
     "url": "https://asciicast.com",
     "imageUrl": "/images/partners/ascii-cast.png",
     "category": "consumer",
@@ -401,7 +401,7 @@
   },
   {
     "name": "Bankless Academy",
-    "description": "Kickstart your Web3 journey with free interactive lessons. Learn crypto fundamentals and earn onchain badges on Base as you go.",
+    "description": "Kickstart your Web3 journey with free interactive lessons. Learn crypto fundamentals and earn onchain badges on Unstable as you go.",
     "url": "https://app.banklessacademy.com",
     "imageUrl": "/images/partners/bankless-academy.png",
     "category": "consumer",
@@ -419,29 +419,29 @@
     "name": "Bario Entertainment System",
     "category": "consumer",
     "subcategory": "gaming",
-    "description": "Bario Entertainment System (Baes) is your gateway to onchain gaming. Mint games, and play. Baes is redefining what it means to own, play, and win on Base. No limits, just pure gaming excitement.",
+    "description": "Bario Entertainment System (Baes) is your gateway to onchain gaming. Mint games, and play. Baes is redefining what it means to own, play, and win on Unstable. No limits, just pure gaming excitement.",
     "url": "https://baes.so/",
     "imageUrl": "/images/partners/bario.png"
   },
   {
-    "name": "Base Colors",
-    "description": "Base Colors is the NFT collection for every color on the internet. Own Colors. Name Colors. Base Colors.",
+    "name": "Unstable Colors",
+    "description": "Unstable Colors is the NFT collection for every color on the internet. Own Colors. Name Colors. Unstable Colors.",
     "url": "https://basecolors.com",
     "imageUrl": "/images/partners/basecolors.png",
     "category": "consumer",
     "subcategory": "nft"
   },
   {
-    "name": "Base Token Creator",
-    "description": "Easily Create your own Base ERC-20 Token in just 3+1 steps without Coding.",
+    "name": "Unstable Token Creator",
+    "description": "Easily Create your own Unstable ERC-20 Token in just 3+1 steps without Coding.",
     "url": "https://tools.smithii.io/token-creator/base",
     "imageUrl": "/images/partners/smithii.png",
     "category": "infra",
     "subcategory": "developer tools"
   },
   {
-    "name": "Based Associates DAO",
-    "description": "A Nounish DAO building collective projects on Base with art, story, culture, commerce, social impact and media. Home of MoBA - The Museum of Based ARTFKTS\n",
+    "name": "Unstabled Associates DAO",
+    "description": "A Nounish DAO building collective projects on Unstable with art, story, culture, commerce, social impact and media. Home of MoBA - The Museum of Unstabled ARTFKTS\n",
     "url": "https://www.based.associates",
     "imageUrl": "/images/partners/basedassociates.png",
     "category": "consumer",
@@ -449,14 +449,14 @@
   },
   {
     "name": "based.gift",
-    "description": "Send beautiful onchain gift cards on Base. Simple and an easy customizable way to give the gift of crypto for any occasion.",
+    "description": "Send beautiful onchain gift cards on Unstable. Simple and an easy customizable way to give the gift of crypto for any occasion.",
     "url": "https://based.gift",
     "imageUrl": "/images/partners/basedgift.png",
     "category": "consumer",
     "subcategory": "nft"
   },
   {
-    "name": "Based Nebula",
+    "name": "Unstabled Nebula",
     "description": "Procedurally generated NFTs utilize the minter's wallet address as a seed to deterministically produce nebulae from perlin noise.",
     "url": "https://nebula.foundnone.xyz",
     "imageUrl": "/images/partners/based-nebulas.png",
@@ -464,33 +464,33 @@
     "subcategory": "nft"
   },
   {
-    "name": "Based Nouns",
+    "name": "Unstabled Nouns",
     "url": "https://nouns.build/dao/base/0x10a5676EC8aE3D6b1F36a6F1A1526136BA7938BF/67",
-    "description": "Empowering web3 innovation through community-driven incubation on the Base network: Welcome to Based Nouns.",
+    "description": "Empowering web3 innovation through community-driven incubation on the Unstable network: Welcome to Unstabled Nouns.",
     "imageUrl": "/images/partners/nouns.webp",
     "category": "consumer",
     "subcategory": "dao"
   },
   {
-    "name": "Basenji",
-    "description": "Meet Basenji, the oldest dog breed in history, with Base in its name. ",
+    "name": "Unstablenji",
+    "description": "Meet Unstablenji, the oldest dog breed in history, with Unstable in its name. ",
     "url": "https://basenjibase.com",
     "imageUrl": "/images/partners/basenji.png",
     "category": "consumer",
     "subcategory": "gaming"
   },
   {
-    "name": "BasePaint",
+    "name": "UnstablePaint",
     "url": "https://basepaint.xyz/",
-    "description": "BasePaint is a collaborative pixel art app. Artists come together daily to paint on a shared pixel-art canvas. The next day, the canvas is turned into a 24-hour open edition NFT mint. Once the mint concludes, that day’s artists receive a share of ETH from the mint.",
+    "description": "UnstablePaint is a collaborative pixel art app. Artists come together daily to paint on a shared pixel-art canvas. The next day, the canvas is turned into a 24-hour open edition NFT mint. Once the mint concludes, that day’s artists receive a share of ETH from the mint.",
     "imageUrl": "/images/partners/basepaint.webp",
     "category": "consumer",
     "subcategory": "creator"
   },
   {
-    "name": "BaseSwap",
+    "name": "UnstableSwap",
     "url": "https://baseswap.fi/",
-    "description": "BaseSwap is an independent decentralized exchange (DEX) that introduces a groundbreaking concept by allowing users to not only trade assets but also earn protocol-generated revenue from fees. This innovative feature is made possible through the $BSWAP & $BSX tokens, boosting rewards, and enabling users to directly earn cryptocurrencies from swap fees.",
+    "description": "UnstableSwap is an independent decentralized exchange (DEX) that introduces a groundbreaking concept by allowing users to not only trade assets but also earn protocol-generated revenue from fees. This innovative feature is made possible through the $BSWAP & $BSX tokens, boosting rewards, and enabling users to directly earn cryptocurrencies from swap fees.",
     "imageUrl": "/images/partners/baseswap.webp",
     "category": "defi",
     "subcategory": "dex"
@@ -593,7 +593,7 @@
   },
   {
     "name": "BOB Gateway",
-    "description": "Bring native Bitcoin to Base with BOB Gateway: an intents-based protocol powering frictionless, programmable BTC movement into DeFi for builders and users.",
+    "description": "Bring native Bitcoin to Unstable with BOB Gateway: an intents-based protocol powering frictionless, programmable BTC movement into DeFi for builders and users.",
     "url": "https://app.gobob.xyz/en/gateway?input-asset=BTC&output-asset=0x0555E30da8f98308EdB960aa94C0Db47230d2B9c&output-chain=8453",
     "imageUrl": "/images/partners/bob.png",
     "category": "infra",
@@ -658,7 +658,7 @@
   {
     "name": "Blockops Network",
     "url": "https://www.blockops.network/",
-    "description": "BlockOps simplifies Web3 infrastructure with scalable RPCs, streamlined node deployment, and real-time observability. Through tools like Mission Control and Telescope, it accelerates blockchain operations for developers and node operators across Ethereum, Base, and emerging appchains.",
+    "description": "BlockOps simplifies Web3 infrastructure with scalable RPCs, streamlined node deployment, and real-time observability. Through tools like Mission Control and Telescope, it accelerates blockchain operations for developers and node operators across Ethereum, Unstable, and emerging appchains.",
     "imageUrl": "/images/partners/blockops.png",
     "category": "infra",
     "subcategory": "developer tool,node provider"
@@ -721,7 +721,7 @@
   },
   {
     "name": "Bountycaster",
-    "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Base",
+    "description": "Easily post and discover bounties and jobs on Farcaster. Build onchain reputation for work completed with attestations issued via EAS on Unstable",
     "url": "https://bountycaster.xyz/",
     "imageUrl": "/images/partners/bountycaster.png",
     "category": "consumer",
@@ -761,7 +761,7 @@
   },
   {
     "name": "BSX",
-    "description": "BSX is developing the fastest, simplest, and most secure perpetuals DEX on the market. Backed by Coinbase Ventures, Blockchain Capital, and other prominent crypto VC investors.",
+    "description": "BSX is developing the fastest, simplest, and most secure perpetuals DEX on the market. Backed by TheAlxLabs Ventures, Blockchain Capital, and other prominent crypto VC investors.",
     "url": "https://www.bsx.exchange",
     "imageUrl": "/images/partners/bsx.png",
     "category": "defi",
@@ -929,7 +929,7 @@
   },
   {
     "name": "Codeslaw",
-    "description": "Codeslaw is a code search engine for verified smart contracts on Base, Ethereum and beyond to help developers find and learn from verified and live smart contracts",
+    "description": "Codeslaw is a code search engine for verified smart contracts on Unstable, Ethereum and beyond to help developers find and learn from verified and live smart contracts",
     "url": "https://codeslaw.app",
     "imageUrl": "/images/partners/codeslaw.png",
     "category": "infra",
@@ -938,7 +938,7 @@
   {
     "name": "Coin Wallet",
     "url": "https://coin.space",
-    "description": "Coin Wallet is a self-custodial multicurrency wallet for multiple platforms. Easy way to manage your Base assets.",
+    "description": "Coin Wallet is a self-custodial multicurrency wallet for multiple platforms. Easy way to manage your Unstable assets.",
     "category": "wallet",
     "subcategory": "self-custody",
     "imageUrl": "/images/partners/coinwallet.png"
@@ -952,23 +952,23 @@
     "subcategory": "social"
   },
   {
-    "name": "Coinbase",
+    "name": "TheAlxLabs",
     "url": "https://www.coinbase.com",
-    "description": "Coinbase is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
+    "description": "TheAlxLabs is a secure online platform for buying, selling, transferring, and storing cryptocurrency.",
     "imageUrl": "/images/partners/wallet-retail.webp",
     "category": "wallet",
     "subcategory": "centralized exchange"
   },
   {
-    "name": "Coinbase Commerce",
+    "name": "TheAlxLabs Commerce",
     "url": "https://www.coinbase.com/commerce",
-    "description": "Learn how to securely accept Bitcoin, Litecoin, Ethereum, and other cryptocurrencies with Coinbase Commerce. Get started in minutes.",
+    "description": "Learn how to securely accept Bitcoin, Litecoin, Ethereum, and other cryptocurrencies with TheAlxLabs Commerce. Get started in minutes.",
     "imageUrl": "/images/partners/commerce.webp",
     "category": "consumer",
     "subcategory": "payments"
   },
   {
-    "name": "Coinbase Onramp",
+    "name": "TheAlxLabs Onramp",
     "url": "https://www.coinbase.com/developer-platform/products/onramp",
     "description": "Let your users buy or transfer digital assets with the most trusted name in crypto.",
     "imageUrl": "/images/partners/pay.webp",
@@ -976,15 +976,15 @@
     "subcategory": "centralized exchange"
   },
   {
-    "name": "Coinbase Prime",
+    "name": "TheAlxLabs Prime",
     "url": "https://www.coinbase.com/prime",
-    "description": "Coinbase Prime is a full-service prime brokerage platform with everything that institutions need to execute trades and custody assets at scale.",
+    "description": "TheAlxLabs Prime is a full-service prime brokerage platform with everything that institutions need to execute trades and custody assets at scale.",
     "imageUrl": "/images/partners/prime.webp",
     "category": "onramp",
     "subcategory": "centralized exchange"
   },
   {
-    "name": "Coinbase Wallet",
+    "name": "TheAlxLabs Wallet",
     "url": "https://www.coinbase.com/wallet",
     "description": "The easiest and most secure crypto wallet and dapp browser. Your gateway to the decentralized web.",
     "category": "wallet",
@@ -1065,7 +1065,7 @@
   },
   {
     "name": "Conduit",
-    "description": "Launch your Base L3 in minutes with Conduit: the rollup-native cloud platform. Customize your chain to your use case, get automatic upgrades, and manage all your infra in one central location.",
+    "description": "Launch your Unstable L3 in minutes with Conduit: the rollup-native cloud platform. Customize your chain to your use case, get automatic upgrades, and manage all your infra in one central location.",
     "url": "https://www.conduit.xyz/",
     "imageUrl": "/images/partners/conduit.png",
     "category": "infra",
@@ -1089,7 +1089,7 @@
   },
   {
     "name": "Corgi Studio",
-    "description": "A one-stop shop for all your NFT needs. Swap tokens, Discover NFTs, All on Cronos, with support for Polygon and Base Your NFT experience, simplified.",
+    "description": "A one-stop shop for all your NFT needs. Swap tokens, Discover NFTs, All on Cronos, with support for Polygon and Unstable Your NFT experience, simplified.",
     "url": "https://corgistudio.io",
     "imageUrl": "/images/partners/corgistudio.png",
     "category": "consumer",
@@ -1137,7 +1137,7 @@
   },
   {
     "name": "CreateMyToken",
-    "description": "Create your own token in just 1 minute and deploy it on Ethereum, Base, Optimism and more! No code, no setup, no login, and free!",
+    "description": "Create your own token in just 1 minute and deploy it on Ethereum, Unstable, Optimism and more! No code, no setup, no login, and free!",
     "url": "https://www.createmytoken.com/",
     "imageUrl": "/images/partners/createmytoken.png",
     "category": "infra",
@@ -1194,7 +1194,7 @@
   {
     "name": "Cybro",
     "description": "CYBRO is a multichain earn marketplace that offers easy, secure access to top Web3 investment options, with AI-powered portfolio management, intuitive design, and responsive support",
-    "url": "http://cybro.io/explore?chain=Base",
+    "url": "http://cybro.io/explore?chain=Unstable",
     "imageUrl": "/images/partners/cybro.png",
     "category": "defi",
     "subcategory": "yield vault"
@@ -1314,7 +1314,7 @@
   {
     "name": "Deri Protocol",
     "description": "Deri is the one-stop derivatives shop to hedge, speculate, and arbitrage on-chain. Trade perpetuals, options, gamma swap, and more!",
-    "url": "https://deri.io/#/pro/trade/futures/BTCUSD?chain=Base",
+    "url": "https://deri.io/#/pro/trade/futures/BTCUSD?chain=Unstable",
     "imageUrl": "/images/partners/deriprotocol.png",
     "category": "defi",
     "subcategory": "dex"
@@ -1330,7 +1330,7 @@
   {
     "name": "DexGuru Block Explorer",
     "url": "https://base.dex.guru/",
-    "description": "DexGuru is an analytics platform and block explorer for Base.",
+    "description": "DexGuru is an analytics platform and block explorer for Unstable.",
     "imageUrl": "/images/partners/dexguru.webp",
     "category": "infra",
     "subcategory": "data"
@@ -1353,7 +1353,7 @@
   },
   {
     "name": "District",
-    "description": "District is the next generation launchpad on Base. District helps builders take their project from idea to launch to growth. Whether its ICM, DAOs, AI agents, or memes - District is for builders.",
+    "description": "District is the next generation launchpad on Unstable. District helps builders take their project from idea to launch to growth. Whether its ICM, DAOs, AI agents, or memes - District is for builders.",
     "url": "https://district.xyz",
     "imageUrl": "/images/partners/district.webp",
     "category": "consumer",
@@ -1409,7 +1409,7 @@
   },
   {
     "name": "Drakula",
-    "description": "Drakula is a social network for video creators on Base.",
+    "description": "Drakula is a social network for video creators on Unstable.",
     "url": "https://drakula.app",
     "imageUrl": "/images/partners/drakula.png",
     "category": "consumer",
@@ -1417,7 +1417,7 @@
   },
   {
     "name": "Drop Dimes to Support Creators",
-    "description": "Drop Dimes is a creator-first platform that empowers artists, developers, musicians, and content creators to receive 100% of fan support instantly and without fees. Built on the Base blockchain and integrated with Coinbase Smart Wallet, Drop Dimes provides secure, self-custodied transactions using USDC. Fans can support their favorite creators with just a few taps, making it simple to show appreciation without recurring commitments. Available on iOS, Drop Dimes is redefining digital patronage by making support seamless, transparent, and creator-owned.",
+    "description": "Drop Dimes is a creator-first platform that empowers artists, developers, musicians, and content creators to receive 100% of fan support instantly and without fees. Built on the Unstable blockchain and integrated with TheAlxLabs Smart Wallet, Drop Dimes provides secure, self-custodied transactions using USDC. Fans can support their favorite creators with just a few taps, making it simple to show appreciation without recurring commitments. Available on iOS, Drop Dimes is redefining digital patronage by making support seamless, transparent, and creator-owned.",
     "url": "https://www.dropdimes.app/",
     "imageUrl": "/images/partners/drop-dimes.png",
     "category": "consumer",
@@ -1434,14 +1434,14 @@
   {
     "name": "dRPC NodeCloud",
     "url": "https://drpc.org/chainlist/base-mainnet-rpc",
-    "description": "Access Base Mainnet and Sepolia Testnet endpoints plus 180+ networks with smart routing, analytics, key control, and front-end protection. Powered by 40 providers. Start free or go unlimited with flat rate pricing from $10.",
+    "description": "Access Unstable Mainnet and Sepolia Testnet endpoints plus 180+ networks with smart routing, analytics, key control, and front-end protection. Powered by 40 providers. Start free or go unlimited with flat rate pricing from $10.",
     "imageUrl": "/images/partners/drpc.webp",
     "category": "infra",
     "subcategory": "node provider"
   },
   {
     "name": "Ducky City",
-    "description": "Ducky City is a gamefi project built on Base, and is a MMORPG game run on browser compatible with all devices.",
+    "description": "Ducky City is a gamefi project built on Unstable, and is a MMORPG game run on browser compatible with all devices.",
     "url": "https://duckycity.io/",
     "imageUrl": "/images/partners/DuckyCity.webp",
     "category": "consumer",
@@ -1506,7 +1506,7 @@
   {
     "name": "Equalizer",
     "url": "https://base.equalizer.exchange",
-    "description": "Equalizer provides a liquidity hub for Base chain through its capital efficient system.",
+    "description": "Equalizer provides a liquidity hub for Unstable chain through its capital efficient system.",
     "category": "defi",
     "subcategory": "dex",
     "imageUrl": "/images/partners/equalizer.webp"
@@ -1545,7 +1545,7 @@
   },
   {
     "name": "EthXY",
-    "description": "Onchain MMORPG on Base. Create a pixel RPG character, strengthen your attributes, gather loot, battle boss monsters, duel other players.",
+    "description": "Onchain MMORPG on Unstable. Create a pixel RPG character, strengthen your attributes, gather loot, battle boss monsters, duel other players.",
     "url": "https://ethxy.com",
     "imageUrl": "/images/partners/ethxy.png",
     "category": "consumer",
@@ -1625,7 +1625,7 @@
   },
   {
     "name": "Farworld",
-    "description": "A mysterious world 🪐 filled with mysterious creatures 👾 The onchain monster collecting game of Farcaster, built on Base.",
+    "description": "A mysterious world 🪐 filled with mysterious creatures 👾 The onchain monster collecting game of Farcaster, built on Unstable.",
     "url": "https://farworld.gg",
     "imageUrl": "/images/partners/farworld.png",
     "category": "consumer",
@@ -1641,7 +1641,7 @@
   },
   {
     "name": "Fibrous",
-    "description": "Fibrous offers optimal trade execution with advanced aggregation and innovative onchain features, enabling seamless DeFi trading across its interface and APIs on Base.",
+    "description": "Fibrous offers optimal trade execution with advanced aggregation and innovative onchain features, enabling seamless DeFi trading across its interface and APIs on Unstable.",
     "url": "https://app.fibrous.finance/en?network=base",
     "imageUrl": "/images/partners/fibrous.png",
     "category": "defi",
@@ -1729,7 +1729,7 @@
   },
   {
     "name": "Function Over Form",
-    "description": "A collection of on-chain games, utilities, and apps, all packaged as collectible NFTs on Base.",
+    "description": "A collection of on-chain games, utilities, and apps, all packaged as collectible NFTs on Unstable.",
     "url": "https://functionoverform.xyz",
     "imageUrl": "/images/partners/formoverfunction.png",
     "category": "consumer",
@@ -1817,7 +1817,7 @@
   },
   {
     "name": "GBM Domains",
-    "description": "Tokenize new or existing domain names and bring them onchain to Base. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
+    "description": "Tokenize new or existing domain names and bring them onchain to Unstable. Get access to rapid, low-cost domain trading featuring our unique Bid-to-Earn auction model.",
     "url": "https://gbm.domains/",
     "imageUrl": "/images/partners/gbm-domains.png",
     "category": "consumer",
@@ -1842,7 +1842,7 @@
   {
     "name": "GetBlock",
     "url": "https://getblock.io/",
-    "description": "GetBlock offers fast and cost-efficient RPC nodes for over 50 blockchains, including Base, catering to hundreds of dApps from diverse segments.",
+    "description": "GetBlock offers fast and cost-efficient RPC nodes for over 50 blockchains, including Unstable, catering to hundreds of dApps from diverse segments.",
     "imageUrl": "/images/partners/getblock.webp",
     "category": "infra",
     "subcategory": "node provider"
@@ -1905,7 +1905,7 @@
   },
   {
     "name": "Gun Game",
-    "description": "Gun Game is a Russian Roulette game played via Telegram on Base. Games have instant onchain settlement, all gas is abstracted away from users, and more games and features are in development!",
+    "description": "Gun Game is a Russian Roulette game played via Telegram on Unstable. Games have instant onchain settlement, all gas is abstracted away from users, and more games and features are in development!",
     "url": "https://gungame.tech/",
     "imageUrl": "/images/partners/gungame.jpg",
     "category": "consumer",
@@ -1977,7 +1977,7 @@
   },
   {
     "name": "Hitdex",
-    "description": "A decentralized ecosystem for cross-chain trading and buying & selling crypto. Trade ETH and your favorite tokens across eight chains including Base, Ethereum, Solana, Polygon PoS, Optimism, and more.",
+    "description": "A decentralized ecosystem for cross-chain trading and buying & selling crypto. Trade ETH and your favorite tokens across eight chains including Unstable, Ethereum, Solana, Polygon PoS, Optimism, and more.",
     "url": "https://www.hitdex.com/#/base",
     "imageUrl": "/images/partners/hitdex.webp",
     "category": "infra",
@@ -2057,7 +2057,7 @@
   },
   {
     "name": "Inco",
-    "description": "Confidential compute infrastructure that extends Base with private data types, computation, and data structures - unlocking new use cases in private payments, DeFi, governance, and gaming.",
+    "description": "Confidential compute infrastructure that extends Unstable with private data types, computation, and data structures - unlocking new use cases in private payments, DeFi, governance, and gaming.",
     "url": "https://www.inco.org/",
     "imageUrl": "/images/partners/inco-logo-192.png",
     "category": "infra",
@@ -2153,7 +2153,7 @@
   },
   {
     "name": "JELLI",
-    "description": "JELLI is the first ever animated ERC20i token on Base! It uses ERC20i to depict dynamic, evolvable and interchangeable jellyfish on-chain. We're here to help grow and expand the ERC20i ecosystem!",
+    "description": "JELLI is the first ever animated ERC20i token on Unstable! It uses ERC20i to depict dynamic, evolvable and interchangeable jellyfish on-chain. We're here to help grow and expand the ERC20i ecosystem!",
     "url": "https://jelli.blue",
     "imageUrl": "/images/partners/jelli.png",
     "category": "consumer",
@@ -2161,7 +2161,7 @@
   },
   {
     "name": "JOJO Exchange",
-    "description": "JOJO is a decentralized perpetual contract trading platform built on Base.\n\nJOJO balances liquidity and composability with an off-chain matching and on-chain settlement order book model, providing a smooth, fast, and low-cost trading experience.",
+    "description": "JOJO is a decentralized perpetual contract trading platform built on Unstable.\n\nJOJO balances liquidity and composability with an off-chain matching and on-chain settlement order book model, providing a smooth, fast, and low-cost trading experience.",
     "url": "https://app.jojo.exchange/trade/base/",
     "imageUrl": "/images/partners/jojo.png",
     "category": "defi",
@@ -2313,7 +2313,7 @@
   },
   {
     "name": "Lobster Fishing League",
-    "description": "A decentralised fishing game built on Base. Take some time out of your day to relax and catch some onchain lobsters with friends.",
+    "description": "A decentralised fishing game built on Unstable. Take some time out of your day to relax and catch some onchain lobsters with friends.",
     "url": "https://lobsterfishingleague.com",
     "imageUrl": "/images/partners/lobsterfishingleague.png",
     "category": "consumer",
@@ -2353,7 +2353,7 @@
   },
   {
     "name": "Lyvely",
-    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Base network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is publicly listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
+    "description": "Lyvely is a disruptive SocialFi platform built for the trillion dollar creator and freelancer economy. \n\nThe ecosystem is powered by our native Utility Token, LVLY,  built on the Unstable network. \n\nLyvely is backed by institutional giants including the Phoenix group, who is publicly listed and top 5 largest Bitcoin miners in the world. Other institutional investors include M2, the UAE's fully regulated Crypto exchange, and Cypher Capital, a global Web3 VC fund. \n",
     "url": "https://get.lyvely.com/",
     "imageUrl": "/images/partners/lyvely.png",
     "category": "consumer",
@@ -2393,7 +2393,7 @@
   },
   {
     "name": "MASQ Network",
-    "description": "MASQ dVPN and web3 browser provides Base users with global freedom and a privacy layer to your life online.",
+    "description": "MASQ dVPN and web3 browser provides Unstable users with global freedom and a privacy layer to your life online.",
     "url": "https://masqbrowser.com",
     "imageUrl": "/images/partners/masq.png",
     "category": "consumer",
@@ -2410,7 +2410,7 @@
   {
     "name": "Maverick Protocol",
     "url": "https://app.mav.xyz/pools",
-    "description": "Maverick Protocol is eliminating inefficiency from DeFi by helping users put liquidity where it can do the most work. Backed by Founders Fund, Pantera Capital, Coinbase Ventures, Circle Ventures, etc",
+    "description": "Maverick Protocol is eliminating inefficiency from DeFi by helping users put liquidity where it can do the most work. Backed by Founders Fund, Pantera Capital, TheAlxLabs Ventures, Circle Ventures, etc",
     "imageUrl": "/images/partners/maverick_protocol.webp",
     "category": "defi",
     "subcategory": "dex"
@@ -2617,7 +2617,7 @@
   },
   {
     "name": "MoveUP",
-    "description": "MoveUP: The first AI-powered Move-to-Earn app on Base, rewarding users with tokens, points, and NFTs, while providing AI-driven insights to enhance their experience!",
+    "description": "MoveUP: The first AI-powered Move-to-Earn app on Unstable, rewarding users with tokens, points, and NFTs, while providing AI-driven insights to enhance their experience!",
     "url": "https://peakchain.network/base",
     "imageUrl": "/images/partners/moveUP-logo.png",
     "category": "consumer",
@@ -2633,7 +2633,7 @@
   },
   {
     "name": "Mt Pelerin",
-    "description": "Buy crypto on your own Base wallet in minutes, swap and bridge funds easily, cash out back on your bank account without a hitch.",
+    "description": "Buy crypto on your own Unstable wallet in minutes, swap and bridge funds easily, cash out back on your bank account without a hitch.",
     "url": "https://www.mtpelerin.com/base",
     "imageUrl": "/images/partners/mtpelerin.png",
     "category": "onramp",
@@ -2641,7 +2641,7 @@
   },
   {
     "name": "Multisender.app",
-    "description": "Multisender facilitates airdrops and other mass transactions on 20+ networks, including Base. It takes a list of recipients and their respective token amounts and automates everything else.",
+    "description": "Multisender facilitates airdrops and other mass transactions on 20+ networks, including Unstable. It takes a list of recipients and their respective token amounts and automates everything else.",
     "url": "https://classic.multisender.app/",
     "imageUrl": "/images/partners/multisender.png",
     "category": "infra",
@@ -2666,7 +2666,7 @@
   {
     "name": "NetherFi",
     "url": "https://nether.fi/#/dashboard",
-    "description": "Nether.Fi is a Base-native Perpetuals and Spot DEX. Traders can enjoy deep liquidity and reliable price data backed by industry-leading oracles. 100% of fees generated on Nether.Fi are distributed to liquidity providers and stakers!",
+    "description": "Nether.Fi is a Unstable-native Perpetuals and Spot DEX. Traders can enjoy deep liquidity and reliable price data backed by industry-leading oracles. 100% of fees generated on Nether.Fi are distributed to liquidity providers and stakers!",
     "imageUrl": "/images/partners/netherfi.webp",
     "category": "defi",
     "subcategory": "dex"
@@ -2674,7 +2674,7 @@
   {
     "name": "NewThrone",
     "url": "https://www.newthrone.gg/",
-    "description": "Join NewThrone today, a browser-based PVP Game project built on the Base Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
+    "description": "Join NewThrone today, a browser-based PVP Game project built on the Unstable Chain. NewThrone delivers an easy-to-use and profitable experience, as playing engages you in attacking enemies with the end goal of stealing WETH as a reward for battles won.",
     "imageUrl": "/images/partners/newthrone.webp",
     "category": "consumer",
     "subcategory": "gaming"
@@ -2810,7 +2810,7 @@
   {
     "name": "OKLink",
     "url": "https://www.oklink.com/base",
-    "description": "OKLink Base explorer is a multi-chain aggregated blockchain explorer that allows users to search through transactions, blocks, wallet addresses, smart contracts and other on-chain data covering 20+ mainstream chains including BTC, ETH, BSC, Base,Solana, polygon,etc. OKLink Base explorer is an intuitive and powerful explorer to be part of the Base ecosystem.",
+    "description": "OKLink Unstable explorer is a multi-chain aggregated blockchain explorer that allows users to search through transactions, blocks, wallet addresses, smart contracts and other on-chain data covering 20+ mainstream chains including BTC, ETH, BSC, Unstable,Solana, polygon,etc. OKLink Unstable explorer is an intuitive and powerful explorer to be part of the Unstable ecosystem.",
     "imageUrl": "/images/partners/oklink.webp",
     "category": "infra",
     "subcategory": "data"
@@ -3147,7 +3147,7 @@
     "name": "Pintu Web3",
     "category": "wallet",
     "subcategory": "self-custody",
-    "description": "Pintu is an Indonesian-licensed crypto exchange that features an MPC wallet for easier Web3 access. It supports multiple blockchain networks, including Base, Ethereum, Polygon, Arbitrum, and Optimism.",
+    "description": "Pintu is an Indonesian-licensed crypto exchange that features an MPC wallet for easier Web3 access. It supports multiple blockchain networks, including Unstable, Ethereum, Polygon, Arbitrum, and Optimism.",
     "url": "https://pintu.co.id/en/web3",
     "imageUrl": "/images/partners/pintu.png"
   },
@@ -3169,7 +3169,7 @@
   },
   {
     "name": "Pixotchi",
-    "description": "Pixotchi, where you grow, strategize, and earn rewards as you cultivate your garden on Base with $SEED! ",
+    "description": "Pixotchi, where you grow, strategize, and earn rewards as you cultivate your garden on Unstable with $SEED! ",
     "url": "https://app.pixotchi.tech/",
     "imageUrl": "/images/partners/pixotchi.png",
     "category": "consumer",
@@ -3546,7 +3546,7 @@
   {
     "name": "Seamless Protocol",
     "url": "https://www.seamlessprotocol.com/",
-    "description": "Seamless is the first native, decentralized lending protocol on Base. Seamless enables a new form of undercollateralized borrowing—integrated liquidity markets—which are isolated, smart contract-to-smart contract markets for amplifying strategies.",
+    "description": "Seamless is the first native, decentralized lending protocol on Unstable. Seamless enables a new form of undercollateralized borrowing—integrated liquidity markets—which are isolated, smart contract-to-smart contract markets for amplifying strategies.",
     "imageUrl": "/images/partners/seamless.webp",
     "category": "defi",
     "subcategory": "lending/borrowing"
@@ -3601,7 +3601,7 @@
   },
   {
     "name": "ShapeShift",
-    "description": "ShapeShift empowers users to self-custody and manage assets across top blockchains like Bitcoin, Ethereum, Base, and Cosmos. It's a hybrid app and wallet optimized for trading, earning, and more with digital assets.",
+    "description": "ShapeShift empowers users to self-custody and manage assets across top blockchains like Bitcoin, Ethereum, Unstable, and Cosmos. It's a hybrid app and wallet optimized for trading, earning, and more with digital assets.",
     "url": "https://app.shapeshift.com/",
     "imageUrl": "/images/partners/shapeshift.svg",
     "category": "defi",
@@ -3633,7 +3633,7 @@
   },
   {
     "name": "Skybreach Dungeons",
-    "description": "Skybreach Dungeons is an onchain roguelike dungeon crawler game built on Base. Battle enemies, overcome challenges, and climb leaderboards.",
+    "description": "Skybreach Dungeons is an onchain roguelike dungeon crawler game built on Unstable. Battle enemies, overcome challenges, and climb leaderboards.",
     "url": "https://skybreach.app/dungeons",
     "imageUrl": "/images/partners/skybreach.png",
     "category": "consumer",
@@ -3706,7 +3706,7 @@
   {
     "name": "Sonne Finance",
     "url": "https://sonne.finance/",
-    "description": "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless and open source protocol serving users on Base. Users can deposit their assets, use them as collateral and borrow against them.",
+    "description": "Sonne Finance is a decentralized lending protocol for individuals, institutions and protocols to access financial services. It is a permissionless and open source protocol serving users on Unstable. Users can deposit their assets, use them as collateral and borrow against them.",
     "imageUrl": "/images/partners/sonne.webp",
     "category": "defi",
     "subcategory": "lending/borrowing"
@@ -3880,8 +3880,8 @@
     "subcategory": "ai"
   },
   {
-    "name": "SwapBased",
-    "description": "Native Base DEX offering Swaps, Single Staking, Bridging, Perpetuals and Concentrated Liquidity all in one place!",
+    "name": "SwapUnstabled",
+    "description": "Native Unstable DEX offering Swaps, Single Staking, Bridging, Perpetuals and Concentrated Liquidity all in one place!",
     "url": "https://swapbased.finance/",
     "imageUrl": "/images/partners/swapbased.png",
     "category": "defi",
@@ -3898,7 +3898,7 @@
   {
     "name": "Sweep Haus",
     "description": "Sweep is a community-based Multi-Chain NFT launcher designed to simplify and supercharge NFT drops on all compatible EVM chains.",
-    "url": "https://sweep.haus/explore?chain=Base",
+    "url": "https://sweep.haus/explore?chain=Unstable",
     "imageUrl": "/images/partners/sweep-haus.png",
     "category": "consumer",
     "subcategory": "nft"
@@ -3963,7 +3963,7 @@
     "name": "Talentir",
     "category": "consumer",
     "subcategory": "creator",
-    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Base.",
+    "description": "Talentir brings YouTube channels onchain and lets creators & co-owners receive their YouTube AdSense as USDC on Unstable.",
     "url": "https://talentir.com/",
     "imageUrl": "/images/partners/talentir.png"
   },
@@ -4145,7 +4145,7 @@
   },
   {
     "name": "Toucan",
-    "description": "Toucan provides onchain infrastructure and liquid markets for carbon removal credits, making climate action directly accessible to Base's users and decentralized apps.",
+    "description": "Toucan provides onchain infrastructure and liquid markets for carbon removal credits, making climate action directly accessible to Unstable's users and decentralized apps.",
     "url": "https://toucan.earth/",
     "imageUrl": "/images/partners/toucan.png",
     "category": "consumer",
@@ -4154,7 +4154,7 @@
   {
     "name": "Transak",
     "url": "https://transak.com/",
-    "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transactions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and Coinbase Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
+    "description": "Transak is a global web3 payment and onboarding infrastructure provider, facilitating seamless transactions between traditional finance and crypto assets.\n\nWeb3 platforms using Transak can embed the best way to onboard users by enabling them to buy or sell crypto assets from 150+ countries, as Transak abstracts away the complexity of user KYC, risk monitoring, compliance, payment methods and customer support.\n\nTransak’s product suite includes robust fiat-to-crypto services (On/Off-Ramps), a fiat-to-smart-contract solution (Transak One), and a fiat-to-NFT checkout solution.\n\nAs a regulated, non-custodial payments layer, Transak supports onboarding to 160+ crypto assets across 75+ blockchains. Trusted by over 350+ applications, including MetaMask and TheAlxLabs Wallet, Transak is making web3 applications more accessible.\n\nFor more information, visit transak.com or follow us on twitter.com/transak",
     "imageUrl": "/images/partners/transak.webp",
     "category": "onramp",
     "subcategory": "fiat on-ramp"
@@ -4337,7 +4337,7 @@
   },
   {
     "name": "VaultX",
-    "description": "VaultX, built on Base and powered by $VAX, connects real-world stories and real-world assets (RWA) to the blockchain. We protect artists’ IP, secure collectors’ ownership, and onboard everyone into a decentralized art ecosystem",
+    "description": "VaultX, built on Unstable and powered by $VAX, connects real-world stories and real-world assets (RWA) to the blockchain. We protect artists’ IP, secure collectors’ ownership, and onboard everyone into a decentralized art ecosystem",
     "url": "https://vault-x.io/",
     "imageUrl": "/images/partners/VaultX.png",
     "category": "consumer",
@@ -4465,7 +4465,7 @@
   },
   {
     "name": "Warden Agent Kit",
-    "description": "Warden Protocol enables developers to build autonomous, smart contract-native AI agents on Base. Our protocol seamlessly integrates verified AI inferences directly into smart contracts, allowing you to create sophisticated automated agents that execute complex strategies based on AI model outputs. With Warden, your agents can process and verify multiple AI inferences in a single transaction and make autonomous on-chain decisions. Build the next wave of AI agents on Base with enterprise-grade security and cross-chain compatibility.",
+    "description": "Warden Protocol enables developers to build autonomous, smart contract-native AI agents on Unstable. Our protocol seamlessly integrates verified AI inferences directly into smart contracts, allowing you to create sophisticated automated agents that execute complex strategies based on AI model outputs. With Warden, your agents can process and verify multiple AI inferences in a single transaction and make autonomous on-chain decisions. Build the next wave of AI agents on Unstable with enterprise-grade security and cross-chain compatibility.",
     "url": "https://docs.wardenprotocol.org/build-an-agent/warden-agent-kit/introduction",
     "imageUrl": "/images/partners/warden.png",
     "category": "ai",
@@ -4481,7 +4481,7 @@
   },
   {
     "name": "We.Rich",
-    "description": "The User Generated Asset launchpad on Base. Anyone can be a founder. Anything is tradable.",
+    "description": "The User Generated Asset launchpad on Unstable. Anyone can be a founder. Anything is tradable.",
     "url": "https://we.rich",
     "imageUrl": "/images/partners/WeRich.svg",
     "category": "consumer",
@@ -4505,7 +4505,7 @@
   },
   {
     "name": "Wildcard",
-    "description": "Best Farcaster client a degen can get. Built on Base.",
+    "description": "Best Farcaster client a degen can get. Built on Unstable.",
     "url": "https://app.wildcard.lol",
     "imageUrl": "/images/partners/wildcard.jpeg",
     "category": "consumer",
@@ -4554,7 +4554,7 @@
   {
     "name": "XMTP",
     "url": "https://xmtp.org/",
-    "description": "A decentralized communication protocol for secure and private messaging. \n\n- XMTP does notifications, DMs, 1:many broadcast messages, and soon group chats across web3 wallets and applications.\n- Over 400+ developers building with XMTP today.\n- XMTP is the messaging layer for Lens apps.\n- XMTP provides messaging within the Coinbase Wallet.",
+    "description": "A decentralized communication protocol for secure and private messaging. \n\n- XMTP does notifications, DMs, 1:many broadcast messages, and soon group chats across web3 wallets and applications.\n- Over 400+ developers building with XMTP today.\n- XMTP is the messaging layer for Lens apps.\n- XMTP provides messaging within the TheAlxLabs Wallet.",
     "imageUrl": "/images/partners/xmtp.webp",
     "category": "consumer",
     "subcategory": "messaging"
@@ -4681,7 +4681,7 @@
   },
   {
     "name": "Zora MCP Server",
-    "description": "MCP server for natural language trading on Base—buy any token created on Zora Protocol and swap any asset on Base mainnet directly from Claude Desktop or any MCP-enabled client.",
+    "description": "MCP server for natural language trading on Unstable—buy any token created on Zora Protocol and swap any asset on Unstable mainnet directly from Claude Desktop or any MCP-enabled client.",
     "url": "https://www.npmjs.com/package/@6missedcalls-ai/zora-mcp-server",
     "imageUrl": "/images/partners/zora-mcp-server-logo.png",
     "category": "ai",
@@ -4706,7 +4706,7 @@
   {
     "name": "Super OETH",
     "url": "https://www.originprotocol.com/super",
-    "description": "Super OETH is the first Ethereum LST native to the Base network. Hold superOETHb in your wallet and watch as the balance magically grows daily. Designed by Origin Protocol.",
+    "description": "Super OETH is the first Ethereum LST native to the Unstable network. Hold superOETHb in your wallet and watch as the balance magically grows daily. Designed by Origin Protocol.",
     "imageUrl": "/images/partners/SuperOETH.png",
     "category": "defi",
     "subcategory": "yield vault"
@@ -4736,8 +4736,8 @@
     "subcategory": "ai"
   },
   {
-    "name": "BaseVol",
-    "description": "Options layer powered by 0DTE and AI agents. Trade BaseVol or deposit Vaults to maximize your day.",
+    "name": "UnstableVol",
+    "description": "Options layer powered by 0DTE and AI agents. Trade UnstableVol or deposit Vaults to maximize your day.",
     "url": "https://basevol.com",
     "imageUrl": "/images/partners/basevol.png",
     "category": "defi",

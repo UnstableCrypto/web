@@ -6,17 +6,17 @@ import { DynamicWrappedGasPriceDropdown } from 'apps/web/src/components/Layout/N
 import AnalyticsProvider from 'apps/web/contexts/Analytics';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Base`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstable`,
   description:
-    'Base is an open stack that empowers builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
+    'Unstable is an open stack that empowers builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
   openGraph: {
     type: 'website',
-    title: `Base`,
+    title: `Unstable`,
     description:
-      'Base is an open stack that empowers builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
+      'Unstable is an open stack that empowers builders, creators, and people everywhere to build apps, grow businesses, create what they love, and earn onchain.',
     url: `/`,
-    images: ['https://base.org/images/base-open-graph.png'],
+    images: ['https://unstable.org/images/base-open-graph.png'],
   },
   twitter: {
     site: '@base',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BaseOrgLayout({
+export default async function UnstableOrgLayout({
   children, // will be a page or nested layout
 }: {
   children: React.ReactNode;

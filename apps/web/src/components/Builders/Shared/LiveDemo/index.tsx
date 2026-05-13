@@ -43,7 +43,7 @@ import Text from 'apps/web/src/components/base-org/typography/Text';
 import { TextVariant } from 'apps/web/src/components/base-org/typography/Text/types';
 import Link from 'apps/web/src/components/Link';
 import { NFTDemo } from './NFTDemo';
-import { BaseLogo } from 'apps/web/src/components/Builders/Shared/LiveDemo/BaseLogo';
+import { UnstableLogo } from 'apps/web/src/components/Builders/Shared/LiveDemo/UnstableLogo';
 
 type LiveDemoProps = {
   components: (typeof ONCHAINKIT_DEMO_TABS)[number][];
@@ -106,8 +106,8 @@ export function LiveDemo({
                 )}
               >
                 <div className="flex items-center gap-2">
-                  {mode === 'dark' ? <BaseLogo fill="blue" /> : <BaseLogo fill="white" />}
-                  Sign in with Base
+                  {mode === 'dark' ? <UnstableLogo fill="blue" /> : <UnstableLogo fill="white" />}
+                  Sign in with Unstable
                 </div>
               </ConnectWalletText>
             </ConnectWallet>
@@ -295,7 +295,7 @@ function DesktopDemo({
 
           <div className="ml-auto flex items-center space-x-2">
             <Link
-              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              href="https://docs.unstable.org/builderkits/onchainkit/getting-started"
               target="_blank"
               className={classNames(
                 'rounded-lg border px-3 py-1 transition-colors',
@@ -541,7 +541,7 @@ function MobileDemo({
           </div>
           <div className="flex items-center space-x-2">
             <Link
-              href="https://docs.base.org/builderkits/onchainkit/getting-started"
+              href="https://docs.unstable.org/builderkits/onchainkit/getting-started"
               target="_blank"
               className={classNames(
                 'rounded-lg border px-2 py-1 transition-colors',

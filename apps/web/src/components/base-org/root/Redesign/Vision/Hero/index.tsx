@@ -28,7 +28,7 @@ export function Hero() {
         as="h2"
         className="col-span-full row-start-2 row-end-3 lg:col-span-5"
       >
-        The old internet made you the product. The new one makes you the owner. Welcome to Base.
+        The old internet made you the product. The new one makes you the owner. Welcome to Unstable.
       </Title>
     </Container>
   );

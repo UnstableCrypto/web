@@ -30,7 +30,7 @@ jobs:
         run: |
           echo "NODE_ENV=development" > .env
           echo "E2E_TEST_SEED_PHRASE=test test test test test test test test test test test junk" >> .env
-          echo "E2E_TEST_FORK_URL=https://mainnet.base.org" >> .env
+          echo "E2E_TEST_FORK_URL=https://mainnet.unstable.org" >> .env
           echo "E2E_TEST_FORK_BLOCK_NUMBER=31397553" >> .env
           echo "E2E_TEST=true" >> .env
           echo "TEST_BASENAME=testbasename123" >> .env

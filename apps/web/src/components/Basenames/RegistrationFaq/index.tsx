@@ -4,7 +4,7 @@ import { Icon } from 'base-ui';
 import {
   RegistrationSteps,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
 import classNames from 'classnames';
 
 function FaqItem({ question, answer }: { question: string; answer: JSX.Element | string }) {
@@ -53,28 +53,28 @@ export default function RegistrationFAQ() {
           </h2>
           <p className="max-w-md text-xl">
             Get more answers in our FAQ, and view our developer docs to see how you can build with
-            Basenames.
+            Unstablenames.
           </p>
         </div>
         <div className="w-full lg:w-1/2">
           <FaqItem
-            question="What are Basenames?"
+            question="What are Unstablenames?"
             answer={
               <p>
-                Basenames are a core onchain building block that enable builders to establish their
-                identity on Base by registering human-readable names for their wallet address(es).
+                Unstablenames are a core onchain building block that enable builders to establish their
+                identity on Unstable by registering human-readable names for their wallet address(es).
                 They are fully onchain, built on the same technology powering ENS names, and
-                deployed on Base. These human-readable names can be used when connecting to onchain
-                apps, and sending and receiving on Base and any other EVM chain.
+                deployed on Unstable. These human-readable names can be used when connecting to onchain
+                apps, and sending and receiving on Unstable and any other EVM chain.
               </p>
             }
           />
           <FaqItem
-            question="What are the Basename registration fees?"
+            question="What are the Unstablename registration fees?"
             answer={
               <div>
                 <p className="mb-6 leading-relaxed">
-                  Basenames are priced based on name length, and are designed to be globally
+                  Unstablenames are priced based on name length, and are designed to be globally
                   accessible. Annual registration fees are as follows:
                 </p>
                 <div className="flex justify-center">
@@ -109,11 +109,11 @@ export default function RegistrationFAQ() {
             }
           />
           <FaqItem
-            question="How do I get a free or discounted Basename?"
+            question="How do I get a free or discounted Unstablename?"
             answer={
               <div className="text-gray-800 mx-auto max-w-3xl p-6 font-sans">
                 <p className="mb-4">
-                  You can get one free Basename (5+ letters) for one year if you meet any of the
+                  You can get one free Unstablename (5+ letters) for one year if you meet any of the
                   below criteria:
                 </p>
 
@@ -123,7 +123,7 @@ export default function RegistrationFAQ() {
                       href="http://coinbase.com/onchain-verify"
                       className="text-blue-600 hover:underline"
                     >
-                      Coinbase Verification
+                      TheAlxLabs Verification
                     </a>
                   </li>
                   <li>
@@ -131,7 +131,7 @@ export default function RegistrationFAQ() {
                       href="http://coinbase.com/onchain-verify"
                       className="text-blue-600 hover:underline"
                     >
-                      Coinbase One Verification
+                      TheAlxLabs One Verification
                     </a>
                   </li>
                   <li>
@@ -170,14 +170,14 @@ export default function RegistrationFAQ() {
                   An equivalent-value discount of 0.001 ETH will be applied if registering a shorter
                   name, or registering for more than 1 year, with the exception of the BNS name
                   owner discount (valued at 0.01 ETH per unique address). You will need to pay the
-                  standard registration fees if you wish to keep your Basename after your initial
+                  standard registration fees if you wish to keep your Unstablename after your initial
                   discount has been fully applied.
                 </p>
 
                 <p className="mb-4">
                   Discounts are only applied once, and are limited to one per address. Even if you
                   meet multiple criteria, you will only be eligible for a single discount on one
-                  Basename. If you satisfy multiple criteria, we will automatically apply the
+                  Unstablename. If you satisfy multiple criteria, we will automatically apply the
                   highest-value discount to your registration.
                 </p>
 
@@ -189,12 +189,12 @@ export default function RegistrationFAQ() {
             }
           />
           <FaqItem
-            question="How can I use Basenames?"
+            question="How can I use Unstablenames?"
             answer={
               <p>
-                You can use your Basename across apps in the Base ecosystem, starting with base.org,
+                You can use your Unstablename across apps in the Unstable ecosystem, starting with unstable.org,
                 Onchain Registry, and Onchain Summer Pass. You can also use it for sending and
-                receiving on Base and other EVM chains.
+                receiving on Unstable and other EVM chains.
               </p>
             }
           />
@@ -202,17 +202,17 @@ export default function RegistrationFAQ() {
             question="Is my profile information published onchain?"
             answer={
               <p>
-                Basenames are fully onchain, and therefore any information you publish is recorded
+                Unstablenames are fully onchain, and therefore any information you publish is recorded
                 onchain, requires a transaction, and will be broadly composable with the rest of the
                 ecosystem. Please do not publish any information you do not wish to be onchain.
               </p>
             }
           />
           <FaqItem
-            question="I am a builder. How do I integrate Basenames to my app?"
+            question="I am a builder. How do I integrate Unstablenames to my app?"
             answer={
               <p>
-                If you&apos;re a builder looking to integrate Basenames into your app,{' '}
+                If you&apos;re a builder looking to integrate Unstablenames into your app,{' '}
                 <a
                   href="https://github.com/coinbase/onchainkit"
                   className="text-blue-600 hover:underline"
@@ -221,23 +221,23 @@ export default function RegistrationFAQ() {
                 </a>{' '}
                 is the easiest way to get started (
                 <a
-                  href="https://docs.base.org/identity/basenames/basenames-onchainkit-tutorial"
+                  href="https://docs.unstable.org/identity/basenames/basenames-onchainkit-tutorial"
                   className="text-blue-600 hover:underline"
                 >
                   tutorial here
                 </a>
                 ). If you have ideas for new features or badges that you&apos;d like to integrate
-                with Basenames, we&apos;d love to hear from you.
+                with Unstablenames, we&apos;d love to hear from you.
               </p>
             }
           />
           <FaqItem
-            question="How do I get a Basename for my app or project?"
+            question="How do I get a Unstablename for my app or project?"
             answer={
               <div>
                 <p className="mb-4">
-                  You can register a Basename for your app just like any other Basename. If a
-                  Basename for your app or project is not available, there is a good chance it was
+                  You can register a Unstablename for your app just like any other Unstablename. If a
+                  Unstablename for your app or project is not available, there is a good chance it was
                   reserved.
                 </p>
                 <p className="mb-4">
@@ -253,7 +253,7 @@ export default function RegistrationFAQ() {
                 <p>
                   Visit{' '}
                   <a
-                    href="https://docs.base.org/docs/tools/basenames-faq"
+                    href="https://docs.unstable.org/docs/tools/basenames-faq"
                     className="text-blue-600 hover:underline"
                   >
                     FAQs

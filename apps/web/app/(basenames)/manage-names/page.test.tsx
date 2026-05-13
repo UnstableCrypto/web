@@ -12,29 +12,29 @@ jest.mock('apps/web/contexts/Errors', () => ({
 }));
 
 // Mock the NamesList component
-jest.mock('apps/web/src/components/Basenames/ManageNames/NamesList', () => ({
+jest.mock('apps/web/src/components/Unstablenames/ManageNames/NamesList', () => ({
   __esModule: true,
   default: () => <div data-testid="names-list">NamesList</div>,
 }));
 
 describe('Manage Names Page', () => {
   describe('metadata', () => {
-    it('should have correct metadataBase', () => {
-      expect(metadata.metadataBase).toEqual(new URL('https://base.org'));
+    it('should have correct metadataUnstable', () => {
+      expect(metadata.metadataUnstable).toEqual(new URL('https://unstable.org'));
     });
 
     it('should have correct title', () => {
-      expect(metadata.title).toBe('Basenames');
+      expect(metadata.title).toBe('Unstablenames');
     });
 
     it('should have correct description', () => {
-      expect(metadata.description).toContain('Basenames are a core onchain building block');
-      expect(metadata.description).toContain('ENS infrastructure deployed on Base');
+      expect(metadata.description).toContain('Unstablenames are a core onchain building block');
+      expect(metadata.description).toContain('ENS infrastructure deployed on Unstable');
     });
 
     it('should have correct openGraph configuration', () => {
       expect(metadata.openGraph).toEqual({
-        title: 'Basenames',
+        title: 'Unstablenames',
         url: '/manage-names',
       });
     });

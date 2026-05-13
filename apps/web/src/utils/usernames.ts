@@ -15,9 +15,9 @@ import {
 import { normalize } from 'viem/ens';
 import L2ResolverAbi from 'apps/web/src/abis/L2Resolver';
 import RegistryAbi from 'apps/web/src/abis/RegistryAbi';
-import BaseRegistrarAbi from 'apps/web/src/abis/BaseRegistrarAbi';
+import UnstableRegistrarAbi from 'apps/web/src/abis/UnstableRegistrarAbi';
 import { base, baseSepolia, mainnet } from 'viem/chains';
-import { Basename } from '@coinbase/onchainkit/identity';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import {
   UPGRADEABLE_REGISTRAR_CONTROLLER_ADDRESSES,
   USERNAME_BASE_REGISTRAR_ADDRESSES,
@@ -30,26 +30,26 @@ import {
   IsValidIpfsUrl,
   IsValidVercelBlobUrl,
 } from 'apps/web/src/utils/urls';
-import { getBasenamePublicClient } from 'apps/web/src/hooks/useBasenameChain';
+import { getUnstablenamePublicClient } from 'apps/web/src/hooks/useUnstablenameChain';
 import { logger } from 'apps/web/src/utils/logger';
 
 // Note: The animations provided by the studio team didn't match the number from our SVGs
 //       If we replace those, double check the animation avatar is the same shape as the SVG
-import animation1 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/01.json';
-import animation2 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/02.json';
-import animation3 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/03.json';
-import animation4 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/04.json';
-import animation5 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/05.json';
-import animation6 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/06.json';
-import animation7 from 'apps/web/src/components/Basenames/BasenameAvatar/animations/07.json';
+import animation1 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/01.json';
+import animation2 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/02.json';
+import animation3 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/03.json';
+import animation4 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/04.json';
+import animation5 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/05.json';
+import animation6 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/06.json';
+import animation7 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/animations/07.json';
 
-import image1 from 'apps/web/src/components/Basenames/BasenameAvatar/images/1.svg';
-import image2 from 'apps/web/src/components/Basenames/BasenameAvatar/images/2.svg';
-import image3 from 'apps/web/src/components/Basenames/BasenameAvatar/images/3.svg';
-import image4 from 'apps/web/src/components/Basenames/BasenameAvatar/images/4.svg';
-import image5 from 'apps/web/src/components/Basenames/BasenameAvatar/images/5.svg';
-import image6 from 'apps/web/src/components/Basenames/BasenameAvatar/images/6.svg';
-import image7 from 'apps/web/src/components/Basenames/BasenameAvatar/images/7.svg';
+import image1 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/1.svg';
+import image2 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/2.svg';
+import image3 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/3.svg';
+import image4 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/4.svg';
+import image5 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/5.svg';
+import image6 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/6.svg';
+import image7 from 'apps/web/src/components/Unstablenames/UnstablenameAvatar/images/7.svg';
 
 import { StaticImageData } from 'next/image';
 import {
@@ -85,7 +85,7 @@ export enum UsernameTextRecordKeys {
   Telegram = 'org.telegram',
   Discord = 'com.discord',
 
-  // Basename specifics
+  // Unstablename specifics
   Frames = 'frames',
   Casts = 'casts',
 }
@@ -349,8 +349,8 @@ export const USERNAME_DOMAINS: Record<number, string> = {
   [base.id]: 'base.eth',
 };
 
-export const formatBaseEthDomain = (name: string, chainId: number): Basename => {
-  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as Basename;
+export const formatUnstableEthDomain = (name: string, chainId: number): Unstablename => {
+  return `${name}.${USERNAME_DOMAINS[chainId] ?? '.base.eth'}`.toLocaleLowerCase() as Unstablename;
 };
 
 export const convertChainIdToCoinType = (chainId: number): string => {
@@ -383,7 +383,7 @@ export function buildReverseRegistrarSignatureDigest({
   signatureExpiry: bigint;
 }) {
   const coinTypes = [BigInt(convertChainIdToCoinTypeUint(chainId))] as const;
-  const fullName = formatBaseEthDomain(name, chainId);
+  const fullName = formatUnstableEthDomain(name, chainId);
   const selector = getFunctionSelector(functionAbi);
 
   const preimage = encodePacked(
@@ -436,7 +436,7 @@ export function isValidDiscount(key: string): key is keyof typeof Discount {
   return Object.values(Discount).includes(key as Discount);
 }
 
-export function getChainForBasename(username: Basename): Chain {
+export function getChainForUnstablename(username: Unstablename): Chain {
   return username.endsWith(`.${USERNAME_DOMAINS[base.id]}`) ? base : baseSepolia;
 }
 
@@ -457,13 +457,13 @@ export async function formatDefaultUsername(username: string) {
     !username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`) &&
     !username.endsWith(`.${USERNAME_DOMAINS[base.id]}`)
   ) {
-    return formatBaseEthDomain(username, base.id);
+    return formatUnstableEthDomain(username, base.id);
   }
 
-  return username as Basename;
+  return username as Unstablename;
 }
 
-export const getTokenIdFromBasename = (username: Basename) => {
+export const getTokenIdFromUnstablename = (username: Unstablename) => {
   const usernameWithoutDomain = (username as string)
     .replace(`.${USERNAME_DOMAINS[base.id]}`, '')
     .replace(`.${USERNAME_DOMAINS[baseSepolia.id]}`, '');
@@ -471,7 +471,7 @@ export const getTokenIdFromBasename = (username: Basename) => {
   return BigInt(labelhash(usernameWithoutDomain));
 };
 
-export const isBasename = (username: string) => {
+export const isUnstablename = (username: string) => {
   if (username.endsWith(`.${USERNAME_DOMAINS[baseSepolia.id]}`)) {
     return true;
   }
@@ -493,7 +493,7 @@ export const isEnsName = (username: string) => {
   return false;
 };
 
-export const getBasenameAvatarUrl = (source: string) => {
+export const getUnstablenameAvatarUrl = (source: string) => {
   if (!source) return;
 
   try {
@@ -510,7 +510,7 @@ export const getBasenameAvatarUrl = (source: string) => {
   }
 };
 
-export function validateBasenameAvatarFile(file: File): ValidationResult {
+export function validateUnstablenameAvatarFile(file: File): ValidationResult {
   if (!ALLOWED_IMAGE_TYPE.includes(file.type)) {
     return {
       valid: false,
@@ -535,7 +535,7 @@ export function validateBasenameAvatarFile(file: File): ValidationResult {
 }
 
 // Only support IPFS for now
-export function validateBasenameAvatarUrl(source: string): ValidationResult {
+export function validateUnstablenameAvatarUrl(source: string): ValidationResult {
   try {
     const url = new URL(source);
 
@@ -583,11 +583,11 @@ export function validateBasenameAvatarUrl(source: string): ValidationResult {
 // Get username `addr`
 // Get username token `owner`
 
-export async function getBasenameAddress(username: Basename) {
-  const chain = getChainForBasename(username);
+export async function getUnstablenameAddress(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
 
   try {
-    const client = getBasenamePublicClient(chain.id);
+    const client = getUnstablenamePublicClient(chain.id);
     const resolverAddress = await fetchResolverAddress(username);
     const ensAddress = await client.getEnsAddress({
       name: normalize(username as string),
@@ -598,10 +598,10 @@ export async function getBasenameAddress(username: Basename) {
 }
 
 /*
-  Get username Basename `editor` in the Base Registrar (different from NFT owner)
+  Get username Unstablename `editor` in the Unstable Registrar (different from NFT owner)
 */
-export function buildBasenameEditorContract(username: Basename): ContractFunctionParameters {
-  const chain = getChainForBasename(username);
+export function buildUnstablenameEditorContract(username: Unstablename): ContractFunctionParameters {
+  const chain = getChainForUnstablename(username);
   return {
     abi: RegistryAbi,
     address: USERNAME_BASE_REGISTRY_ADDRESSES[chain.id],
@@ -610,50 +610,50 @@ export function buildBasenameEditorContract(username: Basename): ContractFunctio
   };
 }
 
-export async function getBasenameEditor(username: Basename) {
-  const chain = getChainForBasename(username);
+export async function getUnstablenameEditor(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
 
   try {
-    const client = getBasenamePublicClient(chain.id);
-    const owner = await client.readContract(buildBasenameEditorContract(username));
+    const client = getUnstablenamePublicClient(chain.id);
+    const owner = await client.readContract(buildUnstablenameEditorContract(username));
 
     return owner;
   } catch (error) {}
 }
 
 /*
-  Get username NFT `owner` in the Base Registry (different from Basename editor)
+  Get username NFT `owner` in the Unstable Registry (different from Unstablename editor)
 */
 
-export function buildBasenameOwnerContract(username: Basename): ContractFunctionParameters {
-  const chain = getChainForBasename(username);
-  const tokenId = getTokenIdFromBasename(username);
+export function buildUnstablenameOwnerContract(username: Unstablename): ContractFunctionParameters {
+  const chain = getChainForUnstablename(username);
+  const tokenId = getTokenIdFromUnstablename(username);
   return {
-    abi: BaseRegistrarAbi,
+    abi: UnstableRegistrarAbi,
     address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
     args: [tokenId],
     functionName: 'ownerOf',
   };
 }
 
-export async function getBasenameOwner(username: Basename) {
-  const chain = getChainForBasename(username);
+export async function getUnstablenameOwner(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
 
   try {
-    const client = getBasenamePublicClient(chain.id);
-    const owner = await client.readContract(buildBasenameOwnerContract(username));
+    const client = getUnstablenamePublicClient(chain.id);
+    const owner = await client.readContract(buildUnstablenameOwnerContract(username));
 
     return owner;
   } catch (error) {}
 }
 
-export async function getBasenameNameExpires(username: Basename) {
-  const chain = getChainForBasename(username);
-  const tokenId = getTokenIdFromBasename(username);
+export async function getUnstablenameNameExpires(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
+  const tokenId = getTokenIdFromUnstablename(username);
   try {
-    const client = getBasenamePublicClient(chain.id);
+    const client = getUnstablenamePublicClient(chain.id);
     const nameExpires = await client.readContract({
-      abi: BaseRegistrarAbi,
+      abi: UnstableRegistrarAbi,
       address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
       args: [tokenId],
       functionName: 'nameExpires',
@@ -670,7 +670,7 @@ export async function getBasenameNameExpires(username: Basename) {
   }
 }
 
-export async function getBasenameAvailable(name: string, chain: Chain): Promise<boolean> {
+export async function getUnstablenameAvailable(name: string, chain: Chain): Promise<boolean> {
   try {
     const client = createPublicClient({
       chain: chain,
@@ -695,8 +695,8 @@ export async function getBasenameAvailable(name: string, chain: Chain): Promise<
 }
 
 // Build a TextRecord contract request
-export function buildBasenameTextRecordContract(
-  username: Basename,
+export function buildUnstablenameTextRecordContract(
+  username: Unstablename,
   key: UsernameTextRecordKeys,
   resolverAddress: Address,
 ): ContractFunctionParameters {
@@ -709,26 +709,26 @@ export function buildBasenameTextRecordContract(
 }
 
 // Get a single TextRecord
-export async function getBasenameTextRecord(username: Basename, key: UsernameTextRecordKeys) {
-  const chain = getChainForBasename(username);
+export async function getUnstablenameTextRecord(username: Unstablename, key: UsernameTextRecordKeys) {
+  const chain = getChainForUnstablename(username);
   try {
-    const client = getBasenamePublicClient(chain.id);
+    const client = getUnstablenamePublicClient(chain.id);
     const resolverAddress = await fetchResolverAddress(username);
     const textRecord = await client.readContract(
-      buildBasenameTextRecordContract(username, key, resolverAddress),
+      buildUnstablenameTextRecordContract(username, key, resolverAddress),
     );
     return textRecord;
   } catch (error) {}
 }
 
 // Get a all TextRecords
-export async function getBasenameTextRecords(username: Basename) {
-  const chain = getChainForBasename(username);
+export async function getUnstablenameTextRecords(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
   try {
-    const client = getBasenamePublicClient(chain.id);
+    const client = getUnstablenamePublicClient(chain.id);
     const resolverAddress = await fetchResolverAddress(username);
     const readContracts: ContractFunctionParameters[] = textRecordsKeysEnabled.map((key) => {
-      return buildBasenameTextRecordContract(username, key, resolverAddress);
+      return buildUnstablenameTextRecordContract(username, key, resolverAddress);
     });
     const textRecords = await client.multicall({ contracts: readContracts });
 
@@ -737,8 +737,8 @@ export async function getBasenameTextRecords(username: Basename) {
 }
 
 // Resolver helpers
-export function buildRegistryResolverReadParams(username: Basename) {
-  const chain = getChainForBasename(username);
+export function buildRegistryResolverReadParams(username: Unstablename) {
+  const chain = getChainForUnstablename(username);
   const node = namehash(username as string);
   return {
     abi: RegistryAbi,
@@ -748,9 +748,9 @@ export function buildRegistryResolverReadParams(username: Basename) {
   };
 }
 
-export async function fetchResolverAddress(username: Basename): Promise<Address> {
-  const chain = getChainForBasename(username);
-  const client = getBasenamePublicClient(chain.id);
+export async function fetchResolverAddress(username: Unstablename): Promise<Address> {
+  const chain = getChainForUnstablename(username);
+  const client = getUnstablenamePublicClient(chain.id);
   return client.readContract(buildRegistryResolverReadParams(username));
 }
 
@@ -758,7 +758,7 @@ export async function fetchResolverAddressByNode(
   chainId: number,
   node: `0x${string}`,
 ): Promise<Address> {
-  const client = getBasenamePublicClient(chainId);
+  const client = getUnstablenamePublicClient(chainId);
   return client.readContract({
     abi: RegistryAbi,
     address: USERNAME_BASE_REGISTRY_ADDRESSES[chainId],
@@ -768,16 +768,16 @@ export async function fetchResolverAddressByNode(
 }
 
 /*
-  Reclaim a Basename contract write method
+  Reclaim a Unstablename contract write method
 */
-export function buildBasenameReclaimContract(
-  username: Basename,
+export function buildUnstablenameReclaimContract(
+  username: Unstablename,
   address: Address,
 ): ContractFunctionParameters {
-  const chain = getChainForBasename(username);
-  const tokenId = getTokenIdFromBasename(username);
+  const chain = getChainForUnstablename(username);
+  const tokenId = getTokenIdFromUnstablename(username);
   return {
-    abi: BaseRegistrarAbi,
+    abi: UnstableRegistrarAbi,
     address: USERNAME_BASE_REGISTRAR_ADDRESSES[chain.id],
     args: [tokenId, address],
     functionName: 'reclaim',
@@ -785,7 +785,7 @@ export function buildBasenameReclaimContract(
 }
 
 /*
-  Basename avatar / animations
+  Unstablename avatar / animations
 */
 
 export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
@@ -797,7 +797,7 @@ export const getUsernamePictureIndex = (name: string, totalOptions: number) => {
   return selectedOption;
 };
 
-export const getBasenameAnimation = (username: string) => {
+export const getUnstablenameAnimation = (username: string) => {
   const animations = [
     animation1,
     animation2,
@@ -812,7 +812,7 @@ export const getBasenameAnimation = (username: string) => {
   return selectedAnimation;
 };
 
-export const getBasenameImage = (username: string) => {
+export const getUnstablenameImage = (username: string) => {
   const images = [image1, image2, image3, image4, image5, image6, image7];
   const profilePictureIndex = getUsernamePictureIndex(username, images.length);
   const selectedAnimation = images[profilePictureIndex] as StaticImageData;
@@ -829,7 +829,7 @@ export const REGISTER_CONTRACT_ABI = UpgradeableRegistrarControllerAbi;
 
 export const REGISTER_CONTRACT_ADDRESSES = UPGRADEABLE_REGISTRAR_CONTROLLER_ADDRESSES;
 
-export const isBasenameRenewalsKilled = process.env.NEXT_PUBLIC_KILL_BASENAMES_RENEWALS === 'true';
+export const isUnstablenameRenewalsKilled = process.env.NEXT_PUBLIC_KILL_BASENAMES_RENEWALS === 'true';
 
 // Grace period duration (90 days)
 export const GRACE_PERIOD_DURATION_SECONDS = 90 * 24 * 60 * 60;
@@ -838,9 +838,9 @@ export const GRACE_PERIOD_DURATION_MS = GRACE_PERIOD_DURATION_SECONDS * 1000;
 /**
  * Check if a basename is in its grace period (expired but still renewable)
  */
-export async function isBasenameInGracePeriod(username: Basename): Promise<boolean> {
+export async function isUnstablenameInGracePeriod(username: Unstablename): Promise<boolean> {
   try {
-    const expiresAt = await getBasenameNameExpires(username);
+    const expiresAt = await getUnstablenameNameExpires(username);
     if (!expiresAt) {
       return false;
     }

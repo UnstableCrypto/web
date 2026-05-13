@@ -12,7 +12,7 @@ jest.mock('apps/web/contexts/Analytics', () => ({
 }));
 
 const mockUsernameProfileProviderUsername = jest.fn();
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   __esModule: true,
   default: ({ children, username }: { children: React.ReactNode; username: string }) => {
     mockUsernameProfileProviderUsername(username);

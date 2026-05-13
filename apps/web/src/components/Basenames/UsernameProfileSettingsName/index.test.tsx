@@ -9,10 +9,10 @@ let mockProfileUsername = 'testuser.base.eth';
 let mockProfileAddress: `0x${string}` = '0x1234567890abcdef1234567890abcdef12345678';
 let mockCurrentWalletIsProfileEditor = true;
 
-// Mock for useBaseEnsName
+// Mock for useUnstableEnsName
 let mockPrimaryUsername: string | undefined = 'testuser.base.eth';
 
-// Mock for useSetPrimaryBasename
+// Mock for useSetPrimaryUnstablename
 const mockSetPrimaryName = jest.fn();
 let mockSetPrimaryNameIsLoading = false;
 let mockCanSetUsernameAsPrimary = true;
@@ -21,7 +21,7 @@ let mockCanSetUsernameAsPrimary = true;
 const mockLogError = jest.fn();
 
 // Mock UsernameProfileContext
-jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
+jest.mock('apps/web/src/components/Unstablenames/UsernameProfileContext', () => ({
   useUsernameProfile: () => ({
     profileUsername: mockProfileUsername,
     profileAddress: mockProfileAddress,
@@ -29,16 +29,16 @@ jest.mock('apps/web/src/components/Basenames/UsernameProfileContext', () => ({
   }),
 }));
 
-// Mock useBaseEnsName
-jest.mock('apps/web/src/hooks/useBaseEnsName', () => ({
+// Mock useUnstableEnsName
+jest.mock('apps/web/src/hooks/useUnstableEnsName', () => ({
   __esModule: true,
   default: () => ({
     data: mockPrimaryUsername,
   }),
 }));
 
-// Mock useSetPrimaryBasename
-jest.mock('apps/web/src/hooks/useSetPrimaryBasename', () => ({
+// Mock useSetPrimaryUnstablename
+jest.mock('apps/web/src/hooks/useSetPrimaryUnstablename', () => ({
   __esModule: true,
   default: () => ({
     setPrimaryName: mockSetPrimaryName,

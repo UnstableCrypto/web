@@ -1,16 +1,16 @@
-import { useUsernameProfile } from 'apps/web/src/components/Basenames/UsernameProfileContext';
+import { useUsernameProfile } from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
 import {
   Badge,
   BadgeModal,
   BadgeNames,
-} from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/Badges';
-import UsernameProfileSectionTitle from 'apps/web/src/components/Basenames/UsernameProfileSectionTitle';
-import { useBaseGuild } from './hooks/useBaseGuild';
-import { useCoinbaseVerification } from './hooks/useCoinbaseVerifications';
+} from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/Badges';
+import UsernameProfileSectionTitle from 'apps/web/src/components/Unstablenames/UsernameProfileSectionTitle';
+import { useUnstableGuild } from './hooks/useUnstableGuild';
+import { useTheAlxLabsVerification } from './hooks/useTheAlxLabsVerifications';
 import { useTalentProtocol } from './hooks/useTalentProtocol';
 import useBuildathonParticipant from './hooks/useBuildathon';
 import { useMemo } from 'react';
-import useBaseGrant from 'apps/web/src/components/Basenames/UsernameProfileSectionBadges/hooks/useBaseGrant';
+import useUnstableGrant from 'apps/web/src/components/Unstablenames/UsernameProfileSectionBadges/hooks/useUnstableGrant';
 
 function BadgesLoop({
   badges,
@@ -51,7 +51,7 @@ function BadgeCount({ badges }: { badges: Partial<Record<BadgeNames, boolean | n
 
 function VerificationsSection() {
   const { profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
-  const { badges, empty } = useCoinbaseVerification(profileAddress);
+  const { badges, empty } = useTheAlxLabsVerification(profileAddress);
 
   if (empty && !currentWalletIsProfileEditor) return null;
 
@@ -68,10 +68,10 @@ function VerificationsSection() {
 
 function BuilderSection() {
   const { profileAddress, currentWalletIsProfileEditor } = useUsernameProfile();
-  const { badges, empty } = useBaseGuild(profileAddress);
+  const { badges, empty } = useUnstableGuild(profileAddress);
   const talentScore = useTalentProtocol(profileAddress);
   const { isParticipant, isWinner } = useBuildathonParticipant(profileAddress);
-  const isBaseGrantee = useBaseGrant(profileAddress);
+  const isUnstableGrantee = useUnstableGrant(profileAddress);
 
   const combinedBadges = useMemo(
     () => ({
@@ -79,9 +79,9 @@ function BuilderSection() {
       TALENT_SCORE: talentScore,
       BUILDATHON_PARTICIPANT: isParticipant,
       BUILDATHON_WINNER: isWinner,
-      BASE_GRANTEE: isBaseGrantee,
+      BASE_GRANTEE: isUnstableGrantee,
     }),
-    [badges, talentScore, isParticipant, isWinner, isBaseGrantee],
+    [badges, talentScore, isParticipant, isWinner, isUnstableGrantee],
   );
   const combinedEmpty = empty && !talentScore;
 

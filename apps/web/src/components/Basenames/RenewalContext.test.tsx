@@ -75,25 +75,25 @@ jest.mock('apps/web/contexts/Errors', () => ({
   }),
 }));
 
-// Mock useBasenameChain
-let mockBasenameChainId = 8453;
-jest.mock('apps/web/src/hooks/useBasenameChain', () => ({
+// Mock useUnstablenameChain
+let mockUnstablenameChainId = 8453;
+jest.mock('apps/web/src/hooks/useUnstablenameChain', () => ({
   __esModule: true,
   default: () => ({
-    basenameChain: { id: mockBasenameChainId },
+    basenameChain: { id: mockUnstablenameChainId },
   }),
 }));
 
 // Mock useRenewNameCallback
 let mockBatchCallsStatus = 'idle';
 let mockRenewNameStatus = 'idle';
-const mockRenewBasename = jest.fn().mockResolvedValue(undefined);
+const mockRenewUnstablename = jest.fn().mockResolvedValue(undefined);
 let mockPrice: bigint | undefined = BigInt(1000000000000000);
 let mockIsPending = false;
 
 jest.mock('apps/web/src/hooks/useRenewNameCallback', () => ({
   useRenewNameCallback: () => ({
-    callback: mockRenewBasename,
+    callback: mockRenewUnstablename,
     value: mockPrice,
     isPending: mockIsPending,
     renewNameStatus: mockRenewNameStatus,
@@ -102,16 +102,16 @@ jest.mock('apps/web/src/hooks/useRenewNameCallback', () => ({
 }));
 
 // Mock usernames utilities
-const mockGetBasenameNameExpires = jest.fn();
+const mockGetUnstablenameNameExpires = jest.fn();
 jest.mock('apps/web/src/utils/usernames', () => ({
-  formatBaseEthDomain: (name: string, chainId: number) => {
+  formatUnstableEthDomain: (name: string, chainId: number) => {
     if (chainId === 8453) {
       return `${name}.base.eth`;
     }
     return `${name}.basetest.eth`;
   },
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  getBasenameNameExpires: (name: string) => mockGetBasenameNameExpires(name),
+  getUnstablenameNameExpires: (name: string) => mockGetUnstablenameNameExpires(name),
 }));
 
 // Test component to consume the context
@@ -121,8 +121,8 @@ function TestConsumer() {
   const handleSetYears = () => context.setYears(3);
   const handleRedirectToProfile = () => context.redirectToProfile();
   const handleSetRenewalStep = () => context.setRenewalStep(RenewalSteps.Pending);
-  const handleRenewBasename = () => {
-    void context.renewBasename();
+  const handleRenewUnstablename = () => {
+    void context.renewUnstablename();
   };
 
   return (
@@ -156,8 +156,8 @@ function TestConsumer() {
       <button
         type="button"
         aria-label="Renew basename"
-        data-testid="renewBasename"
-        onClick={handleRenewBasename}
+        data-testid="renewUnstablename"
+        onClick={handleRenewUnstablename}
       />
     </div>
   );
@@ -168,10 +168,10 @@ describe('RenewalContext', () => {
     jest.clearAllMocks();
     mockBatchCallsStatus = 'idle';
     mockRenewNameStatus = 'idle';
-    mockBasenameChainId = 8453;
+    mockUnstablenameChainId = 8453;
     mockPrice = BigInt(1000000000000000);
     mockIsPending = false;
-    mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600)); // Jan 1, 2025
+    mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600)); // Jan 1, 2025
   });
 
   describe('RenewalSteps enum', () => {
@@ -240,7 +240,7 @@ describe('RenewalContext', () => {
     });
 
     it('should format name correctly for base mainnet', async () => {
-      mockBasenameChainId = 8453;
+      mockUnstablenameChainId = 8453;
 
       render(
         <RenewalProvider name="testname">
@@ -256,7 +256,7 @@ describe('RenewalContext', () => {
     });
 
     it('should format name correctly for testnet', async () => {
-      mockBasenameChainId = 84532;
+      mockUnstablenameChainId = 84532;
 
       render(
         <RenewalProvider name="testname">
@@ -316,7 +316,7 @@ describe('RenewalContext', () => {
 
   describe('redirectToProfile', () => {
     it('should call router.push with correct path for base mainnet', async () => {
-      mockBasenameChainId = 8453;
+      mockUnstablenameChainId = 8453;
 
       render(
         <RenewalProvider name="testname">
@@ -336,7 +336,7 @@ describe('RenewalContext', () => {
     });
 
     it('should call router.push with formatted path for testnet', async () => {
-      mockBasenameChainId = 84532;
+      mockUnstablenameChainId = 84532;
 
       render(
         <RenewalProvider name="testname">
@@ -356,8 +356,8 @@ describe('RenewalContext', () => {
     });
   });
 
-  describe('renewBasename', () => {
-    it('should call the renewBasename callback', async () => {
+  describe('renewUnstablename', () => {
+    it('should call the renewUnstablename callback', async () => {
       render(
         <RenewalProvider name="testname">
           <TestConsumer />
@@ -369,10 +369,10 @@ describe('RenewalContext', () => {
       });
 
       await act(async () => {
-        screen.getByTestId('renewBasename').click();
+        screen.getByTestId('renewUnstablename').click();
       });
 
-      expect(mockRenewBasename).toHaveBeenCalled();
+      expect(mockRenewUnstablename).toHaveBeenCalled();
     });
 
     it('should display price from hook', async () => {
@@ -408,7 +408,7 @@ describe('RenewalContext', () => {
 
   describe('expiration date fetching', () => {
     it('should fetch and format expiration date on mount', async () => {
-      mockGetBasenameNameExpires.mockResolvedValue(BigInt(1735689600));
+      mockGetUnstablenameNameExpires.mockResolvedValue(BigInt(1735689600));
 
       render(
         <RenewalProvider name="testname">
@@ -417,7 +417,7 @@ describe('RenewalContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalledWith('testname.base.eth');
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalledWith('testname.base.eth');
       });
 
       await waitFor(() => {
@@ -427,7 +427,7 @@ describe('RenewalContext', () => {
 
     it('should log error when expiration date fetch fails', async () => {
       const error = new Error('Fetch failed');
-      mockGetBasenameNameExpires.mockRejectedValue(error);
+      mockGetUnstablenameNameExpires.mockRejectedValue(error);
 
       render(
         <RenewalProvider name="testname">
@@ -441,7 +441,7 @@ describe('RenewalContext', () => {
     });
 
     it('should handle null expiration date', async () => {
-      mockGetBasenameNameExpires.mockResolvedValue(null);
+      mockGetUnstablenameNameExpires.mockResolvedValue(null);
 
       render(
         <RenewalProvider name="testname">
@@ -450,7 +450,7 @@ describe('RenewalContext', () => {
       );
 
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
 
       expect(screen.getByTestId('expirationDate')).toHaveTextContent('undefined');
@@ -565,7 +565,7 @@ describe('RenewalContext', () => {
 
       // Expiration date is fetched both on mount and when step becomes Success
       await waitFor(() => {
-        expect(mockGetBasenameNameExpires).toHaveBeenCalled();
+        expect(mockGetUnstablenameNameExpires).toHaveBeenCalled();
       });
     });
   });

@@ -3,16 +3,16 @@ import { useErrors } from 'apps/web/contexts/Errors';
 import {
   registrationTransitionDuration,
   useRegistration,
-} from 'apps/web/src/components/Basenames/RegistrationContext';
-import UsernameDescriptionField from 'apps/web/src/components/Basenames/UsernameDescriptionField';
-import UsernameKeywordsField from 'apps/web/src/components/Basenames/UsernameKeywordsField';
-import UsernameTextRecordInlineField from 'apps/web/src/components/Basenames/UsernameTextRecordInlineField';
+} from 'apps/web/src/components/Unstablenames/RegistrationContext';
+import UsernameDescriptionField from 'apps/web/src/components/Unstablenames/UsernameDescriptionField';
+import UsernameKeywordsField from 'apps/web/src/components/Unstablenames/UsernameKeywordsField';
+import UsernameTextRecordInlineField from 'apps/web/src/components/Unstablenames/UsernameTextRecordInlineField';
 import { Button, ButtonVariants } from 'apps/web/src/components/Button/Button';
 import Fieldset from 'apps/web/src/components/Fieldset';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Label from 'apps/web/src/components/Label';
 import TransactionError from 'apps/web/src/components/TransactionError';
-import useWriteBaseEnsTextRecords from 'apps/web/src/hooks/useWriteBaseEnsTextRecords';
+import useWriteUnstableEnsTextRecords from 'apps/web/src/hooks/useWriteUnstableEnsTextRecords';
 import {
   UsernameTextRecordKeys,
   textRecordsSocialFieldsEnabled,
@@ -40,7 +40,7 @@ export default function RegistrationProfileForm() {
     writeTextRecords,
     writeTextRecordsIsPending,
     writeTextRecordsError,
-  } = useWriteBaseEnsTextRecords({
+  } = useWriteUnstableEnsTextRecords({
     username: selectedNameFormatted,
     onSuccess: () => {
       redirectToProfile();

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { cubicBezier, motion } from 'motion/react';
 
 import BrandSidebar from 'apps/web/src/components/Layout/Navigation/Sidebar/Brand-Sidebar';
-import BaseSidebar from 'apps/web/src/components/Layout/Navigation/Sidebar/Base-Sidebar';
+import UnstableSidebar from 'apps/web/src/components/Layout/Navigation/Sidebar/Unstable-Sidebar';
 
 const easeFn = cubicBezier(0.16, 1, 0.3, 1);
 
@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   return (
     <motion.div variants={sidebarVariants} initial="hidden" animate="visible" className="relative">
-      {isBrand ? <BrandSidebar /> : <BaseSidebar />}
+      {isBrand ? <BrandSidebar /> : <UnstableSidebar />}
     </motion.div>
   );
 }

@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useCallback } from 'react';
-import UsernameProfileProvider from 'apps/web/src/components/Basenames/UsernameProfileContext';
-import UsernameProfileRenewalModal from 'apps/web/src/components/Basenames/UsernameProfileRenewalModal';
-import ProfileTransferOwnershipProvider from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal/context';
-import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Basenames/UsernameProfileTransferOwnershipModal';
-import BasenameAvatar from 'apps/web/src/components/Basenames/BasenameAvatar';
-import { Basename } from '@coinbase/onchainkit/identity';
+import UsernameProfileProvider from 'apps/web/src/components/Unstablenames/UsernameProfileContext';
+import UsernameProfileRenewalModal from 'apps/web/src/components/Unstablenames/UsernameProfileRenewalModal';
+import ProfileTransferOwnershipProvider from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal/context';
+import UsernameProfileTransferOwnershipModal from 'apps/web/src/components/Unstablenames/UsernameProfileTransferOwnershipModal';
+import UnstablenameAvatar from 'apps/web/src/components/Unstablenames/UnstablenameAvatar';
+import { Unstablename } from '@coinbase/onchainkit/identity';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import { Icon } from 'apps/web/src/components/Icon/Icon';
 import Dropdown from 'apps/web/src/components/Dropdown';
@@ -17,9 +17,9 @@ import classNames from 'classnames';
 import {
   useUpdatePrimaryName,
   useRemoveNameFromUI,
-} from 'apps/web/src/components/Basenames/ManageNames/hooks';
+} from 'apps/web/src/components/Unstablenames/ManageNames/hooks';
 import Link from 'apps/web/src/components/Link';
-import { isBasenameRenewalsKilled } from 'apps/web/src/utils/usernames';
+import { isUnstablenameRenewalsKilled } from 'apps/web/src/utils/usernames';
 import { useRouter } from 'next/navigation';
 import { ActionType } from 'libs/base-ui/utils/logEvent';
 import { useAnalytics } from 'apps/web/contexts/Analytics';
@@ -60,7 +60,7 @@ export default function NameDisplay({
   const name = domain.split('.')[0];
 
   const { removeNameFromUI } = useRemoveNameFromUI();
-  const { setPrimaryUsername, isPending } = useUpdatePrimaryName(domain as Basename);
+  const { setPrimaryUsername, isPending } = useUpdatePrimaryName(domain as Unstablename);
 
   // Transfer state and callbacks
   const [isTransferModalOpen, setIsTransferModalOpen] = useState<boolean>(false);
@@ -76,7 +76,7 @@ export default function NameDisplay({
     logEventWithContext('extend_registration_button_clicked', ActionType.click, {
       context: 'manage_names',
     });
-    if (isBasenameRenewalsKilled) {
+    if (isUnstablenameRenewalsKilled) {
       openRenewalModal();
     } else {
       router.push(`/name/${domain}/renew`);
@@ -88,8 +88,8 @@ export default function NameDisplay({
       <div className="flex items-center justify-between">
         <Link href={`/name/${domain.split('.')[0]}`}>
           <div className="flex items-center gap-4">
-            <BasenameAvatar
-              basename={domain as Basename}
+            <UnstablenameAvatar
+              basename={domain as Unstablename}
               wrapperClassName={avatarClasses}
               width={4 * 16}
               height={4 * 16}
@@ -139,7 +139,7 @@ export default function NameDisplay({
           </Dropdown>
         </div>
       </div>
-      <UsernameProfileProvider username={domain as Basename}>
+      <UsernameProfileProvider username={domain as Unstablename}>
         <ProfileTransferOwnershipProvider>
           <UsernameProfileTransferOwnershipModal
             isOpen={isTransferModalOpen}

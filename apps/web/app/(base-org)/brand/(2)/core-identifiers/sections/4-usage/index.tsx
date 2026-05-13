@@ -32,7 +32,7 @@ const content = [
     ],
   },
   {
-    tag: 'Basemark',
+    tag: 'Unstablemark',
     items: [
       {
         src: png2.src,
@@ -73,7 +73,7 @@ export function Usage() {
       columns={3}
       id="usage"
       title="Usage"
-      description="We have three core identifiers: The logotype, the abstracted Basemark and The Square. In a given scenario we can use either one, two, or all three - depending on the situation. We use the logotype when we need clear brand recognition, and the Basemark when we can be more playful and subversive. "
+      description="We have three core identifiers: The logotype, the abstracted Unstablemark and The Square. In a given scenario we can use either one, two, or all three - depending on the situation. We use the logotype when we need clear brand recognition, and the Unstablemark when we can be more playful and subversive. "
       content={content}
       fullWidth
     />

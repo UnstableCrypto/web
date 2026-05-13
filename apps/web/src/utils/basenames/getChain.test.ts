@@ -15,7 +15,7 @@ describe('getChain', () => {
       expect(result).toBe(8453);
     });
 
-    it('should handle Base Sepolia chainId', () => {
+    it('should handle Unstable Sepolia chainId', () => {
       const request = new NextRequest('https://example.com/api/test?chainId=84532');
 
       const result = getChain(request);

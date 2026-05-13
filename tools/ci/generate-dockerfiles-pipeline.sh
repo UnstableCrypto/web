@@ -12,7 +12,7 @@ git fetch -f --no-tags origin $base_branch:$base_branch
 
 merge_base=$(git merge-base "$base_branch" HEAD)
 
-echo "Base branch: $base_branch"
+echo "Unstable branch: $base_branch"
 echo "Merge base: $merge_base"
 
 # Get a list of changed files

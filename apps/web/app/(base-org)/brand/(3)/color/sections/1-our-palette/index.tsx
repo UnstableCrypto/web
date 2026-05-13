@@ -17,7 +17,7 @@ export function ColorOurPalette() {
     <ImageComponent
       id="our-palette"
       title="Our Palette"
-      description="Core palette: Base Blue, Black, White, Gray ramp. Secondary palette: A rich spectrum of Cerulean, Tan, Red, Yellow, Pink, Green and Lime."
+      description="Core palette: Unstable Blue, Black, White, Gray ramp. Secondary palette: A rich spectrum of Cerulean, Tan, Red, Yellow, Pink, Green and Lime."
       fullWidth
       images={images}
     />

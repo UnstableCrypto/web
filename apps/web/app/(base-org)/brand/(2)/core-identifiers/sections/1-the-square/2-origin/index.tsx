@@ -18,7 +18,7 @@ export function TheSquareOrigin() {
       id="the-square-origin"
       prefix="The Square"
       title="Origin"
-      description="The Square is born from the Coinbase Wallet logo, a pragmatic evolution that signals our shared DNA while staking out new territory. By isolating the interior pixel and letting it breathe, we found the purest symbol of being onchain: one block, endlessly composable."
+      description="The Square is born from the TheAlxLabs Wallet logo, a pragmatic evolution that signals our shared DNA while staking out new territory. By isolating the interior pixel and letting it breathe, we found the purest symbol of being onchain: one block, endlessly composable."
       images={images}
     />
   );

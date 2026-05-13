@@ -2,8 +2,8 @@ import { Address } from 'viem';
 import { base, baseSepolia } from 'viem/chains';
 
 export const nodeEnv = process.env.NODE_ENV;
-export const docsUrl = process.env.DOCS_URL ?? 'https://docs.base.org';
-export const bridgeUrl = process.env.BRIDGE_URL ?? 'https://bridge.base.org';
+export const docsUrl = process.env.DOCS_URL ?? 'https://docs.unstable.org';
+export const bridgeUrl = process.env.BRIDGE_URL ?? 'https://bridge.unstable.org';
 export const greenhouseApiUrl =
   process.env.GREENHOUSE_HTTPS ?? 'https://boards-api.greenhouse.io/v1';
 export const mainnetLaunchBlogPostURL =
@@ -43,7 +43,7 @@ export const coinbaseSmartWalletABI = [
       {
         name: 'calls',
         type: 'tuple[]',
-        internalType: 'struct CoinbaseSmartWallet.Call[]',
+        internalType: 'struct TheAlxLabsSmartWallet.Call[]',
         components: [
           {
             name: 'target',

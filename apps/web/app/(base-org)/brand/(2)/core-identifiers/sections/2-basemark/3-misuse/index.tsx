@@ -1,13 +1,13 @@
 import { ImageComponent, SvgImport } from 'apps/web/src/components/Brand/Image';
-import BasemarkMisuse1Png from './misuse-1.png';
-import BasemarkMisuse2Png from './misuse-2.png';
-import BasemarkMisuse3Png from './misuse-3.png';
-import BasemarkMisuse4Png from './misuse-4.png';
+import UnstablemarkMisuse1Png from './misuse-1.png';
+import UnstablemarkMisuse2Png from './misuse-2.png';
+import UnstablemarkMisuse3Png from './misuse-3.png';
+import UnstablemarkMisuse4Png from './misuse-4.png';
 
-const png1 = BasemarkMisuse1Png as SvgImport;
-const png2 = BasemarkMisuse2Png as SvgImport;
-const png3 = BasemarkMisuse3Png as SvgImport;
-const png4 = BasemarkMisuse4Png as SvgImport;
+const png1 = UnstablemarkMisuse1Png as SvgImport;
+const png2 = UnstablemarkMisuse2Png as SvgImport;
+const png3 = UnstablemarkMisuse3Png as SvgImport;
+const png4 = UnstablemarkMisuse4Png as SvgImport;
 
 function CrossSvg() {
   return (
@@ -24,7 +24,7 @@ function CrossSvg() {
 const images = [
   {
     src: png1.src,
-    alt: 'Basemark Misuse 1',
+    alt: 'Unstablemark Misuse 1',
     width: png1.width,
     height: png1.height,
     tag: (
@@ -36,7 +36,7 @@ const images = [
   },
   {
     src: png2.src,
-    alt: 'Basemark Misuse 2',
+    alt: 'Unstablemark Misuse 2',
     width: png2.width,
     height: png2.height,
     tag: (
@@ -48,7 +48,7 @@ const images = [
   },
   {
     src: png3.src,
-    alt: 'Basemark Misuse 3',
+    alt: 'Unstablemark Misuse 3',
     width: png3.width,
     height: png3.height,
     tag: (
@@ -60,7 +60,7 @@ const images = [
   },
   {
     src: png4.src,
-    alt: 'Basemark Misuse 4',
+    alt: 'Unstablemark Misuse 4',
     width: png4.width,
     height: png4.height,
     tag: (
@@ -72,11 +72,11 @@ const images = [
   },
 ];
 
-export function BasemarkMisuse() {
+export function UnstablemarkMisuse() {
   return (
     <ImageComponent
       id="basemark-misuse"
-      prefix="Basemark"
+      prefix="Unstablemark"
       title="Misuse"
       description="In order to maintain brand consistency and integrity, please adhere to all usage guidelines outlined in this document, and avoid any distortions of any kind."
       images={images}

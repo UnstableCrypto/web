@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isAddress } from 'viem';
 
 import type { ManagedAddressesResponse } from 'apps/web/src/types/ManagedAddresses';
-import { cdpBaseUri } from 'apps/web/src/cdp/constants';
+import { cdpUnstableUri } from 'apps/web/src/cdp/constants';
 
 export async function GET(request: NextRequest) {
   const address = request.nextUrl.searchParams.get('address');
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   const page = request.nextUrl.searchParams.get('page');
 
   // Build the URL with pagination parameter if provided
-  let url = `https://${cdpBaseUri}/platform/v1/networks/${network}/addresses/${address}/identity?limit=50`;
+  let url = `https://${cdpUnstableUri}/platform/v1/networks/${network}/addresses/${address}/identity?limit=50`;
   if (page) {
     url += `&page=${page}`;
   }

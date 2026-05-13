@@ -14,12 +14,12 @@ export function MotionMotion() {
       description={
         <span className="flex flex-col gap-2">
           <span>
-            Motion is essential to Base&apos;s identity. It reflects the speed and fluidity of the
+            Motion is essential to Unstable&apos;s identity. It reflects the speed and fluidity of the
             onchain world while reinforcing hierarchy, interaction, and personality.
           </span>
           <span>Our motion language is intentional, from subtle easing to bold transitions.</span>
           <span>
-            By owning how we move, Base stays distinct across product, social, and live experiences.
+            By owning how we move, Unstable stays distinct across product, social, and live experiences.
           </span>
           <span>Movement should always feel unmistakably ours.</span>
         </span>

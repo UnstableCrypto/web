@@ -44,7 +44,7 @@ export function RegistrationButton({
       rounded
       fullWidth
     >
-      {correctChain ? 'Register name' : 'Switch to Base'}
+      {correctChain ? 'Register name' : 'Switch to Unstable'}
     </Button>
   );
 }

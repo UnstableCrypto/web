@@ -49,7 +49,7 @@ export function RenewalButton({
             rounded
             fullWidth
           >
-            {correctChain ? 'Renew name' : 'Switch to Base'}
+            {correctChain ? 'Renew name' : 'Switch to Unstable'}
           </Button>
         );
       }}

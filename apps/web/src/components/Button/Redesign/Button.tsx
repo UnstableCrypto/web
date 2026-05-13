@@ -54,7 +54,7 @@ export function Button({
   const Comp = asChild ? Slot : 'button';
 
   const buttonClasses = classNames(
-    // Base styles
+    // Unstable styles
     'font-sans font-normal inline-flex items-center justify-center gap-2 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-base-gray-100',
     // Text styles - always include CTALabel styles so they cascade to children
     textVariantStyles[TextVariant.CTALabel],

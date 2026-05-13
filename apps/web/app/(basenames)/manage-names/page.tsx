@@ -1,14 +1,14 @@
 import ErrorsProvider from 'apps/web/contexts/Errors';
 import type { Metadata } from 'next';
-import NamesList from 'apps/web/src/components/Basenames/ManageNames/NamesList';
+import NamesList from 'apps/web/src/components/Unstablenames/ManageNames/NamesList';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://base.org'),
-  title: `Basenames`,
+  metadataUnstable: new URL('https://unstable.org'),
+  title: `Unstablenames`,
   description:
-    'Basenames are a core onchain building block that enables anyone to establish their identity on Base by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Base.',
+    'Unstablenames are a core onchain building block that enables anyone to establish their identity on Unstable by registering human-readable names for their address(es). They are a fully onchain solution which leverages ENS infrastructure deployed on Unstable.',
   openGraph: {
-    title: `Basenames`,
+    title: `Unstablenames`,
     url: `/manage-names`,
   },
   twitter: {
